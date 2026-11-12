@@ -1,0 +1,2064 @@
+<?xml version="1.0" encoding="utf-8"?>
+<baseline version="1.0">
+    <file name="src/androidTest/java/com/homingsms/app/modules/encryption/providers/HardenedPassphraseEncryptionProviderTest.kt">
+        <error line="15" column="84" source="standard:function-expression-body" />
+        <error line="28" column="29" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/androidTest/java/com/homingsms/app/modules/encryption/providers/LegacyPassphraseEncryptionProviderTest.kt">
+        <error line="15" column="82" source="standard:function-expression-body" />
+        <error line="28" column="29" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/androidTest/java/com/homingsms/app/modules/encryption/providers/RSAEncryptionProviderTest.kt">
+        <error line="27" column="33" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/App.kt">
+        <error line="32" column="10" source="standard:colon-spacing" />
+        <error line="61" column="29" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/GlobalExceptionHandler.kt">
+        <error line="10" column="5" source="standard:class-signature" />
+        <error line="11" column="5" source="standard:class-signature" />
+        <error line="11" column="36" source="standard:class-signature" />
+        <error line="12" column="31" source="standard:class-signature" />
+        <error line="23" column="48" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/MainActivity.kt">
+        <error line="66" column="9" source="standard:class-signature" />
+        <error line="70" column="62" source="standard:function-expression-body" />
+        <error line="77" column="1" source="standard:no-blank-line-before-rbrace" />
+        <error line="87" column="62" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/data/AppDatabase.kt">
+        <error line="40" column="25" source="standard:trailing-comma-on-call-site" />
+        <error line="67" column="42" source="standard:trailing-comma-on-call-site" />
+        <error line="69" column="2" source="standard:modifier-list-spacing" />
+        <error line="72" column="9" source="standard:annotation-spacing" />
+        <error line="83" column="72" source="standard:function-expression-body" />
+        <error line="92" column="36" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/data/Converters.kt">
+        <error line="15" column="53" source="standard:function-expression-body" />
+        <error line="20" column="55" source="standard:function-expression-body" />
+        <error line="25" column="45" source="standard:function-expression-body" />
+        <error line="46" column="52" source="standard:function-expression-body" />
+        <error line="51" column="52" source="standard:function-expression-body" />
+        <error line="87" column="14" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/data/Migrations.kt">
+        <error line="13" column="1" source="standard:indent" />
+        <error line="74" column="1" source="standard:indent" />
+        <error line="93" column="1" source="standard:indent" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/data/dao/MessagesDao.kt">
+        <error line="22" column="5" source="standard:comment-spacing" />
+        <error line="23" column="12" source="standard:argument-list-wrapping" />
+        <error line="23" column="141" source="standard:max-line-length" />
+        <error line="23" column="184" source="standard:argument-list-wrapping" />
+        <error line="47" column="12" source="standard:argument-list-wrapping" />
+        <error line="47" column="140" source="standard:max-line-length" />
+        <error line="47" column="160" source="standard:argument-list-wrapping" />
+        <error line="54" column="12" source="standard:argument-list-wrapping" />
+        <error line="54" column="141" source="standard:max-line-length" />
+        <error line="54" column="161" source="standard:argument-list-wrapping" />
+        <error line="61" column="12" source="standard:argument-list-wrapping" />
+        <error line="61" column="141" source="standard:max-line-length" />
+        <error line="61" column="162" source="standard:argument-list-wrapping" />
+        <error line="67" column="12" source="standard:argument-list-wrapping" />
+        <error line="67" column="140" source="standard:max-line-length" />
+        <error line="67" column="142" source="standard:argument-list-wrapping" />
+        <error line="77" column="12" source="standard:argument-list-wrapping" />
+        <error line="77" column="141" source="standard:max-line-length" />
+        <error line="77" column="151" source="standard:argument-list-wrapping" />
+        <error line="84" column="12" source="standard:argument-list-wrapping" />
+        <error line="84" column="141" source="standard:max-line-length" />
+        <error line="84" column="196" source="standard:argument-list-wrapping" />
+        <error line="98" column="12" source="standard:argument-list-wrapping" />
+        <error line="98" column="141" source="standard:max-line-length" />
+        <error line="98" column="203" source="standard:argument-list-wrapping" />
+        <error line="107" column="5" source="standard:comment-spacing" />
+        <error line="110" column="9" source="standard:function-naming" />
+        <error line="113" column="9" source="standard:function-naming" />
+        <error line="116" column="9" source="standard:function-naming" />
+        <error line="119" column="9" source="standard:function-naming" />
+        <error line="123" column="1" source="standard:indent" />
+        <error line="124" column="1" source="standard:indent" />
+        <error line="125" column="1" source="standard:indent" />
+        <error line="127" column="9" source="standard:function-naming" />
+        <error line="128" column="9" source="standard:function-signature" />
+        <error line="129" column="9" source="standard:function-signature" />
+        <error line="129" column="31" source="standard:function-signature" />
+        <error line="143" column="32" source="standard:wrapping" />
+        <error line="150" column="9" source="standard:wrapping" />
+        <error line="154" column="17" source="standard:function-naming" />
+        <error line="174" column="17" source="standard:function-naming" />
+        <error line="176" column="12" source="standard:argument-list-wrapping" />
+        <error line="176" column="140" source="standard:max-line-length" />
+        <error line="176" column="147" source="standard:argument-list-wrapping" />
+        <error line="177" column="9" source="standard:function-naming" />
+        <error line="178" column="9" source="standard:function-signature" />
+        <error line="179" column="9" source="standard:function-signature" />
+        <error line="180" column="9" source="standard:function-signature" />
+        <error line="181" column="9" source="standard:function-signature" />
+        <error line="181" column="23" source="standard:function-signature" />
+        <error line="186" column="9" source="standard:function-signature" />
+        <error line="187" column="9" source="standard:function-signature" />
+        <error line="188" column="9" source="standard:function-signature" />
+        <error line="189" column="9" source="standard:function-signature" />
+        <error line="189" column="23" source="standard:function-signature" />
+        <error line="200" column="9" source="standard:function-naming" />
+        <error line="201" column="9" source="standard:function-signature" />
+        <error line="202" column="9" source="standard:function-signature" />
+        <error line="203" column="9" source="standard:function-signature" />
+        <error line="203" column="23" source="standard:function-signature" />
+        <error line="208" column="9" source="standard:function-signature" />
+        <error line="209" column="9" source="standard:function-signature" />
+        <error line="210" column="9" source="standard:function-signature" />
+        <error line="210" column="23" source="standard:function-signature" />
+        <error line="230" column="9" source="standard:function-signature" />
+        <error line="231" column="9" source="standard:function-signature" />
+        <error line="231" column="23" source="standard:function-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/data/dao/TokensDao.kt">
+        <error line="66" column="18" source="standard:trailing-comma-on-declaration-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/data/entities/Message.kt">
+        <error line="15" column="8" source="standard:trailing-comma-on-declaration-site" />
+        <error line="23" column="61" source="standard:trailing-comma-on-call-site" />
+        <error line="53" column="34" source="standard:trailing-comma-on-declaration-site" />
+        <error line="68" column="24" source="standard:trailing-comma-on-declaration-site" />
+        <error line="86" column="30" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/data/entities/MessageState.kt">
+        <error line="18" column="5" source="standard:class-signature" />
+        <error line="19" column="5" source="standard:class-signature" />
+        <error line="20" column="5" source="standard:class-signature" />
+        <error line="20" column="24" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/data/entities/MessageWithRecipients.kt">
+        <error line="11" column="35" source="standard:trailing-comma-on-call-site" />
+        <error line="16" column="35" source="standard:trailing-comma-on-call-site" />
+        <error line="20" column="24" source="standard:trailing-comma-on-declaration-site" />
+        <error line="24" column="1" source="standard:indent" />
+        <error line="25" column="28" source="standard:function-literal" />
+        <error line="25" column="93" source="standard:function-literal" />
+        <error line="25" column="141" source="standard:max-line-length" />
+        <error line="26" column="28" source="standard:function-literal" />
+        <error line="26" column="93" source="standard:function-literal" />
+        <error line="26" column="141" source="standard:max-line-length" />
+        <error line="27" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="28" column="28" source="standard:function-literal" />
+        <error line="28" column="90" source="standard:function-literal" />
+        <error line="28" column="140" source="standard:max-line-length" />
+        <error line="29" column="28" source="standard:function-literal" />
+        <error line="29" column="93" source="standard:function-literal" />
+        <error line="29" column="141" source="standard:max-line-length" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/data/entities/MessagesStats.kt">
+        <error line="4" column="5" source="standard:class-signature" />
+        <error line="5" column="5" source="standard:class-signature" />
+        <error line="5" column="28" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/data/entities/MessagesTotals.kt">
+        <error line="10" column="21" source="standard:trailing-comma-on-declaration-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/data/entities/Token.kt">
+        <error line="13" column="27" source="standard:trailing-comma-on-call-site" />
+        <error line="14" column="6" source="standard:trailing-comma-on-call-site" />
+        <error line="23" column="34" source="standard:trailing-comma-on-declaration-site" />
+        <error line="31" column="45" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/domain/EntitySource.kt">
+        <error line="8" column="12" source="standard:trailing-comma-on-declaration-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/domain/HealthResponse.kt">
+        <error line="14" column="50" source="standard:trailing-comma-on-declaration-site" />
+        <error line="18" column="37" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/domain/MessageContent.kt">
+        <error line="8" column="41" source="standard:function-expression-body" />
+        <error line="15" column="41" source="standard:function-expression-body" />
+        <error line="22" column="9" source="standard:class-signature" />
+        <error line="23" column="9" source="standard:class-signature" />
+        <error line="24" column="9" source="standard:class-signature" />
+        <error line="24" column="42" source="standard:trailing-comma-on-declaration-site" />
+        <error line="24" column="43" source="standard:class-signature" />
+        <error line="28" column="13" source="standard:class-signature" />
+        <error line="29" column="13" source="standard:class-signature" />
+        <error line="30" column="13" source="standard:class-signature" />
+        <error line="30" column="29" source="standard:trailing-comma-on-declaration-site" />
+        <error line="30" column="30" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/domain/WebhookDelivery.kt">
+        <error line="6" column="1" source="standard:no-consecutive-blank-lines" />
+        <error line="7" column="14" source="standard:modifier-list-spacing" />
+        <error line="9" column="5" source="standard:annotation-spacing" />
+        <error line="17" column="10" source="standard:trailing-comma-on-declaration-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/extensions/Context.kt">
+        <error line="8" column="5" source="standard:function-signature" />
+        <error line="9" column="5" source="standard:function-signature" />
+        <error line="9" column="21" source="standard:trailing-comma-on-declaration-site" />
+        <error line="9" column="22" source="standard:function-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/helpers/DateTimeParser.kt">
+        <error line="11" column="48" source="standard:function-expression-body" />
+        <error line="20" column="51" source="standard:function-expression-body" />
+        <error line="36" column="45" source="standard:no-multi-spaces" />
+        <error line="37" column="40" source="standard:no-multi-spaces" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/helpers/PhoneHelper.kt">
+        <error line="13" column="13" source="standard:chain-wrapping" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/helpers/SSEManager.kt">
+        <error line="19" column="5" source="standard:class-signature" />
+        <error line="20" column="5" source="standard:class-signature" />
+        <error line="20" column="45" source="standard:trailing-comma-on-declaration-site" />
+        <error line="20" column="46" source="standard:class-signature" />
+        <error line="74" column="37" source="standard:wrapping" />
+        <error line="74" column="45" source="standard:wrapping" />
+        <error line="83" column="29" source="standard:function-signature" />
+        <error line="84" column="29" source="standard:function-signature" />
+        <error line="85" column="29" source="standard:function-signature" />
+        <error line="86" column="29" source="standard:function-signature" />
+        <error line="86" column="41" source="standard:function-signature" />
+        <error line="105" column="29" source="standard:function-signature" />
+        <error line="106" column="29" source="standard:function-signature" />
+        <error line="107" column="29" source="standard:function-signature" />
+        <error line="107" column="48" source="standard:function-signature" />
+        <error line="118" column="21" source="standard:wrapping" />
+        <error line="186" column="47" source="standard:blank-line-between-when-conditions" />
+        <error line="186" column="47" source="standard:no-multi-spaces" />
+        <error line="187" column="46" source="standard:blank-line-between-when-conditions" />
+        <error line="187" column="46" source="standard:no-multi-spaces" />
+        <error line="188" column="28" source="standard:no-multi-spaces" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/helpers/SettingsHelper.kt">
+        <error line="34" column="38" source="standard:blank-line-between-when-conditions" />
+        <error line="34" column="38" source="standard:no-multi-spaces" />
+        <error line="35" column="32" source="standard:no-multi-spaces" />
+        <error line="44" column="13" source="standard:property-naming" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/helpers/SubscriptionsHelper.kt">
+        <error line="56" column="68" source="standard:function-expression-body" />
+        <error line="64" column="71" source="standard:function-expression-body" />
+        <error line="71" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="124" column="63" source="standard:trailing-comma-on-call-site" />
+        <error line="138" column="9" source="standard:function-signature" />
+        <error line="139" column="9" source="standard:function-signature" />
+        <error line="139" column="49" source="standard:trailing-comma-on-declaration-site" />
+        <error line="139" column="50" source="standard:function-signature" />
+        <error line="140" column="16" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/connection/CellularNetworkType.kt">
+        <error line="9" column="13" source="standard:trailing-comma-on-declaration-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/connection/ConnectionService.kt">
+        <error line="21" column="5" source="standard:class-signature" />
+        <error line="21" column="33" source="standard:class-signature" />
+        <error line="46" column="13" source="standard:function-signature" />
+        <error line="47" column="13" source="standard:function-signature" />
+        <error line="47" column="53" source="standard:function-signature" />
+        <error line="51" column="1" source="standard:indent" />
+        <error line="51" column="25" source="standard:chain-wrapping" />
+        <error line="120" column="26" source="standard:no-semi" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/connection/TransportType.kt">
+        <error line="4" column="5" source="standard:class-signature" />
+        <error line="4" column="19" source="standard:class-signature" />
+        <error line="9" column="16" source="standard:trailing-comma-on-declaration-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/device/DeviceService.kt">
+        <error line="26" column="33" source="standard:trailing-comma-on-declaration-site" />
+        <error line="63" column="22" source="standard:trailing-comma-on-call-site" />
+        <error line="84" column="40" source="standard:function-expression-body" />
+        <error line="141" column="56" source="standard:trailing-comma-on-call-site" />
+        <error line="179" column="18" source="standard:trailing-comma-on-call-site" />
+        <error line="281" column="22" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/device/DeviceSettings.kt">
+        <error line="8" column="5" source="standard:class-signature" />
+        <error line="8" column="41" source="standard:trailing-comma-on-declaration-site" />
+        <error line="8" column="42" source="standard:class-signature" />
+        <error line="33" column="56" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/device/db/DeviceKey.kt">
+        <error line="13" column="6" source="standard:trailing-comma-on-call-site" />
+        <error line="29" column="32" source="standard:trailing-comma-on-declaration-site" />
+        <error line="38" column="34" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/device/keys/KeyStore.kt">
+        <error line="12" column="5" source="standard:class-signature" />
+        <error line="13" column="5" source="standard:class-signature" />
+        <error line="13" column="32" source="standard:trailing-comma-on-declaration-site" />
+        <error line="13" column="33" source="standard:class-signature" />
+        <error line="27" column="37" source="standard:trailing-comma-on-call-site" />
+        <error line="31" column="51" source="standard:function-expression-body" />
+        <error line="39" column="59" source="standard:function-expression-body" />
+        <error line="46" column="29" source="standard:trailing-comma-on-call-site" />
+        <error line="50" column="75" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/device/workers/KeyRotationWorker.kt">
+        <error line="19" column="42" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/encryption/EncryptionService.kt">
+        <error line="5" column="24" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/encryption/EncryptionSettings.kt">
+        <error line="8" column="5" source="standard:class-signature" />
+        <error line="8" column="41" source="standard:trailing-comma-on-declaration-site" />
+        <error line="8" column="42" source="standard:class-signature" />
+        <error line="43" column="56" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/encryption/providers/BasePassphraseEncryptionProvider.kt">
+        <error line="13" column="5" source="standard:class-signature" />
+        <error line="13" column="47" source="standard:trailing-comma-on-declaration-site" />
+        <error line="13" column="48" source="standard:class-signature" />
+        <error line="57" column="9" source="standard:class-signature" />
+        <error line="58" column="9" source="standard:class-signature" />
+        <error line="59" column="9" source="standard:class-signature" />
+        <error line="60" column="9" source="standard:class-signature" />
+        <error line="60" column="23" source="standard:trailing-comma-on-declaration-site" />
+        <error line="60" column="24" source="standard:class-signature" />
+        <error line="79" column="52" source="standard:function-expression-body" />
+        <error line="83" column="52" source="standard:function-expression-body" />
+        <error line="99" column="68" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/encryption/providers/EncryptionProviderFactory.kt">
+        <error line="14" column="17" source="standard:wrapping" />
+        <error line="19" column="47" source="standard:wrapping" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/encryption/providers/HardenedPassphraseEncryptionProvider.kt">
+        <error line="7" column="5" source="standard:class-signature" />
+        <error line="7" column="33" source="standard:trailing-comma-on-declaration-site" />
+        <error line="7" column="34" source="standard:class-signature" />
+        <error line="19" column="86" source="standard:function-expression-body" />
+        <error line="32" column="27" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/encryption/providers/LegacyPassphraseEncryptionProvider.kt">
+        <error line="7" column="5" source="standard:class-signature" />
+        <error line="7" column="33" source="standard:trailing-comma-on-declaration-site" />
+        <error line="7" column="34" source="standard:class-signature" />
+        <error line="16" column="86" source="standard:function-expression-body" />
+        <error line="30" column="27" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/encryption/providers/RSAEncryptionProvider.kt">
+        <error line="16" column="5" source="standard:class-signature" />
+        <error line="16" column="45" source="standard:trailing-comma-on-declaration-site" />
+        <error line="16" column="46" source="standard:class-signature" />
+        <error line="22" column="89" source="standard:trailing-comma-on-call-site" />
+        <error line="39" column="43" source="standard:trailing-comma-on-call-site" />
+        <error line="40" column="14" source="standard:trailing-comma-on-call-site" />
+        <error line="49" column="54" source="standard:trailing-comma-on-call-site" />
+        <error line="58" column="62" source="standard:trailing-comma-on-call-site" />
+        <error line="95" column="43" source="standard:trailing-comma-on-call-site" />
+        <error line="96" column="14" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/events/AppEvent.kt">
+        <error line="5" column="21" source="standard:trailing-comma-on-declaration-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/events/ExternalEvent.kt">
+        <error line="4" column="5" source="standard:class-signature" />
+        <error line="5" column="5" source="standard:class-signature" />
+        <error line="5" column="22" source="standard:trailing-comma-on-declaration-site" />
+        <error line="5" column="23" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/events/ExternalEventType.kt">
+        <error line="6" column="1" source="standard:no-consecutive-blank-lines" />
+        <error line="7" column="14" source="standard:modifier-list-spacing" />
+        <error line="9" column="5" source="standard:annotation-spacing" />
+        <error line="23" column="21" source="standard:trailing-comma-on-declaration-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/gateway/EventsReceiver.kt">
+        <error line="200" column="1" source="standard:no-blank-line-before-rbrace" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/gateway/GatewayApi.kt">
+        <error line="37" column="5" source="standard:class-signature" />
+        <error line="38" column="5" source="standard:class-signature" />
+        <error line="38" column="38" source="standard:class-signature" />
+        <error line="53" column="62" source="standard:function-expression-body" />
+        <error line="60" column="9" source="standard:function-signature" />
+        <error line="61" column="9" source="standard:function-signature" />
+        <error line="61" column="43" source="standard:function-signature" />
+        <error line="62" column="31" source="standard:function-expression-body" />
+        <error line="74" column="9" source="standard:function-signature" />
+        <error line="75" column="9" source="standard:function-signature" />
+        <error line="75" column="21" source="standard:function-signature" />
+        <error line="76" column="31" source="standard:function-expression-body" />
+        <error line="92" column="93" source="standard:function-expression-body" />
+        <error line="115" column="59" source="standard:function-expression-body" />
+        <error line="121" column="85" source="standard:function-expression-body" />
+        <error line="135" column="60" source="standard:function-expression-body" />
+        <error line="141" column="5" source="standard:comment-spacing" />
+        <error line="150" column="5" source="standard:comment-spacing" />
+        <error line="153" column="9" source="standard:class-signature" />
+        <error line="153" column="31" source="standard:trailing-comma-on-declaration-site" />
+        <error line="153" column="32" source="standard:class-signature" />
+        <error line="162" column="36" source="standard:trailing-comma-on-declaration-site" />
+        <error line="167" column="9" source="standard:class-signature" />
+        <error line="168" column="9" source="standard:class-signature" />
+        <error line="169" column="9" source="standard:class-signature" />
+        <error line="170" column="9" source="standard:class-signature" />
+        <error line="170" column="30" source="standard:trailing-comma-on-declaration-site" />
+        <error line="170" column="31" source="standard:class-signature" />
+        <error line="179" column="37" source="standard:trailing-comma-on-declaration-site" />
+        <error line="192" column="9" source="standard:class-signature" />
+        <error line="193" column="9" source="standard:class-signature" />
+        <error line="193" column="32" source="standard:class-signature" />
+        <error line="198" column="9" source="standard:class-signature" />
+        <error line="199" column="9" source="standard:class-signature" />
+        <error line="199" column="29" source="standard:class-signature" />
+        <error line="202" column="5" source="standard:comment-spacing" />
+        <error line="206" column="13" source="standard:class-signature" />
+        <error line="206" column="29" source="standard:trailing-comma-on-declaration-site" />
+        <error line="206" column="30" source="standard:class-signature" />
+        <error line="211" column="13" source="standard:class-signature" />
+        <error line="212" column="13" source="standard:class-signature" />
+        <error line="212" column="29" source="standard:trailing-comma-on-declaration-site" />
+        <error line="212" column="30" source="standard:class-signature" />
+        <error line="222" column="63" source="standard:trailing-comma-on-declaration-site" />
+        <error line="229" column="17" source="standard:class-signature" />
+        <error line="230" column="17" source="standard:class-signature" />
+        <error line="231" column="17" source="standard:class-signature" />
+        <error line="231" column="33" source="standard:trailing-comma-on-declaration-site" />
+        <error line="231" column="34" source="standard:class-signature" />
+        <error line="256" column="30" source="standard:trailing-comma-on-declaration-site" />
+        <error line="268" column="9" source="standard:class-signature" />
+        <error line="269" column="9" source="standard:class-signature" />
+        <error line="270" column="9" source="standard:class-signature" />
+        <error line="270" column="27" source="standard:trailing-comma-on-declaration-site" />
+        <error line="270" column="28" source="standard:class-signature" />
+        <error line="306" column="9" source="standard:class-signature" />
+        <error line="307" column="9" source="standard:class-signature" />
+        <error line="308" column="9" source="standard:class-signature" />
+        <error line="308" column="32" source="standard:trailing-comma-on-declaration-site" />
+        <error line="308" column="33" source="standard:class-signature" />
+        <error line="319" column="41" source="standard:function-expression-body" />
+        <error line="326" column="9" source="standard:class-signature" />
+        <error line="327" column="9" source="standard:class-signature" />
+        <error line="328" column="9" source="standard:class-signature" />
+        <error line="329" column="9" source="standard:class-signature" />
+        <error line="330" column="9" source="standard:class-signature" />
+        <error line="330" column="27" source="standard:trailing-comma-on-declaration-site" />
+        <error line="330" column="28" source="standard:class-signature" />
+        <error line="350" column="55" source="standard:trailing-comma-on-declaration-site" />
+        <error line="359" column="25" source="standard:trailing-comma-on-declaration-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/gateway/GatewayService.kt">
+        <error line="38" column="45" source="standard:trailing-comma-on-declaration-site" />
+        <error line="108" column="20" source="standard:trailing-comma-on-call-site" />
+        <error line="116" column="9" source="standard:function-signature" />
+        <error line="117" column="9" source="standard:function-signature" />
+        <error line="118" column="9" source="standard:function-signature" />
+        <error line="118" column="39" source="standard:function-signature" />
+        <error line="147" column="49" source="standard:trailing-comma-on-call-site" />
+        <error line="151" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="152" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="165" column="38" source="standard:trailing-comma-on-call-site" />
+        <error line="195" column="33" source="standard:trailing-comma-on-call-site" />
+        <error line="205" column="34" source="standard:trailing-comma-on-call-site" />
+        <error line="216" column="30" source="standard:trailing-comma-on-call-site" />
+        <error line="246" column="63" source="standard:trailing-comma-on-call-site" />
+        <error line="257" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="281" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="285" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="292" column="47" source="standard:trailing-comma-on-call-site" />
+        <error line="299" column="44" source="standard:trailing-comma-on-call-site" />
+        <error line="307" column="44" source="standard:trailing-comma-on-call-site" />
+        <error line="314" column="9" source="standard:function-signature" />
+        <error line="314" column="48" source="standard:function-signature" />
+        <error line="327" column="9" source="standard:function-signature" />
+        <error line="328" column="9" source="standard:function-signature" />
+        <error line="329" column="9" source="standard:function-signature" />
+        <error line="330" column="9" source="standard:function-signature" />
+        <error line="331" column="9" source="standard:function-signature" />
+        <error line="332" column="9" source="standard:function-signature" />
+        <error line="332" column="19" source="standard:trailing-comma-on-declaration-site" />
+        <error line="332" column="20" source="standard:function-signature" />
+        <error line="339" column="22" source="standard:argument-list-wrapping" />
+        <error line="339" column="31" source="standard:argument-list-wrapping" />
+        <error line="339" column="39" source="standard:argument-list-wrapping" />
+        <error line="339" column="50" source="standard:argument-list-wrapping" />
+        <error line="339" column="61" source="standard:argument-list-wrapping" />
+        <error line="371" column="39" source="standard:function-expression-body" />
+        <error line="383" column="1" source="standard:blank-line-between-when-conditions" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/gateway/GatewaySettings.kt">
+        <error line="10" column="5" source="standard:class-signature" />
+        <error line="10" column="41" source="standard:trailing-comma-on-declaration-site" />
+        <error line="10" column="42" source="standard:class-signature" />
+        <error line="11" column="15" source="standard:class-signature" />
+        <error line="14" column="17" source="standard:trailing-comma-on-declaration-site" />
+        <error line="63" column="43" source="standard:function-expression-body" />
+        <error line="66" column="61" source="standard:trailing-comma-on-call-site" />
+        <error line="70" column="56" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/gateway/events/DeviceRegisteredEvent.kt">
+        <error line="6" column="5" source="standard:class-signature" />
+        <error line="6" column="23" source="standard:trailing-comma-on-declaration-site" />
+        <error line="6" column="24" source="standard:class-signature" />
+        <error line="9" column="9" source="standard:class-signature" />
+        <error line="10" column="9" source="standard:class-signature" />
+        <error line="11" column="9" source="standard:class-signature" />
+        <error line="11" column="30" source="standard:trailing-comma-on-declaration-site" />
+        <error line="11" column="31" source="standard:class-signature" />
+        <error line="15" column="9" source="standard:class-signature" />
+        <error line="16" column="9" source="standard:class-signature" />
+        <error line="16" column="27" source="standard:trailing-comma-on-declaration-site" />
+        <error line="16" column="28" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/gateway/events/MessageCancelledEvent.kt">
+        <error line="20" column="30" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/gateway/inbox/InboxUploadDao.kt">
+        <error line="21" column="9" source="standard:function-signature" />
+        <error line="21" column="25" source="standard:trailing-comma-on-declaration-site" />
+        <error line="21" column="26" source="standard:function-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/gateway/inbox/InboxUploadEntity.kt">
+        <error line="11" column="61" source="standard:trailing-comma-on-call-site" />
+        <error line="40" column="38" source="standard:trailing-comma-on-declaration-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/gateway/inbox/InboxUploadModel.kt">
+        <error line="1" column="1" source="standard:filename" />
+        <error line="6" column="1" source="standard:no-consecutive-blank-lines" />
+        <error line="7" column="14" source="standard:modifier-list-spacing" />
+        <error line="9" column="5" source="standard:annotation-spacing" />
+        <error line="14" column="41" source="standard:trailing-comma-on-declaration-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/gateway/inbox/InboxUploadRepository.kt">
+        <error line="4" column="5" source="standard:class-signature" />
+        <error line="4" column="36" source="standard:trailing-comma-on-declaration-site" />
+        <error line="4" column="37" source="standard:class-signature" />
+        <error line="14" column="38" source="standard:trailing-comma-on-declaration-site" />
+        <error line="26" column="60" source="standard:trailing-comma-on-call-site" />
+        <error line="31" column="72" source="standard:function-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/gateway/inbox/InboxUploadService.kt">
+        <error line="29" column="9" source="standard:function-signature" />
+        <error line="30" column="9" source="standard:function-signature" />
+        <error line="31" column="9" source="standard:function-signature" />
+        <error line="32" column="9" source="standard:function-signature" />
+        <error line="33" column="9" source="standard:function-signature" />
+        <error line="34" column="9" source="standard:function-signature" />
+        <error line="34" column="19" source="standard:trailing-comma-on-declaration-site" />
+        <error line="34" column="20" source="standard:function-signature" />
+        <error line="47" column="71" source="standard:trailing-comma-on-call-site" />
+        <error line="57" column="63" source="standard:trailing-comma-on-call-site" />
+        <error line="64" column="71" source="standard:function-expression-body" />
+        <error line="70" column="44" source="standard:trailing-comma-on-call-site" />
+        <error line="77" column="88" source="standard:trailing-comma-on-call-site" />
+        <error line="79" column="44" source="standard:trailing-comma-on-call-site" />
+        <error line="91" column="72" source="standard:trailing-comma-on-call-site" />
+        <error line="98" column="137" source="standard:trailing-comma-on-call-site" />
+        <error line="105" column="9" source="standard:class-signature" />
+        <error line="106" column="9" source="standard:class-signature" />
+        <error line="107" column="9" source="standard:class-signature" />
+        <error line="108" column="9" source="standard:class-signature" />
+        <error line="108" column="42" source="standard:trailing-comma-on-declaration-site" />
+        <error line="108" column="43" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/gateway/inbox/InboxUploadWorker.kt">
+        <error line="31" column="5" source="standard:class-signature" />
+        <error line="32" column="5" source="standard:class-signature" />
+        <error line="32" column="29" source="standard:trailing-comma-on-declaration-site" />
+        <error line="32" column="30" source="standard:class-signature" />
+        <error line="33" column="42" source="standard:class-signature" />
+        <error line="62" column="24" source="standard:trailing-comma-on-call-site" />
+        <error line="85" column="87" source="standard:trailing-comma-on-call-site" />
+        <error line="114" column="77" source="standard:trailing-comma-on-call-site" />
+        <error line="147" column="38" source="standard:trailing-comma-on-call-site" />
+        <error line="155" column="74" source="standard:trailing-comma-on-call-site" />
+        <error line="157" column="31" source="standard:argument-list-wrapping" />
+        <error line="157" column="82" source="standard:argument-list-wrapping" />
+        <error line="157" column="96" source="standard:argument-list-wrapping" />
+        <error line="157" column="141" source="standard:argument-list-wrapping" />
+        <error line="157" column="141" source="standard:max-line-length" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/gateway/services/SSEForegroundService.kt">
+        <error line="64" column="76" source="standard:trailing-comma-on-call-site" />
+        <error line="109" column="65" source="standard:trailing-comma-on-call-site" />
+        <error line="117" column="51" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/gateway/workers/PullMessagesWorker.kt">
+        <error line="22" column="5" source="standard:class-signature" />
+        <error line="23" column="5" source="standard:class-signature" />
+        <error line="23" column="29" source="standard:class-signature" />
+        <error line="43" column="71" source="standard:argument-list-wrapping" />
+        <error line="43" column="121" source="standard:argument-list-wrapping" />
+        <error line="43" column="141" source="standard:max-line-length" />
+        <error line="43" column="142" source="standard:argument-list-wrapping" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/gateway/workers/RegistrationWorker.kt">
+        <error line="22" column="5" source="standard:class-signature" />
+        <error line="23" column="5" source="standard:class-signature" />
+        <error line="23" column="29" source="standard:class-signature" />
+        <error line="24" column="42" source="standard:class-signature" />
+        <error line="33" column="25" source="standard:trailing-comma-on-call-site" />
+        <error line="70" column="44" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/gateway/workers/SendStateWorker.kt">
+        <error line="24" column="42" source="standard:class-signature" />
+        <error line="44" column="84" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/gateway/workers/SettingsUpdateWorker.kt">
+        <error line="20" column="42" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/gateway/workers/WebhooksUpdateWorker.kt">
+        <error line="23" column="42" source="standard:class-signature" />
+        <error line="38" column="56" source="standard:function-expression-body" />
+        <error line="44" column="40" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/health/HealthService.kt">
+        <error line="12" column="43" source="standard:trailing-comma-on-declaration-site" />
+        <error line="21" column="1" source="standard:indent" />
+        <error line="22" column="1" source="standard:indent" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/health/domain/CheckResult.kt">
+        <error line="7" column="5" source="standard:class-signature" />
+        <error line="8" column="5" source="standard:class-signature" />
+        <error line="9" column="5" source="standard:class-signature" />
+        <error line="10" column="5" source="standard:class-signature" />
+        <error line="10" column="28" source="standard:trailing-comma-on-declaration-site" />
+        <error line="10" column="29" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/health/domain/HealthResult.kt">
+        <error line="4" column="5" source="standard:class-signature" />
+        <error line="5" column="5" source="standard:class-signature" />
+        <error line="5" column="41" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/health/domain/Status.kt">
+        <error line="6" column="1" source="standard:no-consecutive-blank-lines" />
+        <error line="7" column="14" source="standard:modifier-list-spacing" />
+        <error line="9" column="5" source="standard:annotation-spacing" />
+        <error line="17" column="9" source="standard:trailing-comma-on-declaration-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/health/monitors/BatteryMonitor.kt">
+        <error line="11" column="5" source="standard:class-signature" />
+        <error line="11" column="33" source="standard:class-signature" />
+        <error line="60" column="14" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/incoming/IncomingMessagesService.kt">
+        <error line="20" column="41" source="standard:trailing-comma-on-declaration-site" />
+        <error line="46" column="42" source="standard:trailing-comma-on-call-site" />
+        <error line="60" column="62" source="standard:trailing-comma-on-call-site" />
+        <error line="81" column="67" source="standard:trailing-comma-on-call-site" />
+        <error line="93" column="32" source="standard:trailing-comma-on-call-site" />
+        <error line="103" column="67" source="standard:trailing-comma-on-call-site" />
+        <error line="111" column="78" source="standard:function-expression-body" />
+        <error line="116" column="9" source="standard:function-signature" />
+        <error line="117" column="9" source="standard:function-signature" />
+        <error line="118" column="9" source="standard:function-signature" />
+        <error line="119" column="9" source="standard:function-signature" />
+        <error line="120" column="9" source="standard:function-signature" />
+        <error line="120" column="20" source="standard:function-signature" />
+        <error line="121" column="30" source="standard:function-expression-body" />
+        <error line="125" column="47" source="standard:function-expression-body" />
+        <error line="129" column="60" source="standard:function-expression-body" />
+        <error line="159" column="50" source="standard:function-expression-body" />
+        <error line="162" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="169" column="1" source="standard:blank-line-between-when-conditions" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/incoming/IncomingMessagesSettings.kt">
+        <error line="9" column="5" source="standard:class-signature" />
+        <error line="9" column="41" source="standard:trailing-comma-on-declaration-site" />
+        <error line="9" column="42" source="standard:class-signature" />
+        <error line="10" column="15" source="standard:class-signature" />
+        <error line="14" column="43" source="standard:function-expression-body" />
+        <error line="16" column="42" source="standard:trailing-comma-on-call-site" />
+        <error line="20" column="56" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/incoming/db/IncomingMessage.kt">
+        <error line="11" column="19" source="standard:trailing-comma-on-declaration-site" />
+        <error line="18" column="32" source="standard:trailing-comma-on-call-site" />
+        <error line="29" column="53" source="standard:trailing-comma-on-declaration-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/incoming/db/IncomingMessageTotals.kt">
+        <error line="4" column="5" source="standard:class-signature" />
+        <error line="5" column="5" source="standard:class-signature" />
+        <error line="6" column="5" source="standard:class-signature" />
+        <error line="7" column="5" source="standard:class-signature" />
+        <error line="7" column="18" source="standard:trailing-comma-on-declaration-site" />
+        <error line="7" column="19" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/incoming/db/IncomingMessagesDao.kt">
+        <error line="50" column="9" source="standard:function-signature" />
+        <error line="51" column="9" source="standard:function-signature" />
+        <error line="52" column="9" source="standard:function-signature" />
+        <error line="53" column="9" source="standard:function-signature" />
+        <error line="54" column="9" source="standard:function-signature" />
+        <error line="54" column="20" source="standard:function-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/incoming/repositories/IncomingMessagesRepository.kt">
+        <error line="11" column="66" source="standard:function-signature" />
+        <error line="17" column="79" source="standard:function-signature" />
+        <error line="21" column="9" source="standard:function-signature" />
+        <error line="22" column="9" source="standard:function-signature" />
+        <error line="23" column="9" source="standard:function-signature" />
+        <error line="24" column="9" source="standard:function-signature" />
+        <error line="25" column="9" source="standard:function-signature" />
+        <error line="25" column="20" source="standard:function-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/incoming/vm/IncomingMessagesListViewModel.kt">
+        <error line="15" column="5" source="standard:class-signature" />
+        <error line="15" column="55" source="standard:trailing-comma-on-declaration-site" />
+        <error line="15" column="56" source="standard:class-signature" />
+        <error line="19" column="17" source="standard:backing-property-naming" />
+        <error line="29" column="29" source="standard:wrapping" />
+        <error line="31" column="9" source="standard:wrapping" />
+        <error line="55" column="27" source="standard:property-naming" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/incoming/workers/IncomingLogTruncateWorker.kt">
+        <error line="16" column="81" source="standard:wrapping" />
+        <error line="16" column="82" source="standard:class-signature" />
+        <error line="19" column="3" source="standard:wrapping" />
+        <error line="19" column="4" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/localserver/LocalServerService.kt">
+        <error line="15" column="5" source="standard:class-signature" />
+        <error line="16" column="5" source="standard:class-signature" />
+        <error line="16" column="33" source="standard:trailing-comma-on-declaration-site" />
+        <error line="16" column="34" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/localserver/LocalServerSettings.kt">
+        <error line="8" column="5" source="standard:class-signature" />
+        <error line="8" column="41" source="standard:trailing-comma-on-declaration-site" />
+        <error line="8" column="42" source="standard:class-signature" />
+        <error line="32" column="1" source="standard:no-consecutive-blank-lines" />
+        <error line="45" column="39" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/localserver/WebService.kt">
+        <error line="78" column="37" source="standard:trailing-comma-on-call-site" />
+        <error line="86" column="1" source="standard:indent" />
+        <error line="86" column="37" source="standard:chain-wrapping" />
+        <error line="123" column="21" source="standard:wrapping" />
+        <error line="130" column="13" source="standard:wrapping" />
+        <error line="220" column="65" source="standard:trailing-comma-on-call-site" />
+        <error line="265" column="1" source="standard:indent" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/localserver/auth/JwtService.kt">
+        <error line="19" column="5" source="standard:class-signature" />
+        <error line="20" column="5" source="standard:class-signature" />
+        <error line="21" column="5" source="standard:class-signature" />
+        <error line="21" column="24" source="standard:trailing-comma-on-declaration-site" />
+        <error line="21" column="25" source="standard:class-signature" />
+        <error line="25" column="5" source="standard:class-signature" />
+        <error line="26" column="5" source="standard:class-signature" />
+        <error line="26" column="36" source="standard:trailing-comma-on-declaration-site" />
+        <error line="26" column="37" source="standard:class-signature" />
+        <error line="37" column="41" source="standard:trailing-comma-on-declaration-site" />
+        <error line="50" column="34" source="standard:trailing-comma-on-call-site" />
+        <error line="60" column="9" source="standard:function-signature" />
+        <error line="61" column="9" source="standard:function-signature" />
+        <error line="61" column="37" source="standard:function-signature" />
+        <error line="72" column="45" source="standard:trailing-comma-on-call-site" />
+        <error line="73" column="18" source="standard:trailing-comma-on-call-site" />
+        <error line="80" column="47" source="standard:trailing-comma-on-call-site" />
+        <error line="87" column="47" source="standard:trailing-comma-on-call-site" />
+        <error line="97" column="59" source="standard:trailing-comma-on-call-site" />
+        <error line="98" column="22" source="standard:trailing-comma-on-call-site" />
+        <error line="111" column="59" source="standard:trailing-comma-on-call-site" />
+        <error line="112" column="22" source="standard:trailing-comma-on-call-site" />
+        <error line="124" column="59" source="standard:trailing-comma-on-call-site" />
+        <error line="125" column="22" source="standard:trailing-comma-on-call-site" />
+        <error line="137" column="59" source="standard:trailing-comma-on-call-site" />
+        <error line="138" column="22" source="standard:trailing-comma-on-call-site" />
+        <error line="153" column="54" source="standard:function-expression-body" />
+        <error line="211" column="48" source="standard:trailing-comma-on-call-site" />
+        <error line="216" column="49" source="standard:trailing-comma-on-call-site" />
+        <error line="217" column="18" source="standard:trailing-comma-on-call-site" />
+        <error line="222" column="49" source="standard:trailing-comma-on-call-site" />
+        <error line="228" column="42" source="standard:trailing-comma-on-call-site" />
+        <error line="234" column="9" source="standard:class-signature" />
+        <error line="235" column="9" source="standard:class-signature" />
+        <error line="236" column="9" source="standard:class-signature" />
+        <error line="236" column="32" source="standard:trailing-comma-on-declaration-site" />
+        <error line="236" column="33" source="standard:class-signature" />
+        <error line="248" column="76" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/localserver/auth/ScopeAuthorization.kt">
+        <error line="11" column="5" source="standard:function-signature" />
+        <error line="12" column="5" source="standard:function-signature" />
+        <error line="12" column="27" source="standard:function-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/localserver/domain/Device.kt">
+        <error line="32" column="32" source="standard:trailing-comma-on-declaration-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/localserver/domain/GetLogsResponse.kt">
+        <error line="19" column="24" source="standard:trailing-comma-on-declaration-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/localserver/domain/InboxRefreshRequest.kt">
+        <error line="22" column="49" source="standard:trailing-comma-on-declaration-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/localserver/domain/SimCard.kt">
+        <error line="16" column="5" source="standard:class-signature" />
+        <error line="17" column="5" source="standard:class-signature" />
+        <error line="18" column="5" source="standard:class-signature" />
+        <error line="19" column="5" source="standard:class-signature" />
+        <error line="20" column="5" source="standard:class-signature" />
+        <error line="20" column="23" source="standard:trailing-comma-on-declaration-site" />
+        <error line="20" column="24" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/localserver/domain/TokenRequest.kt">
+        <error line="6" column="1" source="standard:no-consecutive-blank-lines" />
+        <error line="7" column="14" source="standard:modifier-list-spacing" />
+        <error line="9" column="5" source="standard:annotation-spacing" />
+        <error line="13" column="29" source="standard:trailing-comma-on-declaration-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/localserver/domain/TokenResponse.kt">
+        <error line="22" column="37" source="standard:trailing-comma-on-declaration-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/localserver/domain/messages/DataMessage.kt">
+        <error line="7" column="22" source="standard:parameter-list-spacing" />
+        <error line="7" column="23" source="standard:no-multi-spaces" />
+        <error line="8" column="18" source="standard:trailing-comma-on-declaration-site" />
+        <error line="8" column="20" source="standard:no-multi-spaces" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/localserver/domain/messages/HashedMessage.kt">
+        <error line="7" column="5" source="standard:class-signature" />
+        <error line="7" column="21" source="standard:trailing-comma-on-declaration-site" />
+        <error line="7" column="22" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/localserver/domain/messages/Message.kt">
+        <error line="25" column="43" source="standard:trailing-comma-on-declaration-site" />
+        <error line="29" column="9" source="standard:class-signature" />
+        <error line="30" column="9" source="standard:class-signature" />
+        <error line="31" column="9" source="standard:class-signature" />
+        <error line="31" column="27" source="standard:trailing-comma-on-declaration-site" />
+        <error line="31" column="28" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/localserver/domain/messages/MmsMessage.kt">
+        <error line="7" column="5" source="standard:class-signature" />
+        <error line="8" column="5" source="standard:class-signature" />
+        <error line="9" column="5" source="standard:class-signature" />
+        <error line="9" column="52" source="standard:trailing-comma-on-declaration-site" />
+        <error line="9" column="53" source="standard:class-signature" />
+        <error line="13" column="9" source="standard:class-signature" />
+        <error line="14" column="9" source="standard:class-signature" />
+        <error line="15" column="9" source="standard:class-signature" />
+        <error line="15" column="33" source="standard:trailing-comma-on-declaration-site" />
+        <error line="15" column="34" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/localserver/domain/messages/PostMessageRequest.kt">
+        <error line="11" column="1" source="standard:no-consecutive-blank-lines" />
+        <error line="12" column="14" source="standard:modifier-list-spacing" />
+        <error line="14" column="5" source="standard:annotation-spacing" />
+        <error line="34" column="33" source="standard:trailing-comma-on-declaration-site" />
+        <error line="56" column="70" source="standard:argument-list-wrapping" />
+        <error line="56" column="141" source="standard:max-line-length" />
+        <error line="56" column="149" source="standard:argument-list-wrapping" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/localserver/domain/messages/TextMessage.kt">
+        <error line="7" column="5" source="standard:class-signature" />
+        <error line="7" column="21" source="standard:trailing-comma-on-declaration-site" />
+        <error line="7" column="22" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/localserver/events/IPReceivedEvent.kt">
+        <error line="6" column="5" source="standard:class-signature" />
+        <error line="7" column="5" source="standard:class-signature" />
+        <error line="7" column="26" source="standard:trailing-comma-on-declaration-site" />
+        <error line="7" column="27" source="standard:class-signature" />
+        <error line="8" column="2" source="standard:colon-spacing" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/localserver/routes/AuthRoutes.kt">
+        <error line="24" column="5" source="standard:class-signature" />
+        <error line="25" column="5" source="standard:class-signature" />
+        <error line="25" column="41" source="standard:trailing-comma-on-declaration-site" />
+        <error line="25" column="42" source="standard:class-signature" />
+        <error line="47" column="56" source="standard:trailing-comma-on-call-site" />
+        <error line="80" column="49" source="standard:trailing-comma-on-call-site" />
+        <error line="81" column="22" source="standard:trailing-comma-on-call-site" />
+        <error line="104" column="59" source="standard:trailing-comma-on-call-site" />
+        <error line="121" column="1" source="standard:no-blank-line-before-rbrace" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/localserver/routes/DeviceRoutes.kt">
+        <error line="18" column="5" source="standard:class-signature" />
+        <error line="19" column="5" source="standard:class-signature" />
+        <error line="20" column="5" source="standard:class-signature" />
+        <error line="20" column="46" source="standard:trailing-comma-on-declaration-site" />
+        <error line="20" column="47" source="standard:class-signature" />
+        <error line="47" column="36" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/localserver/routes/InboxRoutes.kt">
+        <error line="38" column="46" source="standard:trailing-comma-on-declaration-site" />
+        <error line="208" column="52" source="standard:trailing-comma-on-call-site" />
+        <error line="231" column="59" source="standard:trailing-comma-on-declaration-site" />
+        <error line="236" column="9" source="standard:class-signature" />
+        <error line="237" column="9" source="standard:class-signature" />
+        <error line="238" column="9" source="standard:class-signature" />
+        <error line="239" column="9" source="standard:class-signature" />
+        <error line="239" column="32" source="standard:trailing-comma-on-declaration-site" />
+        <error line="239" column="33" source="standard:class-signature" />
+        <error line="242" column="76" source="standard:function-expression-body" />
+        <error line="248" column="53" source="standard:trailing-comma-on-call-site" />
+        <error line="253" column="60" source="standard:function-expression-body" />
+        <error line="266" column="86" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/localserver/routes/LogsRoutes.kt">
+        <error line="15" column="5" source="standard:class-signature" />
+        <error line="15" column="41" source="standard:trailing-comma-on-declaration-site" />
+        <error line="15" column="42" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/localserver/routes/MessagesRoutes.kt">
+        <error line="43" column="46" source="standard:trailing-comma-on-declaration-site" />
+        <error line="179" column="47" source="standard:trailing-comma-on-call-site" />
+        <error line="198" column="39" source="standard:trailing-comma-on-call-site" />
+        <error line="206" column="48" source="standard:trailing-comma-on-call-site" />
+        <error line="220" column="1" source="standard:no-consecutive-blank-lines" />
+        <error line="290" column="54" source="standard:trailing-comma-on-call-site" />
+        <error line="304" column="1" source="standard:indent" />
+        <error line="304" column="9" source="standard:function-signature" />
+        <error line="305" column="1" source="standard:indent" />
+        <error line="305" column="9" source="standard:function-signature" />
+        <error line="306" column="1" source="standard:indent" />
+        <error line="306" column="5" source="standard:function-signature" />
+        <error line="306" column="70" source="standard:function-expression-body" />
+        <error line="307" column="1" source="standard:indent" />
+        <error line="308" column="1" source="standard:indent" />
+        <error line="309" column="1" source="standard:indent" />
+        <error line="310" column="1" source="standard:indent" />
+        <error line="311" column="1" source="standard:indent" />
+        <error line="312" column="1" source="standard:indent" />
+        <error line="313" column="1" source="standard:indent" />
+        <error line="314" column="1" source="standard:indent" />
+        <error line="315" column="1" source="standard:indent" />
+        <error line="316" column="1" source="standard:indent" />
+        <error line="317" column="1" source="standard:indent" />
+        <error line="319" column="1" source="standard:indent" />
+        <error line="320" column="1" source="standard:indent" />
+        <error line="321" column="1" source="standard:indent" />
+        <error line="322" column="1" source="standard:indent" />
+        <error line="323" column="1" source="standard:indent" />
+        <error line="324" column="1" source="standard:indent" />
+        <error line="325" column="1" source="standard:indent" />
+        <error line="326" column="1" source="standard:indent" />
+        <error line="327" column="1" source="standard:indent" />
+        <error line="329" column="1" source="standard:indent" />
+        <error line="330" column="1" source="standard:indent" />
+        <error line="331" column="1" source="standard:indent" />
+        <error line="332" column="1" source="standard:indent" />
+        <error line="333" column="1" source="standard:indent" />
+        <error line="334" column="1" source="standard:indent" />
+        <error line="335" column="1" source="standard:indent" />
+        <error line="336" column="1" source="standard:indent" />
+        <error line="337" column="1" source="standard:indent" />
+        <error line="338" column="1" source="standard:indent" />
+        <error line="339" column="1" source="standard:indent" />
+        <error line="340" column="1" source="standard:indent" />
+        <error line="340" column="47" source="standard:trailing-comma-on-call-site" />
+        <error line="341" column="1" source="standard:indent" />
+        <error line="342" column="1" source="standard:indent" />
+        <error line="343" column="1" source="standard:indent" />
+        <error line="344" column="1" source="standard:indent" />
+        <error line="346" column="1" source="standard:indent" />
+        <error line="347" column="1" source="standard:indent" />
+        <error line="348" column="1" source="standard:indent" />
+        <error line="349" column="1" source="standard:indent" />
+        <error line="350" column="1" source="standard:indent" />
+        <error line="351" column="1" source="standard:indent" />
+        <error line="352" column="1" source="standard:indent" />
+        <error line="353" column="1" source="standard:indent" />
+        <error line="354" column="1" source="standard:indent" />
+        <error line="355" column="1" source="standard:indent" />
+        <error line="356" column="1" source="standard:indent" />
+        <error line="357" column="1" source="standard:indent" />
+        <error line="358" column="1" source="standard:indent" />
+        <error line="359" column="1" source="standard:indent" />
+        <error line="359" column="44" source="standard:trailing-comma-on-call-site" />
+        <error line="360" column="1" source="standard:indent" />
+        <error line="361" column="1" source="standard:indent" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/localserver/routes/SettingsRoutes.kt">
+        <error line="18" column="5" source="standard:class-signature" />
+        <error line="18" column="49" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/localserver/routes/WebhooksRoutes.kt">
+        <error line="19" column="5" source="standard:class-signature" />
+        <error line="20" column="5" source="standard:class-signature" />
+        <error line="20" column="57" source="standard:trailing-comma-on-declaration-site" />
+        <error line="20" column="58" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/logs/LogsService.kt">
+        <error line="10" column="5" source="standard:class-signature" />
+        <error line="11" column="5" source="standard:class-signature" />
+        <error line="11" column="39" source="standard:trailing-comma-on-declaration-site" />
+        <error line="11" column="40" source="standard:class-signature" />
+        <error line="22" column="9" source="standard:function-signature" />
+        <error line="23" column="9" source="standard:function-signature" />
+        <error line="23" column="25" source="standard:function-signature" />
+        <error line="32" column="9" source="standard:function-signature" />
+        <error line="33" column="9" source="standard:function-signature" />
+        <error line="34" column="9" source="standard:function-signature" />
+        <error line="35" column="9" source="standard:function-signature" />
+        <error line="35" column="29" source="standard:function-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/logs/LogsSettings.kt">
+        <error line="9" column="5" source="standard:class-signature" />
+        <error line="9" column="41" source="standard:trailing-comma-on-declaration-site" />
+        <error line="9" column="42" source="standard:class-signature" />
+        <error line="10" column="15" source="standard:class-signature" />
+        <error line="41" column="43" source="standard:function-expression-body" />
+        <error line="43" column="42" source="standard:trailing-comma-on-call-site" />
+        <error line="47" column="56" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/logs/LogsUtils.kt">
+        <error line="12" column="10" source="standard:trailing-comma-on-call-site" />
+        <error line="18" column="52" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/logs/db/LogEntry.kt">
+        <error line="7" column="1" source="standard:no-consecutive-blank-lines" />
+        <error line="16" column="53" source="standard:trailing-comma-on-declaration-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/logs/repositories/LogsRepository.kt">
+        <error line="7" column="5" source="standard:class-signature" />
+        <error line="7" column="35" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/logs/vm/LogsViewModel.kt">
+        <error line="9" column="5" source="standard:class-signature" />
+        <error line="9" column="25" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/logs/workers/TruncateWorker.kt">
+        <error line="17" column="42" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/messages/MessageStateService.kt">
+        <error line="46" column="5" source="standard:class-signature" />
+        <error line="47" column="5" source="standard:class-signature" />
+        <error line="47" column="33" source="standard:trailing-comma-on-declaration-site" />
+        <error line="47" column="34" source="standard:class-signature" />
+        <error line="58" column="9" source="standard:function-signature" />
+        <error line="59" column="9" source="standard:function-signature" />
+        <error line="60" column="9" source="standard:function-signature" />
+        <error line="61" column="9" source="standard:function-signature" />
+        <error line="61" column="30" source="standard:function-signature" />
+        <error line="62" column="18" source="standard:function-signature" />
+        <error line="92" column="9" source="standard:function-signature" />
+        <error line="93" column="9" source="standard:function-signature" />
+        <error line="94" column="9" source="standard:function-signature" />
+        <error line="94" column="30" source="standard:function-signature" />
+        <error line="95" column="32" source="standard:function-signature" />
+        <error line="116" column="1" source="standard:indent" />
+        <error line="125" column="1" source="standard:indent" />
+        <error line="171" column="9" source="standard:function-signature" />
+        <error line="172" column="9" source="standard:function-signature" />
+        <error line="173" column="9" source="standard:function-signature" />
+        <error line="174" column="9" source="standard:function-signature" />
+        <error line="174" column="23" source="standard:function-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/messages/MessageStateTransitions.kt">
+        <error line="63" column="88" source="standard:function-signature" />
+        <error line="71" column="68" source="standard:function-signature" />
+        <error line="77" column="88" source="standard:function-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/messages/MessagesRepository.kt">
+        <error line="19" column="5" source="standard:class-signature" />
+        <error line="20" column="5" source="standard:class-signature" />
+        <error line="20" column="45" source="standard:trailing-comma-on-declaration-site" />
+        <error line="20" column="46" source="standard:class-signature" />
+        <error line="24" column="65" source="standard:function-signature" />
+        <error line="29" column="44" source="standard:function-expression-body" />
+        <error line="48" column="59" source="standard:trailing-comma-on-call-site" />
+        <error line="56" column="14" source="standard:trailing-comma-on-call-site" />
+        <error line="98" column="60" source="standard:trailing-comma-on-call-site" />
+        <error line="107" column="14" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/messages/MessagesService.kt">
+        <error line="49" column="34" source="standard:parameter-list-spacing" />
+        <error line="49" column="35" source="standard:no-multi-spaces" />
+        <error line="54" column="37" source="standard:trailing-comma-on-declaration-site" />
+        <error line="68" column="5" source="standard:comment-spacing" />
+        <error line="86" column="5" source="standard:comment-spacing" />
+        <error line="88" column="5" source="standard:comment-spacing" />
+        <error line="98" column="5" source="standard:comment-spacing" />
+        <error line="100" column="5" source="standard:comment-spacing" />
+        <error line="101" column="67" source="standard:function-signature" />
+        <error line="103" column="5" source="standard:comment-spacing" />
+        <error line="105" column="5" source="standard:comment-spacing" />
+        <error line="126" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="127" column="1" source="standard:indent" />
+        <error line="127" column="25" source="standard:chain-wrapping" />
+        <error line="128" column="1" source="standard:indent" />
+        <error line="128" column="25" source="standard:chain-wrapping" />
+        <error line="146" column="5" source="standard:comment-spacing" />
+        <error line="148" column="5" source="standard:comment-spacing" />
+        <error line="154" column="95" source="standard:function-signature" />
+        <error line="172" column="5" source="standard:comment-spacing" />
+        <error line="182" column="100" source="standard:trailing-comma-on-call-site" />
+        <error line="208" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="236" column="53" source="standard:trailing-comma-on-call-site" />
+        <error line="245" column="41" source="standard:blank-line-between-when-conditions" />
+        <error line="246" column="35" source="standard:wrapping" />
+        <error line="253" column="54" source="standard:blank-line-between-when-conditions" />
+        <error line="289" column="21" source="standard:chain-wrapping" />
+        <error line="359" column="91" source="standard:trailing-comma-on-call-site" />
+        <error line="392" column="67" source="standard:trailing-comma-on-call-site" />
+        <error line="444" column="16" source="standard:multiline-if-else" />
+        <error line="560" column="35" source="standard:no-multi-spaces" />
+        <error line="586" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="601" column="44" source="standard:argument-list-wrapping" />
+        <error line="601" column="65" source="standard:argument-list-wrapping" />
+        <error line="601" column="99" source="standard:trailing-comma-on-call-site" />
+        <error line="613" column="68" source="standard:trailing-comma-on-call-site" />
+        <error line="628" column="60" source="standard:function-expression-body" />
+        <error line="662" column="60" source="standard:function-expression-body" />
+        <error line="678" column="9" source="standard:function-signature" />
+        <error line="679" column="9" source="standard:function-signature" />
+        <error line="680" column="9" source="standard:function-signature" />
+        <error line="680" column="32" source="standard:trailing-comma-on-declaration-site" />
+        <error line="680" column="33" source="standard:function-signature" />
+        <error line="690" column="63" source="standard:function-expression-body" />
+        <error line="699" column="141" source="standard:max-line-length" />
+        <error line="700" column="141" source="standard:max-line-length" />
+        <error line="717" column="141" source="standard:max-line-length" />
+        <error line="718" column="141" source="standard:max-line-length" />
+        <error line="719" column="141" source="standard:max-line-length" />
+        <error line="720" column="141" source="standard:max-line-length" />
+        <error line="721" column="141" source="standard:max-line-length" />
+        <error line="723" column="141" source="standard:max-line-length" />
+        <error line="724" column="141" source="standard:max-line-length" />
+        <error line="726" column="141" source="standard:max-line-length" />
+        <error line="728" column="141" source="standard:max-line-length" />
+        <error line="731" column="141" source="standard:max-line-length" />
+        <error line="732" column="141" source="standard:max-line-length" />
+        <error line="738" column="141" source="standard:max-line-length" />
+        <error line="740" column="141" source="standard:max-line-length" />
+        <error line="745" column="141" source="standard:max-line-length" />
+        <error line="746" column="141" source="standard:max-line-length" />
+        <error line="748" column="141" source="standard:max-line-length" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/messages/MessagesSettings.kt">
+        <error line="9" column="5" source="standard:class-signature" />
+        <error line="9" column="41" source="standard:trailing-comma-on-declaration-site" />
+        <error line="9" column="42" source="standard:class-signature" />
+        <error line="10" column="15" source="standard:class-signature" />
+        <error line="16" column="26" source="standard:trailing-comma-on-declaration-site" />
+        <error line="26" column="15" source="standard:enum-wrapping" />
+        <error line="144" column="17" source="standard:property-naming" />
+        <error line="173" column="43" source="standard:function-expression-body" />
+        <error line="184" column="43" source="standard:trailing-comma-on-call-site" />
+        <error line="188" column="56" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/messages/data/Message.kt">
+        <error line="13" column="24" source="standard:trailing-comma-on-declaration-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/messages/data/SendParams.kt">
+        <error line="14" column="24" source="standard:trailing-comma-on-declaration-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/messages/data/SendRequest.kt">
+        <error line="6" column="5" source="standard:class-signature" />
+        <error line="7" column="5" source="standard:class-signature" />
+        <error line="8" column="5" source="standard:class-signature" />
+        <error line="8" column="27" source="standard:trailing-comma-on-declaration-site" />
+        <error line="8" column="28" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/messages/data/StoredSendRequest.kt">
+        <error line="15" column="5" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/messages/events/MessageStateChangedEvent.kt">
+        <error line="15" column="2" source="standard:colon-spacing" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/messages/vm/MessageDetailsViewModel.kt">
+        <error line="13" column="5" source="standard:class-signature" />
+        <error line="13" column="49" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/messages/vm/MessagesListViewModel.kt">
+        <error line="15" column="5" source="standard:class-signature" />
+        <error line="15" column="49" source="standard:class-signature" />
+        <error line="20" column="17" source="standard:backing-property-naming" />
+        <error line="27" column="29" source="standard:wrapping" />
+        <error line="29" column="9" source="standard:wrapping" />
+        <error line="57" column="27" source="standard:property-naming" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/messages/workers/LogTruncateWorker.kt">
+        <error line="15" column="73" source="standard:wrapping" />
+        <error line="15" column="74" source="standard:class-signature" />
+        <error line="18" column="3" source="standard:wrapping" />
+        <error line="18" column="4" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/messages/workers/SendMessagesWorker.kt">
+        <error line="25" column="42" source="standard:class-signature" />
+        <error line="61" column="62" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/mms/MmsAttachmentStorage.kt">
+        <error line="20" column="5" source="standard:class-signature" />
+        <error line="21" column="5" source="standard:class-signature" />
+        <error line="21" column="37" source="standard:trailing-comma-on-declaration-site" />
+        <error line="21" column="38" source="standard:class-signature" />
+        <error line="28" column="9" source="standard:function-signature" />
+        <error line="29" column="9" source="standard:function-signature" />
+        <error line="30" column="9" source="standard:function-signature" />
+        <error line="31" column="9" source="standard:function-signature" />
+        <error line="32" column="9" source="standard:function-signature" />
+        <error line="32" column="25" source="standard:trailing-comma-on-declaration-site" />
+        <error line="32" column="26" source="standard:function-signature" />
+        <error line="39" column="71" source="standard:trailing-comma-on-call-site" />
+        <error line="123" column="9" source="standard:class-signature" />
+        <error line="124" column="9" source="standard:class-signature" />
+        <error line="124" column="55" source="standard:trailing-comma-on-declaration-site" />
+        <error line="124" column="56" source="standard:class-signature" />
+        <error line="131" column="9" source="standard:class-signature" />
+        <error line="132" column="9" source="standard:class-signature" />
+        <error line="133" column="9" source="standard:class-signature" />
+        <error line="134" column="9" source="standard:class-signature" />
+        <error line="134" column="23" source="standard:trailing-comma-on-declaration-site" />
+        <error line="134" column="24" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/mms/MmsSender.kt">
+        <error line="25" column="5" source="standard:class-signature" />
+        <error line="25" column="33" source="standard:trailing-comma-on-declaration-site" />
+        <error line="25" column="34" source="standard:class-signature" />
+        <error line="28" column="9" source="standard:function-signature" />
+        <error line="29" column="9" source="standard:function-signature" />
+        <error line="30" column="9" source="standard:function-signature" />
+        <error line="31" column="9" source="standard:function-signature" />
+        <error line="32" column="9" source="standard:function-signature" />
+        <error line="32" column="35" source="standard:trailing-comma-on-declaration-site" />
+        <error line="32" column="36" source="standard:function-signature" />
+        <error line="46" column="34" source="standard:argument-list-wrapping" />
+        <error line="46" column="39" source="standard:argument-list-wrapping" />
+        <error line="49" column="40" source="standard:argument-list-wrapping" />
+        <error line="49" column="45" source="standard:argument-list-wrapping" />
+        <error line="84" column="9" source="standard:function-signature" />
+        <error line="85" column="9" source="standard:function-signature" />
+        <error line="86" column="9" source="standard:function-signature" />
+        <error line="86" column="28" source="standard:trailing-comma-on-declaration-site" />
+        <error line="86" column="29" source="standard:function-signature" />
+        <error line="112" column="33" source="standard:string-template" />
+        <error line="125" column="33" source="standard:string-template" />
+        <error line="140" column="80" source="standard:function-expression-body" />
+        <error line="161" column="43" source="standard:function-expression-body" />
+        <error line="166" column="65" source="standard:function-expression-body" />
+        <error line="190" column="61" source="standard:function-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/notifications/NotificationsService.kt">
+        <error line="14" column="5" source="standard:class-signature" />
+        <error line="14" column="21" source="standard:class-signature" />
+        <error line="18" column="1" source="standard:indent" />
+        <error line="28" column="65" source="standard:trailing-comma-on-call-site" />
+        <error line="37" column="10" source="standard:trailing-comma-on-call-site" />
+        <error line="64" column="9" source="standard:function-signature" />
+        <error line="65" column="9" source="standard:function-signature" />
+        <error line="66" column="9" source="standard:function-signature" />
+        <error line="67" column="9" source="standard:function-signature" />
+        <error line="67" column="45" source="standard:function-signature" />
+        <error line="68" column="21" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/orchestrator/EventsRouter.kt">
+        <error line="17" column="5" source="standard:class-signature" />
+        <error line="17" column="35" source="standard:trailing-comma-on-declaration-site" />
+        <error line="17" column="36" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/orchestrator/OrchestratorService.kt">
+        <error line="29" column="41" source="standard:trailing-comma-on-declaration-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/ping/PingService.kt">
+        <error line="7" column="5" source="standard:class-signature" />
+        <error line="7" column="39" source="standard:trailing-comma-on-declaration-site" />
+        <error line="7" column="40" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/ping/PingSettings.kt">
+        <error line="9" column="5" source="standard:class-signature" />
+        <error line="9" column="41" source="standard:trailing-comma-on-declaration-site" />
+        <error line="9" column="42" source="standard:class-signature" />
+        <error line="10" column="15" source="standard:class-signature" />
+        <error line="22" column="43" source="standard:function-expression-body" />
+        <error line="24" column="48" source="standard:trailing-comma-on-call-site" />
+        <error line="28" column="56" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/ping/events/PingEvent.kt">
+        <error line="7" column="5" source="standard:class-signature" />
+        <error line="7" column="31" source="standard:trailing-comma-on-declaration-site" />
+        <error line="7" column="32" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/ping/services/PingForegroundService.kt">
+        <error line="65" column="1" source="standard:no-blank-line-before-rbrace" />
+        <error line="89" column="60" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/receiver/MessagesReceiver.kt">
+        <error line="17" column="26" source="standard:class-signature" />
+        <error line="17" column="47" source="standard:class-signature" />
+        <error line="22" column="13" source="standard:chain-wrapping" />
+        <error line="66" column="17" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/receiver/MmsContentObserver.kt">
+        <error line="34" column="81" source="standard:trailing-comma-on-call-site" />
+        <error line="59" column="16" source="standard:trailing-comma-on-call-site" />
+        <error line="82" column="23" source="standard:argument-list-wrapping" />
+        <error line="90" column="62" source="standard:trailing-comma-on-call-site" />
+        <error line="105" column="80" source="standard:trailing-comma-on-call-site" />
+        <error line="125" column="62" source="standard:trailing-comma-on-call-site" />
+        <error line="140" column="88" source="standard:trailing-comma-on-call-site" />
+        <error line="163" column="1" source="standard:indent" />
+        <error line="163" column="120" source="standard:trailing-comma-on-call-site" />
+        <error line="189" column="21" source="standard:trailing-comma-on-call-site" />
+        <error line="196" column="45" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/receiver/MmsContentReader.kt">
+        <error line="20" column="33" source="standard:trailing-comma-on-declaration-site" />
+        <error line="24" column="9" source="standard:class-signature" />
+        <error line="25" column="9" source="standard:class-signature" />
+        <error line="26" column="9" source="standard:class-signature" />
+        <error line="27" column="9" source="standard:class-signature" />
+        <error line="28" column="9" source="standard:class-signature" />
+        <error line="28" column="26" source="standard:trailing-comma-on-declaration-site" />
+        <error line="28" column="27" source="standard:class-signature" />
+        <error line="41" column="19" source="standard:argument-list-wrapping" />
+        <error line="41" column="25" source="standard:argument-list-wrapping" />
+        <error line="64" column="19" source="standard:argument-list-wrapping" />
+        <error line="74" column="19" source="standard:argument-list-wrapping" />
+        <error line="74" column="25" source="standard:argument-list-wrapping" />
+        <error line="112" column="66" source="standard:trailing-comma-on-call-site" />
+        <error line="126" column="44" source="standard:trailing-comma-on-call-site" />
+        <error line="152" column="1" source="standard:no-consecutive-blank-lines" />
+        <error line="153" column="80" source="standard:function-expression-body" />
+        <error line="165" column="9" source="standard:function-signature" />
+        <error line="166" column="9" source="standard:function-signature" />
+        <error line="167" column="9" source="standard:function-signature" />
+        <error line="167" column="29" source="standard:function-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/receiver/MmsReceiver.kt">
+        <error line="22" column="21" source="standard:class-signature" />
+        <error line="22" column="42" source="standard:class-signature" />
+        <error line="36" column="1" source="standard:no-consecutive-blank-lines" />
+        <error line="68" column="45" source="standard:trailing-comma-on-call-site" />
+        <error line="72" column="1" source="standard:no-consecutive-blank-lines" />
+        <error line="85" column="49" source="standard:trailing-comma-on-call-site" />
+        <error line="100" column="92" source="standard:trailing-comma-on-call-site" />
+        <error line="105" column="1" source="standard:no-blank-line-before-rbrace" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/receiver/ReceiverService.kt">
+        <error line="62" column="41" source="standard:trailing-comma-on-declaration-site" />
+        <error line="100" column="1" source="standard:no-consecutive-blank-lines" />
+        <error line="109" column="59" source="standard:trailing-comma-on-call-site" />
+        <error line="123" column="63" source="standard:trailing-comma-on-call-site" />
+        <error line="129" column="9" source="standard:function-signature" />
+        <error line="130" column="9" source="standard:function-signature" />
+        <error line="130" column="30" source="standard:function-signature" />
+        <error line="156" column="59" source="standard:trailing-comma-on-call-site" />
+        <error line="169" column="63" source="standard:trailing-comma-on-call-site" />
+        <error line="184" column="38" source="standard:trailing-comma-on-call-site" />
+        <error line="193" column="38" source="standard:trailing-comma-on-call-site" />
+        <error line="205" column="38" source="standard:trailing-comma-on-call-site" />
+        <error line="221" column="39" source="standard:trailing-comma-on-call-site" />
+        <error line="224" column="42" source="standard:trailing-comma-on-call-site" />
+        <error line="230" column="9" source="standard:function-signature" />
+        <error line="231" column="9" source="standard:function-signature" />
+        <error line="231" column="48" source="standard:trailing-comma-on-declaration-site" />
+        <error line="231" column="49" source="standard:function-signature" />
+        <error line="242" column="78" source="standard:trailing-comma-on-call-site" />
+        <error line="246" column="82" source="standard:trailing-comma-on-call-site" />
+        <error line="250" column="69" source="standard:trailing-comma-on-call-site" />
+        <error line="254" column="71" source="standard:trailing-comma-on-call-site" />
+        <error line="273" column="1" source="standard:no-consecutive-blank-lines" />
+        <error line="275" column="9" source="standard:function-signature" />
+        <error line="276" column="9" source="standard:function-signature" />
+        <error line="277" column="9" source="standard:function-signature" />
+        <error line="277" column="47" source="standard:function-signature" />
+        <error line="311" column="42" source="standard:trailing-comma-on-call-site" />
+        <error line="358" column="1" source="standard:indent" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/receiver/ReceiverSettings.kt">
+        <error line="7" column="5" source="standard:class-signature" />
+        <error line="7" column="41" source="standard:trailing-comma-on-declaration-site" />
+        <error line="7" column="42" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/receiver/SmsContentObserver.kt">
+        <error line="47" column="81" source="standard:trailing-comma-on-call-site" />
+        <error line="76" column="16" source="standard:trailing-comma-on-call-site" />
+        <error line="99" column="23" source="standard:argument-list-wrapping" />
+        <error line="100" column="52" source="standard:trailing-comma-on-call-site" />
+        <error line="107" column="62" source="standard:trailing-comma-on-call-site" />
+        <error line="122" column="80" source="standard:trailing-comma-on-call-site" />
+        <error line="134" column="42" source="standard:trailing-comma-on-call-site" />
+        <error line="143" column="43" source="standard:trailing-comma-on-call-site" />
+        <error line="150" column="62" source="standard:trailing-comma-on-call-site" />
+        <error line="171" column="29" source="standard:trailing-comma-on-call-site" />
+        <error line="178" column="85" source="standard:trailing-comma-on-call-site" />
+        <error line="188" column="45" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/receiver/StateStorage.kt">
+        <error line="7" column="5" source="standard:class-signature" />
+        <error line="7" column="41" source="standard:trailing-comma-on-declaration-site" />
+        <error line="7" column="42" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/receiver/data/InboxMessage.kt">
+        <error line="7" column="5" source="standard:class-signature" />
+        <error line="8" column="5" source="standard:class-signature" />
+        <error line="9" column="5" source="standard:class-signature" />
+        <error line="9" column="29" source="standard:class-signature" />
+        <error line="12" column="9" source="standard:class-signature" />
+        <error line="13" column="51" source="standard:function-expression-body" />
+        <error line="17" column="38" source="standard:function-expression-body" />
+        <error line="24" column="51" source="standard:function-expression-body" />
+        <error line="28" column="38" source="standard:function-expression-body" />
+        <error line="43" column="51" source="standard:function-expression-body" />
+        <error line="47" column="38" source="standard:function-expression-body" />
+        <error line="62" column="13" source="standard:class-signature" />
+        <error line="63" column="13" source="standard:class-signature" />
+        <error line="64" column="13" source="standard:class-signature" />
+        <error line="65" column="13" source="standard:class-signature" />
+        <error line="66" column="13" source="standard:class-signature" />
+        <error line="66" column="30" source="standard:trailing-comma-on-declaration-site" />
+        <error line="66" column="31" source="standard:class-signature" />
+        <error line="69" column="51" source="standard:function-expression-body" />
+        <error line="73" column="38" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/receiver/events/MessagesExportRequestedEvent.kt">
+        <error line="19" column="41" source="standard:trailing-comma-on-declaration-site" />
+        <error line="33" column="53" source="standard:trailing-comma-on-declaration-site" />
+        <error line="56" column="50" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/receiver/parsers/MMSParser.kt">
+        <error line="8" column="1" source="standard:no-consecutive-blank-lines" />
+        <error line="21" column="60" source="standard:no-semi" />
+        <error line="37" column="38" source="standard:trailing-comma-on-declaration-site" />
+        <error line="61" column="56" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/settings/Module.kt">
+        <error line="20" column="1" source="standard:no-consecutive-blank-lines" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/settings/PreferencesStorage.kt">
+        <error line="9" column="5" source="standard:class-signature" />
+        <error line="10" column="5" source="standard:class-signature" />
+        <error line="11" column="5" source="standard:class-signature" />
+        <error line="11" column="40" source="standard:class-signature" />
+        <error line="12" column="2" source="standard:colon-spacing" />
+        <error line="12" column="4" source="standard:class-signature" />
+        <error line="18" column="26" source="standard:string-template" />
+        <error line="18" column="36" source="standard:string-template" />
+        <error line="23" column="38" source="standard:string-template" />
+        <error line="23" column="48" source="standard:string-template" />
+        <error line="24" column="36" source="standard:string-template" />
+        <error line="24" column="46" source="standard:string-template" />
+        <error line="25" column="42" source="standard:string-template" />
+        <error line="25" column="52" source="standard:string-template" />
+        <error line="26" column="44" source="standard:string-template" />
+        <error line="26" column="54" source="standard:string-template" />
+        <error line="27" column="40" source="standard:string-template" />
+        <error line="27" column="50" source="standard:string-template" />
+        <error line="28" column="37" source="standard:string-template" />
+        <error line="28" column="47" source="standard:string-template" />
+        <error line="34" column="37" source="standard:string-template" />
+        <error line="34" column="47" source="standard:string-template" />
+        <error line="39" column="37" source="standard:string-template" />
+        <error line="39" column="47" source="standard:string-template" />
+        <error line="55" column="22" source="standard:string-template" />
+        <error line="55" column="32" source="standard:string-template" />
+        <error line="61" column="46" source="standard:string-template" />
+        <error line="61" column="56" source="standard:string-template" />
+        <error line="62" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="62" column="44" source="standard:string-template" />
+        <error line="62" column="54" source="standard:string-template" />
+        <error line="63" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="63" column="50" source="standard:string-template" />
+        <error line="63" column="60" source="standard:string-template" />
+        <error line="64" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="65" column="15" source="standard:string-template" />
+        <error line="65" column="25" source="standard:string-template" />
+        <error line="69" column="48" source="standard:string-template" />
+        <error line="69" column="58" source="standard:string-template" />
+        <error line="70" column="1" source="standard:blank-line-between-when-conditions" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/settings/SettingsService.kt">
+        <error line="25" column="35" source="standard:trailing-comma-on-declaration-site" />
+        <error line="35" column="35" source="standard:trailing-comma-on-call-site" />
+        <error line="38" column="34" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/webhooks/EventsReceiver.kt">
+        <error line="58" column="56" source="standard:trailing-comma-on-call-site" />
+        <error line="66" column="56" source="standard:trailing-comma-on-call-site" />
+        <error line="75" column="56" source="standard:trailing-comma-on-call-site" />
+        <error line="83" column="56" source="standard:trailing-comma-on-call-site" />
+        <error line="90" column="36" source="standard:argument-list-wrapping" />
+        <error line="90" column="54" source="standard:argument-list-wrapping" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/webhooks/TemporaryStorage.kt">
+        <error line="7" column="5" source="standard:class-signature" />
+        <error line="7" column="41" source="standard:trailing-comma-on-declaration-site" />
+        <error line="7" column="42" source="standard:class-signature" />
+        <error line="13" column="35" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/webhooks/WebHooksService.kt">
+        <error line="33" column="41" source="standard:trailing-comma-on-declaration-site" />
+        <error line="49" column="57" source="standard:function-expression-body" />
+        <error line="59" column="35" source="standard:trailing-comma-on-call-site" />
+        <error line="70" column="32" source="standard:wrapping" />
+        <error line="70" column="39" source="standard:wrapping" />
+        <error line="75" column="32" source="standard:trailing-comma-on-call-site" />
+        <error line="77" column="9" source="standard:wrapping" />
+        <error line="86" column="1" source="standard:indent" />
+        <error line="87" column="1" source="standard:indent" />
+        <error line="92" column="1" source="standard:no-trailing-spaces" />
+        <error line="103" column="28" source="standard:trailing-comma-on-call-site" />
+        <error line="119" column="42" source="standard:trailing-comma-on-call-site" />
+        <error line="161" column="54" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/webhooks/WebhookPayloadStorage.kt">
+        <error line="7" column="5" source="standard:class-signature" />
+        <error line="7" column="21" source="standard:trailing-comma-on-declaration-site" />
+        <error line="7" column="22" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/webhooks/WebhooksSettings.kt">
+        <error line="10" column="5" source="standard:class-signature" />
+        <error line="10" column="41" source="standard:trailing-comma-on-declaration-site" />
+        <error line="10" column="42" source="standard:class-signature" />
+        <error line="11" column="15" source="standard:class-signature" />
+        <error line="32" column="43" source="standard:function-expression-body" />
+        <error line="35" column="38" source="standard:trailing-comma-on-call-site" />
+        <error line="39" column="56" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/webhooks/db/WebHook.kt">
+        <error line="14" column="29" source="standard:trailing-comma-on-declaration-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/webhooks/db/WebHooksDao.kt">
+        <error line="11" column="1" source="standard:no-consecutive-blank-lines" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/webhooks/db/WebhookConverters.kt">
+        <error line="10" column="51" source="standard:function-expression-body" />
+        <error line="15" column="48" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/webhooks/db/WebhookQueueDao.kt">
+        <error line="4" column="1" source="standard:no-wildcard-imports" />
+        <error line="48" column="9" source="standard:function-signature" />
+        <error line="49" column="9" source="standard:function-signature" />
+        <error line="49" column="24" source="standard:function-signature" />
+        <error line="63" column="9" source="standard:function-signature" />
+        <error line="63" column="19" source="standard:trailing-comma-on-declaration-site" />
+        <error line="63" column="20" source="standard:function-signature" />
+        <error line="80" column="9" source="standard:function-signature" />
+        <error line="81" column="9" source="standard:function-signature" />
+        <error line="82" column="9" source="standard:function-signature" />
+        <error line="82" column="23" source="standard:trailing-comma-on-declaration-site" />
+        <error line="82" column="24" source="standard:function-signature" />
+        <error line="96" column="9" source="standard:function-signature" />
+        <error line="96" column="19" source="standard:trailing-comma-on-declaration-site" />
+        <error line="96" column="20" source="standard:function-signature" />
+        <error line="110" column="9" source="standard:function-signature" />
+        <error line="111" column="9" source="standard:function-signature" />
+        <error line="111" column="22" source="standard:trailing-comma-on-declaration-site" />
+        <error line="111" column="23" source="standard:function-signature" />
+        <error line="169" column="79" source="standard:value-parameter-comment" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/webhooks/db/WebhookQueueEntity.kt">
+        <error line="16" column="62" source="standard:trailing-comma-on-call-site" />
+        <error line="43" column="34" source="standard:trailing-comma-on-declaration-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/webhooks/db/WebhookQueueRepository.kt">
+        <error line="17" column="5" source="standard:class-signature" />
+        <error line="17" column="37" source="standard:trailing-comma-on-declaration-site" />
+        <error line="17" column="38" source="standard:class-signature" />
+        <error line="25" column="64" source="standard:function-signature" />
+        <error line="31" column="62" source="standard:function-expression-body" />
+        <error line="41" column="9" source="standard:function-signature" />
+        <error line="42" column="9" source="standard:function-signature" />
+        <error line="42" column="24" source="standard:trailing-comma-on-declaration-site" />
+        <error line="42" column="25" source="standard:function-signature" />
+        <error line="69" column="43" source="standard:function-expression-body" />
+        <error line="76" column="45" source="standard:function-expression-body" />
+        <error line="83" column="79" source="standard:function-expression-body" />
+        <error line="106" column="9" source="standard:function-signature" />
+        <error line="107" column="9" source="standard:function-signature" />
+        <error line="108" column="9" source="standard:function-signature" />
+        <error line="109" column="9" source="standard:function-signature" />
+        <error line="109" column="34" source="standard:function-signature" />
+        <error line="126" column="56" source="standard:trailing-comma-on-call-site" />
+        <error line="173" column="63" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/webhooks/db/WebhookStatus.kt">
+        <error line="6" column="1" source="standard:no-consecutive-blank-lines" />
+        <error line="28" column="54" source="standard:function-expression-body" />
+        <error line="34" column="58" source="standard:function-expression-body" />
+        <error line="38" column="56" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/webhooks/domain/WebHookDTO.kt">
+        <error line="8" column="5" source="standard:class-signature" />
+        <error line="9" column="5" source="standard:class-signature" />
+        <error line="10" column="5" source="standard:class-signature" />
+        <error line="11" column="5" source="standard:class-signature" />
+        <error line="12" column="5" source="standard:class-signature" />
+        <error line="12" column="29" source="standard:trailing-comma-on-declaration-site" />
+        <error line="12" column="30" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/webhooks/domain/WebHookEvent.kt">
+        <error line="6" column="1" source="standard:no-consecutive-blank-lines" />
+        <error line="7" column="14" source="standard:modifier-list-spacing" />
+        <error line="9" column="5" source="standard:annotation-spacing" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/webhooks/domain/WebHookEventDTO.kt">
+        <error line="8" column="5" source="standard:class-signature" />
+        <error line="9" column="5" source="standard:class-signature" />
+        <error line="10" column="5" source="standard:class-signature" />
+        <error line="11" column="5" source="standard:class-signature" />
+        <error line="12" column="5" source="standard:class-signature" />
+        <error line="12" column="29" source="standard:trailing-comma-on-declaration-site" />
+        <error line="12" column="30" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/webhooks/plugins/PayloadSingingPlugin.kt">
+        <error line="30" column="32" source="standard:wrapping" />
+        <error line="30" column="33" source="standard:argument-list-wrapping" />
+        <error line="58" column="45" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/webhooks/vm/WebhookQueueViewModel.kt">
+        <error line="15" column="5" source="standard:class-signature" />
+        <error line="15" column="51" source="standard:class-signature" />
+        <error line="18" column="17" source="standard:backing-property-naming" />
+        <error line="28" column="36" source="standard:wrapping" />
+        <error line="30" column="9" source="standard:wrapping" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/webhooks/workers/ReviewWebhooksWorker.kt">
+        <error line="18" column="42" source="standard:class-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/webhooks/workers/SendWebhookWorker.kt">
+        <error line="53" column="42" source="standard:class-signature" />
+        <error line="74" column="75" source="standard:trailing-comma-on-call-site" />
+        <error line="88" column="42" source="standard:trailing-comma-on-call-site" />
+        <error line="105" column="42" source="standard:trailing-comma-on-call-site" />
+        <error line="122" column="42" source="standard:trailing-comma-on-call-site" />
+        <error line="166" column="62" source="standard:function-expression-body" />
+        <error line="208" column="13" source="standard:function-signature" />
+        <error line="209" column="13" source="standard:function-signature" />
+        <error line="210" column="13" source="standard:function-signature" />
+        <error line="211" column="13" source="standard:function-signature" />
+        <error line="211" column="38" source="standard:trailing-comma-on-declaration-site" />
+        <error line="211" column="39" source="standard:function-signature" />
+        <error line="223" column="101" source="standard:trailing-comma-on-call-site" />
+        <error line="243" column="1" source="standard:no-blank-line-before-rbrace" />
+        <error line="264" column="57" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/modules/webhooks/workers/WebhookQueueProcessorWorker.kt">
+        <error line="55" column="5" source="standard:class-signature" />
+        <error line="56" column="5" source="standard:class-signature" />
+        <error line="56" column="29" source="standard:class-signature" />
+        <error line="57" column="42" source="standard:class-signature" />
+        <error line="81" column="68" source="standard:trailing-comma-on-declaration-site" />
+        <error line="125" column="49" source="standard:trailing-comma-on-call-site" />
+        <error line="151" column="59" source="standard:trailing-comma-on-call-site" />
+        <error line="180" column="70" source="standard:trailing-comma-on-call-site" />
+        <error line="190" column="49" source="standard:trailing-comma-on-call-site" />
+        <error line="226" column="1" source="standard:no-blank-line-before-rbrace" />
+        <error line="233" column="44" source="standard:trailing-comma-on-call-site" />
+        <error line="245" column="60" source="standard:function-signature" />
+        <error line="314" column="1" source="standard:no-blank-line-before-rbrace" />
+        <error line="329" column="76" source="standard:function-signature" />
+        <error line="367" column="1" source="standard:no-blank-line-before-rbrace" />
+        <error line="464" column="1" source="standard:no-blank-line-before-rbrace" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/providers/LocalIPProvider.kt">
+        <error line="8" column="1" source="standard:no-consecutive-blank-lines" />
+        <error line="9" column="52" source="standard:colon-spacing" />
+        <error line="20" column="1" source="standard:indent" />
+        <error line="21" column="1" source="standard:indent" />
+        <error line="22" column="1" source="standard:indent" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/providers/PublicIPProvider.kt">
+        <error line="6" column="23" source="standard:colon-spacing" />
+        <error line="9" column="43" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/receivers/BootReceiver.kt">
+        <error line="10" column="22" source="standard:class-signature" />
+        <error line="10" column="43" source="standard:class-signature" />
+        <error line="26" column="35" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/receivers/EventsReceiver.kt">
+        <error line="19" column="24" source="standard:class-signature" />
+        <error line="19" column="45" source="standard:class-signature" />
+        <error line="48" column="21" source="standard:property-naming" />
+        <error line="56" column="1" source="standard:no-trailing-spaces" />
+        <error line="57" column="51" source="standard:function-expression-body" />
+        <error line="70" column="52" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/services/PushService.kt">
+        <error line="20" column="21" source="standard:class-signature" />
+        <error line="20" column="49" source="standard:class-signature" />
+        <error line="55" column="32" source="standard:trailing-comma-on-call-site" />
+        <error line="70" column="41" source="standard:no-unit-return" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/ui/HolderFragment.kt">
+        <error line="36" column="9" source="standard:function-signature" />
+        <error line="37" column="9" source="standard:function-signature" />
+        <error line="38" column="9" source="standard:function-signature" />
+        <error line="38" column="36" source="standard:function-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/ui/HomeFragment.kt">
+        <error line="89" column="71" source="standard:trailing-comma-on-call-site" />
+        <error line="151" column="9" source="standard:function-signature" />
+        <error line="151" column="35" source="standard:parameter-list-wrapping" />
+        <error line="152" column="9" source="standard:function-signature" />
+        <error line="152" column="36" source="standard:function-signature" />
+        <error line="216" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="281" column="1" source="standard:no-blank-line-before-rbrace" />
+        <error line="310" column="36" source="standard:multiline-if-else" />
+        <error line="311" column="26" source="standard:multiline-if-else" />
+        <error line="350" column="25" source="standard:multiline-if-else" />
+        <error line="381" column="17" source="standard:chain-wrapping" />
+        <error line="414" column="120" source="standard:trailing-comma-on-call-site" />
+        <error line="490" column="28" source="standard:function-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/ui/IncomingMessagesListFragment.kt">
+        <error line="26" column="9" source="standard:function-signature" />
+        <error line="27" column="9" source="standard:function-signature" />
+        <error line="28" column="9" source="standard:function-signature" />
+        <error line="28" column="36" source="standard:function-signature" />
+        <error line="59" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="60" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="62" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="81" column="27" source="standard:statement-wrapping" />
+        <error line="81" column="96" source="standard:statement-wrapping" />
+        <error line="82" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="82" column="46" source="standard:statement-wrapping" />
+        <error line="82" column="115" source="standard:statement-wrapping" />
+        <error line="83" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="83" column="51" source="standard:statement-wrapping" />
+        <error line="83" column="128" source="standard:statement-wrapping" />
+        <error line="84" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="85" column="57" source="standard:statement-wrapping" />
+        <error line="85" column="126" source="standard:statement-wrapping" />
+        <error line="86" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="86" column="27" source="standard:statement-wrapping" />
+        <error line="86" column="96" source="standard:statement-wrapping" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/ui/LogsListFragment.kt">
+        <error line="28" column="1" source="standard:no-blank-line-before-rbrace" />
+        <error line="28" column="1" source="standard:no-empty-first-line-in-method-block" />
+        <error line="39" column="9" source="standard:function-signature" />
+        <error line="39" column="35" source="standard:parameter-list-wrapping" />
+        <error line="40" column="9" source="standard:function-signature" />
+        <error line="40" column="36" source="standard:function-signature" />
+        <error line="62" column="28" source="standard:function-signature" />
+        <error line="65" column="1" source="standard:no-blank-line-before-rbrace" />
+        <error line="65" column="1" source="standard:no-empty-first-line-in-method-block" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/ui/MessageDetailsFragment.kt">
+        <error line="25" column="9" source="standard:function-signature" />
+        <error line="25" column="35" source="standard:parameter-list-wrapping" />
+        <error line="26" column="9" source="standard:function-signature" />
+        <error line="26" column="36" source="standard:function-signature" />
+        <error line="57" column="38" source="standard:function-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/ui/MessagesListFragment.kt">
+        <error line="20" column="1" source="standard:no-consecutive-blank-lines" />
+        <error line="21" column="30" source="standard:class-signature" />
+        <error line="21" column="42" source="standard:class-signature" />
+        <error line="29" column="9" source="standard:function-signature" />
+        <error line="29" column="35" source="standard:parameter-list-wrapping" />
+        <error line="30" column="9" source="standard:function-signature" />
+        <error line="30" column="36" source="standard:function-signature" />
+        <error line="92" column="27" source="standard:statement-wrapping" />
+        <error line="92" column="96" source="standard:statement-wrapping" />
+        <error line="93" column="46" source="standard:statement-wrapping" />
+        <error line="93" column="123" source="standard:statement-wrapping" />
+        <error line="94" column="43" source="standard:statement-wrapping" />
+        <error line="94" column="114" source="standard:statement-wrapping" />
+        <error line="95" column="48" source="standard:statement-wrapping" />
+        <error line="95" column="129" source="standard:statement-wrapping" />
+        <error line="96" column="45" source="standard:statement-wrapping" />
+        <error line="96" column="120" source="standard:statement-wrapping" />
+        <error line="97" column="48" source="standard:statement-wrapping" />
+        <error line="97" column="129" source="standard:statement-wrapping" />
+        <error line="98" column="27" source="standard:statement-wrapping" />
+        <error line="98" column="96" source="standard:statement-wrapping" />
+        <error line="140" column="28" source="standard:function-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/ui/SettingsFragment.kt">
+        <error line="52" column="13" source="standard:chain-wrapping" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/ui/adapters/IncomingMessagesAdapter.kt">
+        <error line="16" column="5" source="standard:class-signature" />
+        <error line="18" column="98" source="standard:function-expression-body" />
+        <error line="33" column="9" source="standard:class-signature" />
+        <error line="33" column="56" source="standard:class-signature" />
+        <error line="39" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="40" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="50" column="99" source="standard:function-expression-body" />
+        <error line="55" column="13" source="standard:function-signature" />
+        <error line="56" column="13" source="standard:function-signature" />
+        <error line="56" column="37" source="standard:function-signature" />
+        <error line="57" column="20" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/ui/adapters/LogItemsAdapter.kt">
+        <error line="14" column="22" source="standard:class-signature" />
+        <error line="14" column="23" source="standard:parameter-list-spacing" />
+        <error line="14" column="23" source="standard:paren-spacing" />
+        <error line="17" column="83" source="standard:function-expression-body" />
+        <error line="18" column="1" source="standard:no-empty-first-line-in-method-block" />
+        <error line="26" column="1" source="standard:no-blank-line-before-rbrace" />
+        <error line="34" column="9" source="standard:class-signature" />
+        <error line="34" column="49" source="standard:class-signature" />
+        <error line="54" column="85" source="standard:function-expression-body" />
+        <error line="59" column="13" source="standard:function-signature" />
+        <error line="60" column="13" source="standard:function-signature" />
+        <error line="60" column="30" source="standard:function-signature" />
+        <error line="61" column="20" source="standard:function-expression-body" />
+        <error line="64" column="1" source="standard:no-blank-line-before-rbrace" />
+        <error line="66" column="1" source="standard:no-blank-line-before-rbrace" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/ui/adapters/MessageRecipientsAdapter.kt">
+        <error line="17" column="9" source="standard:function-signature" />
+        <error line="18" column="9" source="standard:function-signature" />
+        <error line="18" column="22" source="standard:function-signature" />
+        <error line="19" column="28" source="standard:function-expression-body" />
+        <error line="30" column="9" source="standard:class-signature" />
+        <error line="39" column="64" source="standard:function-expression-body" />
+        <error line="42" column="62" source="standard:argument-list-wrapping" />
+        <error line="42" column="70" source="standard:argument-list-wrapping" />
+        <error line="50" column="9" source="standard:class-signature" />
+        <error line="52" column="13" source="standard:function-signature" />
+        <error line="53" column="13" source="standard:function-signature" />
+        <error line="53" column="38" source="standard:function-signature" />
+        <error line="54" column="20" source="standard:function-expression-body" />
+        <error line="59" column="13" source="standard:function-signature" />
+        <error line="60" column="13" source="standard:function-signature" />
+        <error line="60" column="38" source="standard:function-signature" />
+        <error line="61" column="20" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/ui/adapters/MessagesAdapter.kt">
+        <error line="14" column="5" source="standard:class-signature" />
+        <error line="14" column="66" source="standard:class-signature" />
+        <error line="18" column="90" source="standard:function-expression-body" />
+        <error line="34" column="9" source="standard:class-signature" />
+        <error line="44" column="62" source="standard:function-expression-body" />
+        <error line="47" column="62" source="standard:argument-list-wrapping" />
+        <error line="47" column="70" source="standard:argument-list-wrapping" />
+        <error line="55" column="83" source="standard:function-expression-body" />
+        <error line="59" column="86" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/ui/adapters/WebhookAdapter.kt">
+        <error line="18" column="9" source="standard:class-signature" />
+        <error line="37" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="74" column="89" source="standard:function-expression-body" />
+        <error line="78" column="92" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/ui/adapters/WebhookQueueAdapter.kt">
+        <error line="15" column="5" source="standard:class-signature" />
+        <error line="15" column="77" source="standard:class-signature" />
+        <error line="20" column="9" source="standard:class-signature" />
+        <error line="35" column="83" source="standard:function-expression-body" />
+        <error line="58" column="13" source="standard:function-signature" />
+        <error line="59" column="13" source="standard:function-signature" />
+        <error line="59" column="40" source="standard:function-signature" />
+        <error line="60" column="20" source="standard:function-expression-body" />
+        <error line="65" column="13" source="standard:function-signature" />
+        <error line="66" column="13" source="standard:function-signature" />
+        <error line="66" column="40" source="standard:function-signature" />
+        <error line="67" column="20" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/ui/dialogs/FirstStartDialogFragment.kt">
+        <error line="21" column="1" source="standard:no-trailing-spaces" />
+        <error line="26" column="51" source="standard:trailing-comma-on-call-site" />
+        <error line="156" column="21" source="standard:trailing-comma-on-declaration-site" />
+        <error line="173" column="46" source="standard:function-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/ui/dialogs/PasswordPromptDialogFragment.kt">
+        <error line="91" column="13" source="standard:function-signature" />
+        <error line="92" column="13" source="standard:function-signature" />
+        <error line="93" column="13" source="standard:function-signature" />
+        <error line="93" column="36" source="standard:function-signature" />
+        <error line="94" column="41" source="standard:function-expression-body" />
+        <error line="104" column="48" source="standard:function-expression-body" />
+        <error line="112" column="46" source="standard:function-expression-body" />
+        <error line="116" column="47" source="standard:function-expression-body" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/ui/settings/CloudServerSettingsFragment.kt">
+        <error line="46" column="1" source="standard:no-consecutive-blank-lines" />
+        <error line="225" column="9" source="standard:function-signature" />
+        <error line="226" column="9" source="standard:function-signature" />
+        <error line="227" column="9" source="standard:function-signature" />
+        <error line="227" column="36" source="standard:function-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/ui/settings/LocalServerSettingsFragment.kt">
+        <error line="81" column="13" source="standard:chain-wrapping" />
+        <error line="91" column="13" source="standard:chain-wrapping" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/ui/settings/WebhookQueueDetailFragment.kt">
+        <error line="34" column="9" source="standard:function-signature" />
+        <error line="35" column="9" source="standard:function-signature" />
+        <error line="36" column="9" source="standard:function-signature" />
+        <error line="36" column="36" source="standard:function-signature" />
+        <error line="58" column="9" source="standard:function-signature" />
+        <error line="59" column="9" source="standard:function-signature" />
+        <error line="59" column="35" source="standard:function-signature" />
+        <error line="99" column="58" source="standard:function-expression-body" />
+        <error line="110" column="38" source="standard:function-signature" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/ui/settings/WebhookQueueListFragment.kt">
+        <error line="22" column="33" source="standard:wrapping" />
+        <error line="22" column="34" source="standard:class-signature" />
+        <error line="31" column="9" source="standard:function-signature" />
+        <error line="32" column="9" source="standard:function-signature" />
+        <error line="33" column="9" source="standard:function-signature" />
+        <error line="33" column="36" source="standard:function-signature" />
+        <error line="106" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="109" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="112" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="115" column="1" source="standard:blank-line-between-when-conditions" />
+        <error line="118" column="1" source="standard:blank-line-between-when-conditions" />
+    </file>
+    <file name="src/main/java/com/homingsms/app/ui/settings/WebhooksListFragment.kt">
+        <error line="24" column="9" source="standard:function-signature" />
+        <error line="25" column="9" source="standard:function-signature" />
+        <error line="26" column="9" source="standard:function-signature" />
+        <error line="26" column="36" source="standard:function-signature" />
+    </file>
+    <file name="src/test/java/com/homingsms/app/data/entities/MessageWithRecipientsTest.kt">
+        <error line="23" column="48" source="standard:trailing-comma-on-call-site" />
+        <error line="48" column="48" source="standard:trailing-comma-on-call-site" />
+        <error line="73" column="48" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/test/java/com/homingsms/app/helpers/PhoneHelperTest.kt">
+        <error line="29" column="47" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/test/java/com/homingsms/app/modules/device/keys/FingerprintTest.kt">
+        <error line="13" column="141" source="standard:max-line-length" />
+        <error line="17" column="140" source="standard:max-line-length" />
+        <error line="60" column="68" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/test/java/com/homingsms/app/modules/gateway/CancelEntryPointsParityTest.kt">
+        <error line="52" column="5" source="standard:comment-spacing" />
+        <error line="114" column="5" source="standard:comment-spacing" />
+        <error line="116" column="5" source="standard:comment-spacing" />
+        <error line="117" column="5" source="standard:spacing-between-declarations-with-comments" />
+        <error line="321" column="5" source="standard:comment-spacing" />
+    </file>
+    <file name="src/test/java/com/homingsms/app/modules/localserver/domain/DeviceTest.kt">
+        <error line="50" column="9" source="standard:function-signature" />
+        <error line="51" column="9" source="standard:function-signature" />
+        <error line="52" column="9" source="standard:function-signature" />
+        <error line="52" column="46" source="standard:trailing-comma-on-declaration-site" />
+        <error line="52" column="47" source="standard:function-signature" />
+        <error line="61" column="32" source="standard:trailing-comma-on-call-site" />
+        <error line="73" column="18" source="standard:trailing-comma-on-call-site" />
+        <error line="119" column="64" source="standard:trailing-comma-on-call-site" />
+        <error line="124" column="30" source="standard:argument-list-wrapping" />
+        <error line="124" column="44" source="standard:argument-list-wrapping" />
+        <error line="124" column="50" source="standard:argument-list-wrapping" />
+        <error line="125" column="30" source="standard:argument-list-wrapping" />
+        <error line="125" column="43" source="standard:argument-list-wrapping" />
+        <error line="125" column="55" source="standard:argument-list-wrapping" />
+    </file>
+    <file name="src/test/java/com/homingsms/app/modules/localserver/domain/messages/MessageCreatedAtTest.kt">
+        <error line="28" column="28" source="standard:trailing-comma-on-call-site" />
+        <error line="75" column="39" source="standard:trailing-comma-on-call-site" />
+        <error line="80" column="33" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/test/java/com/homingsms/app/modules/localserver/domain/messages/MessageSortTest.kt">
+        <error line="14" column="55" source="standard:trailing-comma-on-call-site" />
+        <error line="26" column="26" source="standard:no-multi-spaces" />
+        <error line="27" column="20" source="standard:no-multi-spaces" />
+        <error line="28" column="22" source="standard:no-multi-spaces" />
+        <error line="29" column="27" source="standard:no-multi-spaces" />
+        <error line="30" column="27" source="standard:trailing-comma-on-call-site" />
+        <error line="30" column="29" source="standard:no-multi-spaces" />
+    </file>
+    <file name="src/test/java/com/homingsms/app/modules/localserver/domain/messages/PostMessageRequestTest.kt">
+        <error line="10" column="74" source="standard:function-signature" />
+        <error line="19" column="31" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/test/java/com/homingsms/app/modules/messages/MessageStateServiceTest.kt">
+        <error line="88" column="70" source="standard:function-signature" />
+        <error line="91" column="5" source="standard:comment-spacing" />
+        <error line="102" column="1" source="standard:indent" />
+        <error line="103" column="1" source="standard:indent" />
+        <error line="104" column="1" source="standard:indent" />
+        <error line="105" column="1" source="standard:indent" />
+        <error line="106" column="1" source="standard:indent" />
+        <error line="107" column="1" source="standard:indent" />
+        <error line="125" column="5" source="standard:comment-spacing" />
+        <error line="127" column="5" source="standard:comment-spacing" />
+        <error line="167" column="9" source="standard:function-signature" />
+        <error line="168" column="9" source="standard:function-signature" />
+        <error line="169" column="9" source="standard:function-signature" />
+        <error line="170" column="9" source="standard:function-signature" />
+        <error line="170" column="23" source="standard:function-signature" />
+        <error line="180" column="9" source="standard:function-signature" />
+        <error line="181" column="9" source="standard:function-signature" />
+        <error line="182" column="9" source="standard:function-signature" />
+        <error line="182" column="23" source="standard:function-signature" />
+        <error line="204" column="5" source="standard:comment-spacing" />
+        <error line="206" column="5" source="standard:comment-spacing" />
+        <error line="209" column="83" source="standard:function-signature" />
+        <error line="212" column="86" source="standard:function-signature" />
+        <error line="218" column="69" source="standard:function-signature" />
+        <error line="221" column="69" source="standard:function-signature" />
+        <error line="229" column="9" source="standard:function-signature" />
+        <error line="230" column="9" source="standard:function-signature" />
+        <error line="231" column="9" source="standard:function-signature" />
+        <error line="232" column="9" source="standard:function-signature" />
+        <error line="232" column="18" source="standard:function-signature" />
+        <error line="252" column="5" source="standard:comment-spacing" />
+        <error line="286" column="5" source="standard:comment-spacing" />
+        <error line="438" column="5" source="standard:comment-spacing" />
+        <error line="440" column="5" source="standard:comment-spacing" />
+        <error line="471" column="5" source="standard:comment-spacing" />
+        <error line="473" column="5" source="standard:comment-spacing" />
+        <error line="498" column="5" source="standard:comment-spacing" />
+    </file>
+    <file name="src/test/java/com/homingsms/app/modules/messages/MessagesServiceTest.kt">
+        <error line="33" column="28" source="standard:trailing-comma-on-declaration-site" />
+        <error line="45" column="24" source="standard:trailing-comma-on-declaration-site" />
+        <error line="57" column="24" source="standard:trailing-comma-on-declaration-site" />
+        <error line="63" column="74" source="standard:function-signature" />
+        <error line="66" column="71" source="standard:function-signature" />
+        <error line="69" column="68" source="standard:function-signature" />
+        <error line="72" column="71" source="standard:function-signature" />
+        <error line="78" column="73" source="standard:function-signature" />
+        <error line="81" column="73" source="standard:function-signature" />
+        <error line="84" column="50" source="standard:function-signature" />
+        <error line="87" column="76" source="standard:function-signature" />
+        <error line="90" column="63" source="standard:function-signature" />
+        <error line="94" column="13" source="standard:function-signature" />
+        <error line="95" column="13" source="standard:function-signature" />
+        <error line="96" column="13" source="standard:function-signature" />
+        <error line="97" column="13" source="standard:function-signature" />
+        <error line="97" column="22" source="standard:trailing-comma-on-declaration-site" />
+        <error line="97" column="23" source="standard:function-signature" />
+        <error line="98" column="18" source="standard:function-signature" />
+        <error line="100" column="49" source="standard:function-signature" />
+        <error line="103" column="76" source="standard:function-signature" />
+        <error line="106" column="64" source="standard:function-signature" />
+        <error line="109" column="75" source="standard:function-signature" />
+        <error line="118" column="64" source="standard:function-signature" />
+        <error line="122" column="13" source="standard:function-signature" />
+        <error line="123" column="13" source="standard:function-signature" />
+        <error line="124" column="13" source="standard:function-signature" />
+        <error line="125" column="13" source="standard:function-signature" />
+        <error line="125" column="27" source="standard:trailing-comma-on-declaration-site" />
+        <error line="125" column="28" source="standard:function-signature" />
+        <error line="126" column="13" source="standard:function-signature" />
+        <error line="129" column="13" source="standard:function-signature" />
+        <error line="130" column="13" source="standard:function-signature" />
+        <error line="131" column="13" source="standard:function-signature" />
+        <error line="131" column="27" source="standard:trailing-comma-on-declaration-site" />
+        <error line="131" column="28" source="standard:function-signature" />
+        <error line="132" column="13" source="standard:function-signature" />
+        <error line="134" column="67" source="standard:function-signature" />
+        <error line="137" column="69" source="standard:function-signature" />
+        <error line="140" column="56" source="standard:function-signature" />
+        <error line="183" column="45" source="standard:trailing-comma-on-call-site" />
+        <error line="197" column="32" source="standard:trailing-comma-on-call-site" />
+        <error line="214" column="44" source="standard:trailing-comma-on-call-site" />
+        <error line="228" column="41" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/test/java/com/homingsms/app/modules/messages/PerMessageLockTest.kt">
+        <error line="71" column="1" source="standard:indent" />
+        <error line="255" column="73" source="standard:function-signature" />
+    </file>
+    <file name="src/test/java/com/homingsms/app/modules/receiver/parsers/MMSParserTest.kt">
+        <error line="69" column="29" source="standard:trailing-comma-on-call-site" />
+    </file>
+    <file name="src/test/java/com/homingsms/app/modules/webhooks/db/WebhookQueueRepositoryTest.kt">
+        <error line="27" column="13" source="standard:function-signature" />
+        <error line="28" column="13" source="standard:function-signature" />
+        <error line="28" column="28" source="standard:function-signature" />
+        <error line="37" column="75" source="standard:function-expression-body" />
+        <error line="46" column="13" source="standard:function-signature" />
+        <error line="47" column="13" source="standard:function-signature" />
+        <error line="47" column="23" source="standard:function-signature" />
+    </file>
+    <file name="src/test/java/com/homingsms/app/modules/webhooks/vm/WebhookQueueViewModelTest.kt">
+        <error line="30" column="13" source="standard:function-signature" />
+        <error line="31" column="13" source="standard:function-signature" />
+        <error line="31" column="28" source="standard:function-signature" />
+        <error line="40" column="75" source="standard:function-expression-body" />
+        <error line="49" column="13" source="standard:function-signature" />
+        <error line="50" column="13" source="standard:function-signature" />
+        <error line="50" column="23" source="standard:function-signature" />
+    </file>
+</baseline>

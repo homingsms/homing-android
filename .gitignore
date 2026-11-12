@@ -1,0 +1,48 @@
+# Gradle and build output
+.gradle/
+.kotlin/
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+output.json
+*.apk
+*.aab
+
+# Local configuration
+local.properties
+.env
+
+# Signing and Firebase config (provided by CI secrets)
+*.jks
+*.keystore
+google-services.json
+
+# IDEs
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+.vscode/
+.fleet/
+
+# Logs and profiling
+*.log
+*.hprof
+
+# OS files
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+*~
+
+# Local-only assistant instructions and setup
+.openai/
+AGENTS.md
+AGENT.md
+CLAUDE.md
+CLAUDE.local.md
+CODEX.md
+setup.sh

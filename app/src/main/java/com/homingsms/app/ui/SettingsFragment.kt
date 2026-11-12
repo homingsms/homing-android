@@ -1,0 +1,96 @@
+package com.homingsms.app.ui
+
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.os.Bundle
+import android.os.PowerManager
+import android.provider.Settings
+import android.text.InputType
+import android.widget.Toast
+import androidx.preference.EditTextPreference
+import androidx.preference.Preference
+import androidx.preference.PreferenceFragmentCompat
+import com.homingsms.app.BuildConfig
+import com.homingsms.app.MainActivity
+import com.homingsms.app.R
+import com.homingsms.app.helpers.LocaleHelper
+
+class SettingsFragment : PreferenceFragmentCompat() {
+
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        setPreferencesFromResource(R.xml.root_preferences, rootKey)
+
+        findPreference<Preference>("transient.app_version")?.summary =
+            "${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})"
+
+        findPreference<Preference>("system.disable_battery_optimizations")?.summary =
+            if (isIgnoringBatteryOptimizations()) getString(R.string.disabled) else getString(R.string.enabled)
+
+        findPreference<Preference>("app.language")?.setOnPreferenceChangeListener { _, newValue ->
+            LocaleHelper.setLocale(requireContext(), newValue as String)
+            val intent =
+                MainActivity.starter(requireContext(), MainActivity.TAB_INDEX_SETTINGS).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
+            startActivity(intent)
+            requireActivity().finish()
+            false
+        }
+    }
+
+    override fun onDisplayPreferenceDialog(preference: Preference) {
+        if (preference.key == "encryption.passphrase") {
+            (preference as EditTextPreference).setOnBindEditTextListener {
+                it.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                it.setSelectAllOnFocus(true)
+                it.selectAll()
+            }
+        }
+
+        if (preference.key == "ping.interval_seconds"
+            || preference.key == "logs.lifetime_days"
+        ) {
+            (preference as EditTextPreference).setOnBindEditTextListener {
+                it.inputType = InputType.TYPE_CLASS_NUMBER
+                it.setSelectAllOnFocus(true)
+                it.selectAll()
+            }
+        }
+
+        super.onDisplayPreferenceDialog(preference)
+    }
+
+    override fun onPreferenceTreeClick(preference: Preference): Boolean {
+        if (preference.key == "system.disable_battery_optimizations") {
+            requestIgnoreBatteryOptimizations()
+            return true
+        }
+
+        return super.onPreferenceTreeClick(preference)
+    }
+
+    private fun requestIgnoreBatteryOptimizations() {
+        if (isIgnoringBatteryOptimizations()) {
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.battery_optimization_already_disabled),
+                Toast.LENGTH_SHORT
+            ).show()
+            return
+        }
+
+        val intent = Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)
+        intent.data = Uri.parse("package:${requireContext().packageName}")
+        startActivity(intent)
+    }
+
+    private fun isIgnoringBatteryOptimizations(): Boolean {
+        val powerManager = requireContext().getSystemService(Context.POWER_SERVICE) as PowerManager
+        return powerManager.isIgnoringBatteryOptimizations(requireContext().packageName)
+    }
+
+    companion object {
+        fun newInstance() = SettingsFragment()
+    }
+}
