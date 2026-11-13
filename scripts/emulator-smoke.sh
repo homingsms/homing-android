@@ -37,13 +37,21 @@ if [[ -z "${SKIP_BUILD:-}" ]]; then
 fi
 [[ -f "$apk" ]] || fail "missing $apk"
 
+emulator_log="${TMPDIR:-/tmp}/homing-emulator.log"
 if ! "$adb" devices | grep -q '^emulator-.*device$'; then
   log "Booting AVD $avd"
-  "$emulator" -avd "$avd" -no-window -no-audio -no-boot-anim -no-snapshot-save >"${TMPDIR:-/tmp}/homing-emulator.log" 2>&1 &
+  "$emulator" -avd "$avd" -no-window -no-audio -no-boot-anim -no-snapshot-save >"$emulator_log" 2>&1 &
   started_emulator=1
 fi
 
-"$adb" wait-for-device
+for _ in $(seq 1 90); do
+  "$adb" devices | grep -q '^emulator-.*device$' && break
+  if [[ "$started_emulator" == "1" ]] && grep -q 'hvf is not enabled' "$emulator_log" 2>/dev/null; then
+    fail "the emulator cannot use the Mac hypervisor from this shell. Run the script from Terminal.app or iTerm instead of an embedded or sandboxed terminal. Log: $emulator_log"
+  fi
+  sleep 2
+done
+"$adb" devices | grep -q '^emulator-.*device$' || fail "no emulator came online. Log: $emulator_log"
 for _ in $(seq 1 180); do
   [[ "$("$adb" shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" == "1" ]] && break
   sleep 2
