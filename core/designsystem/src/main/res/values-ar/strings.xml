@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="homing_logo_description">Homing</string>
+
+    <string name="homing_action_copy">نسخ</string>
+    <string name="homing_action_copied">تم النسخ</string>
+    <string name="homing_action_retry">إعادة المحاولة</string>
+    <string name="homing_action_cancel">إلغاء</string>
+    <string name="homing_action_close">إغلاق</string>
+    <string name="homing_action_back">رجوع</string>
+    <string name="homing_action_clear">مسح</string>
+
+    <string name="homing_secret_show">إظهار %1$s</string>
+    <string name="homing_secret_hide">إخفاء %1$s</string>
+    <string name="homing_secret_copy">نسخ %1$s</string>
+    <string name="homing_secret_hidden">%1$s، مخفي</string>
+
+    <string name="homing_sim_label">الشريحة %1$d</string>
+    <string name="homing_sim_no_carrier">لا يوجد مشغل</string>
+    <string name="homing_sim_signal">الإشارة %1$d من 4</string>
+    <string name="homing_sim_no_signal">لا توجد إشارة</string>
+    <string name="homing_sim_signal_unknown">الإشارة غير معروفة</string>
+    <string name="homing_sim_usage">%1$s من %2$s اليوم</string>
+    <string name="homing_sim_usage_uncapped">%1$s اليوم، بلا حد يومي</string>
+    <string name="homing_sim_near_cap">قريب من الحد اليومي</string>
+    <string name="homing_sim_at_cap">تم بلوغ الحد اليومي. الإرسال متوقف على هذه الشريحة.</string>
+    <string name="homing_sim_disabled">غير مستخدمة للإرسال</string>
+
+    <string name="homing_status_online">متصل</string>
+    <string name="homing_status_degraded">أداء محدود</string>
+    <string name="homing_status_offline">غير متصل</string>
+
+    <string name="homing_loading">جارٍ التحميل</string>
+    <string name="homing_value_unavailable">لا توجد بيانات</string>
+    <string name="homing_list_load_more_failed">تعذّر تحميل المزيد</string>
+    <string name="homing_time_just_now">الآن</string>
+    <string name="homing_time_never">أبدًا</string>
+
+    <string name="homing_qr_description">رمز QR لـ %1$s</string>
+
+    <string name="homing_chart_empty">لا توجد رسائل خلال آخر 24 ساعة</string>
+    <string name="homing_chart_description">آخر 24 ساعة: %1$s تم تسليمها، %2$s أُرسلت دون تقرير، %3$s فشلت</string>
+    <string name="homing_chart_delivered">تم التسليم</string>
+    <string name="homing_chart_sent">أُرسلت</string>
+    <string name="homing_chart_failed">فشلت</string>
+    <string name="homing_chart_start">قبل 24 ساعة</string>
+    <string name="homing_chart_end">الآن</string>
+
+    <string name="homing_nav_home">الرئيسية</string>
+    <string name="homing_nav_messages">الرسائل</string>
+    <string name="homing_nav_inbox">الوارد</string>
+    <string name="homing_nav_connect">الاتصال</string>
+    <string name="homing_nav_settings">الإعدادات</string>
+</resources>

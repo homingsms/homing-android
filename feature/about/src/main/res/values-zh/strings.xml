@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_title">关于</string>
+    <string name="about_summary">Homing 将此手机变成你的应用的短信网关，可通过本地网络或 Homing Cloud 使用。</string>
+    <string name="about_version">版本 %1$s</string>
+    <string name="about_version_code">版本 %1$s（%2$s）</string>
+    <string name="about_version_build">%1$s，%2$s 构建</string>
+    <string name="about_licenses_title">开源许可</string>
+    <string name="about_licenses_body">Homing 以 Apache License 2.0 发布，并使用了以下组件。</string>
+    <string name="about_component_line">%1$s，%2$s</string>
+    <string name="about_license_apache">Apache License 2.0</string>
+    <string name="about_license_mit">MIT 许可证</string>
+    <string name="about_license_ofl">SIL 开放字体许可证 1.1</string>
+</resources>

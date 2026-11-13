@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="inbox_title">收件箱</string>
+    <string name="inbox_search">按发件人或内容搜索</string>
+    <string name="inbox_filter_sim">SIM 卡</string>
+    <string name="inbox_filter_clear">清除筛选</string>
+    <string name="inbox_kind_sms">短信</string>
+    <string name="inbox_kind_data">数据短信</string>
+    <string name="inbox_kind_mms">彩信</string>
+    <string name="inbox_data_port">端口 %1$s 上的数据短信</string>
+    <string name="inbox_data_label">数据（Base64）</string>
+    <string name="inbox_open_detail">打开消息</string>
+    <string name="inbox_opt_out">退订</string>
+    <string name="inbox_opt_out_keyword">退订：%1$s</string>
+    <string name="inbox_error_title">无法加载收件箱</string>
+    <string name="inbox_error_body">请确认 Homing 正在运行，然后重试。</string>
+    <string name="inbox_no_matches_title">没有匹配的消息</string>
+    <string name="inbox_no_matches_body">换个关键词或清除筛选条件。</string>
+    <string name="inbox_empty_title">还没有收到消息</string>
+    <string name="inbox_empty_body">此手机收到的短信、数据短信和彩信会显示在这里，并转发到你的 Webhook。</string>
+    <string name="inbox_detail_title">收到的消息</string>
+    <string name="inbox_detail_error">无法加载此消息</string>
+    <string name="inbox_forwarded">已推送到 Webhook</string>
+    <string name="inbox_forward_pending">Webhook 等待中</string>
+    <string name="inbox_forward_failed">Webhook 失败</string>
+    <string name="inbox_not_forwarded">无 Webhook</string>
+    <string name="inbox_attachments_title">附件</string>
+    <string name="inbox_open_attachment">打开附件</string>
+    <string name="inbox_attachment_meta">%1$s，%2$s</string>
+    <string name="inbox_share_attachment">分享 %1$s</string>
+    <string name="inbox_id">消息 ID</string>
+    <plurals name="inbox_attachments">
+        <item quantity="other">%1$s 个附件</item>
+    </plurals>
+</resources>

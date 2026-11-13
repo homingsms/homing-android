@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="messages_sim_option" translatable="false">%1$s · %2$s</string>
+    <string name="messages_title">Messages</string>
+    <string name="messages_search">Search by number or text</string>
+    <string name="messages_filter_state">State</string>
+    <string name="messages_filter_type">Type</string>
+    <string name="messages_filter_sim">SIM</string>
+    <string name="messages_filter_clear">Clear filters</string>
+    <string name="messages_state_scheduled">Scheduled</string>
+    <string name="messages_state_pending">Pending</string>
+    <string name="messages_state_leased">Picked up</string>
+    <string name="messages_state_queued">Queued</string>
+    <string name="messages_state_sending">Sending</string>
+    <string name="messages_state_sent">Sent</string>
+    <string name="messages_state_delivered">Delivered</string>
+    <string name="messages_state_failed">Failed</string>
+    <string name="messages_state_cancelled">Cancelled</string>
+    <string name="messages_state_expired">Expired</string>
+    <string name="messages_type_sms">SMS</string>
+    <string name="messages_type_data">Data SMS</string>
+    <string name="messages_type_mms">MMS</string>
+    <string name="messages_priority_otp">OTP</string>
+    <string name="messages_data_port">Data SMS to port %1$s</string>
+    <string name="messages_open_detail">open message</string>
+    <string name="messages_error_title">Couldn\'t load messages</string>
+    <string name="messages_error_body">Check that Homing is running, then try again.</string>
+    <string name="messages_no_matches_title">No matching messages</string>
+    <string name="messages_no_matches_body">Try a different search or clear the filters.</string>
+    <string name="messages_empty_title">No messages yet</string>
+    <string name="messages_empty_body">Messages your apps send through Homing show up here.</string>
+    <string name="messages_detail_title">Message</string>
+    <string name="messages_detail_error">Couldn\'t load this message</string>
+    <string name="messages_notice_retry">Message queued again</string>
+    <string name="messages_notice_cancelled">Message cancelled</string>
+    <string name="messages_notice_failed">That didn\'t work. Try again.</string>
+    <string name="messages_timeline">Timeline</string>
+    <string name="messages_awaiting_report">Waiting for delivery report</string>
+    <string name="messages_error_heading">Carrier error</string>
+    <string name="messages_retry">Retry</string>
+    <string name="messages_cancel">Cancel message</string>
+    <string name="messages_cancel_title">Cancel this message?</string>
+    <string name="messages_cancel_body">It won\'t be sent. You can\'t undo this.</string>
+    <string name="messages_cancel_confirm">Cancel message</string>
+    <string name="messages_content">Content</string>
+    <string name="messages_attachment_line">%1$s, %2$s</string>
+    <string name="messages_details">Details</string>
+    <string name="messages_id">Message ID</string>
+    <string name="messages_idempotency_key">Idempotency key</string>
+    <string name="messages_created">Created</string>
+    <string name="messages_scheduled_for">Scheduled for</string>
+    <string name="messages_valid_until">Valid until</string>
+    <string name="messages_source">Sent through</string>
+    <string name="messages_source_local">Local server</string>
+    <string name="messages_source_cloud">Homing Cloud</string>
+    <string name="messages_parts">Parts</string>
+    <string name="messages_attempts">Attempts</string>
+    <string name="messages_delivery_report">Delivery report</string>
+    <string name="messages_yes">Requested</string>
+    <string name="messages_no">Not requested</string>
+    <plurals name="messages_attachments">
+        <item quantity="one">%1$s attachment</item>
+        <item quantity="other">%1$s attachments</item>
+    </plurals>
+</resources>
