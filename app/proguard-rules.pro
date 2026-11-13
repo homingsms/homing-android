@@ -24,6 +24,17 @@
     *** INSTANCE;
     kotlinx.serialization.KSerializer serializer(...);
 }
+-keepclassmembers @kotlinx.serialization.Serializable class com.homingsms.core.** {
+    *** Companion;
+    *** INSTANCE;
+    kotlinx.serialization.KSerializer serializer(...);
+}
+-keepclassmembers enum com.homingsms.core.** {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+    **[] $VALUES;
+    public *;
+}
 -keepclassmembers enum com.homingsms.app.** {
     public static **[] values();
     public static ** valueOf(java.lang.String);
@@ -66,10 +77,6 @@
 -dontwarn java.lang.management.**
 -dontwarn javax.naming.**
 
--keep class com.auth0.jwt.** { *; }
--keep class com.auth0.jwk.** { *; }
--keep class com.fasterxml.jackson.** { *; }
--dontwarn com.fasterxml.jackson.databind.**
 -dontwarn com.google.common.**
 
 -keep class com.homingsms.app.modules.mms.pdu.** { *; }

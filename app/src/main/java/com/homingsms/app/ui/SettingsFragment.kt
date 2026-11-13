@@ -15,11 +15,20 @@ import com.homingsms.app.BuildConfig
 import com.homingsms.app.MainActivity
 import com.homingsms.app.R
 import com.homingsms.app.helpers.LocaleHelper
+import com.homingsms.app.modules.settings.SettingsPreferenceDataStore
+import org.koin.android.ext.android.get
 
 class SettingsFragment : PreferenceFragmentCompat() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        val store = get<SettingsPreferenceDataStore>()
+        preferenceManager.preferenceDataStore = store
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
+
+        findPreference<EditTextPreference>(SettingsPreferenceDataStore.PASSPHRASE)?.summaryProvider =
+            Preference.SummaryProvider<EditTextPreference> {
+                getString(if (store.hasPassphrase()) R.string.enabled else R.string.not_set)
+            }
 
         findPreference<Preference>("transient.app_version")?.summary =
             "${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})"
@@ -48,9 +57,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
             }
         }
 
-        if (preference.key == "ping.interval_seconds"
-            || preference.key == "logs.lifetime_days"
-        ) {
+        if (preference.key == "logs.lifetime_days") {
             (preference as EditTextPreference).setOnBindEditTextListener {
                 it.inputType = InputType.TYPE_CLASS_NUMBER
                 it.setSelectAllOnFocus(true)

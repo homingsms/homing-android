@@ -15,21 +15,7 @@
     </style>
 
     <!-- Settings screen styles -->
-    <style name="HomeCardLabel" parent="Widget.AppCompat.TextView">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">start</item>
-        <item name="android:layout_margin">4dp</item>
-        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Body2</item>
-    </style>
 
-    <style name="HomeCardValue" parent="Widget.AppCompat.TextView">
-        <item name="android:lines">1</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">start</item>
-        <item name="android:layout_margin">4dp</item>
-    </style>
 
     <!-- Compact filter chip for stats panels -->
     <style name="CompactFilterChip" parent="Widget.MaterialComponents.Chip.Filter">

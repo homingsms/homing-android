@@ -1,102 +1,115 @@
 package com.homingsms.app.ui.settings
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.os.Bundle
-import android.text.InputType
+import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.preference.EditTextPreference
 import androidx.preference.Preference
+import androidx.preference.PreferenceCategory
 import com.homingsms.app.R
-import com.homingsms.app.modules.localserver.LocalServerSettings
+import com.homingsms.app.databinding.DialogApiKeyBinding
+import com.homingsms.app.modules.localserver.LocalServerService
+import com.homingsms.core.model.ApiKeyInfo
+import com.homingsms.core.model.Scope
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class LocalServerSettingsFragment : BasePreferenceFragment() {
-    private val settings by inject<LocalServerSettings>()
+    private val localServer by inject<LocalServerService>()
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        setPreferencesFromResource(R.xml.local_server_preferences, rootKey)
+        setSettingsResource(R.xml.local_server_preferences, rootKey)
 
-        findPreference<Preference>("transient.device_id")?.summary =
-            settings.deviceId ?: getString(R.string.n_a)
-        findPreference<Preference>("transient.jwt_regenerate_secret")?.setOnPreferenceClickListener {
-            androidx.appcompat.app.AlertDialog.Builder(requireContext())
-                .setTitle(R.string.jwt_regenerate_secret)
-                .setMessage(R.string.confirm_regenerate_jwt_secret)
-                .setPositiveButton(R.string.confirm) { _, _ ->
-                    settings.regenerateJwtSecret()
-                    showToast(getString(R.string.jwt_secret_regenerated))
-                }
-                .setNegativeButton(R.string.cancel, null)
-                .show()
+        findPreference<Preference>("transient.device_id")?.summary = localServer.ensureDeviceId()
+        findPreference<Preference>("transient.create_api_key")?.setOnPreferenceClickListener {
+            showCreateKeyDialog()
             true
         }
-
-        findPreference<EditTextPreference>("localserver.PORT")?.setOnPreferenceChangeListener { _, newValue ->
-            val value = newValue as? String
-            val intValue = value?.toIntOrNull()
-            if (intValue == null || intValue < 1024 || intValue > 65535) {
-                showToast(
-                    getString(
-                        R.string.is_not_a_valid_port_must_be_between_1024_and_65535,
-                        value
-                    )
-                )
-                return@setOnPreferenceChangeListener false
-            }
-
-            true
+        findPreference<EditTextPreference>(PORT)?.setOnPreferenceChangeListener { _, newValue ->
+            val value = (newValue as? String)?.toIntOrNull()
+            val valid = value != null && value in LocalServerService.MIN_PORT..LocalServerService.MAX_PORT
+            if (!valid) showToast(getString(R.string.is_not_a_valid_port_must_be_between_1024_and_65535, newValue))
+            valid
         }
-
-        findPreference<EditTextPreference>("localserver.USERNAME")?.setOnPreferenceChangeListener { _, newValue ->
-            val value = newValue as? String
-            if ((value?.length ?: 0) < 3) {
-                showToast(getString(R.string.username_must_be_at_least_3_characters))
-                return@setOnPreferenceChangeListener false
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                localServer.info.collect { renderKeys(it.keys) }
             }
-
-            true
-        }
-        findPreference<EditTextPreference>("localserver.PASSWORD")?.setOnPreferenceChangeListener { _, newValue ->
-            val value = newValue as? String
-            if ((value?.length ?: 0) < 8) {
-                showToast(getString(R.string.password_must_be_at_least_8_characters))
-                return@setOnPreferenceChangeListener false
-            }
-
-            true
-        }
-
-        findPreference<EditTextPreference>("localserver.JWT_TTL_SECONDS")?.setOnPreferenceChangeListener { _, newValue ->
-            val value = newValue as? String
-            val ttl = value?.toLongOrNull()
-            if (ttl == null || ttl <= 0 || ttl > LocalServerSettings.MAX_JWT_TTL_SECONDS) {
-                showToast(getString(R.string.jwt_ttl_must_be_between_1_second_and_365_days))
-                return@setOnPreferenceChangeListener false
-            }
-
-            true
         }
     }
 
     override fun onDisplayPreferenceDialog(preference: Preference) {
-        if (preference.key == "localserver.PORT"
-            || preference.key == "localserver.JWT_TTL_SECONDS"
-        ) {
-            (preference as EditTextPreference).setOnBindEditTextListener {
-                it.inputType = InputType.TYPE_CLASS_NUMBER
-                it.setSelectAllOnFocus(true)
-                it.selectAll()
-            }
-        }
-
-        if (preference.key == "localserver.PASSWORD"
-            || preference.key == "localserver.USERNAME"
-        ) {
-            (preference as EditTextPreference).setOnBindEditTextListener {
-                it.inputType = InputType.TYPE_CLASS_TEXT
-                it.setSelectAllOnFocus(true)
-                it.selectAll()
-            }
-        }
-
+        if (preference.key == PORT) numericInput(preference as EditTextPreference)
         super.onDisplayPreferenceDialog(preference)
+    }
+
+    private fun renderKeys(keys: List<ApiKeyInfo>) {
+        val category = findPreference<PreferenceCategory>("api_keys") ?: return
+        for (index in category.preferenceCount - 1 downTo 0) {
+            val preference = category.getPreference(index)
+            if (preference.key?.startsWith(KEY_PREFIX) == true) category.removePreference(preference)
+        }
+        keys.forEach { key ->
+            category.addPreference(
+                Preference(requireContext()).apply {
+                    this.key = KEY_PREFIX + key.id
+                    isPersistent = false
+                    title = key.name
+                    summary = key.prefix + "… · " + key.scopes.joinToString { it.value }
+                    setOnPreferenceClickListener {
+                        confirmRevoke(key)
+                        true
+                    }
+                }
+            )
+        }
+    }
+
+    private fun confirmRevoke(key: ApiKeyInfo) {
+        AlertDialog.Builder(requireContext())
+            .setMessage(getString(R.string.revoke_api_key, key.name))
+            .setPositiveButton(R.string.confirm) { _, _ -> lifecycleScope.launch { localServer.revokeKey(key.id) } }
+            .setNegativeButton(R.string.cancel, null)
+            .show()
+    }
+
+    private fun showCreateKeyDialog() {
+        val binding = DialogApiKeyBinding.inflate(layoutInflater)
+        val scopes = Scope.entries.toTypedArray()
+        val checked = BooleanArray(scopes.size) { scopes[it] == Scope.MessagesSend || scopes[it] == Scope.MessagesRead }
+        AlertDialog.Builder(requireContext())
+            .setTitle(R.string.create_api_key)
+            .setView(binding.root)
+            .setMultiChoiceItems(scopes.map { it.value }.toTypedArray(), checked) { _, index, value -> checked[index] = value }
+            .setPositiveButton(R.string.confirm) { _, _ ->
+                val name = binding.editKeyName.text.toString().ifBlank { getString(R.string.api_keys) }
+                val selected = scopes.filterIndexed { index, _ -> checked[index] }.toSet().ifEmpty { setOf(Scope.MessagesSend) }
+                lifecycleScope.launch { showCreatedKey(localServer.createKey(name, selected).secret) }
+            }
+            .setNegativeButton(R.string.cancel, null)
+            .show()
+    }
+
+    private fun showCreatedKey(secret: String) {
+        AlertDialog.Builder(requireContext())
+            .setTitle(R.string.api_key_created)
+            .setMessage(secret)
+            .setPositiveButton(R.string.copy_key) { _, _ ->
+                val clipboard = requireContext().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                clipboard.setPrimaryClip(ClipData.newPlainText("API key", secret))
+            }
+            .setNegativeButton(R.string.cancel, null)
+            .setCancelable(false)
+            .show()
+    }
+
+    private companion object {
+        const val PORT = "localserver.PORT"
+        const val KEY_PREFIX = "transient.key."
     }
 }

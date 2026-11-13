@@ -1,23 +1,35 @@
 package com.homingsms.app.ui.settings
 
 import android.os.Bundle
+import android.text.InputType
 import android.util.TypedValue
 import android.view.View
 import android.widget.Toast
+import androidx.preference.EditTextPreference
 import androidx.preference.PreferenceFragmentCompat
+import com.homingsms.app.modules.settings.SettingsPreferenceDataStore
+import org.koin.android.ext.android.get
 
 abstract class BasePreferenceFragment : PreferenceFragmentCompat() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val backgroundValue = TypedValue()
-        requireContext().theme.resolveAttribute(
-            android.R.attr.colorBackground,
-            backgroundValue,
-            true
-        )
-
+        requireContext().theme.resolveAttribute(android.R.attr.colorBackground, backgroundValue, true)
         view.setBackgroundColor(backgroundValue.data)
+    }
+
+    protected fun setSettingsResource(resId: Int, rootKey: String?) {
+        preferenceManager.preferenceDataStore = get<SettingsPreferenceDataStore>()
+        setPreferencesFromResource(resId, rootKey)
+    }
+
+    protected fun numericInput(preference: EditTextPreference) {
+        preference.setOnBindEditTextListener {
+            it.inputType = InputType.TYPE_CLASS_NUMBER
+            it.setSelectAllOnFocus(true)
+            it.selectAll()
+        }
     }
 
     protected fun showToast(message: String) {

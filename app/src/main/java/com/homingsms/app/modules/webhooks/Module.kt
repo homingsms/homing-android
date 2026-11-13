@@ -1,16 +1,17 @@
 package com.homingsms.app.modules.webhooks
 
-import com.homingsms.app.modules.webhooks.db.WebhookQueueRepository
-import com.homingsms.app.modules.webhooks.vm.WebhookQueueViewModel
-import org.koin.androidx.viewmodel.dsl.viewModelOf
-import org.koin.core.module.dsl.singleOf
+import com.homingsms.core.data.settings.SettingsRepository
+import com.homingsms.core.data.webhooks.WebhookDispatcher
+import com.homingsms.core.data.webhooks.WebhookRepository
 import org.koin.dsl.module
 
 val webhooksModule = module {
-    singleOf(::WebHooksService)
-    singleOf(::WebhookQueueRepository)
-    singleOf(::WebhookPayloadStorage)
-    viewModelOf(::WebhookQueueViewModel)
+    single {
+        val settings = get<SettingsRepository>()
+        WebhookRepository(get(), get(), get(), { LOCAL_ACCOUNT_ID + settings.current.localServer.deviceId.orEmpty() })
+    }
+    single { WebhookDispatcher(get(), get(), get()) }
+    single { WebhooksService(get(), get(), get(), get(), get()) }
 }
 
-val NAME = "webhooks"
+const val LOCAL_ACCOUNT_ID = "local:"

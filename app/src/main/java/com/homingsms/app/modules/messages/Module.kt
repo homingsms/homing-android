@@ -10,6 +10,7 @@ val messagesModule = module {
     singleOf(::MessagesRepository)
     singleOf(::MessagesService)
     singleOf(::MessageStateService)
+    single { SmsLimitMonitor(get(), get()) }
     viewModel { MessagesListViewModel(get()) }
     viewModel { MessageDetailsViewModel(get()) }
 }

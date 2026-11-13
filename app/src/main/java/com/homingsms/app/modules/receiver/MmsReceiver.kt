@@ -19,7 +19,9 @@ import java.util.Date
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class MmsReceiver : BroadcastReceiver(), KoinComponent {
+class MmsReceiver :
+    BroadcastReceiver(),
+    KoinComponent {
     private val receiverSvc: ReceiverService by inject()
     private val logsService: LogsService by inject()
 
@@ -32,7 +34,6 @@ class MmsReceiver : BroadcastReceiver(), KoinComponent {
         if (contentType != "application/vnd.wap.mms-message") {
             return
         }
-
 
         try {
             val bundle: Bundle? = intent.extras
@@ -65,10 +66,9 @@ class MmsReceiver : BroadcastReceiver(), KoinComponent {
                         ?.joinToString("") { "%02x".format(it) },
                     "pduSizeBytes" to pdu.size,
                     "pduHex" to pdu.toHexDump(),
-                    "pduSha256" to pduSha256,
+                    "pduSha256" to pduSha256
                 )
             )
-
 
             val mmsNotification = MMSParser.parseMNotificationInd(pdu)
 
@@ -82,7 +82,7 @@ class MmsReceiver : BroadcastReceiver(), KoinComponent {
                     mapOf(
                         "headers" to headers,
                         "pduSizeBytes" to pdu.size,
-                        "pduSha256" to pduSha256,
+                        "pduSha256" to pduSha256
                     )
                 )
             }
@@ -97,12 +97,11 @@ class MmsReceiver : BroadcastReceiver(), KoinComponent {
                 contentClass = mmsNotification.contentClass?.name,
                 address = mmsNotification.from.substringBefore('/'),
                 date = mmsNotification.date ?: Date(),
-                subscriptionId = SubscriptionsHelper.extractSubscriptionId(context, intent),
+                subscriptionId = SubscriptionsHelper.extractSubscriptionId(context, intent)
             )
 
             // Process the message using the existing ReceiverService
-            receiverSvc.process(context, mmsMessage, true)
-
+            receiverSvc.process(mmsMessage, true)
         } catch (e: Exception) {
             Log.e(TAG, "Error processing MMS", e)
         }

@@ -16,3 +16,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "Homing"
 include(":app")
+include(":core:model")
+include(":core:data")
+include(":core:telephony")
+include(":core:server")

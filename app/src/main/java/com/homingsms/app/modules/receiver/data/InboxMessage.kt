@@ -3,31 +3,18 @@ package com.homingsms.app.modules.receiver.data
 import java.util.Arrays
 import java.util.Date
 
-sealed class InboxMessage(
-    val address: String,
-    val date: Date,
-    val subscriptionId: Int?
-) {
-    class Text(val text: String, address: String, date: Date, subscriptionId: Int?) :
-        InboxMessage(address, date, subscriptionId) {
-        override fun equals(other: Any?): Boolean {
-            return super.equals(other) && (other as? Text)?.text == this.text
-        }
+sealed class InboxMessage(val address: String, val date: Date, val subscriptionId: Int?) {
+    class Text(val text: String, address: String, date: Date, subscriptionId: Int?) : InboxMessage(address, date, subscriptionId) {
+        override fun equals(other: Any?): Boolean = super.equals(other) && (other as? Text)?.text == this.text
 
-        override fun hashCode(): Int {
-            return 31 * super.hashCode() + text.hashCode()
-        }
+        override fun hashCode(): Int = 31 * super.hashCode() + text.hashCode()
     }
 
-    class Data(val data: ByteArray?, address: String, date: Date, subscriptionId: Int?) :
+    class Data(val data: ByteArray?, address: String, date: Date, subscriptionId: Int?, val port: Int? = null) :
         InboxMessage(address, date, subscriptionId) {
-        override fun equals(other: Any?): Boolean {
-            return super.equals(other) && Arrays.equals((other as? Data)?.data, this.data)
-        }
+        override fun equals(other: Any?): Boolean = super.equals(other) && Arrays.equals((other as? Data)?.data, this.data)
 
-        override fun hashCode(): Int {
-            return 31 * super.hashCode() + (data?.contentHashCode() ?: 0)
-        }
+        override fun hashCode(): Int = 31 * super.hashCode() + (data?.contentHashCode() ?: 0)
     }
 
     class MmsHeaders(
@@ -40,13 +27,9 @@ sealed class InboxMessage(
         date: Date,
         subscriptionId: Int?
     ) : InboxMessage(address, date, subscriptionId) {
-        override fun equals(other: Any?): Boolean {
-            return other is MmsHeaders && other.transactionId == this.transactionId
-        }
+        override fun equals(other: Any?): Boolean = other is MmsHeaders && other.transactionId == this.transactionId
 
-        override fun hashCode(): Int {
-            return transactionId.hashCode()
-        }
+        override fun hashCode(): Int = transactionId.hashCode()
     }
 
     class MMS(
@@ -58,21 +41,11 @@ sealed class InboxMessage(
         date: Date,
         subscriptionId: Int?
     ) : InboxMessage(address, date, subscriptionId) {
-        class Attachment(
-            val partId: Long,
-            val contentType: String,
-            val name: String?,
-            val size: Long?,
-            val data: String?,
-        )
+        class Attachment(val partId: Long, val contentType: String, val name: String?, val size: Long?, val data: String?)
 
-        override fun equals(other: Any?): Boolean {
-            return other is MMS && other.messageId == this.messageId
-        }
+        override fun equals(other: Any?): Boolean = other is MMS && other.messageId == this.messageId
 
-        override fun hashCode(): Int {
-            return messageId.hashCode()
-        }
+        override fun hashCode(): Int = messageId.hashCode()
     }
 
     override fun equals(other: Any?): Boolean {

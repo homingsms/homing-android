@@ -3,7 +3,6 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.ksp)
     alias(libs.plugins.detekt)
     alias(libs.plugins.ktlint)
 }
@@ -12,7 +11,7 @@ if (file("google-services.json").exists()) {
     apply(plugin = libs.plugins.google.services.get().pluginId)
 }
 
-val defaultCloudUrl = "https://api.homingsms.com/mobile/v1"
+val defaultCloudUrl = "https://api.homingsms.com"
 val cloudUrl = providers.gradleProperty("homing.cloudUrl")
     .orElse(providers.environmentVariable("HOMING_CLOUD_URL"))
     .getOrElse(defaultCloudUrl)
@@ -23,10 +22,6 @@ val releaseKeystore = file(
 val releaseSigningEnv = listOf("SIGNING_STORE_PASSWORD", "SIGNING_KEY_ALIAS", "SIGNING_KEY_PASSWORD")
     .associateWith { providers.environmentVariable(it).orNull }
 val releaseSigningAvailable = releaseKeystore.isFile && releaseSigningEnv.values.all { !it.isNullOrBlank() }
-
-ksp {
-    arg("room.schemaLocation", "$projectDir/schemas")
-}
 
 android {
     namespace = "com.homingsms.app"
@@ -64,7 +59,7 @@ android {
     buildTypes {
         debug {
             isDebuggable = true
-            manifestPlaceholders["networkSecurityConfig"] = "@xml/network_security_config"
+            manifestPlaceholders["networkSecurityConfig"] = "@xml/network_security_config_debug"
         }
         create("debugInsecure") {
             isDebuggable = true
@@ -147,25 +142,19 @@ ktlint {
 }
 
 dependencies {
+    implementation(project(":core:model"))
+    implementation(project(":core:data"))
+    implementation(project(":core:telephony"))
+    implementation(project(":core:server"))
+
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.serialization.json)
 
-    implementation(libs.ktor.serialization.kotlinx.json)
     implementation(libs.ktor.server.core)
     implementation(libs.ktor.server.cio)
-    implementation(libs.ktor.server.compression)
-    implementation(libs.ktor.server.status.pages)
-    implementation(libs.ktor.server.content.negotiation)
-    implementation(libs.ktor.server.call.logging)
-    implementation(libs.ktor.server.auth)
-    implementation(libs.ktor.server.auth.jwt)
-    implementation(libs.ktor.client.core)
-    implementation(libs.ktor.client.content.negotiation)
-    implementation(libs.ktor.client.okhttp)
 
     implementation(libs.okhttp)
-    implementation(libs.okhttp.sse)
 
     implementation(libs.androidx.work.runtime.ktx)
     implementation(libs.androidx.lifecycle.livedata.ktx)
@@ -177,13 +166,11 @@ dependencies {
     implementation(libs.material)
 
     implementation(libs.androidx.room.ktx)
-    ksp(libs.androidx.room.compiler)
 
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.messaging)
 
     implementation(libs.koin.android)
-    implementation(libs.jnanoid)
     implementation(libs.libphonenumber)
 
     testImplementation(libs.junit)

@@ -11,58 +11,31 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.homingsms.app.R
 import com.homingsms.app.databinding.ItemWebhookBinding
-import com.homingsms.app.modules.webhooks.domain.WebHookDTO
+import com.homingsms.core.model.WebhookEndpoint
 
-class WebhookAdapter : ListAdapter<WebHookDTO, WebhookAdapter.ViewHolder>(WebhookDiffCallback()) {
-    class ViewHolder(private val binding: ItemWebhookBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(webhook: WebHookDTO) {
-            binding.apply {
-                idText.text = binding.root.context.getString(R.string.webhook_id_format, webhook.id)
-                urlText.text = webhook.url
-                eventText.text = webhook.event.value
-                sourceText.text = when (webhook.source) {
-                    com.homingsms.app.domain.EntitySource.Local -> binding.root.context.getString(
-                        R.string.local
-                    )
-
-                    com.homingsms.app.domain.EntitySource.Gateway,
-                    com.homingsms.app.domain.EntitySource.Cloud -> binding.root.context.getString(
-                        R.string.cloud
-                    )
-                }
-                sourceIcon.setImageResource(
-                    when (webhook.source) {
-                        com.homingsms.app.domain.EntitySource.Local -> R.drawable.ic_local_server
-                        com.homingsms.app.domain.EntitySource.Cloud,
-                        com.homingsms.app.domain.EntitySource.Gateway -> R.drawable.ic_cloud_server
-                    }
-                )
-            }
+class WebhookAdapter : ListAdapter<WebhookEndpoint, WebhookAdapter.ViewHolder>(WebhookDiffCallback()) {
+    class ViewHolder(private val binding: ItemWebhookBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(webhook: WebhookEndpoint) {
+            val context = binding.root.context
+            binding.idText.text = context.getString(R.string.webhook_id_format, webhook.id)
+            binding.urlText.text = webhook.url
+            binding.eventText.text = webhook.events.joinToString { it.value }
+            binding.sourceText.text = context.getString(if (webhook.enabled) R.string.enabled else R.string.disabled)
+            binding.sourceIcon.setImageResource(R.drawable.ic_local_server)
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemWebhookBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
-        )
+        val binding = ItemWebhookBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         val holder = ViewHolder(binding)
-
         binding.root.setOnClickListener {
-            val position = holder.adapterPosition
-            if (position != RecyclerView.NO_POSITION) {
-                val webhook = getItem(position)
-                val context = binding.root.context
-                val clipboard =
-                    context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                val clip = ClipData.newPlainText("Webhook ID", webhook.id)
-                clipboard.setPrimaryClip(clip)
-                Toast.makeText(context, R.string.id_copied, Toast.LENGTH_SHORT).show()
-            }
+            val position = holder.bindingAdapterPosition
+            if (position == RecyclerView.NO_POSITION) return@setOnClickListener
+            val context = binding.root.context
+            val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            clipboard.setPrimaryClip(ClipData.newPlainText("Webhook ID", getItem(position).id))
+            Toast.makeText(context, R.string.id_copied, Toast.LENGTH_SHORT).show()
         }
-
         return holder
     }
 
@@ -70,13 +43,9 @@ class WebhookAdapter : ListAdapter<WebHookDTO, WebhookAdapter.ViewHolder>(Webhoo
         holder.bind(getItem(position))
     }
 
-    class WebhookDiffCallback : DiffUtil.ItemCallback<WebHookDTO>() {
-        override fun areItemsTheSame(oldItem: WebHookDTO, newItem: WebHookDTO): Boolean {
-            return oldItem.id == newItem.id
-        }
+    class WebhookDiffCallback : DiffUtil.ItemCallback<WebhookEndpoint>() {
+        override fun areItemsTheSame(oldItem: WebhookEndpoint, newItem: WebhookEndpoint): Boolean = oldItem.id == newItem.id
 
-        override fun areContentsTheSame(oldItem: WebHookDTO, newItem: WebHookDTO): Boolean {
-            return oldItem == newItem
-        }
+        override fun areContentsTheSame(oldItem: WebhookEndpoint, newItem: WebhookEndpoint): Boolean = oldItem == newItem
     }
 }

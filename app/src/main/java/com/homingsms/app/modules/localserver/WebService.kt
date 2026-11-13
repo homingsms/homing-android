@@ -9,248 +9,91 @@ import android.os.Build
 import android.os.IBinder
 import android.os.PowerManager
 import androidx.core.app.ServiceCompat
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import com.homingsms.app.BuildConfig
 import com.homingsms.app.R
-import com.homingsms.app.domain.HealthResponse
-import com.homingsms.app.modules.health.HealthService
-import com.homingsms.app.modules.health.domain.Status
-import com.homingsms.app.modules.localserver.auth.JwtService
-import com.homingsms.app.modules.localserver.routes.AuthRoutes
-import com.homingsms.app.modules.localserver.routes.DeviceRoutes
-import com.homingsms.app.modules.localserver.routes.InboxRoutes
-import com.homingsms.app.modules.localserver.routes.LogsRoutes
-import com.homingsms.app.modules.localserver.routes.MessagesRoutes
-import com.homingsms.app.modules.localserver.routes.WebhooksRoutes
 import com.homingsms.app.modules.notifications.NotificationsService
-import com.homingsms.app.serialization.AppJson
-import io.ktor.http.HttpStatusCode
-import io.ktor.http.toHttpDate
-import io.ktor.serialization.kotlinx.json.json
-import io.ktor.server.application.call
-import io.ktor.server.application.createApplicationPlugin
-import io.ktor.server.application.install
-import io.ktor.server.auth.Authentication
-import io.ktor.server.auth.UserIdPrincipal
-import io.ktor.server.auth.authenticate
-import io.ktor.server.auth.basic
-import io.ktor.server.auth.jwt.JWTPrincipal
-import io.ktor.server.auth.jwt.jwt
+import com.homingsms.core.data.settings.SettingsRepository
+import com.homingsms.core.server.LocalApiConfig
+import com.homingsms.core.server.installLocalApi
 import io.ktor.server.cio.CIO
+import io.ktor.server.engine.EmbeddedServer
 import io.ktor.server.engine.embeddedServer
-import io.ktor.server.plugins.BadRequestException
-import io.ktor.server.plugins.NotFoundException
-import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
-import io.ktor.server.plugins.statuspages.StatusPages
-import io.ktor.server.response.header
-import io.ktor.server.response.respond
-import io.ktor.server.routing.get
-import io.ktor.server.routing.route
-import io.ktor.server.routing.routing
-import io.ktor.util.date.GMTDate
+import java.io.IOException
 import kotlin.concurrent.thread
-import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 
 class WebService : Service() {
-
-    private val settings: LocalServerSettings by inject()
+    private val settings: SettingsRepository by inject()
     private val notificationsService: NotificationsService by inject()
-    private val healthService: HealthService by inject()
-    private val jwtService: JwtService by lazy { JwtService(get(), get(), get(), get()) }
+    private val localServer: LocalServerService by inject()
+    private val config: LocalApiConfig by inject()
+
+    private var server: EmbeddedServer<*, *>? = null
+    private var port: Int = 0
 
     private val wakeLock: PowerManager.WakeLock by lazy {
-        (getSystemService(Context.POWER_SERVICE) as PowerManager).run {
-            newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, this.javaClass.name)
-        }
+        (getSystemService(Context.POWER_SERVICE) as PowerManager).newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, javaClass.name)
     }
+
+    @Suppress("DEPRECATION")
     private val wifiLock: WifiManager.WifiLock by lazy {
-        (getSystemService(Context.WIFI_SERVICE) as WifiManager).createWifiLock(
+        (applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager).createWifiLock(
             WifiManager.WIFI_MODE_FULL_HIGH_PERF,
-            this.javaClass.name
+            javaClass.name
         )
     }
 
-    private val server by lazy {
-        embeddedServer(
-            CIO,
-            port = port,
-            watchPaths = emptyList(),
-        ) {
-            install(Authentication) {
-                basic("auth-basic") {
-                    realm = "Access to Homing"
-                    validate { credentials ->
-                        when {
-                            credentials.name == username
-                                    && credentials.password == password -> UserIdPrincipal(
-                                credentials.name
-                            )
-
-                            else -> null
-                        }
-                    }
-                }
-                jwt("auth-jwt") {
-                    realm = "Access to Homing"
-                    verifier { jwtService.verifier() }
-                    validate { credential ->
-                        val tokenId = credential.payload.id ?: return@validate null
-                        if (jwtService.isTokenRevoked(tokenId)) {
-                            return@validate null
-                        }
-
-                        JWTPrincipal(credential.payload)
-                    }
-                }
-            }
-            install(ContentNegotiation) {
-                json(if (com.homingsms.app.BuildConfig.DEBUG) AppJson.pretty else AppJson.default)
-            }
-            install(StatusPages) {
-                exception<Throwable> { call, cause ->
-                    call.respond(
-                        when (cause) {
-                            is IllegalArgumentException -> HttpStatusCode.BadRequest
-                            is BadRequestException -> HttpStatusCode.BadRequest
-                            is NotFoundException -> HttpStatusCode.NotFound
-                            else -> HttpStatusCode.InternalServerError
-                        },
-                        mapOf("message" to cause.description)
-                    )
-                }
-            }
-            install(createApplicationPlugin(name = "DateHeader") {
-                onCall { call ->
-                    call.response.header(
-                        "Date",
-                        GMTDate(null).toHttpDate()
-                    )
-                }
-            })
-            routing {
-                get("/health") {
-                    val healthResult = healthService.healthCheck()
-                    call.respond(
-                        when (healthResult.status) {
-                            Status.FAIL -> HttpStatusCode.InternalServerError
-                            Status.WARN -> HttpStatusCode.OK
-                            Status.PASS -> HttpStatusCode.OK
-                        },
-                        HealthResponse(healthResult)
-                    )
-                }
-                authenticate("auth-basic", "auth-jwt") {
-                    get("/") {
-                        call.respond(mapOf("status" to "ok", "model" to Build.MODEL))
-                    }
-                    DeviceRoutes(applicationContext, get(), get()).let {
-                        route("/device") {
-                            it.register(this)
-                        }
-                        route("/devices") {
-                            it.register(this)
-                        }
-                    }
-                    MessagesRoutes(applicationContext, get(), get(), get()).let {
-                        route("/message") {
-                            it.register(this)
-                        }
-                        route("/messages") {
-                            it.register(this)
-                        }
-                    }
-                    InboxRoutes(applicationContext, get(), get(), get(), get()).let {
-                        route("/inbox") {
-                            it.register(this)
-                        }
-                    }
-                    WebhooksRoutes(get(), get()).let {
-                        route("/webhook") {
-                            it.register(this)
-                        }
-                        route("/webhooks") {
-                            it.register(this)
-                        }
-                    }
-
-                    route("/logs") {
-                        LogsRoutes(get()).register(this)
-                    }
-                    route("/settings") {
-                        com.homingsms.app.modules.localserver.routes.SettingsRoutes(get())
-                            .register(this)
-                    }
-                    route("/auth") {
-                        AuthRoutes(jwtService, get()).register(this)
-                    }
-                }
-            }
-        }
-    }
-
-    private val port = settings.port
-    private val username = settings.username
-    private val password = settings.password
-
     override fun onCreate() {
         super.onCreate()
-
-        server.start()
-        wakeLock.acquire()
-        wifiLock.acquire()
-
-        status.postValue(true)
+        port = settings.current.localServer.port
+        try {
+            server = embeddedServer(CIO, port = port, host = "0.0.0.0") {
+                installLocalApi(config, BuildConfig.VERSION_NAME)
+            }.start(wait = false)
+            wakeLock.acquire(WAKE_LOCK_TIMEOUT_MS)
+            wifiLock.acquire()
+            localServer.onStarted()
+        } catch (e: IOException) {
+            localServer.onStopped(e.message ?: "Cannot listen on port $port")
+            stopSelf()
+        }
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         val notification = notificationsService.makeNotification(
             this,
             NotificationsService.NOTIFICATION_ID_LOCAL_SERVICE,
-            getString(
-                R.string.sms_gateway_is_running_on_port,
-                port
-            )
+            getString(R.string.sms_gateway_is_running_on_port, port)
         )
-
         ServiceCompat.startForeground(
             this,
             NotificationsService.NOTIFICATION_ID_LOCAL_SERVICE,
             notification,
-            ServiceInfo.FOREGROUND_SERVICE_TYPE_CONNECTED_DEVICE,
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) ServiceInfo.FOREGROUND_SERVICE_TYPE_CONNECTED_DEVICE else 0
         )
-
-        return super.onStartCommand(intent, flags, startId)
+        return START_STICKY
     }
 
-    override fun onBind(intent: Intent): IBinder {
-        TODO("Return the communication channel to the service.")
-    }
+    override fun onBind(intent: Intent): IBinder? = null
 
     override fun onDestroy() {
-        wifiLock.release()
-        wakeLock.release()
-        thread { server.stop() }
-
+        if (wifiLock.isHeld) wifiLock.release()
+        if (wakeLock.isHeld) wakeLock.release()
+        server?.let { running -> thread { running.stop(STOP_GRACE_MS, STOP_TIMEOUT_MS) } }
+        server = null
         ServiceCompat.stopForeground(this, ServiceCompat.STOP_FOREGROUND_REMOVE)
-
-        status.postValue(false)
-
+        localServer.onStopped(null)
         super.onDestroy()
     }
 
     companion object {
-        private val status = MutableLiveData<Boolean>(false)
-        val STATUS: LiveData<Boolean> = status
+        private const val STOP_GRACE_MS = 500L
+        private const val STOP_TIMEOUT_MS = 2_000L
+        private const val WAKE_LOCK_TIMEOUT_MS = 24L * 60 * 60 * 1000
 
         fun start(context: Context) {
             val intent = Intent(context, WebService::class.java)
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                context.startForegroundService(intent)
-            } else {
-                context.startService(intent)
-            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) context.startForegroundService(intent) else context.startService(intent)
         }
 
         fun stop(context: Context) {
@@ -258,9 +101,3 @@ class WebService : Service() {
         }
     }
 }
-
-private val Throwable.description: String
-    get() {
-        return (localizedMessage ?: message ?: toString()) +
-                (cause?.let { ": " + it.description } ?: "")
-    }

@@ -1,7 +1,6 @@
 package com.homingsms.app.modules.settings
 
 import android.content.SharedPreferences
-import com.homingsms.app.modules.gateway.GatewaySettings
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Test
@@ -39,14 +38,14 @@ class PreferencesStorageTest {
 
     @Test
     fun enumsDecodeByNameAndUnknownIsNull() {
-        storage.set("channel", GatewaySettings.NotificationChannel.SSE_ONLY.name)
+        storage.set("channel", SampleChannel.SSE_ONLY.name)
         storage.set("bogus", "NOT_A_CHANNEL")
 
         assertEquals(
-            GatewaySettings.NotificationChannel.SSE_ONLY,
-            storage.get<GatewaySettings.NotificationChannel>("channel")
+            SampleChannel.SSE_ONLY,
+            storage.get<SampleChannel>("channel")
         )
-        assertNull(storage.get<GatewaySettings.NotificationChannel>("bogus"))
+        assertNull(storage.get<SampleChannel>("bogus"))
     }
 
     @Test
@@ -117,4 +116,9 @@ class PreferencesStorageTest {
             }
         }
     }
+}
+
+enum class SampleChannel {
+    AUTO,
+    SSE_ONLY
 }

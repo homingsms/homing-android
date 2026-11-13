@@ -1,16 +1,8 @@
 package com.homingsms.app.modules.receiver
 
-import com.homingsms.app.modules.settings.KeyValueStorage
-import com.homingsms.app.modules.settings.get
+import com.homingsms.core.data.settings.SettingsRepository
 
-class ReceiverSettings(
-    private val storage: KeyValueStorage,
-) {
-    var contentProviderEnabled: Boolean
-        get() = storage.get<Boolean>(CONTENT_PROVIDER_ENABLED) ?: true
-        set(value) = storage.set(CONTENT_PROVIDER_ENABLED, value)
-
-    companion object {
-        private const val CONTENT_PROVIDER_ENABLED = "content_provider_enabled"
-    }
+class ReceiverSettings(private val repository: SettingsRepository) {
+    val contentProviderEnabled: Boolean
+        get() = repository.current.inbox.contentProviderEnabled
 }

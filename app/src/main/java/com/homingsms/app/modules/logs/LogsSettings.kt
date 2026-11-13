@@ -1,63 +1,8 @@
 package com.homingsms.app.modules.logs
 
-import com.homingsms.app.modules.settings.Exporter
-import com.homingsms.app.modules.settings.Importer
-import com.homingsms.app.modules.settings.KeyValueStorage
-import com.homingsms.app.modules.settings.get
+import com.homingsms.core.data.settings.SettingsRepository
 
-class LogsSettings(
-    private val storage: KeyValueStorage,
-) : Exporter, Importer {
+class LogsSettings(private val repository: SettingsRepository) {
     val lifetimeDays: Int?
-        get() = storage.get<Int?>(LIFETIME_DAYS)?.takeIf { it > 0 }
-
-    private var version: Int
-        get() = storage.get<Int>(VERSION) ?: 0
-        set(value) = storage.set(VERSION, value)
-
-    init {
-        migrate()
-    }
-
-    private fun migrate() {
-        if (version == VERSION_CODE) {
-            return
-        }
-
-        if (version < 1) {
-            storage.set(LIFETIME_DAYS, "30")
-        }
-
-        version = VERSION_CODE
-    }
-
-    companion object {
-        private const val LIFETIME_DAYS = "lifetime_days"
-
-        private const val VERSION_CODE = 1
-        private const val VERSION = "version"
-    }
-
-    override fun export(): Map<String, *> {
-        return mapOf(
-            LIFETIME_DAYS to lifetimeDays,
-        )
-    }
-
-    override fun import(data: Map<String, *>): Boolean {
-        return data.map {
-            when (it.key) {
-                LIFETIME_DAYS -> {
-                    val newValue = it.value?.toString()?.toFloat()?.toInt()?.takeIf { it > 0 }
-                    val changed = lifetimeDays != newValue
-
-                    storage.set(it.key, newValue?.toString())
-
-                    changed
-                }
-
-                else -> false
-            }
-        }.any { it }
-    }
+        get() = repository.current.logs.lifetimeDays?.takeIf { it > 0 }
 }

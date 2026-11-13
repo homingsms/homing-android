@@ -2,86 +2,35 @@ package com.homingsms.app.modules.settings
 
 import androidx.preference.PreferenceManager
 import com.homingsms.app.helpers.SettingsHelper
-import com.homingsms.app.modules.device.DeviceSettings
 import com.homingsms.app.modules.encryption.EncryptionSettings
-import com.homingsms.app.modules.gateway.GatewaySettings
 import com.homingsms.app.modules.incoming.IncomingMessagesSettings
-import com.homingsms.app.modules.localserver.LocalServerSettings
 import com.homingsms.app.modules.logs.LogsSettings
 import com.homingsms.app.modules.messages.MessagesSettings
-import com.homingsms.app.modules.ping.PingSettings
 import com.homingsms.app.modules.receiver.ReceiverSettings
 import com.homingsms.app.modules.receiver.StateStorage
-import com.homingsms.app.modules.webhooks.TemporaryStorage
-import com.homingsms.app.modules.webhooks.WebhooksSettings
-import org.koin.core.module.dsl.singleOf
+import com.homingsms.core.data.secrets.PreferencesSecretStore
+import com.homingsms.core.data.secrets.SecretStore
+import com.homingsms.core.data.settings.SettingsRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-
 val settingsModule = module {
-    singleOf(::SettingsService)
+    single(named(APP_SCOPE)) { CoroutineScope(SupervisorJob() + Dispatchers.IO) }
+    single<SecretStore> { PreferencesSecretStore.create(get()) }
+    single { SettingsRepository.create(get(), get(), get(named(APP_SCOPE))) }
+    single { SettingsPreferenceDataStore(get(), get(), PreferenceManager.getDefaultSharedPreferences(get())) }
     factory { PreferenceManager.getDefaultSharedPreferences(get()) }
-    factory { SettingsHelper(get()) }
+    factory { SettingsHelper(get(), get()) }
 
-    factory {
-        EncryptionSettings(
-            PreferencesStorage(get(), "encryption")
-        )
-    }
-    factory {
-        GatewaySettings(
-            PreferencesStorage(get(), "gateway")
-        )
-    }
-    factory {
-        MessagesSettings(
-            PreferencesStorage(get(), "messages")
-        )
-    }
-    factory {
-        LocalServerSettings(
-            PreferencesStorage(get(), "localserver")
-        )
-    }
-    factory {
-        PingSettings(
-            PreferencesStorage(get(), "ping")
-        )
-    }
-    factory {
-        IncomingMessagesSettings(
-            PreferencesStorage(get(), "incoming")
-        )
-    }
-    factory {
-        LogsSettings(
-            PreferencesStorage(get(), "logs")
-        )
-    }
-    factory {
-        WebhooksSettings(
-            PreferencesStorage(get(), "webhooks")
-        )
-    }
-    factory {
-        ReceiverSettings(
-            PreferencesStorage(get(), "receiver")
-        )
-    }
-    factory {
-        DeviceSettings(
-            PreferencesStorage(get(), "device")
-        )
-    }
-    //
-    single {
-        TemporaryStorage(
-            PreferencesStorage(get(), "webhooks")
-        )
-    }
-    single {
-        StateStorage(
-            PreferencesStorage(get(), "receiver")
-        )
-    }
+    factory { EncryptionSettings { get<SecretStore>().get(SecretStore.PASSPHRASE) } }
+    factory { MessagesSettings(get()) }
+    factory { IncomingMessagesSettings(get()) }
+    factory { LogsSettings(get()) }
+    factory { ReceiverSettings(get()) }
+    single { StateStorage(PreferencesStorage(get(), "receiver")) }
 }
+
+const val APP_SCOPE = "appScope"

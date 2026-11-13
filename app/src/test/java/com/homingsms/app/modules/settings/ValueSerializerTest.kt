@@ -1,8 +1,7 @@
 package com.homingsms.app.modules.settings
 
-import com.homingsms.app.modules.gateway.GatewayApi
-import com.homingsms.app.modules.gateway.GatewaySettings
 import kotlin.reflect.typeOf
+import kotlinx.serialization.Serializable
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Test
@@ -19,10 +18,10 @@ class ValueSerializerTest {
     @Test
     fun decodesUnquotedEnumNames() {
         assertEquals(
-            GatewaySettings.NotificationChannel.SSE_ONLY,
-            serializer.deserialize<GatewaySettings.NotificationChannel>(
+            SampleChannel.SSE_ONLY,
+            serializer.deserialize<SampleChannel>(
                 "SSE_ONLY",
-                typeOf<GatewaySettings.NotificationChannel>()
+                typeOf<SampleChannel>()
             )
         )
     }
@@ -35,7 +34,7 @@ class ValueSerializerTest {
 
     @Test
     fun roundTripsObjects() {
-        val info = GatewayApi.DeviceRegisterResponse(
+        val info = SampleRegistration(
             id = "id",
             token = "token",
             login = "login",
@@ -45,6 +44,9 @@ class ValueSerializerTest {
         val encoded = serializer.serialize(info)
 
         assertEquals("""{"id":"id","token":"token","login":"login"}""", encoded)
-        assertEquals(info, serializer.deserialize<GatewayApi.DeviceRegisterResponse>(encoded, typeOf<GatewayApi.DeviceRegisterResponse>()))
+        assertEquals(info, serializer.deserialize<SampleRegistration>(encoded, typeOf<SampleRegistration>()))
     }
 }
+
+@Serializable
+data class SampleRegistration(val id: String, val token: String, val login: String, val password: String? = null)

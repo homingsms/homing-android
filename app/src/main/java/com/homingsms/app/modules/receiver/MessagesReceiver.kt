@@ -14,12 +14,14 @@ import java.util.Date
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class MessagesReceiver : BroadcastReceiver(), KoinComponent {
+class MessagesReceiver :
+    BroadcastReceiver(),
+    KoinComponent {
     private val receiverSvc: ReceiverService by inject()
 
     override fun onReceive(context: Context, intent: Intent) {
-        if (intent.action != Intents.SMS_RECEIVED_ACTION
-            && intent.action != Intents.DATA_SMS_RECEIVED_ACTION
+        if (intent.action != Intents.SMS_RECEIVED_ACTION &&
+            intent.action != Intents.DATA_SMS_RECEIVED_ACTION
         ) {
             return
         }
@@ -55,15 +57,15 @@ class MessagesReceiver : BroadcastReceiver(), KoinComponent {
                     userData,
                     firstMessage.displayOriginatingAddress,
                     Date(firstMessage.timestampMillis),
-                    SubscriptionsHelper.extractSubscriptionId(context, intent)
+                    SubscriptionsHelper.extractSubscriptionId(context, intent),
+                    intent.data?.port?.takeIf { it > 0 }
                 )
             }
         }
 
         receiverSvc.process(
-            context,
             inboxMessage,
-            true,
+            true
         )
     }
 

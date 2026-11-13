@@ -1,84 +1,65 @@
 package com.homingsms.app.modules.orchestrator
 
 import android.content.Context
-import com.homingsms.app.helpers.SettingsHelper
-import com.homingsms.app.helpers.SubscriptionsHelper
-import com.homingsms.app.modules.device.DeviceService
-import com.homingsms.app.modules.gateway.GatewayService
+import com.homingsms.app.modules.cloud.CloudController
 import com.homingsms.app.modules.incoming.IncomingMessagesService
 import com.homingsms.app.modules.localserver.LocalServerService
 import com.homingsms.app.modules.logs.LogsService
 import com.homingsms.app.modules.logs.db.LogEntry
 import com.homingsms.app.modules.messages.MessagesService
-import com.homingsms.app.modules.ping.PingService
 import com.homingsms.app.modules.receiver.ReceiverService
-import com.homingsms.app.modules.webhooks.WebHooksService
-import com.homingsms.app.modules.webhooks.domain.WebHookEvent
-import com.homingsms.app.modules.webhooks.payload.AppStartedPayload
+import com.homingsms.app.modules.status.AppStateRepository
+import com.homingsms.app.modules.webhooks.WebhooksService
+import com.homingsms.core.data.settings.SettingsRepository
 
 class OrchestratorService(
     private val messagesSvc: MessagesService,
     private val incomingSvc: IncomingMessagesService,
-    private val gatewaySvc: GatewayService,
+    private val cloud: CloudController,
     private val localServerSvc: LocalServerService,
-    private val webHooksSvc: WebHooksService,
+    private val webhooksSvc: WebhooksService,
     private val receiverService: ReceiverService,
-    private val pingSvc: PingService,
     private val logsSvc: LogsService,
-    private val deviceService: DeviceService,
-    private val settings: SettingsHelper,
+    private val settings: SettingsRepository,
+    private val state: AppStateRepository
 ) {
     fun start(context: Context, autostart: Boolean) {
-        if (autostart && !settings.autostart) {
-            return
-        }
+        if (autostart && !settings.current.general.autostart) return
 
+        localServerSvc.ensureDeviceId()
         logsSvc.start(context)
         messagesSvc.start(context)
         incomingSvc.start(context)
-        webHooksSvc.start(context)
-        deviceService.start(context)
-        gatewaySvc.start(context)
+        webhooksSvc.start()
 
         try {
             localServerSvc.start(context)
-            pingSvc.start(context)
-        } catch (e: Throwable) {
+            cloud.start()
+        } catch (e: IllegalStateException) {
             logsSvc.insert(
                 LogEntry.Priority.WARN,
                 MODULE_NAME,
-                "Can't start foreground services while the app is running in the background"
+                "Can't start foreground services while the app is running in the background",
+                mapOf("error" to e.message)
             )
         }
 
         try {
             receiverService.start(context)
-        } catch (e: Throwable) {
-            logsSvc.insert(
-                LogEntry.Priority.WARN,
-                MODULE_NAME,
-                "Can't register receiver"
-            )
+        } catch (e: SecurityException) {
+            logsSvc.insert(LogEntry.Priority.WARN, MODULE_NAME, "Can't register receiver", mapOf("error" to e.message))
         }
-
-        val simCards = SubscriptionsHelper.getActiveSimCards(context)
-        webHooksSvc.emit(
-            context,
-            WebHookEvent.AppStarted,
-            AppStartedPayload(simCards)
-        )
+        state.setRunning(true)
     }
 
     fun stop(context: Context) {
         receiverService.stop(context)
-        pingSvc.stop(context)
         localServerSvc.stop(context)
-
-        gatewaySvc.stop(context)
-        webHooksSvc.stop(context)
+        cloud.stop()
+        webhooksSvc.stop()
         messagesSvc.stop(context)
         incomingSvc.stop(context)
         logsSvc.stop(context)
-        deviceService.stop(context)
+        state.setRunning(false)
     }
 }

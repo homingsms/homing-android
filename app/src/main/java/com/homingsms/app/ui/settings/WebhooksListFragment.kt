@@ -6,48 +6,43 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.homingsms.app.databinding.FragmentWebhooksListBinding
-import com.homingsms.app.modules.webhooks.WebHooksService
+import com.homingsms.app.modules.status.AppStateRepository
 import com.homingsms.app.ui.adapters.WebhookAdapter
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class WebhooksListFragment : Fragment() {
     private var _binding: FragmentWebhooksListBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = requireNotNull(_binding)
 
-    private val webhookService: WebHooksService by inject()
-    private val adapter: WebhookAdapter = WebhookAdapter()
+    private val state: AppStateRepository by inject()
+    private val adapter = WebhookAdapter()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentWebhooksListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupRecyclerView()
-        loadWebhooks()
-    }
-
-    private fun setupRecyclerView() {
-        binding.webhookList.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = this@WebhooksListFragment.adapter
-            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+        binding.webhookList.layoutManager = LinearLayoutManager(requireContext())
+        binding.webhookList.adapter = adapter
+        binding.webhookList.addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                state.webhookEndpoints.collect { endpoints ->
+                    adapter.submitList(endpoints)
+                    binding.emptyState.isVisible = endpoints.isEmpty()
+                    binding.webhookList.isVisible = endpoints.isNotEmpty()
+                }
+            }
         }
-    }
-
-    private fun loadWebhooks() {
-        val webhooks = webhookService.select(null)
-        adapter.submitList(webhooks)
-        binding.emptyState.isVisible = webhooks.isEmpty()
-        binding.webhookList.isVisible = webhooks.isNotEmpty()
     }
 
     override fun onDestroyView() {

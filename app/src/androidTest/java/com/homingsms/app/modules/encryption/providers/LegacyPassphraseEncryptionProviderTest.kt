@@ -12,9 +12,8 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class LegacyPassphraseEncryptionProviderTest {
-    private fun provider(passphrase: String): LegacyPassphraseEncryptionProvider {
-        return LegacyPassphraseEncryptionProvider(EncryptionSettings(FakeStorage(passphrase)))
-    }
+    private fun provider(passphrase: String): LegacyPassphraseEncryptionProvider =
+        LegacyPassphraseEncryptionProvider(EncryptionSettings { passphrase })
 
     @Test
     fun encryptDecryptRoundTrip() {
@@ -25,7 +24,7 @@ class LegacyPassphraseEncryptionProviderTest {
             "",
             "hello",
             "unicode: 日本語 и ελληνικά",
-            "a".repeat(1000),
+            "a".repeat(1000)
         )) {
             runBlocking {
                 assertEquals(plain, provider.decrypt(provider.encrypt(plain)))
@@ -56,7 +55,7 @@ class LegacyPassphraseEncryptionProviderTest {
     fun legacyCannotDecryptHardenedOutput() {
         val passphrase = "s3cret"
         val legacy = provider(passphrase)
-        val hardened = HardenedPassphraseEncryptionProvider(EncryptionSettings(FakeStorage(passphrase)))
+        val hardened = HardenedPassphraseEncryptionProvider(EncryptionSettings { passphrase })
 
         runBlocking {
             val hardenedOutput = hardened.encrypt("payload")
