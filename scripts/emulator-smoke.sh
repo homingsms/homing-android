@@ -41,13 +41,20 @@ emulator_log="${TMPDIR:-/tmp}/homing-emulator.log"
 if ! "$adb" devices | grep -q '^emulator-.*device$'; then
   log "Booting AVD $avd"
   "$emulator" -avd "$avd" -no-window -no-audio -no-boot-anim -no-snapshot-save >"$emulator_log" 2>&1 &
+  emulator_pid=$!
   started_emulator=1
 fi
 
 for _ in $(seq 1 90); do
   "$adb" devices | grep -q '^emulator-.*device$' && break
-  if [[ "$started_emulator" == "1" ]] && grep -q 'hvf is not enabled' "$emulator_log" 2>/dev/null; then
-    fail "the emulator cannot use the Mac hypervisor from this shell. Run the script from Terminal.app or iTerm instead of an embedded or sandboxed terminal. Log: $emulator_log"
+  if [[ "$started_emulator" == "1" ]]; then
+    if grep -q 'hvf is not enabled' "$emulator_log" 2>/dev/null; then
+      fail "the emulator cannot use the Mac hypervisor from this shell. Run the script from Terminal.app or iTerm instead of an embedded or sandboxed terminal. Log: $emulator_log"
+    fi
+    if ! kill -0 "$emulator_pid" 2>/dev/null; then
+      reason="$(grep -m1 'FATAL' "$emulator_log" 2>/dev/null | sed -e 's/^FATAL *| *//' -e 's/\.$//')"
+      fail "the emulator exited before booting: ${reason:-see the log}. Log: $emulator_log"
+    fi
   fi
   sleep 2
 done
