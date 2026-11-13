@@ -66,11 +66,13 @@ android {
         create("debugInsecure") {
             isDebuggable = true
             signingConfig = signingConfigs.getByName("debug")
+            matchingFallbacks += listOf("debug")
             manifestPlaceholders["networkSecurityConfig"] = "@xml/network_security_config_insecure"
         }
         create("insecure") {
             initWith(getByName("debug"))
             isDebuggable = true
+            matchingFallbacks += listOf("debug")
             if (releaseSigningAvailable) {
                 signingConfig = signingConfigs.getByName("release")
             }
