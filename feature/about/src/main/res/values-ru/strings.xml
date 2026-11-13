@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_title">О приложении</string>
+    <string name="about_summary">Homing превращает этот телефон в SMS-шлюз для ваших приложений: через локальную сеть или Homing Cloud.</string>
+    <string name="about_version">Версия %1$s</string>
+    <string name="about_version_code">Версия %1$s (%2$s)</string>
+    <string name="about_version_build">%1$s, сборка %2$s</string>
+    <string name="about_licenses_title">Лицензии открытого ПО</string>
+    <string name="about_licenses_body">Homing распространяется по лицензии Apache 2.0 и использует эти компоненты.</string>
+    <string name="about_component_line">%1$s, %2$s</string>
+    <string name="about_license_apache">Apache License 2.0</string>
+    <string name="about_license_mit">Лицензия MIT</string>
+    <string name="about_license_ofl">SIL Open Font License 1.1</string>
+</resources>

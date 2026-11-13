@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="homing_wordmark" translatable="false">Homing</string>
+    <string name="homing_filter_count" translatable="false">%1$s · %2$s</string>
+    <string name="homing_logo_description">Homing</string>
+
+    <string name="homing_action_copy">Copy</string>
+    <string name="homing_action_copied">Copied</string>
+    <string name="homing_action_retry">Try again</string>
+    <string name="homing_action_cancel">Cancel</string>
+    <string name="homing_action_close">Close</string>
+    <string name="homing_action_back">Back</string>
+    <string name="homing_action_clear">Clear</string>
+
+    <string name="homing_secret_show">Show %1$s</string>
+    <string name="homing_secret_hide">Hide %1$s</string>
+    <string name="homing_secret_copy">Copy %1$s</string>
+    <string name="homing_secret_hidden">%1$s, hidden</string>
+
+    <string name="homing_sim_label">SIM %1$d</string>
+    <string name="homing_sim_no_carrier">No carrier</string>
+    <string name="homing_sim_signal">Signal %1$d of 4</string>
+    <string name="homing_sim_no_signal">No signal</string>
+    <string name="homing_sim_signal_unknown">Signal unknown</string>
+    <string name="homing_sim_usage">%1$s of %2$s today</string>
+    <string name="homing_sim_usage_uncapped">%1$s today, no daily cap</string>
+    <string name="homing_sim_near_cap">Near the daily cap</string>
+    <string name="homing_sim_at_cap">Daily cap reached. Sending paused on this SIM.</string>
+    <string name="homing_sim_disabled">Not used for sending</string>
+
+    <string name="homing_status_online">Online</string>
+    <string name="homing_status_degraded">Degraded</string>
+    <string name="homing_status_offline">Offline</string>
+
+    <string name="homing_loading">Loading</string>
+    <string name="homing_value_unavailable">No data</string>
+    <string name="homing_list_load_more_failed">Couldn\'t load more</string>
+    <string name="homing_time_just_now">Just now</string>
+    <string name="homing_time_never">Never</string>
+
+    <string name="homing_qr_description">QR code for %1$s</string>
+
+    <string name="homing_chart_empty">No messages in the last 24 hours</string>
+    <string name="homing_chart_description">Last 24 hours: %1$s delivered, %2$s sent without a report, %3$s failed</string>
+    <string name="homing_chart_delivered">Delivered</string>
+    <string name="homing_chart_sent">Sent</string>
+    <string name="homing_chart_failed">Failed</string>
+    <string name="homing_chart_start">24 h ago</string>
+    <string name="homing_chart_end">Now</string>
+
+    <string name="homing_nav_home">Home</string>
+    <string name="homing_nav_messages">Messages</string>
+    <string name="homing_nav_inbox">Inbox</string>
+    <string name="homing_nav_connect">Connect</string>
+    <string name="homing_nav_settings">Settings</string>
+</resources>

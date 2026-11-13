@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="homing_logo_description">Homing</string>
+
+    <string name="homing_action_copy">Копировать</string>
+    <string name="homing_action_copied">Скопировано</string>
+    <string name="homing_action_retry">Повторить</string>
+    <string name="homing_action_cancel">Отмена</string>
+    <string name="homing_action_close">Закрыть</string>
+    <string name="homing_action_back">Назад</string>
+    <string name="homing_action_clear">Сбросить</string>
+
+    <string name="homing_secret_show">Показать: %1$s</string>
+    <string name="homing_secret_hide">Скрыть: %1$s</string>
+    <string name="homing_secret_copy">Копировать: %1$s</string>
+    <string name="homing_secret_hidden">%1$s, скрыто</string>
+
+    <string name="homing_sim_label">SIM %1$d</string>
+    <string name="homing_sim_no_carrier">Нет оператора</string>
+    <string name="homing_sim_signal">Сигнал %1$d из 4</string>
+    <string name="homing_sim_no_signal">Нет сигнала</string>
+    <string name="homing_sim_signal_unknown">Сигнал неизвестен</string>
+    <string name="homing_sim_usage">%1$s из %2$s сегодня</string>
+    <string name="homing_sim_usage_uncapped">%1$s сегодня, без дневного лимита</string>
+    <string name="homing_sim_near_cap">Почти достигнут дневной лимит</string>
+    <string name="homing_sim_at_cap">Дневной лимит исчерпан. Отправка с этой SIM приостановлена.</string>
+    <string name="homing_sim_disabled">Не используется для отправки</string>
+
+    <string name="homing_status_online">В сети</string>
+    <string name="homing_status_degraded">С ограничениями</string>
+    <string name="homing_status_offline">Не в сети</string>
+
+    <string name="homing_loading">Загрузка</string>
+    <string name="homing_value_unavailable">Нет данных</string>
+    <string name="homing_list_load_more_failed">Не удалось загрузить ещё</string>
+    <string name="homing_time_just_now">Только что</string>
+    <string name="homing_time_never">Никогда</string>
+
+    <string name="homing_qr_description">QR-код: %1$s</string>
+
+    <string name="homing_chart_empty">За последние 24 часа сообщений не было</string>
+    <string name="homing_chart_description">Последние 24 часа: доставлено %1$s, отправлено без отчёта %2$s, ошибок %3$s</string>
+    <string name="homing_chart_delivered">Доставлено</string>
+    <string name="homing_chart_sent">Отправлено</string>
+    <string name="homing_chart_failed">Ошибка</string>
+    <string name="homing_chart_start">24 ч назад</string>
+    <string name="homing_chart_end">Сейчас</string>
+
+    <string name="homing_nav_home">Главная</string>
+    <string name="homing_nav_messages">Сообщения</string>
+    <string name="homing_nav_inbox">Входящие</string>
+    <string name="homing_nav_connect">Подключение</string>
+    <string name="homing_nav_settings">Настройки</string>
+</resources>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="homing_logo_description">Homing</string>
+
+    <string name="homing_action_copy">复制</string>
+    <string name="homing_action_copied">已复制</string>
+    <string name="homing_action_retry">重试</string>
+    <string name="homing_action_cancel">取消</string>
+    <string name="homing_action_close">关闭</string>
+    <string name="homing_action_back">返回</string>
+    <string name="homing_action_clear">清除</string>
+
+    <string name="homing_secret_show">显示%1$s</string>
+    <string name="homing_secret_hide">隐藏%1$s</string>
+    <string name="homing_secret_copy">复制%1$s</string>
+    <string name="homing_secret_hidden">%1$s，已隐藏</string>
+
+    <string name="homing_sim_label">SIM %1$d</string>
+    <string name="homing_sim_no_carrier">无运营商</string>
+    <string name="homing_sim_signal">信号 %1$d/4</string>
+    <string name="homing_sim_no_signal">无信号</string>
+    <string name="homing_sim_signal_unknown">信号未知</string>
+    <string name="homing_sim_usage">今日 %1$s / %2$s</string>
+    <string name="homing_sim_usage_uncapped">今日 %1$s，无每日上限</string>
+    <string name="homing_sim_near_cap">接近每日上限</string>
+    <string name="homing_sim_at_cap">已达到每日上限，此 SIM 卡暂停发送。</string>
+    <string name="homing_sim_disabled">不用于发送</string>
+
+    <string name="homing_status_online">在线</string>
+    <string name="homing_status_degraded">受限</string>
+    <string name="homing_status_offline">离线</string>
+
+    <string name="homing_loading">正在加载</string>
+    <string name="homing_value_unavailable">暂无数据</string>
+    <string name="homing_list_load_more_failed">无法加载更多</string>
+    <string name="homing_time_just_now">刚刚</string>
+    <string name="homing_time_never">从未</string>
+
+    <string name="homing_qr_description">%1$s 的二维码</string>
+
+    <string name="homing_chart_empty">过去 24 小时没有消息</string>
+    <string name="homing_chart_description">过去 24 小时：已送达 %1$s 条，已发送但无回执 %2$s 条，失败 %3$s 条</string>
+    <string name="homing_chart_delivered">已送达</string>
+    <string name="homing_chart_sent">已发送</string>
+    <string name="homing_chart_failed">失败</string>
+    <string name="homing_chart_start">24 小时前</string>
+    <string name="homing_chart_end">现在</string>
+
+    <string name="homing_nav_home">首页</string>
+    <string name="homing_nav_messages">消息</string>
+    <string name="homing_nav_inbox">收件箱</string>
+    <string name="homing_nav_connect">连接</string>
+    <string name="homing_nav_settings">设置</string>
+</resources>

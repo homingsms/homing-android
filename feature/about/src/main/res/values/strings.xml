@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_title">About</string>
+    <string name="about_summary">Homing turns this phone into an SMS gateway for your apps, over your local network or through Homing Cloud.</string>
+    <string name="about_version">Version %1$s</string>
+    <string name="about_version_code">Version %1$s (%2$s)</string>
+    <string name="about_version_build">%1$s, %2$s build</string>
+    <string name="about_licenses_title">Open source licenses</string>
+    <string name="about_licenses_body">Homing is released under the Apache License 2.0 and is built with these components.</string>
+    <string name="about_component_line">%1$s, %2$s</string>
+    <string name="about_license_apache">Apache License 2.0</string>
+    <string name="about_license_mit">MIT License</string>
+    <string name="about_license_ofl">SIL Open Font License 1.1</string>
+</resources>

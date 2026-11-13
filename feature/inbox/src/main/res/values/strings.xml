@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="inbox_title">Inbox</string>
+    <string name="inbox_search">Search by sender or text</string>
+    <string name="inbox_filter_sim">SIM</string>
+    <string name="inbox_filter_clear">Clear filters</string>
+    <string name="inbox_kind_sms">SMS</string>
+    <string name="inbox_kind_data">Data SMS</string>
+    <string name="inbox_kind_mms">MMS</string>
+    <string name="inbox_data_port">Data SMS on port %1$s</string>
+    <string name="inbox_data_label">Data (Base64)</string>
+    <string name="inbox_open_detail">open message</string>
+    <string name="inbox_opt_out">Opt-out</string>
+    <string name="inbox_opt_out_keyword">Opt-out: %1$s</string>
+    <string name="inbox_error_title">Couldn\'t load the inbox</string>
+    <string name="inbox_error_body">Check that Homing is running, then try again.</string>
+    <string name="inbox_no_matches_title">No matching messages</string>
+    <string name="inbox_no_matches_body">Try a different search or clear the filters.</string>
+    <string name="inbox_empty_title">Nothing received yet</string>
+    <string name="inbox_empty_body">SMS, data SMS and MMS this phone receives show up here and go to your webhooks.</string>
+    <string name="inbox_detail_title">Received message</string>
+    <string name="inbox_detail_error">Couldn\'t load this message</string>
+    <string name="inbox_forwarded">Sent to webhooks</string>
+    <string name="inbox_forward_pending">Webhook pending</string>
+    <string name="inbox_forward_failed">Webhook failed</string>
+    <string name="inbox_not_forwarded">No webhook</string>
+    <string name="inbox_attachments_title">Attachments</string>
+    <string name="inbox_open_attachment">open attachment</string>
+    <string name="inbox_attachment_meta">%1$s, %2$s</string>
+    <string name="inbox_share_attachment">Share %1$s</string>
+    <string name="inbox_id">Message ID</string>
+    <plurals name="inbox_attachments">
+        <item quantity="one">%1$s attachment</item>
+        <item quantity="other">%1$s attachments</item>
+    </plurals>
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="inbox_title">Входящие</string>
+    <string name="inbox_search">Поиск по отправителю или тексту</string>
+    <string name="inbox_filter_sim">SIM</string>
+    <string name="inbox_filter_clear">Сбросить фильтры</string>
+    <string name="inbox_kind_sms">SMS</string>
+    <string name="inbox_kind_data">Data SMS</string>
+    <string name="inbox_kind_mms">MMS</string>
+    <string name="inbox_data_port">Data SMS на порт %1$s</string>
+    <string name="inbox_data_label">Данные (Base64)</string>
+    <string name="inbox_open_detail">открыть сообщение</string>
+    <string name="inbox_opt_out">Отписка</string>
+    <string name="inbox_opt_out_keyword">Отписка: %1$s</string>
+    <string name="inbox_error_title">Не удалось загрузить входящие</string>
+    <string name="inbox_error_body">Убедитесь, что Homing запущен, и повторите попытку.</string>
+    <string name="inbox_no_matches_title">Нет подходящих сообщений</string>
+    <string name="inbox_no_matches_body">Измените запрос или сбросьте фильтры.</string>
+    <string name="inbox_empty_title">Пока ничего не получено</string>
+    <string name="inbox_empty_body">Здесь появятся SMS, data SMS и MMS, которые получает телефон. Они также уходят на ваши вебхуки.</string>
+    <string name="inbox_detail_title">Входящее сообщение</string>
+    <string name="inbox_detail_error">Не удалось загрузить сообщение</string>
+    <string name="inbox_forwarded">Отправлено на вебхуки</string>
+    <string name="inbox_forward_pending">Вебхук ожидает</string>
+    <string name="inbox_forward_failed">Ошибка вебхука</string>
+    <string name="inbox_not_forwarded">Нет вебхука</string>
+    <string name="inbox_attachments_title">Вложения</string>
+    <string name="inbox_open_attachment">открыть вложение</string>
+    <string name="inbox_attachment_meta">%1$s, %2$s</string>
+    <string name="inbox_share_attachment">Поделиться: %1$s</string>
+    <string name="inbox_id">ID сообщения</string>
+    <plurals name="inbox_attachments">
+        <item quantity="one">%1$s вложение</item>
+        <item quantity="few">%1$s вложения</item>
+        <item quantity="many">%1$s вложений</item>
+        <item quantity="other">%1$s вложения</item>
+    </plurals>
+</resources>

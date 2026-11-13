@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="inbox_title">الوارد</string>
+    <string name="inbox_search">ابحث بالمرسل أو النص</string>
+    <string name="inbox_filter_sim">الشريحة</string>
+    <string name="inbox_filter_clear">مسح عوامل التصفية</string>
+    <string name="inbox_kind_sms">رسالة قصيرة</string>
+    <string name="inbox_kind_data">رسالة بيانات</string>
+    <string name="inbox_kind_mms">رسالة وسائط</string>
+    <string name="inbox_data_port">رسالة بيانات على المنفذ %1$s</string>
+    <string name="inbox_data_label">البيانات (Base64)</string>
+    <string name="inbox_open_detail">فتح الرسالة</string>
+    <string name="inbox_opt_out">إلغاء الاشتراك</string>
+    <string name="inbox_opt_out_keyword">إلغاء الاشتراك: %1$s</string>
+    <string name="inbox_error_title">تعذّر تحميل الوارد</string>
+    <string name="inbox_error_body">تأكد من أن Homing يعمل، ثم أعد المحاولة.</string>
+    <string name="inbox_no_matches_title">لا توجد رسائل مطابقة</string>
+    <string name="inbox_no_matches_body">جرّب بحثًا مختلفًا أو امسح عوامل التصفية.</string>
+    <string name="inbox_empty_title">لم يصل شيء بعد</string>
+    <string name="inbox_empty_body">تظهر هنا الرسائل القصيرة ورسائل البيانات والوسائط التي يستقبلها هذا الهاتف، وتُرسل إلى خطافات الويب.</string>
+    <string name="inbox_detail_title">رسالة واردة</string>
+    <string name="inbox_detail_error">تعذّر تحميل هذه الرسالة</string>
+    <string name="inbox_forwarded">أُرسلت إلى خطافات الويب</string>
+    <string name="inbox_forward_pending">خطاف الويب قيد الانتظار</string>
+    <string name="inbox_forward_failed">فشل خطاف الويب</string>
+    <string name="inbox_not_forwarded">لا يوجد خطاف ويب</string>
+    <string name="inbox_attachments_title">المرفقات</string>
+    <string name="inbox_open_attachment">فتح المرفق</string>
+    <string name="inbox_attachment_meta">%1$s، %2$s</string>
+    <string name="inbox_share_attachment">مشاركة %1$s</string>
+    <string name="inbox_id">معرّف الرسالة</string>
+    <plurals name="inbox_attachments">
+        <item quantity="zero">لا مرفقات</item>
+        <item quantity="one">مرفق واحد</item>
+        <item quantity="two">مرفقان</item>
+        <item quantity="few">%1$s مرفقات</item>
+        <item quantity="many">%1$s مرفقًا</item>
+        <item quantity="other">%1$s مرفق</item>
+    </plurals>
+</resources>

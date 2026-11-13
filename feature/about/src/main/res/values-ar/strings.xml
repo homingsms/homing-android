@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_title">حول</string>
+    <string name="about_summary">يحوّل Homing هذا الهاتف إلى بوابة رسائل قصيرة لتطبيقاتك، عبر شبكتك المحلية أو من خلال Homing Cloud.</string>
+    <string name="about_version">الإصدار %1$s</string>
+    <string name="about_version_code">الإصدار %1$s (%2$s)</string>
+    <string name="about_version_build">%1$s، إصدار %2$s</string>
+    <string name="about_licenses_title">تراخيص المصادر المفتوحة</string>
+    <string name="about_licenses_body">يُنشر Homing بموجب رخصة Apache 2.0 ومبني باستخدام هذه المكونات.</string>
+    <string name="about_component_line">%1$s، %2$s</string>
+    <string name="about_license_apache">رخصة Apache 2.0</string>
+    <string name="about_license_mit">رخصة MIT</string>
+    <string name="about_license_ofl">رخصة SIL للخطوط المفتوحة 1.1</string>
+</resources>
