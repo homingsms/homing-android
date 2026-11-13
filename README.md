@@ -8,7 +8,7 @@ The app can:
 - receive SMS and MMS and forward them to your webhooks
 - run a local API server on the phone (local mode)
 - pair with Homing Cloud and wake up on push, with a polling fallback (cloud mode)
-- encrypt message content end to end, limit sending rates and respect working hours
+- limit sending rates, cap daily sends per SIM and respect working hours
 
 ## Requirements
 
