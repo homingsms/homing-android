@@ -12,9 +12,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.CloudOff
-import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -37,6 +34,7 @@ import com.homingsms.app.core.designsystem.component.HomingTopAppBar
 import com.homingsms.app.core.designsystem.component.LoadingState
 import com.homingsms.app.core.designsystem.component.SectionHeader
 import com.homingsms.app.core.designsystem.component.StatusBadge
+import com.homingsms.app.core.designsystem.icon.HomingIcons
 import com.homingsms.app.core.designsystem.theme.HomingTheme
 import com.homingsms.app.core.designsystem.theme.StatusTone
 import com.homingsms.app.core.designsystem.util.formatBytes
@@ -60,7 +58,7 @@ fun InboxDetailScreen(state: InboxDetailUiState, actions: InboxDetailActions, mo
                 message != null -> InboxDetailContent(message, actions) { scope.launch { snackbar.showSnackbar(copied) } }
 
                 state.loadState == InboxLoadState.Error -> ErrorState(
-                    icon = Icons.Outlined.CloudOff,
+                    icon = HomingIcons.CloudOff,
                     title = stringResource(R.string.inbox_detail_error),
                     onRetry = actions.onRetryLoad
                 )
@@ -159,7 +157,7 @@ private fun AttachmentRow(attachment: InboxAttachment, actions: InboxDetailActio
         }
         IconButton(onClick = { actions.onShareAttachment(attachment.id) }) {
             Icon(
-                imageVector = Icons.Outlined.Share,
+                imageVector = HomingIcons.Share,
                 contentDescription = stringResource(R.string.inbox_share_attachment, name),
                 tint = HomingTheme.colors.mutedForeground
             )

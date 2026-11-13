@@ -133,6 +133,18 @@ adb shell am broadcast -n com.homingsms.app/.debug.DebugCommandReceiver -a com.h
 Room schemas live in `core/data/schemas`.
 - `gradle/libs.versions.toml`: dependency versions
 
+## Icons
+
+Every icon is a Compose `ImageVector` in `HomingIcons` (`:core:designsystem`, `icon/HomingIcons.kt`), generated from the Iconjar Hugeicons Pro packages: stroke rounded for everything, solid rounded for the selected bottom bar tabs. Do not use Material icons.
+
+To add or change an icon, extract the `@iconjar/stroke-rounded` and `@iconjar/solid-rounded` tarballs, add the name to the map in `scripts/generate-icons.mjs` and run:
+
+```bash
+node scripts/generate-icons.mjs <stroke-rounded package dir> <solid-rounded package dir>
+```
+
+Commit the regenerated `HomingIcons.kt`. The icon paths come from licensed Hugeicons Pro icons and are not covered by the Apache License below, so this repository stays private while it ships them.
+
 ## License
 
 Apache License 2.0. See `LICENSE`.

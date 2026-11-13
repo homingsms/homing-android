@@ -4,6 +4,7 @@ import com.homingsms.core.model.AppSettings
 import com.homingsms.core.model.LimitPeriod
 import com.homingsms.core.model.ProcessingOrder
 import com.homingsms.core.model.SimSelectionMode
+import com.homingsms.core.model.SpendSettings
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNull
@@ -99,6 +100,15 @@ class LegacySettingsMapperTest {
     fun legacyIntervalKeyIsUsedWhenMaxIsMissing() {
         val result = LegacySettingsMapper.map(mapOf("messages.SECONDS_BETWEEN_MESSAGES" to 12), AppSettings()).settings
         assertEquals(12, result.messages.sendIntervalMaxSeconds)
+    }
+
+    @Test
+    fun legacyMigrationLeavesSpendSettingsAlone() {
+        val fresh = LegacySettingsMapper.map(legacy, AppSettings()).settings
+        assertEquals(SpendSettings(), fresh.spend)
+
+        val saved = AppSettings(spend = SpendSettings("KES", mapOf(0 to 800_000L)))
+        assertEquals(saved.spend, LegacySettingsMapper.map(legacy, saved).settings.spend)
     }
 
     @Test

@@ -11,7 +11,9 @@ import com.homingsms.app.feature.settings.SettingsChange
 import com.homingsms.app.feature.settings.SettingsDestination
 import com.homingsms.app.feature.settings.SettingsUiState
 import com.homingsms.app.feature.settings.SimCapUi
+import com.homingsms.app.feature.settings.SimRateUi
 import com.homingsms.app.feature.settings.SimRoutingMode
+import com.homingsms.app.feature.settings.SpendSettingsUi
 import com.homingsms.app.feature.settings.WorkingHours
 import com.homingsms.app.ui.EffectViewModel
 import com.homingsms.app.ui.attempt
@@ -31,6 +33,7 @@ import com.homingsms.core.model.PairingLink
 import com.homingsms.core.model.RemoteDeviceSettings
 import com.homingsms.core.model.SimSelectionMode
 import com.homingsms.core.model.SimStats
+import com.homingsms.core.model.SpendMath
 import java.util.Locale
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -66,6 +69,7 @@ class SettingsViewModel(
     ) { settings, sims, info, (webhookCount, paired), extra ->
         SettingsUiState(
             sending = SettingsMapping.sending(settings, sims),
+            spend = SettingsMapping.spend(settings, sims),
             receiving = SettingsMapping.receiving(settings),
             server = ServerSettings(
                 localEnabled = settings.localServer.enabled,
@@ -181,6 +185,12 @@ object SettingsMapping {
         )
     }
 
+    fun spend(settings: AppSettings, sims: List<SimStats>, locale: Locale = Locale.getDefault()): SpendSettingsUi {
+        val rates = settings.spend.simRatesMicros
+        val rows = sims.map { SimRateUi(it.slot, it.carrier, rates[it.slot]) }.ifEmpty { listOf(SimRateUi(0, null, rates[0])) }
+        return SpendSettingsUi(currencyCode = settings.spend.effectiveCurrency(locale), rates = rows)
+    }
+
     fun receiving(settings: AppSettings): ReceivingSettings {
         val inbox = settings.inbox
         return ReceivingSettings(
@@ -224,9 +234,20 @@ object SettingsMapping {
 
     fun keywords(values: List<String>): List<String> = values.map { it.trim().uppercase() }.filter { it.isNotEmpty() }.distinct()
 
-    fun apply(settings: AppSettings, change: SettingsChange): AppSettings = messages(settings, change)
+    fun apply(settings: AppSettings, change: SettingsChange, locale: Locale = Locale.getDefault()): AppSettings = messages(settings, change)
         ?: inbox(settings, change)
+        ?: spend(settings, change, locale)
         ?: other(settings, change)
+
+    private fun spend(settings: AppSettings, change: SettingsChange, locale: Locale): AppSettings? {
+        val spend = settings.spend
+        val updated = when (change) {
+            is SettingsChange.SpendCurrency -> if (SpendMath.isCurrencyCode(change.code)) spend.copy(currencyCode = change.code) else spend
+            is SettingsChange.SmsRate -> spend.copy(currencyCode = spend.effectiveCurrency(locale)).withRate(change.slot, change.micros)
+            else -> return null
+        }
+        return settings.copy(spend = updated)
+    }
 
     private fun other(settings: AppSettings, change: SettingsChange): AppSettings = when (change) {
         is SettingsChange.PullInterval -> settings.copy(

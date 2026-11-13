@@ -9,14 +9,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.BatteryChargingFull
-import androidx.compose.material.icons.outlined.BatteryStd
-import androidx.compose.material.icons.outlined.Cloud
-import androidx.compose.material.icons.outlined.Dns
-import androidx.compose.material.icons.outlined.NetworkCheck
-import androidx.compose.material.icons.outlined.SimCard
-import androidx.compose.material.icons.outlined.Sync
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SnackbarHostState
@@ -25,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import com.homingsms.app.core.designsystem.component.CenteredContent
 import com.homingsms.app.core.designsystem.component.CodeBlock
@@ -43,6 +36,7 @@ import com.homingsms.app.core.designsystem.component.SectionHeader
 import com.homingsms.app.core.designsystem.component.SimCard
 import com.homingsms.app.core.designsystem.component.StatTile
 import com.homingsms.app.core.designsystem.component.StatusHero
+import com.homingsms.app.core.designsystem.icon.HomingIcons
 import com.homingsms.app.core.designsystem.theme.HomingTheme
 import com.homingsms.app.core.designsystem.theme.StatusTone
 import com.homingsms.app.core.designsystem.util.formatCount
@@ -83,12 +77,13 @@ private fun HomeContent(state: HomeUiState, actions: HomeActions, onShowCopiedCo
             item(key = "more-issues") { MoreIssues(state.issues.drop(1), actions) }
         }
         item(key = "today") { TodayPanel(state, actions) }
+        state.spend?.let { spend -> item(key = "spend") { SpendPanel(spend, actions.onSetSmsRate) } }
         item(key = "sims-header") { SectionHeader(title = stringResource(R.string.home_sims_title)) }
         if (state.sims.isEmpty()) {
             item(key = "sims-empty") {
                 HomingPanel(contentPadding = PaddingValues()) {
                     EmptyState(
-                        icon = Icons.Outlined.SimCard,
+                        icon = HomingIcons.SimCard,
                         title = stringResource(R.string.home_sims_empty_title),
                         body = stringResource(R.string.home_sims_empty_body)
                     )
@@ -220,7 +215,7 @@ private fun DevicePanel(device: DeviceHealth?) {
             supporting = if (device.charging) stringResource(R.string.home_battery_charging, battery) else battery,
             leading = {
                 Icon(
-                    imageVector = if (device.charging) Icons.Outlined.BatteryChargingFull else Icons.Outlined.BatteryStd,
+                    imageVector = if (device.charging) HomingIcons.BatteryCharging else HomingIcons.Battery,
                     contentDescription = null,
                     tint = HomingTheme.colors.mutedForeground
                 )
@@ -230,15 +225,21 @@ private fun DevicePanel(device: DeviceHealth?) {
         HomingListRow(
             headline = stringResource(R.string.home_network),
             supporting = device.network.label(),
-            leading = { Icon(Icons.Outlined.NetworkCheck, contentDescription = null, tint = HomingTheme.colors.mutedForeground) }
+            leading = { Icon(device.network.icon(), contentDescription = null, tint = HomingTheme.colors.mutedForeground) }
         )
         HomingDivider(inset = true)
         HomingListRow(
             headline = stringResource(R.string.home_last_cloud_contact),
             supporting = formatRelativeTime(device.lastCloudContactMillis),
-            leading = { Icon(Icons.Outlined.Sync, contentDescription = null, tint = HomingTheme.colors.mutedForeground) }
+            leading = { Icon(HomingIcons.Sync, contentDescription = null, tint = HomingTheme.colors.mutedForeground) }
         )
     }
+}
+
+private fun NetworkKind.icon(): ImageVector = when (this) {
+    NetworkKind.Wifi -> HomingIcons.Wifi
+    NetworkKind.Cellular -> HomingIcons.Cellular
+    NetworkKind.Ethernet, NetworkKind.None, NetworkKind.Unknown -> HomingIcons.Network
 }
 
 @Composable
@@ -275,7 +276,7 @@ private fun ConnectionsPanel(state: HomeUiState, actions: HomeActions) {
             description = localDescription,
             checked = local.enabled,
             onCheckedChange = actions.onLocalServerToggle,
-            leading = { Icon(Icons.Outlined.Dns, contentDescription = null, tint = HomingTheme.colors.mutedForeground) }
+            leading = { Icon(HomingIcons.Server, contentDescription = null, tint = HomingTheme.colors.mutedForeground) }
         )
         HomingDivider(inset = true)
         HomingSwitchRow(
@@ -284,7 +285,7 @@ private fun ConnectionsPanel(state: HomeUiState, actions: HomeActions) {
             checked = cloud.enabled && cloud.paired,
             enabled = cloud.paired,
             onCheckedChange = actions.onCloudToggle,
-            leading = { Icon(Icons.Outlined.Cloud, contentDescription = null, tint = HomingTheme.colors.mutedForeground) }
+            leading = { Icon(HomingIcons.Cloud, contentDescription = null, tint = HomingTheme.colors.mutedForeground) }
         )
     }
 }

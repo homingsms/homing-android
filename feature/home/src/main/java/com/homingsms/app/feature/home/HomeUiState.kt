@@ -14,8 +14,24 @@ data class HomeUiState(
     val sims: List<SimStatus> = emptyList(),
     val device: DeviceHealth? = null,
     val localServer: LocalServerStatus = LocalServerStatus(),
-    val cloud: CloudStatus = CloudStatus()
+    val cloud: CloudStatus = CloudStatus(),
+    val spend: SpendUiState? = null
 )
+
+@Immutable
+data class SpendUiState(
+    val currencyCode: String,
+    val hasRate: Boolean,
+    val monthMicros: Long = 0,
+    val allTimeMicros: Long = 0,
+    val monthParts: Long = 0,
+    val allTimeParts: Long = 0,
+    val unpricedMonthParts: Long = 0,
+    val sims: List<SimSpend> = emptyList()
+)
+
+@Immutable
+data class SimSpend(val slot: Int, val carrier: String?, val monthParts: Long, val monthMicros: Long?)
 
 @Immutable
 data class TodayCounts(val sent: Long, val delivered: Long, val failed: Long, val queued: Long)
@@ -80,5 +96,6 @@ data class HomeActions(
     val onLocalServerToggle: (Boolean) -> Unit = {},
     val onCloudToggle: (Boolean) -> Unit = {},
     val onSimClick: (Int) -> Unit = {},
-    val onOpenMessages: () -> Unit = {}
+    val onOpenMessages: () -> Unit = {},
+    val onSetSmsRate: () -> Unit = {}
 )

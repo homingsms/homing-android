@@ -103,4 +103,17 @@
         <item quantity="many">%1$s خطافًا</item>
         <item quantity="other">%1$s خطاف</item>
     </plurals>
+    <string name="settings_group_spend">تكلفة الرسائل</string>
+    <string name="settings_currency">العملة</string>
+    <string name="settings_currency_value">%1$s (%2$s)</string>
+    <string name="settings_currency_label">رمز العملة</string>
+    <string name="settings_currency_help">ثلاثة أحرف، مثل USD أو EUR أو NGN.</string>
+    <string name="settings_currency_invalid">هذا ليس رمز عملة.</string>
+    <string name="settings_sms_rate">سعر %1$s</string>
+    <string name="settings_sms_rate_value">%1$s لكل جزء</string>
+    <string name="settings_sms_rate_not_set">غير محدد</string>
+    <string name="settings_sms_rate_label">سعر جزء الرسالة</string>
+    <string name="settings_sms_rate_help">ما تحتسبه شركة الاتصالات مقابل جزء واحد من الرسالة. الرسائل الطويلة تُرسل في عدة أجزاء.</string>
+    <string name="settings_sms_rate_clear">اتركه فارغًا لإزالة السعر.</string>
+    <string name="settings_sms_rate_invalid">أدخل مبلغًا حتى %1$s بحد أقصى %2$s منازل عشرية.</string>
 </resources>

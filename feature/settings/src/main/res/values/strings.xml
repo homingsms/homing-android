@@ -91,4 +91,17 @@
         <item quantity="one">%1$s webhook</item>
         <item quantity="other">%1$s webhooks</item>
     </plurals>
+    <string name="settings_group_spend">SMS cost</string>
+    <string name="settings_currency">Currency</string>
+    <string name="settings_currency_value">%1$s (%2$s)</string>
+    <string name="settings_currency_label">Currency code</string>
+    <string name="settings_currency_help">Three letters, like USD, EUR or NGN.</string>
+    <string name="settings_currency_invalid">That isn\'t a currency code.</string>
+    <string name="settings_sms_rate">Rate for %1$s</string>
+    <string name="settings_sms_rate_value">%1$s per part</string>
+    <string name="settings_sms_rate_not_set">Not set</string>
+    <string name="settings_sms_rate_label">Price per SMS part</string>
+    <string name="settings_sms_rate_help">What your carrier charges for one SMS part. Long messages use several parts.</string>
+    <string name="settings_sms_rate_clear">Leave empty to remove the rate.</string>
+    <string name="settings_sms_rate_invalid">Enter an amount up to %1$s with at most %2$s decimal places.</string>
 </resources>

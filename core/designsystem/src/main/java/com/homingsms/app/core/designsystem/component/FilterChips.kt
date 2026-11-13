@@ -11,11 +11,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.CheckBox
-import androidx.compose.material.icons.filled.CheckBoxOutlineBlank
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.FilterChip
@@ -39,6 +34,7 @@ import androidx.compose.ui.semantics.toggleableState
 import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.unit.dp
 import com.homingsms.app.core.designsystem.R
+import com.homingsms.app.core.designsystem.icon.HomingIcons
 import com.homingsms.app.core.designsystem.theme.HomingTheme
 import com.homingsms.app.core.designsystem.util.formatCount
 
@@ -74,7 +70,7 @@ fun HomingFilterChip(
         modifier = modifier,
         shape = CircleShape,
         leadingIcon = if (selected) {
-            { Icon(imageVector = Icons.Filled.Check, contentDescription = null, modifier = Modifier.size(18.dp)) }
+            { Icon(imageVector = HomingIcons.Check, contentDescription = null, modifier = Modifier.size(18.dp)) }
         } else {
             null
         },
@@ -117,7 +113,7 @@ fun <T> FilterMenuChip(
             selected = selected.isNotEmpty(),
             onClick = { expanded = true },
             trailingIcon = {
-                Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = null, modifier = Modifier.size(18.dp))
+                Icon(imageVector = HomingIcons.ChevronDown, contentDescription = null, modifier = Modifier.size(18.dp))
             }
         )
         DropdownMenu(
@@ -134,7 +130,7 @@ fun <T> FilterMenuChip(
                     onClick = { onToggle(option.value) },
                     leadingIcon = {
                         Icon(
-                            imageVector = if (checked) Icons.Filled.CheckBox else Icons.Filled.CheckBoxOutlineBlank,
+                            imageVector = if (checked) HomingIcons.CheckboxChecked else HomingIcons.CheckboxEmpty,
                             contentDescription = null,
                             tint = if (checked) HomingTheme.colors.brand else HomingTheme.colors.mutedForeground
                         )

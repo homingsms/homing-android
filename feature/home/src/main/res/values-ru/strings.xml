@@ -65,4 +65,36 @@
     <string name="home_issue_cloud_not_paired">Homing Cloud включён, но этот телефон не подключён.</string>
     <string name="home_issue_local_server_down">Локальный сервер остановлен и не принимает запросы.</string>
     <string name="home_fix_battery_saver">Открыть настройки батареи</string>
+    <string name="home_spend_title">Расходы на SMS</string>
+    <string name="home_spend_change_rate">Изменить тариф</string>
+    <string name="home_spend_set_rate">Указать тариф SMS</string>
+    <string name="home_spend_parts_month">Частей SMS отправлено в этом месяце</string>
+    <string name="home_spend_no_rate_body">Укажите, сколько оператор берёт за одну часть SMS, чтобы увидеть стоимость.</string>
+    <string name="home_spend_all_time">За всё время</string>
+    <string name="home_spend_no_rate">Тариф не указан</string>
+    <string name="home_spend_sim_carrier">%1$s · %2$s</string>
+    <plurals name="home_spend_month_estimate">
+        <item quantity="one">Оценка за месяц по %1$s части</item>
+        <item quantity="few">Оценка за месяц по %1$s частям</item>
+        <item quantity="many">Оценка за месяц по %1$s частям</item>
+        <item quantity="other">Оценка за месяц по %1$s части</item>
+    </plurals>
+    <plurals name="home_spend_parts">
+        <item quantity="one">%1$s часть</item>
+        <item quantity="few">%1$s части</item>
+        <item quantity="many">%1$s частей</item>
+        <item quantity="other">%1$s части</item>
+    </plurals>
+    <plurals name="home_spend_cost_for_parts">
+        <item quantity="one">%2$s за %1$s часть</item>
+        <item quantity="few">%2$s за %1$s части</item>
+        <item quantity="many">%2$s за %1$s частей</item>
+        <item quantity="other">%2$s за %1$s части</item>
+    </plurals>
+    <plurals name="home_spend_unpriced">
+        <item quantity="one">%1$s часть в этом месяце без тарифа и не учтена.</item>
+        <item quantity="few">%1$s части в этом месяце без тарифа и не учтены.</item>
+        <item quantity="many">%1$s частей в этом месяце без тарифа и не учтены.</item>
+        <item quantity="other">%1$s части в этом месяце без тарифа и не учтены.</item>
+    </plurals>
 </resources>

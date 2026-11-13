@@ -65,4 +65,44 @@
     <string name="home_issue_cloud_not_paired">Homing Cloud مفعّل، لكن هذا الهاتف غير مقترن.</string>
     <string name="home_issue_local_server_down">توقف الخادم المحلي ولا يستقبل الطلبات.</string>
     <string name="home_fix_battery_saver">فتح إعدادات البطارية</string>
+    <string name="home_spend_title">تكلفة الرسائل</string>
+    <string name="home_spend_change_rate">تغيير السعر</string>
+    <string name="home_spend_set_rate">تحديد سعر الرسالة</string>
+    <string name="home_spend_parts_month">أجزاء الرسائل المُرسلة هذا الشهر</string>
+    <string name="home_spend_no_rate_body">أضف ما تحتسبه شركة الاتصالات لكل جزء من الرسالة لمعرفة التكلفة.</string>
+    <string name="home_spend_all_time">منذ البداية</string>
+    <string name="home_spend_no_rate">بلا سعر</string>
+    <string name="home_spend_sim_carrier">%1$s · %2$s</string>
+    <plurals name="home_spend_month_estimate">
+        <item quantity="zero">تقدير هذا الشهر من %1$s جزء</item>
+        <item quantity="one">تقدير هذا الشهر من جزء واحد</item>
+        <item quantity="two">تقدير هذا الشهر من جزأين</item>
+        <item quantity="few">تقدير هذا الشهر من %1$s أجزاء</item>
+        <item quantity="many">تقدير هذا الشهر من %1$s جزءًا</item>
+        <item quantity="other">تقدير هذا الشهر من %1$s جزء</item>
+    </plurals>
+    <plurals name="home_spend_parts">
+        <item quantity="zero">%1$s جزء</item>
+        <item quantity="one">جزء واحد</item>
+        <item quantity="two">جزآن</item>
+        <item quantity="few">%1$s أجزاء</item>
+        <item quantity="many">%1$s جزءًا</item>
+        <item quantity="other">%1$s جزء</item>
+    </plurals>
+    <plurals name="home_spend_cost_for_parts">
+        <item quantity="zero">%2$s مقابل %1$s جزء</item>
+        <item quantity="one">%2$s مقابل جزء واحد</item>
+        <item quantity="two">%2$s مقابل جزأين</item>
+        <item quantity="few">%2$s مقابل %1$s أجزاء</item>
+        <item quantity="many">%2$s مقابل %1$s جزءًا</item>
+        <item quantity="other">%2$s مقابل %1$s جزء</item>
+    </plurals>
+    <plurals name="home_spend_unpriced">
+        <item quantity="zero">%1$s جزء هذا الشهر بلا سعر ولا يُحتسب.</item>
+        <item quantity="one">جزء واحد هذا الشهر بلا سعر ولا يُحتسب.</item>
+        <item quantity="two">جزآن هذا الشهر بلا سعر ولا يُحتسبان.</item>
+        <item quantity="few">%1$s أجزاء هذا الشهر بلا سعر ولا تُحتسب.</item>
+        <item quantity="many">%1$s جزءًا هذا الشهر بلا سعر ولا تُحتسب.</item>
+        <item quantity="other">%1$s جزء هذا الشهر بلا سعر ولا تُحتسب.</item>
+    </plurals>
 </resources>

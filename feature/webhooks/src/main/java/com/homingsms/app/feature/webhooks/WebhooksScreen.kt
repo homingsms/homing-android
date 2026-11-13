@@ -12,10 +12,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.selection.toggleable
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Add
-import androidx.compose.material.icons.outlined.CloudOff
-import androidx.compose.material.icons.outlined.Webhook
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -40,6 +36,7 @@ import com.homingsms.app.core.designsystem.component.HomingScaffold
 import com.homingsms.app.core.designsystem.component.HomingTopAppBar
 import com.homingsms.app.core.designsystem.component.LoadingState
 import com.homingsms.app.core.designsystem.component.StatusBadge
+import com.homingsms.app.core.designsystem.icon.HomingIcons
 import com.homingsms.app.core.designsystem.theme.HomingTheme
 import com.homingsms.app.core.designsystem.util.formatCount
 import com.homingsms.app.core.designsystem.util.formatRelativeTime
@@ -53,7 +50,7 @@ fun WebhooksScreen(state: WebhooksUiState, actions: WebhooksActions, modifier: M
             if (state.endpoints.isNotEmpty()) {
                 ExtendedFloatingActionButton(
                     onClick = actions.onAdd,
-                    icon = { Icon(Icons.Outlined.Add, contentDescription = null) },
+                    icon = { Icon(HomingIcons.Add, contentDescription = null) },
                     text = { Text(stringResource(R.string.webhooks_add)) },
                     containerColor = HomingTheme.colors.brand,
                     contentColor = HomingTheme.colors.brandForeground,
@@ -67,13 +64,13 @@ fun WebhooksScreen(state: WebhooksUiState, actions: WebhooksActions, modifier: M
                 state.loadState == WebhooksLoadState.Loading && state.endpoints.isEmpty() -> LoadingState(rows = 3)
 
                 state.loadState == WebhooksLoadState.Error && state.endpoints.isEmpty() -> ErrorState(
-                    icon = Icons.Outlined.CloudOff,
+                    icon = HomingIcons.CloudOff,
                     title = stringResource(R.string.webhooks_error_title),
                     onRetry = actions.onRetryLoad
                 )
 
                 state.endpoints.isEmpty() -> EmptyState(
-                    icon = Icons.Outlined.Webhook,
+                    icon = HomingIcons.Webhook,
                     title = stringResource(R.string.webhooks_empty_title),
                     body = stringResource(R.string.webhooks_empty_body),
                     actionLabel = stringResource(R.string.webhooks_add),

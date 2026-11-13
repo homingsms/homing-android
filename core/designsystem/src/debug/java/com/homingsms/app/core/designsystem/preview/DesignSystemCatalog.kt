@@ -8,9 +8,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Inbox
-import androidx.compose.material.icons.outlined.Sms
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -39,6 +36,7 @@ import com.homingsms.app.core.designsystem.component.StatTile
 import com.homingsms.app.core.designsystem.component.StatusBadge
 import com.homingsms.app.core.designsystem.component.StatusHero
 import com.homingsms.app.core.designsystem.component.TimelineEntry
+import com.homingsms.app.core.designsystem.icon.HomingIcons
 import com.homingsms.app.core.designsystem.theme.HomingTheme
 import com.homingsms.app.core.designsystem.theme.StatusTone
 
@@ -116,8 +114,8 @@ fun DesignSystemCatalog(modifier: Modifier = Modifier) {
         SecretField(label = "API key", secret = "hk_live_4f9a2b7c1d8e", visiblePrefixLength = 8)
         CodeBlock(code = "adb shell settings put global sms_outgoing_check_max_count 1000", copyLabel = "Command")
         QrCode(content = "http://192.168.1.20:8080/api/v1", contentDescription = "Local API address")
-        EmptyState(icon = Icons.Outlined.Inbox, title = "No messages yet", body = "Received messages show up here.")
-        EmptyState(icon = Icons.Outlined.Sms, title = "Nothing sent", actionLabel = "Send a test", onAction = {})
+        EmptyState(icon = HomingIcons.Inbox, title = "No messages yet", body = "Received messages show up here.")
+        EmptyState(icon = HomingIcons.Messages, title = "Nothing sent", actionLabel = "Send a test", onAction = {})
     }
 }
 

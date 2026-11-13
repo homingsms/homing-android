@@ -17,6 +17,7 @@ import com.homingsms.core.model.MessageRecord
 import com.homingsms.core.model.Page
 import com.homingsms.core.model.Scope
 import com.homingsms.core.model.SimStats
+import com.homingsms.core.model.SmsPartsUsage
 import com.homingsms.core.model.TodayCounts
 import com.homingsms.core.model.WebhookDelivery
 import com.homingsms.core.model.WebhookEndpoint
@@ -32,6 +33,7 @@ interface AppStatus {
     val today: StateFlow<TodayCounts>
     val last24Hours: StateFlow<List<HourlyBucket>>
     val sims: StateFlow<List<SimStats>>
+    val smsParts: StateFlow<SmsPartsUsage?>
     val localServerInfo: StateFlow<LocalServerInfo>
     val cloudPairing: StateFlow<CloudPairingState>
     val cloudConnection: StateFlow<CloudConnectionState>

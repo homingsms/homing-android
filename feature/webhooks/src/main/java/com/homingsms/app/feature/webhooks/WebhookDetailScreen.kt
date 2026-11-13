@@ -10,10 +10,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.outlined.Send
-import androidx.compose.material.icons.outlined.CloudOff
-import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -46,6 +42,7 @@ import com.homingsms.app.core.designsystem.component.LoadingState
 import com.homingsms.app.core.designsystem.component.SecretField
 import com.homingsms.app.core.designsystem.component.SectionHeader
 import com.homingsms.app.core.designsystem.component.StatusBadge
+import com.homingsms.app.core.designsystem.icon.HomingIcons
 import com.homingsms.app.core.designsystem.theme.HomingTheme
 import com.homingsms.app.core.designsystem.theme.StatusTone
 import com.homingsms.app.core.designsystem.util.formatCount
@@ -71,7 +68,7 @@ fun WebhookDetailScreen(state: WebhookDetailUiState, actions: WebhookDetailActio
                 actions = {
                     if (state.endpoint != null) {
                         IconButton(onClick = actions.onEdit) {
-                            Icon(Icons.Outlined.Edit, contentDescription = stringResource(R.string.webhooks_edit))
+                            Icon(HomingIcons.Edit, contentDescription = stringResource(R.string.webhooks_edit))
                         }
                     }
                 }
@@ -84,7 +81,7 @@ fun WebhookDetailScreen(state: WebhookDetailUiState, actions: WebhookDetailActio
                 endpoint != null -> DetailContent(state, endpoint, actions) { scope.launch { snackbar.showSnackbar(copied) } }
 
                 state.loadState == WebhooksLoadState.Error -> ErrorState(
-                    icon = Icons.Outlined.CloudOff,
+                    icon = HomingIcons.CloudOff,
                     title = stringResource(R.string.webhooks_error_title),
                     onRetry = actions.onRetryLoad
                 )
@@ -222,7 +219,7 @@ private fun TestPanel(testState: TestEventState, onSendTest: () -> Unit) {
             HomingButton(
                 text = stringResource(R.string.webhooks_send_test),
                 onClick = onSendTest,
-                icon = Icons.AutoMirrored.Outlined.Send,
+                icon = HomingIcons.Send,
                 style = HomingButtonStyle.Secondary,
                 loading = testState == TestEventState.Sending
             )

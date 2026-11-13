@@ -8,10 +8,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.CloudOff
-import androidx.compose.material.icons.outlined.FilterListOff
-import androidx.compose.material.icons.outlined.Inbox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -39,6 +35,7 @@ import com.homingsms.app.core.designsystem.component.HomingTopAppBar
 import com.homingsms.app.core.designsystem.component.ListAppendFooter
 import com.homingsms.app.core.designsystem.component.LoadingState
 import com.homingsms.app.core.designsystem.component.StatusBadge
+import com.homingsms.app.core.designsystem.icon.HomingIcons
 import com.homingsms.app.core.designsystem.theme.HomingTheme
 import com.homingsms.app.core.designsystem.theme.StatusTone
 import com.homingsms.app.core.designsystem.util.formatCount
@@ -104,14 +101,14 @@ private fun InboxBody(state: InboxUiState, actions: InboxActions) {
         state.loadState == InboxLoadState.Loading && state.items.isEmpty() -> LoadingState()
 
         state.loadState == InboxLoadState.Error && state.items.isEmpty() -> ErrorState(
-            icon = Icons.Outlined.CloudOff,
+            icon = HomingIcons.CloudOff,
             title = stringResource(R.string.inbox_error_title),
             body = stringResource(R.string.inbox_error_body),
             onRetry = actions.onRetryLoad
         )
 
         state.items.isEmpty() && (state.filters.isActive || state.query.isNotBlank()) -> EmptyState(
-            icon = Icons.Outlined.FilterListOff,
+            icon = HomingIcons.FilterOff,
             title = stringResource(R.string.inbox_no_matches_title),
             body = stringResource(R.string.inbox_no_matches_body),
             actionLabel = stringResource(R.string.inbox_filter_clear),
@@ -122,7 +119,7 @@ private fun InboxBody(state: InboxUiState, actions: InboxActions) {
         )
 
         state.items.isEmpty() -> EmptyState(
-            icon = Icons.Outlined.Inbox,
+            icon = HomingIcons.Inbox,
             title = stringResource(R.string.inbox_empty_title),
             body = stringResource(R.string.inbox_empty_body)
         )

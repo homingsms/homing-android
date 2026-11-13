@@ -63,8 +63,15 @@ data class AdvancedSettings(
 )
 
 @Immutable
+data class SimRateUi(val slot: Int, val carrier: String?, val rateMicros: Long?)
+
+@Immutable
+data class SpendSettingsUi(val currencyCode: String = "USD", val rates: List<SimRateUi> = listOf(SimRateUi(0, null, null)))
+
+@Immutable
 data class SettingsUiState(
     val sending: SendingSettings = SendingSettings(),
+    val spend: SpendSettingsUi = SpendSettingsUi(),
     val receiving: ReceivingSettings = ReceivingSettings(),
     val server: ServerSettings = ServerSettings(),
     val security: SecuritySettings = SecuritySettings(),
@@ -95,6 +102,8 @@ sealed interface SettingsChange {
     data class EncryptionPassphrase(val passphrase: String) : SettingsChange
     data class KeepAlive(val enabled: Boolean) : SettingsChange
     data class VerboseLogging(val enabled: Boolean) : SettingsChange
+    data class SpendCurrency(val code: String) : SettingsChange
+    data class SmsRate(val slot: Int, val micros: Long?) : SettingsChange
 }
 
 enum class SettingsDestination {

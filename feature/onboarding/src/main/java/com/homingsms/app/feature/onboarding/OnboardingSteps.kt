@@ -16,13 +16,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.CheckCircle
-import androidx.compose.material.icons.outlined.Cloud
-import androidx.compose.material.icons.outlined.Dns
-import androidx.compose.material.icons.outlined.Inbox
-import androidx.compose.material.icons.outlined.Sms
-import androidx.compose.material.icons.outlined.SyncAlt
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
@@ -41,6 +34,7 @@ import com.homingsms.app.core.designsystem.component.HomingDivider
 import com.homingsms.app.core.designsystem.component.HomingLogoMark
 import com.homingsms.app.core.designsystem.component.HomingPanel
 import com.homingsms.app.core.designsystem.component.StatusBadge
+import com.homingsms.app.core.designsystem.icon.HomingIcons
 import com.homingsms.app.core.designsystem.theme.HomingTheme
 import com.homingsms.app.core.designsystem.theme.StatusTone
 import com.homingsms.app.core.designsystem.util.formatCount
@@ -54,9 +48,9 @@ internal fun WelcomeStep(onStart: () -> Unit) {
         HomingLogoMark(size = 56.dp)
         StepHeading(title = stringResource(R.string.onboarding_welcome_title), body = stringResource(R.string.onboarding_welcome_body))
         Column(verticalArrangement = Arrangement.spacedBy(HomingTheme.spacing.lg)) {
-            WelcomePoint(Icons.Outlined.Sms, R.string.onboarding_welcome_send)
-            WelcomePoint(Icons.Outlined.Inbox, R.string.onboarding_welcome_receive)
-            WelcomePoint(Icons.Outlined.SyncAlt, R.string.onboarding_welcome_modes)
+            WelcomePoint(HomingIcons.Messages, R.string.onboarding_welcome_send)
+            WelcomePoint(HomingIcons.Inbox, R.string.onboarding_welcome_receive)
+            WelcomePoint(HomingIcons.Transfer, R.string.onboarding_welcome_modes)
         }
         HomingButton(
             text = stringResource(R.string.onboarding_get_started),
@@ -96,7 +90,7 @@ internal fun PermissionsStep(state: OnboardingUiState, actions: OnboardingAction
     } else {
         HomingPanel(color = HomingTheme.colors.successSoft, borderColor = HomingTheme.colors.successSoft) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(Icons.Outlined.CheckCircle, contentDescription = null, tint = HomingTheme.colors.success)
+                Icon(HomingIcons.CheckCircle, contentDescription = null, tint = HomingTheme.colors.success)
                 Spacer(Modifier.width(HomingTheme.spacing.md))
                 Text(text = stringResource(R.string.onboarding_permissions_done), style = MaterialTheme.typography.bodyLarge)
             }
@@ -276,7 +270,7 @@ internal fun ModeStep(selected: GatewayMode?, onSelect: (GatewayMode) -> Unit) {
                     Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Icon(
-                                imageVector = if (mode == GatewayMode.Local) Icons.Outlined.Dns else Icons.Outlined.Cloud,
+                                imageVector = if (mode == GatewayMode.Local) HomingIcons.Server else HomingIcons.Cloud,
                                 contentDescription = null,
                                 tint = HomingTheme.colors.mutedForeground,
                                 modifier = Modifier.size(18.dp)

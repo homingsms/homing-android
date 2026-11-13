@@ -1,5 +1,6 @@
 package com.homingsms.core.model
 
+import java.util.Locale
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -118,6 +119,20 @@ data class LogSettings(val lifetimeDays: Int? = DEFAULT_LIFETIME_DAYS, val verbo
 data class GeneralSettings(val autostart: Boolean = false, val onboardingCompleted: Boolean = false)
 
 @Serializable
+data class SpendSettings(val currencyCode: String? = null, val simRatesMicros: Map<Int, Long> = emptyMap()) {
+    val hasRate: Boolean
+        get() = simRatesMicros.isNotEmpty()
+
+    fun effectiveCurrency(locale: Locale = Locale.getDefault()): String =
+        currencyCode?.takeIf(SpendMath::isCurrencyCode) ?: SpendMath.currencyFor(locale)
+
+    fun withRate(slot: Int, micros: Long?): SpendSettings {
+        val valid = micros?.takeIf { it in 0..SpendMath.MAX_RATE_MICROS }
+        return copy(simRatesMicros = if (valid == null) simRatesMicros - slot else simRatesMicros + (slot to valid))
+    }
+}
+
+@Serializable
 data class AppSettings(
     val schemaVersion: Int = CURRENT_SCHEMA,
     val general: GeneralSettings = GeneralSettings(),
@@ -126,7 +141,8 @@ data class AppSettings(
     val cloud: CloudSettings = CloudSettings(),
     val webhooks: WebhookSettings = WebhookSettings(),
     val inbox: InboxSettings = InboxSettings(),
-    val logs: LogSettings = LogSettings()
+    val logs: LogSettings = LogSettings(),
+    val spend: SpendSettings = SpendSettings()
 ) {
     val optOutKeywords: List<String>
         get() = when {

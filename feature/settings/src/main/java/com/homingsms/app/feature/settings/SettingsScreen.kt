@@ -47,6 +47,7 @@ fun SettingsScreen(state: SettingsUiState, actions: SettingsActions, modifier: M
                 )
             ) {
                 sendingSection(state.sending, actions, open)
+                spendSection(state.spend, open)
                 receivingSection(state.receiving, actions, open)
                 serverSection(state.server, actions, open)
                 securitySection(state.security, actions, open)
@@ -64,7 +65,7 @@ fun SettingsScreen(state: SettingsUiState, actions: SettingsActions, modifier: M
     editor?.let { SettingsEditorHost(it, state, actions, onClose = { editor = null }) }
 }
 
-private fun LazyListScope.section(key: String, title: Int, content: @Composable () -> Unit) {
+internal fun LazyListScope.section(key: String, title: Int, content: @Composable () -> Unit) {
     item(key = "$key-label") { GroupLabel(text = stringResource(title), modifier = Modifier.padding(top = HomingTheme.spacing.sm)) }
     item(key = key) {
         HomingPanel(contentPadding = PaddingValues(vertical = HomingTheme.spacing.xs)) { content() }
@@ -408,7 +409,7 @@ private fun SecondaryEditorHost(editor: SettingsEditor, state: SettingsUiState, 
             onConfirm = { apply(SettingsChange.EncryptionPassphrase(it)) }
         )
 
-        else -> Unit
+        else -> SpendEditorHost(editor, state.spend, apply, onClose)
     }
 }
 

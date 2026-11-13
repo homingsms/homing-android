@@ -65,4 +65,28 @@
     <string name="home_issue_cloud_not_paired">Homing Cloud is on, but this phone isn\'t paired.</string>
     <string name="home_issue_local_server_down">The local server stopped and isn\'t accepting requests.</string>
     <string name="home_fix_battery_saver">Open battery settings</string>
+    <string name="home_spend_title">SMS spend</string>
+    <string name="home_spend_change_rate">Change rate</string>
+    <string name="home_spend_set_rate">Set SMS rate</string>
+    <string name="home_spend_parts_month">SMS parts sent this month</string>
+    <string name="home_spend_no_rate_body">Add what your carrier charges per SMS part to see the cost.</string>
+    <string name="home_spend_all_time">All time</string>
+    <string name="home_spend_no_rate">No rate</string>
+    <string name="home_spend_sim_carrier">%1$s · %2$s</string>
+    <plurals name="home_spend_month_estimate">
+        <item quantity="one">Estimated this month from %1$s part</item>
+        <item quantity="other">Estimated this month from %1$s parts</item>
+    </plurals>
+    <plurals name="home_spend_parts">
+        <item quantity="one">%1$s part</item>
+        <item quantity="other">%1$s parts</item>
+    </plurals>
+    <plurals name="home_spend_cost_for_parts">
+        <item quantity="one">%2$s for %1$s part</item>
+        <item quantity="other">%2$s for %1$s parts</item>
+    </plurals>
+    <plurals name="home_spend_unpriced">
+        <item quantity="one">%1$s part this month has no rate and isn\'t counted.</item>
+        <item quantity="other">%1$s parts this month have no rate and aren\'t counted.</item>
+    </plurals>
 </resources>

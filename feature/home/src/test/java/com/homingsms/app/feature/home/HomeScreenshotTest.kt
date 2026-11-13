@@ -1,6 +1,11 @@
 package com.homingsms.app.feature.home
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.unit.dp
 import com.homingsms.app.core.testing.ScreenshotVariant
 import com.homingsms.app.core.testing.captureScreen
 import org.junit.Rule
@@ -26,6 +31,14 @@ class HomeScreenshotTest(private val variant: ScreenshotVariant) {
 
     @Test
     fun offline() = composeRule.captureScreen("home_offline", variant) { HomeScreen(HomeSamples.offline, HomeActions()) }
+
+    @Test
+    fun spend() = composeRule.captureScreen("home_spend", variant) {
+        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
+            SpendPanel(HomeSamples.spendMultiSim, onSetSmsRate = {})
+            SpendPanel(HomeSamples.spendNoRate, onSetSmsRate = {})
+        }
+    }
 
     @Test
     fun loading() = composeRule.captureScreen("home_loading", variant) { HomeScreen(HomeSamples.loading, HomeActions()) }

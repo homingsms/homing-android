@@ -1,5 +1,8 @@
 package com.homingsms.core.model
 
+import java.util.Calendar
+import java.util.TimeZone
+
 data class TodayCounts(val sent: Int, val delivered: Int, val failed: Int, val received: Int, val queued: Int) {
     companion object {
         val Empty = TodayCounts(0, 0, 0, 0, 0)
@@ -41,4 +44,18 @@ object TimeBuckets {
     fun fill(now: Long, buckets: Map<Long, HourlyBucket>): List<HourlyBucket> = last24Hours(now).map { start ->
         buckets[start] ?: HourlyBucket(start, 0, 0, 0)
     }
+
+    fun localMonthStart(timestamp: Long, zone: TimeZone = TimeZone.getDefault()): Long = Calendar.getInstance(zone).apply {
+        timeInMillis = timestamp
+        set(Calendar.DAY_OF_MONTH, 1)
+        set(Calendar.HOUR_OF_DAY, 0)
+        set(Calendar.MINUTE, 0)
+        set(Calendar.SECOND, 0)
+        set(Calendar.MILLISECOND, 0)
+    }.timeInMillis
+
+    fun nextLocalMonthStart(timestamp: Long, zone: TimeZone = TimeZone.getDefault()): Long = Calendar.getInstance(zone).apply {
+        timeInMillis = localMonthStart(timestamp, zone)
+        add(Calendar.MONTH, 1)
+    }.timeInMillis
 }

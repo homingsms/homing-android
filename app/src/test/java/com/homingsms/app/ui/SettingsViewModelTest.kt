@@ -3,6 +3,7 @@ package com.homingsms.app.ui
 import app.cash.turbine.test
 import com.homingsms.app.feature.settings.SettingsChange
 import com.homingsms.app.feature.settings.SettingsDestination
+import com.homingsms.app.feature.settings.SimRateUi
 import com.homingsms.app.feature.settings.SimRoutingMode
 import com.homingsms.app.ui.navigation.AboutRoute
 import com.homingsms.app.ui.navigation.ConnectRoute
@@ -16,7 +17,9 @@ import com.homingsms.core.model.CloudPairingState
 import com.homingsms.core.model.LimitPeriod
 import com.homingsms.core.model.SimSelectionMode
 import com.homingsms.core.model.SimStats
+import com.homingsms.core.model.SpendSettings
 import com.homingsms.core.model.WorkHours
+import java.util.Locale
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -190,6 +193,44 @@ class SettingsViewModelTest {
         assertTrue(viewModel.showSmsLimitHelp.value)
         viewModel.dismissSmsLimitHelp()
         assertFalse(viewModel.showSmsLimitHelp.value)
+    }
+
+    @Test
+    fun spendRowsFollowSimsAndFallBackToTheFirstSlot() {
+        status.settings.value = AppSettings(spend = SpendSettings("KES", mapOf(1 to 800_000L)))
+        status.sims.value = listOf(SimStats(0, "Safaricom", null, 3, 0, null, true), SimStats(1, "Airtel", null, 2, 0, null, true))
+        val spend = viewModel().state.value.spend
+        assertEquals("KES", spend.currencyCode)
+        assertEquals(listOf(SimRateUi(0, "Safaricom", null), SimRateUi(1, "Airtel", 800_000L)), spend.rates)
+
+        val noSims = SettingsMapping.spend(AppSettings(), emptyList(), Locale("en", "NG"))
+        assertEquals("NGN", noSims.currencyCode)
+        assertEquals(listOf(SimRateUi(0, null, null)), noSims.rates)
+    }
+
+    @Test
+    fun spendChangesValidateAndPinTheCurrency() {
+        val base = AppSettings()
+        val rated = SettingsMapping.apply(base, SettingsChange.SmsRate(0, 7_500L), Locale.GERMANY)
+        assertEquals(SpendSettings("EUR", mapOf(0 to 7_500L)), rated.spend)
+
+        val renamed = SettingsMapping.apply(rated, SettingsChange.SpendCurrency("USD"))
+        assertEquals("USD", renamed.spend.currencyCode)
+        assertEquals(renamed, SettingsMapping.apply(renamed, SettingsChange.SpendCurrency("ABC")))
+        assertEquals(renamed, SettingsMapping.apply(renamed, SettingsChange.SpendCurrency("usd")))
+
+        val cleared = SettingsMapping.apply(renamed, SettingsChange.SmsRate(0, null))
+        assertTrue(cleared.spend.simRatesMicros.isEmpty())
+        assertEquals("USD", cleared.spend.currencyCode)
+        assertTrue(SettingsMapping.apply(renamed, SettingsChange.SmsRate(0, -5L)).spend.simRatesMicros.isEmpty())
+    }
+
+    @Test
+    fun spendChangesReachStoredSettings() {
+        val viewModel = viewModel()
+        viewModel.actions.onChange(SettingsChange.SpendCurrency("GBP"))
+        viewModel.actions.onChange(SettingsChange.SmsRate(1, 12_000L))
+        assertEquals(SpendSettings("GBP", mapOf(1 to 12_000L)), status.settings.value.spend)
     }
 
     @Test

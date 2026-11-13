@@ -65,4 +65,24 @@
     <string name="home_issue_cloud_not_paired">Homing Cloud 已开启，但这部手机尚未配对。</string>
     <string name="home_issue_local_server_down">本地服务器已停止，无法接收请求。</string>
     <string name="home_fix_battery_saver">打开电池设置</string>
+    <string name="home_spend_title">短信花费</string>
+    <string name="home_spend_change_rate">修改费率</string>
+    <string name="home_spend_set_rate">设置短信费率</string>
+    <string name="home_spend_parts_month">本月已发送的短信段数</string>
+    <string name="home_spend_no_rate_body">填写运营商每段短信的收费，即可查看费用。</string>
+    <string name="home_spend_all_time">全部</string>
+    <string name="home_spend_no_rate">未设置费率</string>
+    <string name="home_spend_sim_carrier">%1$s · %2$s</string>
+    <plurals name="home_spend_month_estimate">
+        <item quantity="other">本月估算，共 %1$s 段</item>
+    </plurals>
+    <plurals name="home_spend_parts">
+        <item quantity="other">%1$s 段</item>
+    </plurals>
+    <plurals name="home_spend_cost_for_parts">
+        <item quantity="other">%2$s，共 %1$s 段</item>
+    </plurals>
+    <plurals name="home_spend_unpriced">
+        <item quantity="other">本月有 %1$s 段没有费率，未计入。</item>
+    </plurals>
 </resources>

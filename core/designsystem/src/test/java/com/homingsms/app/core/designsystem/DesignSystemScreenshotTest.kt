@@ -1,10 +1,8 @@
 package com.homingsms.app.core.designsystem
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.ui.test.junit4.createComposeRule
 import com.homingsms.app.core.designsystem.component.HomingTopAppBar
+import com.homingsms.app.core.designsystem.icon.HomingIcons
 import com.homingsms.app.core.designsystem.preview.DesignSystemCatalog
 import com.homingsms.app.core.designsystem.shell.HomingAppShell
 import com.homingsms.app.core.designsystem.shell.ShellDestination
@@ -44,8 +42,8 @@ class DesignSystemScreenshotTest(private val variant: ScreenshotVariant) {
     private fun Shell() {
         HomingAppShell(
             destinations = listOf(
-                ShellDestination("home", "Home", Icons.Outlined.Home),
-                ShellDestination("settings", "Settings", Icons.Outlined.Settings, badgeCount = 2)
+                ShellDestination("home", "Home", HomingIcons.Home),
+                ShellDestination("settings", "Settings", HomingIcons.Settings, badgeCount = 2)
             ),
             selectedKey = "home",
             onDestinationSelected = {}

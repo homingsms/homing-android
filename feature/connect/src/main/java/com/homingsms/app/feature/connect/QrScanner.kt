@@ -26,9 +26,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Close
-import androidx.compose.material.icons.outlined.PhotoCamera
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -63,6 +60,7 @@ import com.google.zxing.common.HybridBinarizer
 import com.homingsms.app.core.designsystem.component.EmptyState
 import com.homingsms.app.core.designsystem.component.HomingButton
 import com.homingsms.app.core.designsystem.component.HomingButtonStyle
+import com.homingsms.app.core.designsystem.icon.HomingIcons
 import com.homingsms.app.core.designsystem.theme.HomingTheme
 import java.util.concurrent.Executors
 import java.util.concurrent.atomic.AtomicBoolean
@@ -119,7 +117,7 @@ fun QrScannerContent(
                 .align(Alignment.TopStart)
         ) {
             Icon(
-                imageVector = Icons.Outlined.Close,
+                imageVector = HomingIcons.Close,
                 contentDescription = stringResource(com.homingsms.app.core.designsystem.R.string.homing_action_close),
                 tint = if (granted) Color.White else HomingTheme.colors.foreground
             )
@@ -169,7 +167,7 @@ private fun CameraPermissionPrompt(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         EmptyState(
-            icon = Icons.Outlined.PhotoCamera,
+            icon = HomingIcons.Camera,
             title = stringResource(if (denied) R.string.connect_camera_denied_title else R.string.connect_camera_title),
             body = stringResource(if (denied) R.string.connect_camera_denied_body else R.string.connect_camera_body)
         )

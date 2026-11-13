@@ -88,4 +88,17 @@
     <plurals name="settings_webhook_count">
         <item quantity="other">%1$s 个 Webhook</item>
     </plurals>
+    <string name="settings_group_spend">短信费用</string>
+    <string name="settings_currency">货币</string>
+    <string name="settings_currency_value">%1$s（%2$s）</string>
+    <string name="settings_currency_label">货币代码</string>
+    <string name="settings_currency_help">三个字母，例如 USD、EUR 或 CNY。</string>
+    <string name="settings_currency_invalid">这不是有效的货币代码。</string>
+    <string name="settings_sms_rate">%1$s 费率</string>
+    <string name="settings_sms_rate_value">每段 %1$s</string>
+    <string name="settings_sms_rate_not_set">未设置</string>
+    <string name="settings_sms_rate_label">每段短信价格</string>
+    <string name="settings_sms_rate_help">运营商对每段短信的收费。长短信会分成多段发送。</string>
+    <string name="settings_sms_rate_clear">留空即可删除费率。</string>
+    <string name="settings_sms_rate_invalid">请输入不超过 %1$s 的金额，最多 %2$s 位小数。</string>
 </resources>

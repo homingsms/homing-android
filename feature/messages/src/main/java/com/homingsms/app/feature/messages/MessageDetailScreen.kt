@@ -10,10 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Attachment
-import androidx.compose.material.icons.outlined.CloudOff
-import androidx.compose.material.icons.outlined.Refresh
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SnackbarHostState
@@ -44,6 +40,7 @@ import com.homingsms.app.core.designsystem.component.LoadingState
 import com.homingsms.app.core.designsystem.component.SectionHeader
 import com.homingsms.app.core.designsystem.component.StatusBadge
 import com.homingsms.app.core.designsystem.component.TimelineEntry
+import com.homingsms.app.core.designsystem.icon.HomingIcons
 import com.homingsms.app.core.designsystem.theme.HomingTheme
 import com.homingsms.app.core.designsystem.theme.StatusTone
 import com.homingsms.app.core.designsystem.util.formatBytes
@@ -74,7 +71,7 @@ fun MessageDetailScreen(state: MessageDetailUiState, actions: MessageDetailActio
                 )
 
                 state.loadState == LoadState.Error -> ErrorState(
-                    icon = Icons.Outlined.CloudOff,
+                    icon = HomingIcons.CloudOff,
                     title = stringResource(R.string.messages_detail_error),
                     onRetry = actions.onRetryLoad
                 )
@@ -183,7 +180,7 @@ private fun DetailActions(state: MessageDetailUiState, actions: MessageDetailAct
             HomingButton(
                 text = stringResource(R.string.messages_retry),
                 onClick = actions.onRetry,
-                icon = Icons.Outlined.Refresh,
+                icon = HomingIcons.Refresh,
                 loading = state.isRetrying
             )
         }
@@ -216,7 +213,7 @@ private fun MessageBody(message: MessageDetail) {
         }
         message.attachments.forEach { attachment ->
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(Icons.Outlined.Attachment, contentDescription = null, tint = HomingTheme.colors.mutedForeground)
+                Icon(HomingIcons.Attachment, contentDescription = null, tint = HomingTheme.colors.mutedForeground)
                 Spacer(Modifier.width(HomingTheme.spacing.sm))
                 Text(
                     text = stringResource(

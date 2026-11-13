@@ -7,6 +7,7 @@ import androidx.test.core.app.ApplicationProvider
 import com.homingsms.core.data.FakeSecrets
 import com.homingsms.core.data.secrets.SecretStore
 import com.homingsms.core.model.LimitPeriod
+import com.homingsms.core.model.SpendSettings
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -62,6 +63,29 @@ class SettingsRepositoryTest {
         assertFalse(preferences.contains("encryption.passphrase"))
         assertEquals("ru", preferences.getString("app.language", null))
         assertEquals(9L, preferences.getLong("receiver.state.last_processed_id", 0))
+    }
+
+    @Test
+    fun settingsSavedBeforeSpendExistedLoadWithDefaults() = runBlocking {
+        context.dataStoreFile(SettingsRepository.FILE_NAME).apply { parentFile?.mkdirs() }.writeText(
+            """{"schemaVersion":1,"general":{"autostart":true,"onboardingCompleted":true},"localServer":{"enabled":true,"port":8181}}"""
+        )
+        val repository = SettingsRepository.create(context, FakeSecrets(), scope)
+
+        val settings = repository.current
+        assertTrue(settings.general.onboardingCompleted)
+        assertEquals(8181, settings.localServer.port)
+        assertEquals(SpendSettings(), settings.spend)
+        assertFalse(settings.spend.hasRate)
+    }
+
+    @Test
+    fun spendSettingsRoundTrip() = runBlocking {
+        val repository = SettingsRepository.create(context, FakeSecrets(), scope)
+        repository.update { it.copy(spend = SpendSettings("NGN", mapOf(0 to 7_500L, 1 to 0L))) }
+
+        val decoded = AppSettingsSerializer.readFrom(context.dataStoreFile(SettingsRepository.FILE_NAME).inputStream())
+        assertEquals(SpendSettings("NGN", mapOf(0 to 7_500L, 1 to 0L)), decoded.spend)
     }
 
     @Test

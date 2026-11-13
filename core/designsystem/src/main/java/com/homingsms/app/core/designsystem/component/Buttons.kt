@@ -38,7 +38,7 @@ fun HomingButton(
     loading: Boolean = false
 ) {
     val colors = HomingTheme.colors
-    val shape = MaterialTheme.shapes.small
+    val shape = HomingFieldShape
     val padding = PaddingValues(horizontal = 16.dp, vertical = 10.dp)
     val loadingLabel = stringResource(R.string.homing_loading)
     val buttonModifier = modifier

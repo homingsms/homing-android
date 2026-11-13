@@ -10,10 +10,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.ContentCopy
-import androidx.compose.material.icons.outlined.Visibility
-import androidx.compose.material.icons.outlined.VisibilityOff
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -34,6 +30,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.homingsms.app.core.designsystem.R
+import com.homingsms.app.core.designsystem.icon.HomingIcons
 import com.homingsms.app.core.designsystem.theme.HomingTheme
 import com.homingsms.app.core.designsystem.util.rememberCopyToClipboard
 
@@ -81,7 +78,7 @@ fun SecretField(
             )
             IconButton(onClick = { revealed = !revealed }) {
                 Icon(
-                    imageVector = if (revealed) Icons.Outlined.VisibilityOff else Icons.Outlined.Visibility,
+                    imageVector = if (revealed) HomingIcons.ViewOff else HomingIcons.View,
                     contentDescription = if (revealed) {
                         stringResource(R.string.homing_secret_hide, label)
                     } else {
@@ -92,7 +89,7 @@ fun SecretField(
             }
             IconButton(onClick = { copy.copy(label, secret, true) }) {
                 Icon(
-                    imageVector = Icons.Outlined.ContentCopy,
+                    imageVector = HomingIcons.Copy,
                     contentDescription = stringResource(R.string.homing_secret_copy, label),
                     tint = colors.mutedForeground
                 )
@@ -131,7 +128,7 @@ fun CodeBlock(
             )
             IconButton(onClick = { copy.copy(copyLabel, code, sensitive) }) {
                 Icon(
-                    imageVector = Icons.Outlined.ContentCopy,
+                    imageVector = HomingIcons.Copy,
                     contentDescription = stringResource(R.string.homing_secret_copy, copyLabel),
                     tint = colors.mutedForeground
                 )
@@ -165,7 +162,7 @@ fun CopyableValue(label: String, value: String, modifier: Modifier = Modifier, o
             )
             IconButton(onClick = { copy.copy(label, value, false) }) {
                 Icon(
-                    imageVector = Icons.Outlined.ContentCopy,
+                    imageVector = HomingIcons.Copy,
                     contentDescription = stringResource(R.string.homing_secret_copy, label),
                     tint = colors.mutedForeground
                 )

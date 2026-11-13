@@ -9,7 +9,9 @@ import com.homingsms.app.feature.home.HomeActions
 import com.homingsms.app.feature.home.HomeIssue
 import com.homingsms.app.feature.home.HomeUiState
 import com.homingsms.app.feature.home.LocalServerStatus
+import com.homingsms.app.feature.home.SimSpend
 import com.homingsms.app.feature.home.SimStatus
+import com.homingsms.app.feature.home.SpendUiState
 import com.homingsms.app.feature.home.TodayCounts
 import com.homingsms.app.ui.EffectViewModel
 import com.homingsms.app.ui.UiMappers
@@ -27,6 +29,10 @@ import com.homingsms.core.model.CloudPairingState
 import com.homingsms.core.model.DeviceHealth as CoreHealth
 import com.homingsms.core.model.HourlyBucket
 import com.homingsms.core.model.LocalServerInfo
+import com.homingsms.core.model.SimStats
+import com.homingsms.core.model.SmsPartsUsage
+import com.homingsms.core.model.SpendMath
+import com.homingsms.core.model.SpendSettings
 import com.homingsms.core.model.StatusReason
 import com.homingsms.core.model.TodayCounts as CoreToday
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -54,7 +60,17 @@ class HomeViewModel(private val status: AppStatus, private val control: GatewayC
         Activity(health, today, hourly, simStatus)
     }
 
-    val state: StateFlow<HomeUiState> = combine(status.gateway, connection, activity, batteryIgnored) { gateway, link, device, ignored ->
+    private val spend = combine(status.settings, status.smsParts, status.sims) { settings, usage, sims ->
+        usage?.let { HomeSpend.map(it, settings.spend, sims, settings.spend.effectiveCurrency()) }
+    }
+
+    val state: StateFlow<HomeUiState> = combine(
+        status.gateway,
+        connection,
+        activity,
+        batteryIgnored,
+        spend
+    ) { gateway, link, device, ignored, spendState ->
         val issues = UiMappers.issues(gateway).toMutableList()
         if (device.sims.isNotEmpty() && device.sims.none { it.enabled }) issues += HomeIssue.AllSimsDisabled
         if (!ignored) issues += HomeIssue.BatteryOptimized
@@ -81,7 +97,8 @@ class HomeViewModel(private val status: AppStatus, private val control: GatewayC
                 paired = link.pairing is CloudPairingState.Paired,
                 connected = link.cloud.lastSuccessAt != null && link.cloud.reachable,
                 lastContactMillis = link.cloud.lastSuccessAt
-            )
+            ),
+            spend = spendState
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MS), HomeUiState(isLoading = true))
 
@@ -90,7 +107,8 @@ class HomeViewModel(private val status: AppStatus, private val control: GatewayC
         onLocalServerToggle = { enabled -> viewModelScope.launch { control.setLocalEnabled(enabled) } },
         onCloudToggle = { enabled -> viewModelScope.launch { control.setCloudEnabled(enabled) } },
         onSimClick = { navigate(SettingsRoute) },
-        onOpenMessages = { navigate(MessagesRoute) }
+        onOpenMessages = { navigate(MessagesRoute) },
+        onSetSmsRate = { navigate(SettingsRoute) }
     )
 
     fun onResume() {
@@ -171,6 +189,23 @@ class HomeViewModel(private val status: AppStatus, private val control: GatewayC
             Manifest.permission.RECEIVE_SMS,
             Manifest.permission.READ_SMS,
             Manifest.permission.READ_PHONE_STATE
+        )
+    }
+}
+
+object HomeSpend {
+    fun map(usage: SmsPartsUsage, settings: SpendSettings, sims: List<SimStats>, currencyCode: String): SpendUiState {
+        val estimate = SpendMath.estimate(usage, settings, sims.map { it.slot }, currencyCode)
+        val carriers = sims.associate { it.slot to it.carrier }
+        return SpendUiState(
+            currencyCode = estimate.currencyCode,
+            hasRate = estimate.hasRate,
+            monthMicros = estimate.monthMicros,
+            allTimeMicros = estimate.allTimeMicros,
+            monthParts = estimate.monthParts,
+            allTimeParts = estimate.allTimeParts,
+            unpricedMonthParts = if (estimate.hasRate) estimate.unpricedMonthParts else 0L,
+            sims = estimate.sims.map { SimSpend(it.slot, carriers[it.slot], it.monthParts, it.monthMicros) }
         )
     }
 }

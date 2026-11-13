@@ -28,6 +28,7 @@ import com.homingsms.core.model.MessageRecord
 import com.homingsms.core.model.Page
 import com.homingsms.core.model.SimStats
 import com.homingsms.core.model.SmsLimitState
+import com.homingsms.core.model.SmsPartsUsage
 import com.homingsms.core.model.TodayCounts
 import com.homingsms.core.model.WebhookDelivery
 import com.homingsms.core.model.WebhookEndpoint
@@ -75,6 +76,9 @@ class AppStateRepository(
 
     override val last24Hours: StateFlow<List<HourlyBucket>> =
         stats.last24Hours.stateIn(scope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MS), emptyList())
+
+    override val smsParts: StateFlow<SmsPartsUsage?> =
+        stats.smsParts.stateIn(scope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MS), null)
 
     override val sims: StateFlow<List<SimStats>> = combine(healthState, settingsRepository.settings) { health, current ->
         health.sims.map {

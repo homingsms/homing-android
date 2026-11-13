@@ -53,4 +53,46 @@ internal object HomeSamples {
     )
 
     val loading = HomeUiState(isLoading = true)
+
+    val spendMultiSim = SpendUiState(
+        currencyCode = "GBP",
+        hasRate = true,
+        monthMicros = 13_980_000,
+        allTimeMicros = 96_212_500,
+        monthParts = 1_653,
+        allTimeParts = 11_212,
+        sims = listOf(SimSpend(0, "Vodafone UK", 1_020, 7_650_000), SimSpend(1, "EE", 633, 6_330_000))
+    )
+
+    val spendSingleSim = SpendUiState(
+        currencyCode = "GBP",
+        hasRate = true,
+        monthMicros = 7_650_000,
+        allTimeMicros = 51_750_000,
+        monthParts = 1_020,
+        allTimeParts = 6_900,
+        sims = listOf(SimSpend(0, "Vodafone UK", 1_020, 7_650_000))
+    )
+
+    val spendZero = SpendUiState(
+        currencyCode = "GBP",
+        hasRate = true,
+        sims = listOf(SimSpend(0, "Vodafone UK", 0, 0))
+    )
+
+    val spendNoRate = SpendUiState(
+        currencyCode = "GBP",
+        hasRate = false,
+        monthParts = 1_653,
+        allTimeParts = 11_212,
+        sims = listOf(SimSpend(0, "Vodafone UK", 1_020, null), SimSpend(1, "EE", 633, null))
+    )
+
+    val spendPartlyPriced = spendMultiSim.copy(
+        monthMicros = 7_650_000,
+        unpricedMonthParts = 633,
+        sims = listOf(SimSpend(0, "Vodafone UK", 1_020, 7_650_000), SimSpend(1, "EE", 633, null))
+    )
+
+    val withSpend = online.copy(spend = spendMultiSim)
 }

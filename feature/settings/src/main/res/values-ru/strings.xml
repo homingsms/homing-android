@@ -97,4 +97,17 @@
         <item quantity="many">%1$s вебхуков</item>
         <item quantity="other">%1$s вебхука</item>
     </plurals>
+    <string name="settings_group_spend">Стоимость SMS</string>
+    <string name="settings_currency">Валюта</string>
+    <string name="settings_currency_value">%1$s (%2$s)</string>
+    <string name="settings_currency_label">Код валюты</string>
+    <string name="settings_currency_help">Три буквы, например USD, EUR или RUB.</string>
+    <string name="settings_currency_invalid">Это не код валюты.</string>
+    <string name="settings_sms_rate">Тариф для %1$s</string>
+    <string name="settings_sms_rate_value">%1$s за часть</string>
+    <string name="settings_sms_rate_not_set">Не указан</string>
+    <string name="settings_sms_rate_label">Цена за часть SMS</string>
+    <string name="settings_sms_rate_help">Сколько оператор берёт за одну часть SMS. Длинные сообщения состоят из нескольких частей.</string>
+    <string name="settings_sms_rate_clear">Оставьте пустым, чтобы удалить тариф.</string>
+    <string name="settings_sms_rate_invalid">Введите сумму до %1$s, не больше %2$s знаков после запятой.</string>
 </resources>

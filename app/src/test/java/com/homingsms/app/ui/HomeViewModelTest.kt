@@ -7,12 +7,15 @@ import com.homingsms.app.core.designsystem.component.HourlyBar
 import com.homingsms.app.feature.home.HomeIssue
 import com.homingsms.app.feature.home.MissingPermission
 import com.homingsms.app.feature.home.NetworkKind
+import com.homingsms.app.feature.home.SimSpend
+import com.homingsms.app.feature.home.SpendUiState
 import com.homingsms.app.ui.home.HomeViewModel
 import com.homingsms.app.ui.navigation.ConnectRoute
 import com.homingsms.app.ui.navigation.MessagesRoute
 import com.homingsms.app.ui.navigation.SettingsRoute
 import com.homingsms.app.ui.system.PermissionOutcome
 import com.homingsms.app.ui.system.SystemAction
+import com.homingsms.core.model.AppSettings
 import com.homingsms.core.model.BatteryInfo
 import com.homingsms.core.model.CloudPairingState
 import com.homingsms.core.model.DeviceHealth
@@ -22,12 +25,16 @@ import com.homingsms.core.model.HourlyBucket
 import com.homingsms.core.model.LocalServerInfo
 import com.homingsms.core.model.NetworkType
 import com.homingsms.core.model.SimStats
+import com.homingsms.core.model.SmsPartsUsage
+import com.homingsms.core.model.SpendSettings
 import com.homingsms.core.model.StatusIssue
 import com.homingsms.core.model.StatusReason
 import com.homingsms.core.model.TodayCounts
+import java.util.Locale
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
@@ -113,6 +120,91 @@ class HomeViewModelTest {
         val cloud = viewModel.state.value.cloud
         assertTrue(cloud.enabled && cloud.paired && cloud.connected)
         assertEquals(5L, cloud.lastContactMillis)
+    }
+
+    @Test
+    fun spendStaysHiddenUntilPartsAreLoaded() = runTest {
+        val viewModel = viewModel()
+        keepCollecting(viewModel.state)
+        assertNull(viewModel.state.value.spend)
+    }
+
+    @Test
+    fun mapsSpendTotalsAndPerSimCosts() = runTest {
+        status.sims.value = listOf(SimStats(0, "Vodafone", null, 3, 0, null, true), SimStats(1, "EE", null, 2, 0, null, true))
+        status.settings.value = AppSettings(spend = SpendSettings("GBP", mapOf(0 to 7_500L, 1 to 10_000L)))
+        status.smsParts.value = SmsPartsUsage(
+            month = mapOf(0 to 1_020L, 1 to 633L),
+            allTime = mapOf(0 to 6_900L, 1 to 4_312L)
+        )
+        val viewModel = viewModel()
+        keepCollecting(viewModel.state)
+
+        assertEquals(
+            SpendUiState(
+                currencyCode = "GBP",
+                hasRate = true,
+                monthMicros = 13_980_000,
+                allTimeMicros = 94_870_000,
+                monthParts = 1_653,
+                allTimeParts = 11_212,
+                unpricedMonthParts = 0,
+                sims = listOf(SimSpend(0, "Vodafone", 1_020, 7_650_000), SimSpend(1, "EE", 633, 6_330_000))
+            ),
+            viewModel.state.value.spend
+        )
+
+        status.settings.value = AppSettings(spend = SpendSettings("GBP", mapOf(0 to 7_500L)))
+        val partly = viewModel.state.value.spend
+        assertEquals(7_650_000L, partly?.monthMicros)
+        assertEquals(633L, partly?.unpricedMonthParts)
+        assertNull(partly?.sims?.get(1)?.monthMicros)
+    }
+
+    @Test
+    fun spendWithoutRateCarriesPartsAndTheLocaleCurrency() = runTest {
+        val previous = Locale.getDefault()
+        Locale.setDefault(Locale("en", "NG"))
+        try {
+            status.sims.value = listOf(SimStats(0, "MTN", null, 3, 0, null, true))
+            status.smsParts.value = SmsPartsUsage(month = mapOf(null to 4L), allTime = mapOf(null to 9L, 0 to 3L))
+            val viewModel = viewModel()
+            keepCollecting(viewModel.state)
+
+            val spend = viewModel.state.value.spend
+            assertEquals("NGN", spend?.currencyCode)
+            assertFalse(spend?.hasRate ?: true)
+            assertEquals(0L, spend?.monthMicros)
+            assertEquals(4L, spend?.monthParts)
+            assertEquals(12L, spend?.allTimeParts)
+            assertEquals(0L, spend?.unpricedMonthParts)
+            assertEquals(listOf(SimSpend(0, "MTN", 0, null)), spend?.sims)
+        } finally {
+            Locale.setDefault(previous)
+        }
+    }
+
+    @Test
+    fun zeroPartsWithARateIsARealZero() = runTest {
+        status.sims.value = listOf(SimStats(0, "MTN", null, 3, 0, null, true))
+        status.settings.value = AppSettings(spend = SpendSettings("NGN", mapOf(0 to 4_000_000L)))
+        status.smsParts.value = SmsPartsUsage.Empty
+        val viewModel = viewModel()
+        keepCollecting(viewModel.state)
+
+        val spend = viewModel.state.value.spend
+        assertTrue(spend?.hasRate == true)
+        assertEquals(0L, spend?.monthMicros)
+        assertEquals(0L, spend?.allTimeMicros)
+    }
+
+    @Test
+    fun setSmsRateOpensSettings() = runTest {
+        val viewModel = viewModel()
+        viewModel.effects.test {
+            viewModel.actions.onSetSmsRate()
+            assertEquals(UiEffect.Navigate(SettingsRoute), awaitItem())
+        }
     }
 
     @Test

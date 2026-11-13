@@ -5,9 +5,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Description
-import androidx.compose.material.icons.outlined.Image
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -19,6 +16,7 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.Dp
+import com.homingsms.app.core.designsystem.icon.HomingIcons
 import com.homingsms.app.core.designsystem.theme.HomingTheme
 
 @Composable
@@ -53,7 +51,7 @@ internal fun AttachmentThumb(
             contentAlignment = Alignment.Center
         ) {
             Icon(
-                imageVector = if (isImage) Icons.Outlined.Image else Icons.Outlined.Description,
+                imageVector = if (isImage) HomingIcons.Image else HomingIcons.File,
                 contentDescription = contentDescription,
                 tint = HomingTheme.colors.mutedForeground
             )

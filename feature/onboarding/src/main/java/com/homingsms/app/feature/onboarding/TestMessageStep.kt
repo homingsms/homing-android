@@ -3,8 +3,6 @@ package com.homingsms.app.feature.onboarding
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.outlined.Send
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -19,6 +17,7 @@ import com.homingsms.app.core.designsystem.component.HomingPanel
 import com.homingsms.app.core.designsystem.component.HomingTextField
 import com.homingsms.app.core.designsystem.component.HomingTimeline
 import com.homingsms.app.core.designsystem.component.TimelineEntry
+import com.homingsms.app.core.designsystem.icon.HomingIcons
 import com.homingsms.app.core.designsystem.theme.HomingTheme
 import com.homingsms.app.core.designsystem.theme.StatusTone
 import com.homingsms.app.core.designsystem.util.formatClockTime
@@ -41,7 +40,7 @@ internal fun TestMessageStep(test: TestMessageUi, actions: OnboardingActions) {
             if (test.status is TestMessageStatus.Failed) R.string.onboarding_test_retry else R.string.onboarding_test_send
         ),
         onClick = actions.onSendTest,
-        icon = Icons.AutoMirrored.Outlined.Send,
+        icon = HomingIcons.Send,
         enabled = test.phoneNumber.isNotBlank(),
         loading = busy,
         modifier = Modifier.fillMaxWidth()

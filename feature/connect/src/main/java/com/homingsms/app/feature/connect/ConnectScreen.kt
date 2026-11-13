@@ -9,10 +9,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Delete
-import androidx.compose.material.icons.outlined.Dns
-import androidx.compose.material.icons.outlined.Webhook
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -45,6 +41,7 @@ import com.homingsms.app.core.designsystem.component.HomingTopAppBar
 import com.homingsms.app.core.designsystem.component.LoadingState
 import com.homingsms.app.core.designsystem.component.QrCode
 import com.homingsms.app.core.designsystem.component.SectionHeader
+import com.homingsms.app.core.designsystem.icon.HomingIcons
 import com.homingsms.app.core.designsystem.theme.HomingTheme
 import com.homingsms.app.core.designsystem.util.formatRelativeTime
 import kotlinx.coroutines.launch
@@ -79,7 +76,7 @@ fun ConnectScreen(state: ConnectUiState, actions: ConnectActions, modifier: Modi
                         title = stringResource(R.string.connect_webhooks),
                         value = stringResource(R.string.connect_webhooks_body),
                         onClick = actions.onOpenWebhooks,
-                        leading = { Icon(Icons.Outlined.Webhook, contentDescription = null, tint = HomingTheme.colors.mutedForeground) }
+                        leading = { Icon(HomingIcons.Webhook, contentDescription = null, tint = HomingTheme.colors.mutedForeground) }
                     )
                 }
             }
@@ -120,7 +117,7 @@ private fun LocalApiPanel(local: LocalApiUi, actions: ConnectActions, onCopied: 
             ),
             checked = local.enabled,
             onCheckedChange = actions.onLocalServerToggle,
-            leading = { Icon(Icons.Outlined.Dns, contentDescription = null, tint = HomingTheme.colors.mutedForeground) }
+            leading = { Icon(HomingIcons.Server, contentDescription = null, tint = HomingTheme.colors.mutedForeground) }
         )
         val baseUrl = local.apiBaseUrl
         if (local.enabled && baseUrl != null) {
@@ -214,7 +211,7 @@ private fun ApiKeyRow(key: ApiKeyUi, onRevoke: () -> Unit) {
         trailing = {
             IconButton(onClick = onRevoke) {
                 Icon(
-                    imageVector = Icons.Outlined.Delete,
+                    imageVector = HomingIcons.Delete,
                     contentDescription = stringResource(R.string.connect_revoke_named, key.name),
                     tint = HomingTheme.colors.danger
                 )

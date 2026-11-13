@@ -11,6 +11,7 @@ internal object SettingsSamples {
             failoverToOtherSim = true,
             deliveryReports = true
         ),
+        spend = SpendSettingsUi(currencyCode = "GBP", rates = listOf(SimRateUi(0, "Vodafone UK", 7_500), SimRateUi(1, "EE", null))),
         receiving = ReceivingSettings(forwardDataSms = true, dataSmsPort = 8901),
         server = ServerSettings(
             localEnabled = true,

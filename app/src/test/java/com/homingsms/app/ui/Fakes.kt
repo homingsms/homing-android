@@ -37,6 +37,7 @@ import com.homingsms.core.model.MessageType
 import com.homingsms.core.model.Page
 import com.homingsms.core.model.Scope
 import com.homingsms.core.model.SimStats
+import com.homingsms.core.model.SmsPartsUsage
 import com.homingsms.core.model.TodayCounts
 import com.homingsms.core.model.WebhookDelivery
 import com.homingsms.core.model.WebhookDeliveryStatus
@@ -56,6 +57,7 @@ class FakeAppStatus(initial: AppSettings = AppSettings()) : AppStatus {
     override val today = MutableStateFlow(TodayCounts.Empty)
     override val last24Hours = MutableStateFlow<List<HourlyBucket>>(emptyList())
     override val sims = MutableStateFlow<List<SimStats>>(emptyList())
+    override val smsParts = MutableStateFlow<SmsPartsUsage?>(null)
     override val localServerInfo = MutableStateFlow(LocalServerInfo.Stopped)
     override val cloudPairing = MutableStateFlow<CloudPairingState>(CloudPairingState.Unpaired)
     override val cloudConnection = MutableStateFlow(CloudConnectionState.Idle)

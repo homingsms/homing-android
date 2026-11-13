@@ -5,8 +5,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.QrCodeScanner
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,6 +23,7 @@ import com.homingsms.app.core.designsystem.component.HomingPanel
 import com.homingsms.app.core.designsystem.component.HomingTextField
 import com.homingsms.app.core.designsystem.component.SectionHeader
 import com.homingsms.app.core.designsystem.component.StatusBadge
+import com.homingsms.app.core.designsystem.icon.HomingIcons
 import com.homingsms.app.core.designsystem.theme.HomingTheme
 import com.homingsms.app.core.designsystem.theme.StatusTone
 import com.homingsms.app.core.designsystem.util.formatFullDateTime
@@ -116,7 +115,7 @@ private fun PairingForm(cloud: CloudPairing, pairingCode: String, actions: Pairi
     HomingButton(
         text = stringResource(R.string.connect_scan_qr),
         onClick = onScan,
-        icon = Icons.Outlined.QrCodeScanner,
+        icon = HomingIcons.QrScan,
         enabled = !pairing,
         modifier = Modifier.fillMaxWidth()
     )

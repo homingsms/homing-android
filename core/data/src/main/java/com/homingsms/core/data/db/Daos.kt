@@ -173,6 +173,8 @@ data class HourReceivedRow(val startAt: Long, val received: Int)
 
 data class SimCountRow(val simNumber: Int, val count: Int)
 
+data class SimPartsRow(val simNumber: Int?, val parts: Long)
+
 @Dao
 interface StatsDao {
     @Query(
@@ -233,6 +235,19 @@ interface StatsDao {
         """
     )
     suspend fun sentPerSim(from: Long): List<SimCountRow>
+
+    @Query(
+        """
+        SELECT m.simNumber AS simNumber, COALESCE(SUM(COALESCE(m.partsCount, 1)), 0) AS parts
+        FROM message AS m
+        INNER JOIN MessageRecipient AS r ON r.messageId = m.id
+        WHERE r.state IN ('Sent', 'Delivered')
+            AND m.type IN ('Text', 'Data')
+            AND COALESCE(m.processedAt, m.createdAt) >= :from
+        GROUP BY m.simNumber
+        """
+    )
+    fun observeSentParts(from: Long): Flow<List<SimPartsRow>>
 
     @Query("SELECT COUNT(*) FROM message WHERE state IN ('Pending', 'Processed')")
     suspend fun queued(): Int
