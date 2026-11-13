@@ -59,4 +59,10 @@
     <string name="home_cloud_off">Привязан, но выключен на этом телефоне.</string>
     <string name="home_cloud_connected">Подключён, последняя связь %1$s</string>
     <string name="home_cloud_disconnected">Пытаемся переподключиться</string>
+    <string name="home_issue_no_sim">SIM-карта не найдена. Вставьте SIM-карту, чтобы отправлять сообщения.</string>
+    <string name="home_issue_airplane_mode">Включён режим полёта, поэтому SIM-карта не может отправлять.</string>
+    <string name="home_issue_battery_saver">Включена экономия заряда, она может задерживать или останавливать отправку.</string>
+    <string name="home_issue_cloud_not_paired">Homing Cloud включён, но этот телефон не подключён.</string>
+    <string name="home_issue_local_server_down">Локальный сервер остановлен и не принимает запросы.</string>
+    <string name="home_fix_battery_saver">Открыть настройки батареи</string>
 </resources>

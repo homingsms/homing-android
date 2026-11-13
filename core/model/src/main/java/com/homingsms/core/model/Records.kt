@@ -82,7 +82,8 @@ data class WebhookDelivery(
     val nextAttemptAt: Long?,
     val deliveredAt: Long?,
     val createdAt: Long,
-    val updatedAt: Long
+    val updatedAt: Long,
+    val payload: String? = null
 )
 
 data class Page<T>(val items: List<T>, val nextCursor: String?)

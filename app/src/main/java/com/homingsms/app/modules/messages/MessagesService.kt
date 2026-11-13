@@ -36,6 +36,7 @@ import com.homingsms.app.modules.mms.MmsSender
 import com.homingsms.app.receivers.EventsReceiver
 import com.homingsms.core.model.ErrorCodes
 import com.homingsms.core.model.SimSelectionMode
+import com.homingsms.core.telephony.DeviceHealthReader
 import com.homingsms.core.telephony.SmsResults
 import java.util.Date
 import kotlin.coroutines.coroutineContext
@@ -55,6 +56,8 @@ class MessagesService(
     private val mmsSender: MmsSender,
     private val smsLimitMonitor: SmsLimitMonitor
 ) {
+    private val simInputs = SimRoutingInputs(smsLimitMonitor::sentTodayPerSim, DeviceHealthReader(context, ""))
+
     /**
      * Serializes the worker (KEEP/REPLACE) decisions made from the DB snapshot
      * with the enqueues and worker reschedules, so that a concurrent enqueue
@@ -413,7 +416,7 @@ class MessagesService(
         val id = message.id
         val content = message.content as MessageContent.Mms
 
-        val simNumber = selectSimNumber(request.id, request.params)
+        val simNumber = selectSimNumber(request.id, request.params, routingRecipient(request))
         if (request.params.simNumber == null && simNumber != null) {
             dao.updateSimNumber(id, simNumber + 1)
         }
@@ -471,7 +474,10 @@ class MessagesService(
         }
     }
 
-    private fun selectSimNumber(id: Long, params: SendParams): Int? {
+    private fun routingRecipient(request: StoredSendRequest): String? =
+        request.message.phoneNumbers.firstOrNull()?.takeUnless { request.message.isEncrypted }
+
+    private suspend fun selectSimNumber(id: Long, params: SendParams, recipient: String?): Int? {
         if (params.simNumber != null) {
             return params.simNumber - 1
         }
@@ -481,18 +487,28 @@ class MessagesService(
             throw RuntimeException("No SIMs found")
         }
 
-        return when (settings.simSelectionMode) {
-            SimSelectionMode.OSDefault -> SubscriptionsHelper.getDefaultSmsSimSlot(context)?.takeIf { it in simSlots }
-            SimSelectionMode.RoundRobin -> simSlots[(id % simSlots.size).toInt()]
-            SimSelectionMode.Random -> simSlots.random()
-        }
+        val mode = settings.simSelectionMode
+        val failover = settings.failoverToOtherSim
+        val candidates = simInputs.candidates(
+            slots = simSlots,
+            withUsage = mode == SimSelectionMode.LeastUsed || failover,
+            withHealth = mode == SimSelectionMode.CarrierMatch || failover
+        )
+        return SimRouter.select(
+            mode = mode,
+            candidates = candidates,
+            defaultSlot = SubscriptionsHelper.getDefaultSmsSimSlot(context),
+            messageKey = id,
+            recipient = recipient,
+            failover = failover
+        )
     }
 
     private suspend fun sendSMS(request: StoredSendRequest) {
         val message = request.message
         val id = message.id
 
-        val simNumber = selectSimNumber(request.id, request.params)
+        val simNumber = selectSimNumber(request.id, request.params, routingRecipient(request))
         val smsManager: SmsManager = getSmsManager(simNumber)
 
         if (request.params.simNumber == null && simNumber != null) {
@@ -579,7 +595,7 @@ class MessagesService(
                     ),
                     PendingIntent.FLAG_MUTABLE
                 )
-                val deliveredIntent = when (request.params.withDeliveryReport) {
+                val deliveredIntent = when (request.params.withDeliveryReport && settings.deliveryReports) {
                     false -> null
 
                     true -> PendingIntent.getBroadcast(

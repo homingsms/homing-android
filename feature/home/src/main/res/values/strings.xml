@@ -59,4 +59,10 @@
     <string name="home_cloud_off">Paired, but turned off on this phone.</string>
     <string name="home_cloud_connected">Connected, last contact %1$s</string>
     <string name="home_cloud_disconnected">Trying to reconnect</string>
+    <string name="home_issue_no_sim">No SIM card found. Insert a SIM to send messages.</string>
+    <string name="home_issue_airplane_mode">Airplane mode is on, so the SIM can\'t send.</string>
+    <string name="home_issue_battery_saver">Battery saver is on and can delay or stop sending.</string>
+    <string name="home_issue_cloud_not_paired">Homing Cloud is on, but this phone isn\'t paired.</string>
+    <string name="home_issue_local_server_down">The local server stopped and isn\'t accepting requests.</string>
+    <string name="home_fix_battery_saver">Open battery settings</string>
 </resources>

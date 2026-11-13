@@ -11,8 +11,16 @@ enum class LicenseKind(@RawRes val textRes: Int) {
     AospNotice(R.raw.notice_aosp)
 }
 
+sealed interface ComponentLicense {
+    data class Bundled(val kind: LicenseKind) : ComponentLicense
+
+    data class External(val name: String, val text: String? = null, val url: String? = null) : ComponentLicense
+}
+
 @Immutable
-data class OpenSourceComponent(val name: String, val holder: String, val license: LicenseKind)
+data class OpenSourceComponent(val name: String, val holder: String, val license: ComponentLicense, val version: String? = null) {
+    constructor(name: String, holder: String, kind: LicenseKind) : this(name, holder, ComponentLicense.Bundled(kind))
+}
 
 @Immutable
 data class AboutUiState(
@@ -26,8 +34,16 @@ data class AboutUiState(
 data class AboutActions(val onBack: (() -> Unit)? = null, val onOpenWebsite: () -> Unit = {})
 
 object AboutDefaults {
+    val homing = OpenSourceComponent("Homing", "Homing", LicenseKind.Apache2)
+
+    val bundledAssets = listOf(
+        OpenSourceComponent("Aspekta", "Ivo Dolenc", LicenseKind.OflAspekta),
+        OpenSourceComponent("JetBrains Mono", "The JetBrains Mono Project Authors", LicenseKind.OflJetBrainsMono),
+        OpenSourceComponent("MMS PDU encoding", "Esmertec AG, The Android Open Source Project", LicenseKind.AospNotice)
+    )
+
     val components = listOf(
-        OpenSourceComponent("Homing", "Homing", LicenseKind.Apache2),
+        homing,
         OpenSourceComponent(
             "Android Jetpack, Jetpack Compose, CameraX, Room, WorkManager",
             "The Android Open Source Project",
@@ -40,9 +56,6 @@ object AboutDefaults {
         OpenSourceComponent("Koin", "Kotzilla and Koin contributors", LicenseKind.Apache2),
         OpenSourceComponent("ZXing", "ZXing authors", LicenseKind.Apache2),
         OpenSourceComponent("libphonenumber", "Google LLC", LicenseKind.Apache2),
-        OpenSourceComponent("JNanoID", "Aventrix", LicenseKind.Mit),
-        OpenSourceComponent("Aspekta", "Ivo Dolenc", LicenseKind.OflAspekta),
-        OpenSourceComponent("JetBrains Mono", "The JetBrains Mono Project Authors", LicenseKind.OflJetBrainsMono),
-        OpenSourceComponent("MMS PDU encoding", "Esmertec AG, The Android Open Source Project", LicenseKind.AospNotice)
-    )
+        OpenSourceComponent("JNanoID", "Aventrix", LicenseKind.Mit)
+    ) + bundledAssets
 }

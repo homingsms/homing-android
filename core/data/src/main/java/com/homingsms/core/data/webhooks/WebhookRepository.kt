@@ -207,5 +207,6 @@ fun WebhookDeliveryEntity.toModel(): WebhookDelivery = WebhookDelivery(
     nextAttemptAt = nextAttemptAt,
     deliveredAt = deliveredAt,
     createdAt = createdAt,
-    updatedAt = updatedAt
+    updatedAt = updatedAt,
+    payload = payload
 )

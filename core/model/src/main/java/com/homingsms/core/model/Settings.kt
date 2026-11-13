@@ -6,7 +6,9 @@ import kotlinx.serialization.Serializable
 enum class SimSelectionMode {
     OSDefault,
     RoundRobin,
-    Random
+    Random,
+    LeastUsed,
+    CarrierMatch
 }
 
 @Serializable
@@ -37,7 +39,9 @@ data class MessageSettings(
     val limitValue: Int = 0,
     val logLifetimeDays: Int? = null,
     val workHours: WorkHours = WorkHours(),
-    val simDailyLimits: Map<Int, Int> = emptyMap()
+    val simDailyLimits: Map<Int, Int> = emptyMap(),
+    val deliveryReports: Boolean = true,
+    val failoverToOtherSim: Boolean = false
 )
 
 @Serializable
@@ -53,8 +57,12 @@ data class CloudSettings(
     val pairedAt: Long? = null,
     val fcmToken: String? = null,
     val reportedFcmToken: String? = null,
-    val remote: RemoteDeviceSettings? = null
-)
+    val remote: RemoteDeviceSettings? = null,
+    val pullIntervalSeconds: Int? = null
+) {
+    val effectivePullIntervalSeconds: Int
+        get() = pullIntervalSeconds ?: remote?.pullIntervalSeconds ?: RemoteDeviceSettings.DEFAULT_PULL_SECONDS
+}
 
 @Serializable
 data class RemoteSimSettings(val slot: Int, val enabled: Boolean, val dailyLimit: Int? = null)
@@ -82,17 +90,32 @@ data class RemoteDeviceSettings(
 data class WebhookSettings(val internetRequired: Boolean = true)
 
 @Serializable
-data class InboxSettings(val contentProviderEnabled: Boolean = true, val lifetimeDays: Int? = null)
+data class InboxSettings(
+    val contentProviderEnabled: Boolean = true,
+    val lifetimeDays: Int? = null,
+    val forwardSms: Boolean = true,
+    val forwardMms: Boolean = true,
+    val forwardDataSms: Boolean = true,
+    val dataSmsPort: Int? = null,
+    val optOutEnabled: Boolean = true,
+    val optOutKeywords: List<String>? = null
+) {
+    fun forwards(type: MessageType, port: Int?): Boolean = when (type) {
+        MessageType.Sms -> forwardSms
+        MessageType.Mms -> forwardMms
+        MessageType.Data -> forwardDataSms && (dataSmsPort == null || dataSmsPort == port)
+    }
+}
 
 @Serializable
-data class LogSettings(val lifetimeDays: Int? = DEFAULT_LIFETIME_DAYS) {
+data class LogSettings(val lifetimeDays: Int? = DEFAULT_LIFETIME_DAYS, val verbose: Boolean = false) {
     companion object {
         const val DEFAULT_LIFETIME_DAYS = 30
     }
 }
 
 @Serializable
-data class GeneralSettings(val autostart: Boolean = false)
+data class GeneralSettings(val autostart: Boolean = false, val onboardingCompleted: Boolean = false)
 
 @Serializable
 data class AppSettings(
@@ -106,7 +129,11 @@ data class AppSettings(
     val logs: LogSettings = LogSettings()
 ) {
     val optOutKeywords: List<String>
-        get() = cloud.remote?.optOutKeywords ?: RemoteDeviceSettings.DEFAULT_OPT_OUT_KEYWORDS
+        get() = when {
+            !inbox.optOutEnabled -> emptyList()
+            inbox.optOutKeywords != null -> inbox.optOutKeywords
+            else -> cloud.remote?.optOutKeywords ?: RemoteDeviceSettings.DEFAULT_OPT_OUT_KEYWORDS
+        }
 
     fun dailyLimitFor(slot: Int): Int? {
         val remote = cloud.remote?.takeIf { cloud.enabled }

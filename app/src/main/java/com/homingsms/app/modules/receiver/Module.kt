@@ -7,7 +7,7 @@ import org.koin.dsl.module
 
 val receiverModule = module {
     singleOf(::ReceiverService)
-    single { InboxDispatcher(get(), get(), get(named(APP_SCOPE))) }
+    single { InboxDispatcher(get(), get(), get(), get(named(APP_SCOPE))) }
 }
 
 val MODULE_NAME = "receiver"

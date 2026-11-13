@@ -96,6 +96,7 @@ class MessageRecords(private val dao: ApiMessagesDao, private val clock: () -> L
             conditions += "createdAt < ?"
             args += it
         }
+        conditions += uiConditions(filter, args)
         cursor?.let {
             conditions += "(createdAt < ? OR (createdAt = ? AND id < ?))"
             args += it.timestamp
@@ -110,6 +111,27 @@ class MessageRecords(private val dao: ApiMessagesDao, private val clock: () -> L
         val records = items.map { toRecord(it, meta[it.message.id], emptyList()) }
         val next = if (rows.size > limit) items.last().message.let { Cursor(it.createdAt, it.id).encode() } else null
         return Page(records, next)
+    }
+
+    private fun uiConditions(filter: MessageFilter, args: MutableList<Any>): List<String> = buildList {
+        if (filter.states.isNotEmpty()) {
+            add(filter.states.sortedBy { it.ordinal }.joinToString(" OR ", "(", ")") { stateCondition(it, args) })
+        }
+        if (filter.types.isNotEmpty()) {
+            add(filter.types.sortedBy { it.ordinal }.joinToString(", ", "type IN (", ")") { "'${MessageStateMapper.storedType(it).name}'" })
+        }
+        if (filter.simSlots.isNotEmpty()) {
+            add(filter.simSlots.sorted().joinToString(", ", "simNumber IN (", ")") { (it + 1).toString() })
+        }
+        filter.search?.trim()?.takeIf { it.isNotEmpty() }?.let { query ->
+            val pattern = "%" + escapeLike(query) + "%"
+            add(
+                "(EXISTS (SELECT 1 FROM messagerecipient r WHERE r.messageId = message.id AND r.phoneNumber LIKE ? ESCAPE '\\') " +
+                    "OR (isEncrypted = 0 AND content LIKE ? ESCAPE '\\'))"
+            )
+            args += pattern
+            args += pattern
+        }
     }
 
     private fun stateCondition(state: MessageState, args: MutableList<Any>): String {
@@ -207,6 +229,8 @@ class MessageRecords(private val dao: ApiMessagesDao, private val clock: () -> L
         fun encodeMetadata(metadata: Map<String, String>): String? = metadata.takeIf { it.isNotEmpty() }?.let {
             json.encodeToString(metadataSerializer, it)
         }
+
+        fun escapeLike(value: String): String = value.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
 
         fun decodeMetadata(value: String): Map<String, String> = runCatching { json.decodeFromString(metadataSerializer, value) }
             .getOrDefault(emptyMap())

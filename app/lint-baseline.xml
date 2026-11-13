@@ -3,67 +3,12 @@
 
     <issue
         id="InlinedApi"
-        message="Field requires API level 26 (current min is 24): `android.Manifest.permission#READ_PHONE_NUMBERS`"
-        errorLine1="                Manifest.permission.READ_PHONE_NUMBERS.takeIf { Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU },"
-        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/homingsms/app/ui/HomeFragment.kt"
-            line="414"
-            column="17"/>
-    </issue>
-
-    <issue
-        id="InlinedApi"
-        message="Field requires API level 29 (current min is 24): `android.content.pm.ServiceInfo#FOREGROUND_SERVICE_TYPE_DATA_SYNC`"
-        errorLine1="        return ForegroundInfo(NotificationsService.NOTIFICATION_ID_INBOX_WORKER, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC)"
-        errorLine2="                                                                                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/homingsms/app/modules/gateway/inbox/InboxUploadWorker.kt"
-            line="157"
-            column="96"/>
-    </issue>
-
-    <issue
-        id="InlinedApi"
-        message="Field requires API level 34 (current min is 24): `android.content.pm.ServiceInfo#FOREGROUND_SERVICE_TYPE_SPECIAL_USE`"
-        errorLine1="            ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE,"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/homingsms/app/modules/ping/services/PingForegroundService.kt"
-            line="89"
-            column="13"/>
-    </issue>
-
-    <issue
-        id="InlinedApi"
-        message="Field requires API level 34 (current min is 24): `android.content.pm.ServiceInfo#FOREGROUND_SERVICE_TYPE_REMOTE_MESSAGING`"
-        errorLine1="            ServiceInfo.FOREGROUND_SERVICE_TYPE_REMOTE_MESSAGING,"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/homingsms/app/modules/gateway/services/SSEForegroundService.kt"
-            line="109"
-            column="13"/>
-    </issue>
-
-    <issue
-        id="InlinedApi"
         message="Field requires API level 29 (current min is 24): `android.content.pm.ServiceInfo#FOREGROUND_SERVICE_TYPE_DATA_SYNC`"
         errorLine1="        return ForegroundInfo(notificationId, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC)"
         errorLine2="                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/com/homingsms/app/modules/messages/workers/SendMessagesWorker.kt"
             line="75"
-            column="61"/>
-    </issue>
-
-    <issue
-        id="InlinedApi"
-        message="Field requires API level 29 (current min is 24): `android.content.pm.ServiceInfo#FOREGROUND_SERVICE_TYPE_DATA_SYNC`"
-        errorLine1="        return ForegroundInfo(notificationId, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC)"
-        errorLine2="                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/homingsms/app/modules/webhooks/workers/SendWebhookWorker.kt"
-            line="180"
             column="61"/>
     </issue>
 
@@ -79,17 +24,6 @@
     </issue>
 
     <issue
-        id="InlinedApi"
-        message="Field requires API level 29 (current min is 24): `android.content.pm.ServiceInfo#FOREGROUND_SERVICE_TYPE_DATA_SYNC`"
-        errorLine1="        return ForegroundInfo(notificationId, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC)"
-        errorLine2="                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/homingsms/app/modules/webhooks/workers/WebhookQueueProcessorWorker.kt"
-            line="440"
-            column="61"/>
-    </issue>
-
-    <issue
         id="OldTargetApi"
         message="Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the `android.os.Build.VERSION_CODES` javadoc for details."
         errorLine1="        targetSdk = 35"
@@ -98,28 +32,6 @@
             file="build.gradle.kts"
             line="38"
             column="9"/>
-    </issue>
-
-    <issue
-        id="AppBundleLocaleChanges"
-        message="Found dynamic locale changes, but did not find corresponding Play Core library calls for downloading languages and splitting by language is not disabled in the `bundle` configuration"
-        errorLine1="        configuration.setLocale(locale)"
-        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/homingsms/app/helpers/LocaleHelper.kt"
-            line="29"
-            column="9"/>
-    </issue>
-
-    <issue
-        id="BatteryLife"
-        message="Use of `REQUEST_IGNORE_BATTERY_OPTIMIZATIONS` violates the Play Store Content Policy regarding acceptable use cases, as described in https://developer.android.com/training/monitoring-device-state/doze-standby.html"
-        errorLine1="        val intent = Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)"
-        errorLine2="                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/homingsms/app/ui/SettingsFragment.kt"
-            line="83"
-            column="38"/>
     </issue>
 
     <issue
@@ -365,17 +277,6 @@
     </issue>
 
     <issue
-        id="SwitchIntDef"
-        message="Don&apos;t use a constant here; expected one of: `TelephonyManager.NETWORK_TYPE_1xRTT`, `TelephonyManager.NETWORK_TYPE_CDMA`, `TelephonyManager.NETWORK_TYPE_EDGE`, `TelephonyManager.NETWORK_TYPE_EHRPD`, `TelephonyManager.NETWORK_TYPE_EVDO_0`, `TelephonyManager.NETWORK_TYPE_EVDO_A`, `TelephonyManager.NETWORK_TYPE_EVDO_B`, `TelephonyManager.NETWORK_TYPE_GPRS`, `TelephonyManager.NETWORK_TYPE_GSM`, `TelephonyManager.NETWORK_TYPE_HSDPA`, `TelephonyManager.NETWORK_TYPE_HSPA`, `TelephonyManager.NETWORK_TYPE_HSPAP`, `TelephonyManager.NETWORK_TYPE_HSUPA`, `TelephonyManager.NETWORK_TYPE_IDEN`, `TelephonyManager.NETWORK_TYPE_IWLAN`, `TelephonyManager.NETWORK_TYPE_LTE`, `TelephonyManager.NETWORK_TYPE_NR`, `TelephonyManager.NETWORK_TYPE_TD_SCDMA`, `TelephonyManager.NETWORK_TYPE_UMTS`, `TelephonyManager.NETWORK_TYPE_UNKNOWN`"
-        errorLine1="                TelephonyManager.NETWORK_TYPE_IWLAN, 19 -> return CellularNetworkType.Mobile4G"
-        errorLine2="                                                     ~~">
-        <location
-            file="src/main/java/com/homingsms/app/modules/connection/ConnectionService.kt"
-            line="162"
-            column="54"/>
-    </issue>
-
-    <issue
         id="MissingTranslation"
         message="&quot;automatic_key_rotation&quot; is not translated in &quot;ar&quot; (Arabic), &quot;ru&quot; (Russian), &quot;zh&quot; (Chinese)"
         errorLine1="    &lt;string name=&quot;automatic_key_rotation&quot;>Automatic key rotation&lt;/string>"
@@ -612,75 +513,9 @@
         errorLine1="        wakeLock.acquire()"
         errorLine2="        ~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/java/com/homingsms/app/modules/ping/services/PingForegroundService.kt"
-            line="73"
-            column="9"/>
-    </issue>
-
-    <issue
-        id="WakelockTimeout"
-        message="Provide a timeout when requesting a wakelock with `PowerManager.Wakelock.acquire(long timeout)`. This will ensure the OS will cleanup any wakelocks that last longer than you intend, and will save your user&apos;s battery."
-        errorLine1="            wakeLock.acquire()"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/homingsms/app/modules/gateway/services/SSEForegroundService.kt"
-            line="91"
-            column="13"/>
-    </issue>
-
-    <issue
-        id="WakelockTimeout"
-        message="Provide a timeout when requesting a wakelock with `PowerManager.Wakelock.acquire(long timeout)`. This will ensure the OS will cleanup any wakelocks that last longer than you intend, and will save your user&apos;s battery."
-        errorLine1="        wakeLock.acquire()"
-        errorLine2="        ~~~~~~~~~~~~~~~~~~">
-        <location
             file="src/main/java/com/homingsms/app/modules/localserver/WebService.kt"
             line="200"
             column="9"/>
-    </issue>
-
-    <issue
-        id="NotifyDataSetChanged"
-        message="It will always be more efficient to use more specific change events if you can. Rely on `notifyDataSetChanged` as a last resort."
-        errorLine1="        listView.adapter?.notifyDataSetChanged()"
-        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/homingsms/app/ui/settings/CloudServerSettingsFragment.kt"
-            line="187"
-            column="9"/>
-    </issue>
-
-    <issue
-        id="NotifyDataSetChanged"
-        message="It will always be more efficient to use more specific change events if you can. Rely on `notifyDataSetChanged` as a last resort."
-        errorLine1="        listView.adapter?.notifyDataSetChanged()"
-        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/homingsms/app/ui/settings/CloudServerSettingsFragment.kt"
-            line="221"
-            column="9"/>
-    </issue>
-
-    <issue
-        id="NotifyDataSetChanged"
-        message="It will always be more efficient to use more specific change events if you can. Rely on `notifyDataSetChanged` as a last resort."
-        errorLine1="                listView.adapter?.notifyDataSetChanged()"
-        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/homingsms/app/ui/settings/CloudServerSettingsFragment.kt"
-            line="240"
-            column="17"/>
-    </issue>
-
-    <issue
-        id="NotifyDataSetChanged"
-        message="It will always be more efficient to use more specific change events if you can. Rely on `notifyDataSetChanged` as a last resort."
-        errorLine1="                listView.adapter?.notifyDataSetChanged()"
-        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/homingsms/app/ui/settings/CloudServerSettingsFragment.kt"
-            line="266"
-            column="17"/>
     </issue>
 
     <issue
@@ -703,127 +538,6 @@
             file="src/main/res/values/themes.xml"
             line="13"
             column="45"/>
-    </issue>
-
-    <issue
-        id="UseCompoundDrawables"
-        message="This tag and its children can be replaced by one `&lt;TextView/>` and a compound drawable"
-        errorLine1="    &lt;LinearLayout"
-        errorLine2="     ~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/fragment_webhooks_list.xml"
-            line="17"
-            column="6"/>
-    </issue>
-
-    <issue
-        id="Overdraw"
-        message="Possible overdraw: Root element paints background `?android:colorBackground` with a theme that also paints a background (inferred theme is `@style/Theme.Homing`)"
-        errorLine1="    android:background=&quot;?android:colorBackground&quot;"
-        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/fragment_logs.xml"
-            line="10"
-            column="5"/>
-    </issue>
-
-    <issue
-        id="Overdraw"
-        message="Possible overdraw: Root element paints background `?android:attr/colorBackground` with a theme that also paints a background (inferred theme is `@style/Theme.Homing`)"
-        errorLine1="    android:background=&quot;?android:attr/colorBackground&quot;"
-        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/fragment_webhook_queue_detail.xml"
-            line="6"
-            column="5"/>
-    </issue>
-
-    <issue
-        id="Overdraw"
-        message="Possible overdraw: Root element paints background `?android:attr/colorBackground` with a theme that also paints a background (inferred theme is `@style/Theme.Homing`)"
-        errorLine1="    android:background=&quot;?android:attr/colorBackground&quot;"
-        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/fragment_webhook_queue_list.xml"
-            line="7"
-            column="5"/>
-    </issue>
-
-    <issue
-        id="Overdraw"
-        message="Possible overdraw: Root element paints background `?android:attr/colorBackground` with a theme that also paints a background (inferred theme is `@style/Theme.Homing`)"
-        errorLine1="    android:background=&quot;?android:attr/colorBackground&quot;>"
-        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/fragment_webhooks_list.xml"
-            line="7"
-            column="5"/>
-    </issue>
-
-    <issue
-        id="Overdraw"
-        message="Possible overdraw: Root element paints background `?android:attr/selectableItemBackground` with a theme that also paints a background (inferred theme is `@style/Theme.Homing`)"
-        errorLine1="    android:background=&quot;?android:attr/selectableItemBackground&quot;"
-        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/item_incoming_message.xml"
-            line="7"
-            column="5"/>
-    </issue>
-
-    <issue
-        id="Overdraw"
-        message="Possible overdraw: Root element paints background `?android:attr/selectableItemBackground` with a theme that also paints a background (inferred theme is `@style/Theme.Homing`)"
-        errorLine1="    android:background=&quot;?android:attr/selectableItemBackground&quot;"
-        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/item_log_entry.xml"
-            line="7"
-            column="5"/>
-    </issue>
-
-    <issue
-        id="Overdraw"
-        message="Possible overdraw: Root element paints background `?android:attr/selectableItemBackground` with a theme that also paints a background (inferred theme is `@style/Theme.Homing`)"
-        errorLine1="    android:background=&quot;?android:attr/selectableItemBackground&quot;"
-        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/item_message.xml"
-            line="8"
-            column="5"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        message="The resource `R.drawable.ic_code` appears to be unused"
-        errorLine1="&lt;vector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
-        errorLine2="^">
-        <location
-            file="src/main/res/drawable/ic_code.xml"
-            line="1"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        message="The resource `R.drawable.ic_device_id` appears to be unused"
-        errorLine1="&lt;vector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
-        errorLine2="^">
-        <location
-            file="src/main/res/drawable/ic_device_id.xml"
-            line="1"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        message="The resource `R.drawable.ic_no_internet` appears to be unused"
-        errorLine1="&lt;vector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
-        errorLine2="^">
-        <location
-            file="src/main/res/drawable/ic_no_internet.xml"
-            line="1"
-            column="1"/>
     </issue>
 
     <issue
@@ -860,39 +574,6 @@
     </issue>
 
     <issue
-        id="ButtonOrder"
-        message="Cancel button should be on the left (was &quot;Cancel | Continue&quot;, should be &quot;Cancel | Continue&quot;)"
-        errorLine1="        &lt;Button"
-        errorLine2="         ~~~~~~">
-        <location
-            file="src/main/res/layout/dialog_first_start.xml"
-            line="138"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ButtonStyle"
-        message="Buttons in button bars should be borderless; use `style=&quot;?android:attr/buttonBarButtonStyle&quot;` (and `?android:attr/buttonBarStyle` on the parent)"
-        errorLine1="        &lt;Button"
-        errorLine2="         ~~~~~~">
-        <location
-            file="src/main/res/layout/fragment_holder.xml"
-            line="15"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ButtonStyle"
-        message="Buttons in button bars should be borderless; use `style=&quot;?android:attr/buttonBarButtonStyle&quot;` (and `?android:attr/buttonBarStyle` on the parent)"
-        errorLine1="        &lt;Button"
-        errorLine2="         ~~~~~~">
-        <location
-            file="src/main/res/layout/fragment_holder.xml"
-            line="26"
-            column="10"/>
-    </issue>
-
-    <issue
         id="UnnecessaryRequiredFeature"
         message="Consider whether this feature (`android.hardware.telephony`) really is required for the app to function; you can set `android:required=&quot;false&quot;` to indicate that the feature is used but not required"
         errorLine1="        android:name=&quot;android.hardware.telephony&quot;"
@@ -901,72 +582,6 @@
             file="src/main/AndroidManifest.xml"
             line="6"
             column="23"/>
-    </issue>
-
-    <issue
-        id="UseKtx"
-        message="Use the KTX extension function `String.toColorInt` instead?"
-        errorLine1="        com.homingsms.app.domain.ProcessingState.Pending -> Color.parseColor(&quot;#FFBB86FC&quot;)"
-        errorLine2="                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/homingsms/app/ui/styles/Colors.kt"
-            line="7"
-            column="61"/>
-    </issue>
-
-    <issue
-        id="UseKtx"
-        message="Use the KTX extension function `String.toColorInt` instead?"
-        errorLine1="        com.homingsms.app.domain.ProcessingState.Cancelled -> Color.parseColor(&quot;#FF9E9E9E&quot;)"
-        errorLine2="                                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/homingsms/app/ui/styles/Colors.kt"
-            line="8"
-            column="63"/>
-    </issue>
-
-    <issue
-        id="UseKtx"
-        message="Use the KTX extension function `String.toColorInt` instead?"
-        errorLine1="        com.homingsms.app.domain.ProcessingState.Processed -> Color.parseColor(&quot;#FF6200EE&quot;)"
-        errorLine2="                                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/homingsms/app/ui/styles/Colors.kt"
-            line="9"
-            column="63"/>
-    </issue>
-
-    <issue
-        id="UseKtx"
-        message="Use the KTX extension function `String.toColorInt` instead?"
-        errorLine1="        com.homingsms.app.domain.ProcessingState.Sent -> Color.parseColor(&quot;#FF3700B3&quot;)"
-        errorLine2="                                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/homingsms/app/ui/styles/Colors.kt"
-            line="10"
-            column="58"/>
-    </issue>
-
-    <issue
-        id="UseKtx"
-        message="Use the KTX extension function `String.toColorInt` instead?"
-        errorLine1="        com.homingsms.app.domain.ProcessingState.Delivered -> Color.parseColor(&quot;#FF03DAC5&quot;)"
-        errorLine2="                                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/homingsms/app/ui/styles/Colors.kt"
-            line="11"
-            column="63"/>
-    </issue>
-
-    <issue
-        id="UseKtx"
-        message="Use the KTX extension function `String.toColorInt` instead?"
-        errorLine1="        com.homingsms.app.domain.ProcessingState.Failed -> Color.parseColor(&quot;#FF018786&quot;)"
-        errorLine2="                                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/homingsms/app/ui/styles/Colors.kt"
-            line="12"
-            column="60"/>
     </issue>
 
     <issue
@@ -1104,155 +719,12 @@
     <issue
         id="UseKtx"
         message="Use the KTX extension function `String.toUri` instead?"
-        errorLine1="        intent.data = Uri.parse(&quot;package:${requireContext().packageName}&quot;)"
-        errorLine2="                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/homingsms/app/ui/SettingsFragment.kt"
-            line="84"
-            column="23"/>
-    </issue>
-
-    <issue
-        id="UseKtx"
-        message="Use the KTX extension function `String.toUri` instead?"
-        errorLine1="        intent.data = Uri.parse(&quot;package:${requireContext().packageName}&quot;)"
-        errorLine2="                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/homingsms/app/ui/SettingsFragment.kt"
-            line="84"
-            column="23"/>
-    </issue>
-
-    <issue
-        id="UseKtx"
-        message="Use the KTX extension function `String.toUri` instead?"
         errorLine1="            Uri.parse(&quot;content://sms&quot;),"
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/com/homingsms/app/modules/receiver/SmsContentObserver.kt"
             line="74"
             column="13"/>
-    </issue>
-
-    <issue
-        id="ContentDescription"
-        message="Missing `contentDescription` attribute on image"
-        errorLine1="                    &lt;ImageView"
-        errorLine2="                     ~~~~~~~~~">
-        <location
-            file="src/main/res/layout/fragment_home.xml"
-            line="46"
-            column="22"/>
-    </issue>
-
-    <issue
-        id="ContentDescription"
-        message="Missing `contentDescription` attribute on image"
-        errorLine1="                    &lt;ImageView"
-        errorLine2="                     ~~~~~~~~~">
-        <location
-            file="src/main/res/layout/fragment_home.xml"
-            line="152"
-            column="22"/>
-    </issue>
-
-    <issue
-        id="ContentDescription"
-        message="Missing `contentDescription` attribute on image"
-        errorLine1="            &lt;ImageView"
-        errorLine2="             ~~~~~~~~~">
-        <location
-            file="src/main/res/layout/fragment_webhook_queue_list.xml"
-            line="113"
-            column="14"/>
-    </issue>
-
-    <issue
-        id="ContentDescription"
-        message="Missing `contentDescription` attribute on image"
-        errorLine1="        &lt;ImageView"
-        errorLine2="         ~~~~~~~~~">
-        <location
-            file="src/main/res/layout/fragment_webhooks_list.xml"
-            line="26"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ContentDescription"
-        message="Missing `contentDescription` attribute on image"
-        errorLine1="    &lt;ImageView"
-        errorLine2="     ~~~~~~~~~">
-        <location
-            file="src/main/res/layout/item_log_entry.xml"
-            line="11"
-            column="6"/>
-    </issue>
-
-    <issue
-        id="ContentDescription"
-        message="Missing `contentDescription` attribute on image"
-        errorLine1="    &lt;ImageView"
-        errorLine2="     ~~~~~~~~~">
-        <location
-            file="src/main/res/layout/item_message.xml"
-            line="11"
-            column="6"/>
-    </issue>
-
-    <issue
-        id="ContentDescription"
-        message="Missing `contentDescription` attribute on image"
-        errorLine1="        &lt;ImageView"
-        errorLine2="         ~~~~~~~~~">
-        <location
-            file="src/main/res/layout/item_webhook.xml"
-            line="29"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="KeyboardInaccessibleWidget"
-        message="&apos;clickable&apos; attribute found, please also add &apos;focusable&apos;"
-        errorLine1="    android:clickable=&quot;true&quot;"
-        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/fragment_webhook_queue_list.xml"
-            line="8"
-            column="5"/>
-    </issue>
-
-    <issue
-        id="KeyboardInaccessibleWidget"
-        message="&apos;clickable&apos; attribute found, please also add &apos;focusable&apos;"
-        errorLine1="    android:clickable=&quot;true&quot;"
-        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/fragment_webhooks_list.xml"
-            line="6"
-            column="5"/>
-    </issue>
-
-    <issue
-        id="RtlSymmetry"
-        message="When you define `paddingEnd` you should probably also define `paddingStart` for right-to-left symmetry"
-        errorLine1="    android:paddingEnd=&quot;16dp&quot;>"
-        errorLine2="    ~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/item_log_entry.xml"
-            line="9"
-            column="5"/>
-    </issue>
-
-    <issue
-        id="RtlSymmetry"
-        message="When you define `paddingEnd` you should probably also define `paddingStart` for right-to-left symmetry"
-        errorLine1="    android:paddingEnd=&quot;16dp&quot;"
-        errorLine2="    ~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/item_message.xml"
-            line="7"
-            column="5"/>
     </issue>
 
 </issues>

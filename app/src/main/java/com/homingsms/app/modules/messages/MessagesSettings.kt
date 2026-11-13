@@ -37,6 +37,12 @@ class MessagesSettings(private val repository: SettingsRepository) {
     val processingOrder: ProcessingOrder
         get() = current.processingOrder
 
+    val deliveryReports: Boolean
+        get() = current.deliveryReports
+
+    val failoverToOtherSim: Boolean
+        get() = current.failoverToOtherSim
+
     fun nextWorkHoursStart(now: Calendar = Calendar.getInstance()): Long? = WorkHoursCalculator.nextStart(current.workHours, now)
 }
 

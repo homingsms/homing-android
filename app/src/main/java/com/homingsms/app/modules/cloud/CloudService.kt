@@ -27,6 +27,7 @@ class CloudService : Service() {
     private val settings: SettingsRepository by inject()
     private val notifications: NotificationsService by inject()
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+    private val wakeLock by lazy { cloudWakeLock(WAKE_LOCK_TAG) }
 
     override fun onCreate() {
         super.onCreate()
@@ -53,7 +54,7 @@ class CloudService : Service() {
 
     private suspend fun heartbeatLoop() {
         while (scope.isActive) {
-            when (engine.heartbeat()) {
+            when (cycle { engine.heartbeat() }) {
                 SyncOutcome.NotPaired, SyncOutcome.Unpaired -> {
                     stopSelf()
                     return
@@ -67,10 +68,20 @@ class CloudService : Service() {
 
     private suspend fun pullLoop() {
         while (scope.isActive) {
-            val base = remote().pullIntervalSeconds.coerceAtLeast(MIN_INTERVAL_SECONDS)
+            val base = settings.current.cloud.effectivePullIntervalSeconds.coerceAtLeast(MIN_INTERVAL_SECONDS)
             val interval = if (engine.connection.value.pushAvailable) maxOf(base * PUSH_FACTOR, PUSH_MIN_SECONDS) else base
             delay(interval * MILLIS)
-            engine.pull()
+            cycle { engine.pull() }
+        }
+    }
+
+    private suspend fun <T> cycle(block: suspend () -> T): T {
+        if (engine.connection.value.pushAvailable) return block()
+        wakeLock.acquire(CloudPollPolicy.WAKE_LOCK_TIMEOUT_MS)
+        try {
+            return block()
+        } finally {
+            if (wakeLock.isHeld) wakeLock.release()
         }
     }
 
@@ -87,6 +98,7 @@ class CloudService : Service() {
         private const val MIN_INTERVAL_SECONDS = 15
         private const val PUSH_FACTOR = 5
         private const val PUSH_MIN_SECONDS = 300
+        private const val WAKE_LOCK_TAG = "homing:cloud-sync"
 
         fun start(context: Context) {
             val intent = Intent(context, CloudService::class.java)

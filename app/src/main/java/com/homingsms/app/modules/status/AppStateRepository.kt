@@ -5,6 +5,7 @@ import android.os.Build
 import com.homingsms.app.modules.cloud.CloudController
 import com.homingsms.app.modules.localserver.LocalServerService
 import com.homingsms.app.modules.messages.SmsLimitMonitor
+import com.homingsms.app.ui.data.AppStatus
 import com.homingsms.core.data.repository.InboxRecords
 import com.homingsms.core.data.repository.MessageRecords
 import com.homingsms.core.data.repository.StatsRepository
@@ -54,27 +55,28 @@ class AppStateRepository(
     private val webhooks: WebhookRepository,
     private val messageRecords: MessageRecords,
     private val inboxRecords: InboxRecords
-) {
+) : AppStatus {
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
     private val running = MutableStateFlow(false)
     private val healthState = MutableStateFlow(DeviceHealth.Unknown)
     private val permissionsState = MutableStateFlow<List<String>>(emptyList())
 
-    val settings: StateFlow<AppSettings> = settingsRepository.settings
-    val serviceRunning: StateFlow<Boolean> = running.asStateFlow()
-    val health: StateFlow<DeviceHealth> = healthState.asStateFlow()
+    override val settings: StateFlow<AppSettings> = settingsRepository.settings
+    override val serviceRunning: StateFlow<Boolean> = running.asStateFlow()
+    override val health: StateFlow<DeviceHealth> = healthState.asStateFlow()
     val missingPermissions: StateFlow<List<String>> = permissionsState.asStateFlow()
     val smsLimit: StateFlow<SmsLimitState> = smsLimitMonitor.limitState
-    val localServerInfo: StateFlow<LocalServerInfo> = localServer.info
-    val cloudPairing: StateFlow<CloudPairingState> = cloud.pairing
-    val cloudConnection: StateFlow<CloudConnectionState> = cloud.connection
+    override val localServerInfo: StateFlow<LocalServerInfo> = localServer.info
+    override val cloudPairing: StateFlow<CloudPairingState> = cloud.pairing
+    override val cloudConnection: StateFlow<CloudConnectionState> = cloud.connection
 
-    val today: StateFlow<TodayCounts> = stats.today.stateIn(scope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MS), TodayCounts.Empty)
+    override val today: StateFlow<TodayCounts> =
+        stats.today.stateIn(scope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MS), TodayCounts.Empty)
 
-    val last24Hours: StateFlow<List<HourlyBucket>> =
+    override val last24Hours: StateFlow<List<HourlyBucket>> =
         stats.last24Hours.stateIn(scope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MS), emptyList())
 
-    val sims: StateFlow<List<SimStats>> = combine(healthState, settingsRepository.settings) { health, current ->
+    override val sims: StateFlow<List<SimStats>> = combine(healthState, settingsRepository.settings) { health, current ->
         health.sims.map {
             SimStats(
                 slot = it.slot,
@@ -88,10 +90,10 @@ class AppStateRepository(
         }
     }.stateIn(scope, SharingStarted.Eagerly, emptyList())
 
-    val webhookEndpoints: StateFlow<List<WebhookEndpoint>> =
+    override val webhookEndpoints: StateFlow<List<WebhookEndpoint>> =
         webhooks.endpointsFlow.stateIn(scope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MS), emptyList())
 
-    val gateway: StateFlow<GatewayState> = combine(
+    override val gateway: StateFlow<GatewayState> = combine(
         combine(running, settingsRepository.settings, localServer.info) { isRunning, current, local -> Triple(isRunning, current, local) },
         combine(cloud.pairing, cloud.connection) { pairing, connection -> pairing to connection },
         combine(healthState, permissionsState, smsLimitMonitor.limitState, sims) { health, permissions, limit, simList ->
@@ -139,7 +141,7 @@ class AppStateRepository(
         scope.launch(Dispatchers.IO) { refresh() }
     }
 
-    suspend fun refresh() {
+    override suspend fun refresh() {
         healthState.value = healthReader.read(stats.sentToday(), stats.queued())
         permissionsState.value = healthReader.missingPermissions(requiredPermissions())
         smsLimitMonitor.refresh()

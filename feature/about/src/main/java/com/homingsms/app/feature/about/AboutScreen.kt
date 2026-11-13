@@ -95,10 +95,19 @@ internal fun LicenseKind.label(): String = stringResource(
 )
 
 @Composable
+internal fun ComponentLicense.label(): String = when (this) {
+    is ComponentLicense.Bundled -> kind.label()
+    is ComponentLicense.External -> name
+}
+
+@Composable
 private fun LicenseSheet(component: OpenSourceComponent, onDismiss: () -> Unit) {
     val resources = LocalResources.current
     val text = remember(component.license) {
-        resources.openRawResource(component.license.textRes).bufferedReader().use { it.readText() }
+        when (val license = component.license) {
+            is ComponentLicense.Bundled -> resources.openRawResource(license.kind.textRes).bufferedReader().use { it.readText() }
+            is ComponentLicense.External -> license.text ?: license.url ?: license.name
+        }
     }
     HomingBottomSheet(onDismissRequest = onDismiss, title = component.name) {
         Text(

@@ -6,7 +6,7 @@ data class TodayCounts(val sent: Int, val delivered: Int, val failed: Int, val r
     }
 }
 
-data class HourlyBucket(val startAt: Long, val sent: Int, val failed: Int, val received: Int)
+data class HourlyBucket(val startAt: Long, val sent: Int, val failed: Int, val received: Int, val delivered: Int = 0)
 
 data class SimStats(
     val slot: Int,

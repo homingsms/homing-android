@@ -1,7 +1,7 @@
 package com.homingsms.app.modules.settings
 
-import androidx.preference.PreferenceManager
-import com.homingsms.app.helpers.SettingsHelper
+import android.content.Context
+import android.content.SharedPreferences
 import com.homingsms.app.modules.encryption.EncryptionSettings
 import com.homingsms.app.modules.incoming.IncomingMessagesSettings
 import com.homingsms.app.modules.logs.LogsSettings
@@ -14,6 +14,7 @@ import com.homingsms.core.data.settings.SettingsRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import org.koin.android.ext.koin.androidContext
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
@@ -21,9 +22,9 @@ val settingsModule = module {
     single(named(APP_SCOPE)) { CoroutineScope(SupervisorJob() + Dispatchers.IO) }
     single<SecretStore> { PreferencesSecretStore.create(get()) }
     single { SettingsRepository.create(get(), get(), get(named(APP_SCOPE))) }
-    single { SettingsPreferenceDataStore(get(), get(), PreferenceManager.getDefaultSharedPreferences(get())) }
-    factory { PreferenceManager.getDefaultSharedPreferences(get()) }
-    factory { SettingsHelper(get(), get()) }
+    factory<SharedPreferences> {
+        androidContext().getSharedPreferences(androidContext().packageName + "_preferences", Context.MODE_PRIVATE)
+    }
 
     factory { EncryptionSettings { get<SecretStore>().get(SecretStore.PASSPHRASE) } }
     factory { MessagesSettings(get()) }

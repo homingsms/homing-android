@@ -51,12 +51,21 @@ class CloudController(
         CloudSyncWorker.schedulePeriodic(context)
         CloudSyncWorker.flush(context)
         PushTokens.refresh(context)
+        if (CloudPollPolicy.needsAlarm(enabled = true, paired = true, pushAvailable = engine.connection.value.pushAvailable)) {
+            CloudPollAlarm.schedule(context, settings.current.cloud.effectivePullIntervalSeconds)
+        }
     }
 
     fun stop() {
         collector.stop()
         CloudService.stop(context)
         CloudSyncWorker.cancelAll(context)
+        CloudPollAlarm.cancel(context)
+    }
+
+    fun retryNow() {
+        if (!settings.current.cloud.enabled || !engine.isPaired) return
+        CloudSyncWorker.heartbeatNow(context)
     }
 
     suspend fun pair(code: String, serverUrl: String): CloudPairingState =

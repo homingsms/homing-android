@@ -1,9 +1,7 @@
 package com.homingsms.app
 
 import android.app.Application
-import android.content.Context
 import com.homingsms.app.data.dbModule
-import com.homingsms.app.helpers.LocaleHelper
 import com.homingsms.app.modules.cloud.cloudModule
 import com.homingsms.app.modules.encryption.encryptionModule
 import com.homingsms.app.modules.events.eventBusModule
@@ -20,16 +18,14 @@ import com.homingsms.app.modules.settings.settingsModule
 import com.homingsms.app.modules.status.statusModule
 import com.homingsms.app.modules.webhooks.webhooksModule
 import com.homingsms.app.receivers.EventsReceiver
+import com.homingsms.app.ui.uiDataModule
+import com.homingsms.app.ui.uiModule
 import org.koin.android.ext.android.get
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
 class App : Application() {
-    override fun attachBaseContext(base: Context?) {
-        super.attachBaseContext(base?.let { LocaleHelper.onAttach(it) })
-    }
-
     override fun onCreate() {
         super.onCreate()
 
@@ -51,7 +47,9 @@ class App : Application() {
                 cloudModule,
                 localserverModule,
                 statusModule,
-                orchestratorModule
+                orchestratorModule,
+                uiDataModule,
+                uiModule
             )
         }
 

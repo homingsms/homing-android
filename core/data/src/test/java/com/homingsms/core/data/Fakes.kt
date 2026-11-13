@@ -77,6 +77,8 @@ class FakeOutbox : CloudOutboxDao {
 
     override fun observeInboxCount(): Flow<Int> = MutableStateFlow(inbox.size)
 
+    override suspend fun inboxEntry(localId: String): CloudInboxOutboxEntity? = inbox[localId]
+
     override suspend fun clearStates() {
         states.clear()
     }

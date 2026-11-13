@@ -1,117 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">Homing</string>
-    <string name="app_version_build">App version (build)</string>
-    <string name="battery_optimization_already_disabled">Battery optimization already disabled</string>
-    <string name="battery_optimization">Battery optimization</string>
-    <string name="btn_continue">Continue</string>
-    <string name="can_affect_battery_life">can affect battery life</string>
-    <string name="cloud_server_dotdotdot">Cloud server…</string>
-    <string name="cloud_server">Cloud server</string>
-    <string name="delays_limits_etc">Delays, limits, etc.</string>
-    <string name="delays_seconds">Delays, seconds</string>
-    <string name="delete_after_days">Delete after, days</string>
-    <string name="device_id">Device ID</string>
-    <string name="disabled">Disabled</string>
-    <string name="dots">…</string>
-    <string name="enabled">Enabled</string>
-    <string name="encryption">Encryption</string>
-    <string name="id_copied">Webhook ID copied to clipboard</string>
-    <string name="if_sim_number_is_not_specified_use">If SIM number is not specified, use</string>
-    <string name="information">Information</string>
-    <string name="is_not_a_valid_port_must_be_between_1024_and_65535">%1$s is not a valid port. Must
-        be between 1024 and 65535.</string>
-    <string name="limits">Limits</string>
-    <string name="list_of_last_50_log_entries">List of last 50 log entries</string>
-    <string name="local_server_dotdotdot">Local Server…</string>
     <string name="local_sms_gateway_notifications">Local Homing notifications</string>
-    <string name="logs">Logs</string>
-    <string name="maximum">Maximum</string>
-    <string name="messages_count">Messages count</string>
-    <string name="messages_header">Messages</string>
-    <string name="messages">Messages…</string>
-    <string name="minimum">Minimum</string>
-    <string name="n_a">n/a</string>
-    <string name="no_webhooks_found">No webhooks configured</string>
-    <string name="not_registered">not registered</string>
-    <string name="not_set">Not set</string>
-    <string name="passphrase">Passphrase</string>
-    <string name="period">Period</string>
-    <string name="port">Port</string>
-    <string name="require_internet_connection">Require Internet connection</string>
-    <string name="restart_required_to_apply_changes">Restart required to apply changes</string>
     <string name="send_messages_notification">Sending messages…</string>
-    <string name="server_address">Server address</string>
-    <string name="server">Server</string>
-    <string name="set_maximum_value_to_activate">Set maximum value to activate</string>
-    <string name="settings_local_server">Local server</string>
-    <string name="button_start_service">Start Service</string>
-    <string name="button_stop_service">Stop Service</string>
-    <string name="settings_start_on_boot">Start on boot</string>
     <string name="sms_gateway_is_running_on_port">Homing is running on port %1$d</string>
     <string name="sms_gateway">Homing</string>
-    <string name="system">System</string>
-    <string name="tab_text_home">Home</string>
-    <string name="tab_text_messages">MESSAGES</string>
-    <string name="tab_text_settings">SETTINGS</string>
-    <string name="the_webhook_request_will_wait_for_an_internet_connection">The webhook request will
-        wait for an internet connection</string>
-    <string name="view">View</string>
-    <string name="webhook_id_format" translatable="false">ID: %1$s</string>
-    <string name="webhook_list_summary">View registered webhooks</string>
-    <string name="webhook_list_title">Registered Webhooks</string>
-    <string name="filter_all_count">All (%1$d)</string>
-    <string name="filter_pending_count">Pending (%1$d)</string>
-    <string name="filter_failed_count">Failed (%1$d)</string>
-    <string name="webhooks_dotdotdot">Webhooks…</string>
-    <string name="webhooks">Webhooks</string>
-    <string name="processing">Processing</string>
-    <string name="processing_order_title">Processing order</string>
-    <string name="receiver_content_provider_monitoring">Content Provider Monitoring</string>
-    <string name="receiver_content_provider_monitoring_summary">Also detect incoming SMS via content
-        provider</string>
-    <string name="queue_status">📊 Queue Status</string>
-    <string name="incoming_messages">INCOMING</string>
-    <string name="incoming_messages_status">📥 Incoming Status</string>
-    <string name="confirm">Confirm</string>
-    <string name="cancel">Cancel</string>
-    <string name="outgoing_messages">OUTGOING</string>
-    <string name="incoming_type_sms" translatable="false">SMS</string>
-    <string name="incoming_type_data_sms" translatable="false">Data SMS</string>
-    <string name="incoming_type_mms" translatable="false">MMS</string>
-    <string name="language">Language</string>
-    <string name="language_system">System default</string>
-    <string name="working_hours">Working Hours</string>
-    <string name="working_hours_enable">Enable working hours</string>
-    <string name="working_hours_summary">Only send messages within the defined time window</string>
-    <string name="working_hours_start">Start time</string>
-    <string name="working_hours_end">End time</string>
-    <string name="inbox_dotdotdot">Inbox…</string>
-    <string name="inbox_settings_summary">Content provider monitoring, retention, etc.</string>
-    <string name="inbox">Inbox</string>
-    <string name="filter_sent_count">Sent (%1$d)</string>
-    <string name="filter_delivered_count">Delivered (%1$d)</string>
-    <string name="filter_cancelled_count">Cancelled (%1$d)</string>
-    <string name="filter_sms_count">SMS (%1$d)</string>
-    <string name="filter_data_sms_count">Data SMS (%1$d)</string>
-    <string name="filter_mms_count">MMS (%1$d)</string>
-    <string name="device_unregistered">Device unregistered</string>
-    <string name="unregister_device">Unregister device</string>
-    <string name="confirm_unregister_device">Are you sure you want to unregister this device?
-        You will need to sign up or sign in again to use the cloud server.</string>
     <string name="cloud_connected_notification">Connected to Homing Cloud</string>
-    <string name="pair_device">Pair with Homing Cloud</string>
-    <string name="pairing_code">Pairing code</string>
-    <string name="pairing_failed">Pairing failed: %1$s</string>
-    <string name="paired_as">Paired as %1$s</string>
-    <string name="confirm_pair_link">Pair this phone with %1$s?</string>
-    <string name="api_keys">API keys</string>
-    <string name="create_api_key">Create API key</string>
-    <string name="api_key_name">Key name</string>
-    <string name="api_key_created">Copy this key now. It is shown only once.</string>
-    <string name="revoke_api_key">Revoke %1$s?</string>
-    <string name="gateway_status_online">Online</string>
-    <string name="gateway_status_degraded">Degraded</string>
-    <string name="gateway_status_offline">Offline</string>
-    <string name="copy_key">Copy</string>
-    <string name="today_counts">Today: %1$d sent, %2$d delivered, %3$d failed, %4$d received, %5$d queued</string>
+    <string name="pair_link_title">Pair with Homing Cloud?</string>
+    <string name="pair_link_message">This link connects the phone to %1$s with pairing code %2$s. Pair only if you opened it from your own Homing Cloud console.</string>
+    <string name="pair_link_confirm">Pair</string>
+    <string name="sms_limit_title">Android sending limit</string>
+    <string name="sms_limit_message">Android lets an app send about 30 SMS every 30 minutes. To raise the limit, turn on USB debugging, connect the phone to a computer and run:\n\n%1$s</string>
+    <string name="sms_limit_copy">Copy command</string>
 </resources>

@@ -28,13 +28,13 @@ The debug APK is written to `app/build/outputs/apk/debug/app-debug.apk`. Install
 
 ### Firebase (optional)
 
-Push wake-ups for cloud mode use Firebase Cloud Messaging. Put your project's `google-services.json` in `app/`. The Google Services plugin is applied only when that file exists. Without it the app builds and runs normally, push wake-ups are disabled and cloud mode pulls messages every `pullIntervalSeconds` instead.
+Push wake-ups for cloud mode use Firebase Cloud Messaging. Put your project's `google-services.json` in `app/`. The Google Services plugin is applied only when that file exists. Without it the app builds and runs normally, push wake-ups are disabled and cloud mode pulls messages every `pullIntervalSeconds` instead. Each pull holds a short partial wake lock, and an allow-while-idle alarm wakes the phone for a heartbeat when Doze delays the regular loop. Android limits those alarms while the phone is idle, so expect a pull roughly every 10 to 15 minutes in deep Doze.
 
 `google-services.json` is ignored by Git. CI reads it from the `GOOGLE_SERVICES_JSON` secret.
 
 ### Cloud server URL
 
-The default Homing Cloud server is `https://api.homingsms.com`. It is compiled into `BuildConfig.CLOUD_URL` and prefilled in the pairing dialog. A `homing://pair?server=...&code=...` link (the QR code in the console) sets the server for that pairing. To build with a different default, pass `-Phoming.cloudUrl=https://...` or set `HOMING_CLOUD_URL`. Debug builds also accept `http://` servers such as `http://10.0.2.2:7010` from the emulator.
+The default Homing Cloud server is `https://api.homingsms.com`. It is compiled into `BuildConfig.CLOUD_URL` and used for pairing codes unless you change the cloud server address in Settings. A `homing://pair?server=...&code=...` link (the QR code in the console) opens the app, prefills the code and asks you to confirm before it pairs with that server. To build with a different default, pass `-Phoming.cloudUrl=https://...` or set `HOMING_CLOUD_URL`. Debug builds also accept `http://` servers such as `http://10.0.2.2:7010` from the emulator.
 
 ## Cloud mode
 
@@ -47,7 +47,7 @@ The phone talks to Homing Cloud over the device protocol (`/api/v1/device`):
 
 ## Local mode
 
-The local server mirrors the Homing Cloud public API under `http://<phone>:<port>/api/v1`: `/messages`, `/inbox`, `/webhooks` and `/health`, with the same request and response shapes. Requests need `Authorization: Bearer hk_live_...`. Create and revoke keys in Settings, Local server; each key has scopes (`messages:send`, `messages:read`, `inbox:read`, `webhooks:manage`, `devices:manage`, `admin`) and only a hash is stored. The OpenAPI document is served at `/api/v1/docs/openapi.json`.
+The local server mirrors the Homing Cloud public API under `http://<phone>:<port>/api/v1`: `/messages`, `/inbox`, `/webhooks` and `/health`, with the same request and response shapes. Requests need `Authorization: Bearer hk_live_...`. Create and revoke keys on the Connect screen; each key has scopes (`messages:send`, `messages:read`, `inbox:read`, `webhooks:manage`, `devices:manage`, `admin`) and only a hash is stored. The OpenAPI document is served at `/api/v1/docs/openapi.json`.
 
 ```sh
 curl -X POST http://192.168.1.20:8080/api/v1/messages \
@@ -124,7 +124,9 @@ adb shell am broadcast -n com.homingsms.app/.debug.DebugCommandReceiver -a com.h
 | `:core:data` | Room database and migrations, typed DataStore settings with the migration from the old preferences, Keystore-backed secret storage, the device protocol client and sync engine, webhook storage and delivery, repositories |
 | `:core:telephony` | SIM and subscription helpers, phone number handling, SMS result codes, outgoing SMS limit detection, device health, MMS PDU parsing and composing |
 | `:core:server` | The Ktor local API: routes, API key auth, errors and the generated OpenAPI document. Pure JVM, tested with `testApplication` |
-| `:app` | Android services, receivers, workers, dependency wiring and the current Views UI |
+| `:core:designsystem` | Compose theme, components and the app shell with bottom bar or navigation rail |
+| `:feature:*` | Stateless Compose screens for onboarding, home, messages, inbox, connect, webhooks, settings and about |
+| `:app` | Android services, receivers, workers, dependency wiring, the single `MainActivity` with Navigation Compose, and one ViewModel per screen |
 
 `AppStateRepository` in `:app` exposes everything the UI needs as `StateFlow`s of `:core:model` types: gateway status with typed reasons, today's counts, the 24 hour series, per-SIM stats with daily caps, device health, local server info with API keys, cloud pairing and connection state, webhook endpoints and settings, plus paged message and inbox queries.
 

@@ -52,8 +52,6 @@
     public <init>(android.content.Context, androidx.work.WorkerParameters);
 }
 
--keep class com.homingsms.app.ui.** extends androidx.fragment.app.Fragment { <init>(); }
-
 -keep class org.koin.core.** { *; }
 
 -keep class io.ktor.** { *; }

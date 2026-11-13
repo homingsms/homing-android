@@ -2,30 +2,14 @@
 <SmellBaseline>
   <ManuallySuppressedIssues/>
   <CurrentIssues>
-    <ID>ConstructorParameterNaming:GatewayApi.kt$GatewayApi.Message$@SerialName("dataMessage") val _dataMessage: MessageContent.Data?</ID>
-    <ID>ConstructorParameterNaming:GatewayApi.kt$GatewayApi.Message$@SerialName("message") val _message: String?</ID>
-    <ID>ConstructorParameterNaming:GatewayApi.kt$GatewayApi.Message$@SerialName("mmsMessage") val _mmsMessage: MessageContent.Mms?</ID>
-    <ID>ConstructorParameterNaming:GatewayApi.kt$GatewayApi.Message$@SerialName("textMessage") val _textMessage: MessageContent.Text?</ID>
-    <ID>CyclomaticComplexMethod:BatteryMonitor.kt$BatteryMonitor$fun healthCheck(): Map&lt;String, CheckResult&gt;</ID>
-    <ID>CyclomaticComplexMethod:CloudServerSettingsFragment.kt$CloudServerSettingsFragment$@SuppressLint("NotifyDataSetChanged") override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?)</ID>
     <ID>CyclomaticComplexMethod:EventsReceiver.kt$EventsReceiver$override suspend fun collect(eventBus: EventBus)</ID>
-    <ID>CyclomaticComplexMethod:HomeFragment.kt$HomeFragment$override fun onViewCreated(view: View, savedInstanceState: Bundle?)</ID>
     <ID>CyclomaticComplexMethod:InboxRoutes.kt$InboxRoutes$private fun Route.inboxRoutes(context: Context)</ID>
-    <ID>CyclomaticComplexMethod:IncomingMessagesListFragment.kt$IncomingMessagesListFragment$override fun onViewCreated(view: View, savedInstanceState: Bundle?)</ID>
-    <ID>CyclomaticComplexMethod:MessagesListFragment.kt$MessagesListFragment$override fun onViewCreated(view: View, savedInstanceState: Bundle?)</ID>
     <ID>CyclomaticComplexMethod:MessagesRoutes.kt$MessagesRoutes$private fun Route.messagesRoutes()</ID>
     <ID>CyclomaticComplexMethod:MessagesService.kt$MessagesService$internal suspend fun sendPendingMessages()</ID>
-    <ID>CyclomaticComplexMethod:MessagesService.kt$MessagesService$private fun resultToErrorMessage(resultCode: Int): String</ID>
     <ID>CyclomaticComplexMethod:MessagesService.kt$MessagesService$private suspend fun sendSMS(request: StoredSendRequest)</ID>
     <ID>CyclomaticComplexMethod:MessagesService.kt$MessagesService$suspend fun processStateIntent(intent: Intent, resultCode: Int)</ID>
-    <ID>CyclomaticComplexMethod:MessagesSettings.kt$MessagesSettings$override fun import(data: Map&lt;String, *&gt;): Boolean</ID>
     <ID>CyclomaticComplexMethod:MmsContentReader.kt$MmsContentReader$fun read(context: Context, mmsId: Long): MmsMessage?</ID>
-    <ID>CyclomaticComplexMethod:PostMessageRequest.kt$PostMessageRequest$fun validate(): PostMessageRequest</ID>
-    <ID>CyclomaticComplexMethod:WebhookQueueListFragment.kt$WebhookQueueListFragment$override fun onViewCreated(view: View, savedInstanceState: Bundle?)</ID>
     <ID>EmptyDefaultConstructor:EncryptionService.kt$EncryptionService$()</ID>
-    <ID>EmptyDefaultConstructor:LogItemsAdapter.kt$LogItemsAdapter$( )</ID>
-    <ID>EmptyFunctionBlock:DeviceSettings.kt$DeviceSettings${ }</ID>
-    <ID>EmptyFunctionBlock:FirstStartDialogFragment.kt$FirstStartDialogFragment.&lt;no name provided&gt;${ }</ID>
     <ID>FunctionNaming:MessagesDao.kt$MessagesDao$@Insert fun _insert(message: Message)</ID>
     <ID>FunctionNaming:MessagesDao.kt$MessagesDao$@Insert fun _insertRecipients(recipient: List&lt;MessageRecipient&gt;)</ID>
     <ID>FunctionNaming:MessagesDao.kt$MessagesDao$@Insert(onConflict = OnConflictStrategy.IGNORE) fun _insertMessageState(state: MessageState)</ID>
@@ -35,69 +19,31 @@
     <ID>FunctionNaming:MessagesDao.kt$MessagesDao$@Query("UPDATE message SET state = :state WHERE id = :id AND state &lt;&gt; 'Failed'") suspend fun _updateMessageState(id: String, state: ProcessingState)</ID>
     <ID>FunctionNaming:MessagesDao.kt$MessagesDao$@Query("UPDATE messagerecipient SET state = :state, error = :error WHERE messageId = :id AND phoneNumber = :phoneNumber AND state &lt;&gt; 'Failed'") fun _updateRecipientState( id: String, phoneNumber: String, state: ProcessingState, error: String? )</ID>
     <ID>FunctionNaming:MessagesDao.kt$MessagesDao$@Query("UPDATE messagerecipient SET state = :state, error = :error WHERE messageId = :id AND state &lt;&gt; 'Failed'") fun _updateRecipientsState( id: String, state: ProcessingState, error: String? )</ID>
-    <ID>LongMethod:AuthRoutes.kt$AuthRoutes$private fun Route.tokenRoutes()</ID>
-    <ID>LongMethod:CloudServerSettingsFragment.kt$CloudServerSettingsFragment$@SuppressLint("NotifyDataSetChanged") override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?)</ID>
     <ID>LongMethod:EventsReceiver.kt$EventsReceiver$override suspend fun collect(eventBus: EventBus)</ID>
-    <ID>LongMethod:HomeFragment.kt$HomeFragment$override fun onViewCreated(view: View, savedInstanceState: Bundle?)</ID>
     <ID>LongMethod:InboxRoutes.kt$InboxRoutes$private fun Route.inboxRoutes(context: Context)</ID>
-    <ID>LongMethod:JwtService.kt$JwtService$suspend fun refreshTokenPair( refreshTokenID: String, originalScopes: List&lt;String&gt; ): GeneratedTokenPair</ID>
     <ID>LongMethod:MMSParserTest.kt$MMSParserTest$@Test fun parseMNotificationIndTest()</ID>
     <ID>LongMethod:MMSParserTest.kt$MMSParserTest$@Test fun simpleTest()</ID>
-    <ID>LongMethod:MessagesListFragment.kt$MessagesListFragment$override fun onViewCreated(view: View, savedInstanceState: Bundle?)</ID>
     <ID>LongMethod:MessagesRoutes.kt$MessagesRoutes$private fun Route.messagesRoutes()</ID>
-    <ID>LongMethod:MessagesService.kt$MessagesService$private fun resultToErrorMessage(resultCode: Int): String</ID>
     <ID>LongMethod:MessagesService.kt$MessagesService$private suspend fun sendSMS(request: StoredSendRequest)</ID>
     <ID>LongMethod:MessagesService.kt$MessagesService$suspend fun processStateIntent(intent: Intent, resultCode: Int)</ID>
-    <ID>LongMethod:MessagesSettings.kt$MessagesSettings$override fun import(data: Map&lt;String, *&gt;): Boolean</ID>
     <ID>LongMethod:Migrations.kt$&lt;no name provided&gt;$override fun migrate(database: SupportSQLiteDatabase)</ID>
     <ID>LongMethod:MmsContentReader.kt$MmsContentReader$fun read(context: Context, mmsId: Long): MmsMessage?</ID>
     <ID>LongMethod:MmsReceiver.kt$MmsReceiver$override fun onReceive(context: Context, intent: Intent)</ID>
     <ID>LongMethod:ReceiverService.kt$ReceiverService$private fun saveAndBuildPayload( context: Context, message: InboxMessage ): Pair&lt;WebHookEvent, Any&gt;?</ID>
-    <ID>LongMethod:SendWebhookWorker.kt$SendWebhookWorker$override suspend fun doWork(): ListenableWorker.Result</ID>
-    <ID>LongMethod:SendWebhookWorker.kt$SendWebhookWorker.Companion$fun start( context: Context, url: String, data: WebHookEventDTO, internetRequired: Boolean, )</ID>
     <ID>LongMethod:SmsContentObserver.kt$SmsContentObserver$private fun processNewMessages()</ID>
-    <ID>LongMethod:WebHooksService.kt$WebHooksService$fun emit(context: Context, event: WebHookEvent, payload: Any)</ID>
-    <ID>LongMethod:WebhookQueueListFragment.kt$WebhookQueueListFragment$override fun onViewCreated(view: View, savedInstanceState: Bundle?)</ID>
-    <ID>LongMethod:WebhookQueueProcessorWorker.kt$WebhookQueueProcessorWorker$override suspend fun doWork(): Result</ID>
-    <ID>LongMethod:WebhookQueueProcessorWorker.kt$WebhookQueueProcessorWorker$private suspend fun processBatch(batchSize: Int): Int</ID>
-    <ID>LongMethod:WebhookQueueProcessorWorker.kt$WebhookQueueProcessorWorker$private suspend fun sendWebhook(webhook: WebhookQueueEntity): Boolean</ID>
-    <ID>LongParameterList:InboxUploadRepository.kt$InboxUploadRepository$( messageId: String, type: String, senderEncrypted: String, recipientEncrypted: String?, simNumber: Int?, messageCreatedAt: Long, contentEncrypted: String, attachmentsEncrypted: String?, )</ID>
     <ID>LongParameterList:Message.kt$Message$( val id: String, val deviceId: String, val state: ProcessingState, val isHashed: Boolean, val isEncrypted: Boolean, val scheduleAt: Date?, val createdAt: Date, val textMessage: TextMessage?, val dataMessage: DataMessage?, val mmsMessage: MmsMessage?, val hashedMessage: HashedMessage?, val recipients: List&lt;Recipient&gt;, val states: Map&lt;ProcessingState, Date&gt;, )</ID>
     <ID>LongParameterList:OrchestratorService.kt$OrchestratorService$( private val messagesSvc: MessagesService, private val incomingSvc: IncomingMessagesService, private val gatewaySvc: GatewayService, private val localServerSvc: LocalServerService, private val webHooksSvc: WebHooksService, private val receiverService: ReceiverService, private val pingSvc: PingService, private val logsSvc: LogsService, private val deviceService: DeviceService, private val settings: SettingsHelper, )</ID>
-    <ID>LongParameterList:SettingsService.kt$SettingsService$( private val context: Context, private val notificationsService: NotificationsService, encryptionSettings: EncryptionSettings, gatewaySettings: GatewaySettings, incomingMessagesSettings: IncomingMessagesSettings, messagesSettings: MessagesSettings, pingSettings: PingSettings, logsSettings: LogsSettings, webhooksSettings: WebhooksSettings, deviceSettings: DeviceSettings, )</ID>
     <ID>LoopWithTooManyJumpStatements:MessagesService.kt$MessagesService$while</ID>
     <ID>LoopWithTooManyJumpStatements:MmsContentReader.kt$MmsContentReader$while</ID>
     <ID>MagicNumber:BasePassphraseEncryptionProvider.kt$BasePassphraseEncryptionProvider$256</ID>
-    <ID>MagicNumber:BatteryMonitor.kt$BatteryMonitor$10</ID>
-    <ID>MagicNumber:BatteryMonitor.kt$BatteryMonitor$100</ID>
-    <ID>MagicNumber:BatteryMonitor.kt$BatteryMonitor$25</ID>
-    <ID>MagicNumber:BatteryMonitor.kt$BatteryMonitor$4L</ID>
-    <ID>MagicNumber:CloudServerSettingsFragment.kt$CloudServerSettingsFragment$14</ID>
-    <ID>MagicNumber:DeviceService.kt$DeviceService$86400000L</ID>
     <ID>MagicNumber:EncryptionService.kt$EncryptionService$3</ID>
-    <ID>MagicNumber:Fingerprint.kt$Fingerprint$0xFF</ID>
-    <ID>MagicNumber:Fingerprint.kt$Fingerprint$4</ID>
-    <ID>MagicNumber:GatewayService.kt$GatewayService$4</ID>
     <ID>MagicNumber:HardenedPassphraseEncryptionProvider.kt$HardenedPassphraseEncryptionProvider$4</ID>
     <ID>MagicNumber:InboxRoutes.kt$InboxRoutes$50</ID>
     <ID>MagicNumber:InboxRoutes.kt$InboxRoutes$500</ID>
-    <ID>MagicNumber:InboxUploadService.kt$InboxUploadService$16</ID>
     <ID>MagicNumber:IncomingMessagesService.kt$IncomingMessagesService$64</ID>
     <ID>MagicNumber:IncomingMessagesService.kt$IncomingMessagesService$86400000L</ID>
-    <ID>MagicNumber:JwtService.kt$JwtService$1000L</ID>
-    <ID>MagicNumber:JwtService.kt$JwtService.Companion$7</ID>
-    <ID>MagicNumber:KeyStore.kt$KeyStore$2048</ID>
     <ID>MagicNumber:LegacyPassphraseEncryptionProvider.kt$LegacyPassphraseEncryptionProvider$3</ID>
-    <ID>MagicNumber:LocalIPProvider.kt$LocalIPProvider$0xFF</ID>
-    <ID>MagicNumber:LocalIPProvider.kt$LocalIPProvider$16</ID>
-    <ID>MagicNumber:LocalIPProvider.kt$LocalIPProvider$24</ID>
-    <ID>MagicNumber:LocalIPProvider.kt$LocalIPProvider$8</ID>
     <ID>MagicNumber:LocalServerService.kt$LocalServerService$16</ID>
-    <ID>MagicNumber:LocalServerSettings.kt$LocalServerSettings$48</ID>
-    <ID>MagicNumber:LocalServerSettingsFragment.kt$LocalServerSettingsFragment$1024</ID>
-    <ID>MagicNumber:LocalServerSettingsFragment.kt$LocalServerSettingsFragment$3</ID>
-    <ID>MagicNumber:LocalServerSettingsFragment.kt$LocalServerSettingsFragment$65535</ID>
-    <ID>MagicNumber:LocalServerSettingsFragment.kt$LocalServerSettingsFragment$8</ID>
     <ID>MagicNumber:LogsService.kt$LogsService$86400000L</ID>
     <ID>MagicNumber:LogsUtils.kt$LogsUtils$10</ID>
     <ID>MagicNumber:MMSParser.kt$MMSParser$1000L</ID>
@@ -111,14 +57,8 @@
     <ID>MagicNumber:MessagesService.kt$MessagesService$16</ID>
     <ID>MagicNumber:MessagesService.kt$MessagesService$24</ID>
     <ID>MagicNumber:MessagesService.kt$MessagesService$31</ID>
-    <ID>MagicNumber:MessagesService.kt$MessagesService$3600</ID>
     <ID>MagicNumber:MessagesService.kt$MessagesService$86400000L</ID>
-    <ID>MagicNumber:MessagesSettings.kt$MessagesSettings$23</ID>
-    <ID>MagicNumber:MessagesSettings.kt$MessagesSettings$59</ID>
     <ID>MagicNumber:MessagesSettings.kt$MessagesSettings$60</ID>
-    <ID>MagicNumber:MessagesSettingsFragment.kt$MessagesSettingsFragment$23</ID>
-    <ID>MagicNumber:MessagesSettingsFragment.kt$MessagesSettingsFragment$59</ID>
-    <ID>MagicNumber:MessagesSettingsFragment.kt$MessagesSettingsFragment$9</ID>
     <ID>MagicNumber:MmsContentReader.kt$MmsContentReader$0x80</ID>
     <ID>MagicNumber:MmsContentReader.kt$MmsContentReader$0xBF</ID>
     <ID>MagicNumber:MmsContentReader.kt$MmsContentReader$0xC2</ID>
@@ -128,47 +68,17 @@
     <ID>MagicNumber:MmsContentReader.kt$MmsContentReader$4</ID>
     <ID>MagicNumber:MmsContentReader.kt$MmsContentReader$5</ID>
     <ID>MagicNumber:MmsContentReader.kt$MmsContentReader$6</ID>
-    <ID>MagicNumber:PayloadSingingPlugin.kt$1000</ID>
-    <ID>MagicNumber:PostMessageRequest.kt$PostMessageRequest$1000L</ID>
-    <ID>MagicNumber:PostMessageRequest.kt$PostMessageRequest$65535</ID>
-    <ID>MagicNumber:RSAEncryptionProvider.kt$RSAEncryptionProvider$3</ID>
-    <ID>MagicNumber:RSAEncryptionProvider.kt$RSAEncryptionProvider$4</ID>
-    <ID>MagicNumber:RSAEncryptionProvider.kt$RSAEncryptionProvider$5</ID>
     <ID>MagicNumber:ReceiverService.kt$ReceiverService$1000</ID>
     <ID>MagicNumber:ReceiverService.kt$ReceiverService$16</ID>
     <ID>MagicNumber:ReceiverService.kt$ReceiverService$3</ID>
     <ID>MagicNumber:ReceiverService.kt$ReceiverService$4</ID>
-    <ID>MagicNumber:ReviewWebhooksWorker.kt$ReviewWebhooksWorker.Companion$30</ID>
-    <ID>MagicNumber:SSEManager.kt$SSEManager$10</ID>
-    <ID>MagicNumber:SSEManager.kt$SSEManager$30_000L</ID>
-    <ID>MagicNumber:SSEManager.kt$SSEManager$5</ID>
-    <ID>MagicNumber:SSEManager.kt$SSEManager$5_000L</ID>
-    <ID>MagicNumber:SSEManager.kt$SSEManager$60_000L</ID>
-    <ID>MagicNumber:SendWebhookWorker.kt$SendWebhookWorker$200</ID>
-    <ID>MagicNumber:SendWebhookWorker.kt$SendWebhookWorker$299</ID>
-    <ID>MagicNumber:SettingsUpdateWorker.kt$SettingsUpdateWorker.Companion$24</ID>
     <ID>MagicNumber:SmsContentObserver.kt$SmsContentObserver$3</ID>
     <ID>MagicNumber:SmsContentObserver.kt$SmsContentObserver$4</ID>
     <ID>MagicNumber:SubscriptionsHelper.kt$SubscriptionsHelper$31</ID>
-    <ID>MagicNumber:WebhookQueueDao.kt$WebhookQueueDao$1000</ID>
-    <ID>MagicNumber:WebhookQueueDao.kt$WebhookQueueDao$5</ID>
-    <ID>MagicNumber:WebhookQueueDao.kt$WebhookQueueDao$60</ID>
-    <ID>MagicNumber:WebhookQueueProcessorWorker.kt$WebhookQueueProcessorWorker$200</ID>
-    <ID>MagicNumber:WebhookQueueProcessorWorker.kt$WebhookQueueProcessorWorker$299</ID>
-    <ID>MagicNumber:WebhookQueueRepository.kt$WebhookQueueRepository$1000L</ID>
-    <ID>MagicNumber:WebhookQueueRepository.kt$WebhookQueueRepository$24</ID>
-    <ID>MagicNumber:WebhookQueueRepository.kt$WebhookQueueRepository$60</ID>
-    <ID>MagicNumber:WebhooksSettings.kt$WebhooksSettings$15</ID>
-    <ID>MagicNumber:WebhooksUpdateWorker.kt$WebhooksUpdateWorker.Companion$24</ID>
-    <ID>MatchingDeclarationName:InboxUploadModel.kt$EncryptedAttachment</ID>
-    <ID>MaxLineLength:FingerprintTest.kt$FingerprintTest$private</ID>
-    <ID>MaxLineLength:FingerprintTest.kt$FingerprintTest$private val key2 = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvYkJzsVxnjOYB52VrmVvDAyuI2Y55hlOf4ppuUQXasYs0UHO8x+l8DqRBWBL2jNgxJkH9x6szFJSfj083e5Oh7prXkoBJDxgpQ4JtHknCvXGh17Bpe/GEClijzFgZq0gnxkLmuNZ7gOsGqBX1+rfivbDas/HyJ21dIjm7H84S3y6pM3LaUEYoTUELrjKkx/gz0Esfqu9LZsihv5Xbfrz4IMhLr30cnEqqwTDe1jg7BpD0kRioTjsPXxS5TQ5B5TFoOjOYXcHVCl+sE5oLWzH2Z82doUhC+8TMTAVS1d9oNAI2PoKraLsAGleM0VrCMGS+iH8ZpQJYlIL31j1hznIEwIDAQAB"</ID>
-    <ID>MaxLineLength:InboxUploadWorker.kt$InboxUploadWorker$return ForegroundInfo(NotificationsService.NOTIFICATION_ID_INBOX_WORKER, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC)</ID>
     <ID>MaxLineLength:MessageWithRecipients.kt$MessageWithRecipients$recipients.all { it.state == com.homingsms.app.domain.ProcessingState.Delivered } -&gt; com.homingsms.app.domain.ProcessingState.Delivered</ID>
     <ID>MaxLineLength:MessageWithRecipients.kt$MessageWithRecipients$recipients.all { it.state == com.homingsms.app.domain.ProcessingState.Failed } -&gt; com.homingsms.app.domain.ProcessingState.Failed</ID>
     <ID>MaxLineLength:MessageWithRecipients.kt$MessageWithRecipients$recipients.any { it.state == com.homingsms.app.domain.ProcessingState.Cancelled } -&gt; com.homingsms.app.domain.ProcessingState.Cancelled</ID>
     <ID>MaxLineLength:MessageWithRecipients.kt$MessageWithRecipients$recipients.any { it.state == com.homingsms.app.domain.ProcessingState.Processed } -&gt; com.homingsms.app.domain.ProcessingState.Processed</ID>
-    <ID>MaxLineLength:MessagesDao.kt$MessagesDao$@Query("SELECT * FROM message WHERE ((:state IS NULL AND state NOT IN ('Processed', 'Cancelling')) OR state = :state) ORDER BY createdAt DESC LIMIT :limit")</ID>
     <ID>MaxLineLength:MessagesDao.kt$MessagesDao$@Query("SELECT *, `rowid` FROM message WHERE source = :source AND (:state IS NULL OR state = :state) AND createdAt BETWEEN :start AND :end ORDER BY createdAt ASC, id ASC LIMIT :limit OFFSET :offset")</ID>
     <ID>MaxLineLength:MessagesDao.kt$MessagesDao$@Query("SELECT *, `rowid` FROM message WHERE source = :source AND (:state IS NULL OR state = :state) AND createdAt BETWEEN :start AND :end ORDER BY createdAt DESC LIMIT :limit OFFSET :offset")</ID>
     <ID>MaxLineLength:MessagesDao.kt$MessagesDao$@Query("SELECT *, `rowid` FROM message WHERE state = 'Pending' AND (scheduleAt IS NULL OR scheduleAt &lt;= :now) ORDER BY priority DESC, createdAt ASC LIMIT 1")</ID>
@@ -177,99 +87,40 @@
     <ID>MaxLineLength:MessagesDao.kt$MessagesDao$@Query("SELECT COUNT(*) as count FROM message WHERE source = :source AND (:state IS NULL OR state = :state) AND createdAt BETWEEN :start AND :end")</ID>
     <ID>MaxLineLength:MessagesDao.kt$MessagesDao$@Query("SELECT COUNT(*) as count, MAX(processedAt) as lastTimestamp FROM message WHERE state NOT IN ('Pending', 'Cancelling', 'Cancelled', 'Failed') AND processedAt &gt;= :timestamp")</ID>
     <ID>MaxLineLength:MessagesDao.kt$MessagesDao$@Query("UPDATE messagerecipient SET state = :state, error = :error WHERE messageId = :id AND phoneNumber = :phoneNumber AND state &lt;&gt; 'Failed'")</ID>
-    <ID>MaxLineLength:MessagesService.kt$MessagesService$SmsManager.RESULT_BLUETOOTH_DISCONNECTED -&gt; "RESULT_BLUETOOTH_DISCONNECTED (Failed sending via Bluetooth because Bluetooth disconnected)"</ID>
-    <ID>MaxLineLength:MessagesService.kt$MessagesService$SmsManager.RESULT_ERROR_SHORT_CODE_NEVER_ALLOWED -&gt; "RESULT_ERROR_SHORT_CODE_NEVER_ALLOWED (Failed because the user has denied this app ever send premium short codes)"</ID>
-    <ID>MaxLineLength:MessagesService.kt$MessagesService$SmsManager.RESULT_ERROR_SHORT_CODE_NOT_ALLOWED -&gt; "RESULT_ERROR_SHORT_CODE_NOT_ALLOWED (Failed because user denied the sending of this short code)"</ID>
-    <ID>MaxLineLength:MessagesService.kt$MessagesService$SmsManager.RESULT_INVALID_BLUETOOTH_ADDRESS -&gt; "RESULT_INVALID_BLUETOOTH_ADDRESS (Failed sending via Bluetooth because the Bluetooth device address is invalid)"</ID>
-    <ID>MaxLineLength:MessagesService.kt$MessagesService$SmsManager.RESULT_NO_BLUETOOTH_SERVICE -&gt; "RESULT_NO_BLUETOOTH_SERVICE (Failed sending via Bluetooth because the Bluetooth service is not available)"</ID>
-    <ID>MaxLineLength:MessagesService.kt$MessagesService$SmsManager.RESULT_NO_DEFAULT_SMS_APP -&gt; "RESULT_NO_DEFAULT_SMS_APP (Set by BroadcastReceiver to indicate there's no default SMS app)"</ID>
-    <ID>MaxLineLength:MessagesService.kt$MessagesService$SmsManager.RESULT_REMOTE_EXCEPTION -&gt; "RESULT_REMOTE_EXCEPTION (Set by BroadcastReceiver to indicate a remote exception while handling a message)"</ID>
-    <ID>MaxLineLength:MessagesService.kt$MessagesService$SmsManager.RESULT_RIL_BLOCKED_DUE_TO_CALL -&gt; "RESULT_RIL_BLOCKED_DUE_TO_CALL (SMS is blocked due to call control, e.g., resource unavailable in the SMR entity)"</ID>
-    <ID>MaxLineLength:MessagesService.kt$MessagesService$SmsManager.RESULT_RIL_INTERNAL_ERR -&gt; "RESULT_RIL_INTERNAL_ERR (The modem encountered an unexpected error scenario while handling the request)"</ID>
-    <ID>MaxLineLength:MessagesService.kt$MessagesService$SmsManager.RESULT_RIL_INVALID_MODEM_STATE -&gt; "RESULT_RIL_INVALID_MODEM_STATE (The radio cannot process the request in the current modem state)"</ID>
-    <ID>MaxLineLength:MessagesService.kt$MessagesService$SmsManager.RESULT_RIL_INVALID_SMS_FORMAT -&gt; "RESULT_RIL_INVALID_SMS_FORMAT (The radio returned an error indicating invalid SMS format)"</ID>
-    <ID>MaxLineLength:MessagesService.kt$MessagesService$SmsManager.RESULT_RIL_INVALID_STATE -&gt; "RESULT_RIL_INVALID_STATE (The radio returned an unexpected request for the current state)"</ID>
-    <ID>MaxLineLength:MessagesService.kt$MessagesService$SmsManager.RESULT_RIL_REQUEST_RATE_LIMITED -&gt; "RESULT_RIL_REQUEST_RATE_LIMITED (The radio denied the operation due to overly-frequent requests)"</ID>
-    <ID>MaxLineLength:MessagesService.kt$MessagesService$SmsManager.RESULT_RIL_SIMULTANEOUS_SMS_AND_CALL_NOT_ALLOWED -&gt; "RESULT_RIL_SIMULTANEOUS_SMS_AND_CALL_NOT_ALLOWED (1X voice and SMS are not allowed simultaneously)"</ID>
-    <ID>MaxLineLength:MessagesService.kt$MessagesService$SmsManager.RESULT_RIL_SIM_ABSENT -&gt; "RESULT_RIL_SIM_ABSENT (The radio failed to set the location where the CDMA subscription can be retrieved because the SIM or RUIM is absent)"</ID>
-    <ID>MaxLineLength:MessagesService.kt$MessagesService$SmsManager.RESULT_RIL_SMS_SEND_FAIL_RETRY -&gt; "RESULT_RIL_SMS_SEND_FAIL_RETRY (The radio failed to send the SMS and needs to retry)"</ID>
-    <ID>MaxLineLength:MessagesService.kt$MessagesService$SmsManager.RESULT_SMS_BLOCKED_DURING_EMERGENCY -&gt; "RESULT_SMS_BLOCKED_DURING_EMERGENCY (Failed sending during an emergency call)"</ID>
-    <ID>MaxLineLength:MessagesService.kt$MessagesService$SmsManager.RESULT_UNEXPECTED_EVENT_STOP_SENDING -&gt; "RESULT_UNEXPECTED_EVENT_STOP_SENDING (Failed because the user denied or canceled the dialog displayed for a premium shortcode SMS or rate-limited SMS)"</ID>
-    <ID>MaxLineLength:PostMessageRequest.kt$PostMessageRequest$messageTypes.isEmpty() -&gt; throw IllegalArgumentException("Must specify exactly one of: textMessage, dataMessage, mmsMessage, or message")</ID>
-    <ID>MaxLineLength:PullMessagesWorker.kt$PullMessagesWorker.Companion$val</ID>
-    <ID>MayBeConst:Module.kt$val MODULE_NAME = "connection"</ID>
     <ID>MayBeConst:Module.kt$val MODULE_NAME = "messages"</ID>
     <ID>MayBeConst:Module.kt$val MODULE_NAME = "orchestrator"</ID>
     <ID>MayBeConst:Module.kt$val MODULE_NAME = "receiver"</ID>
     <ID>MayBeConst:Module.kt$val NAME = "logs"</ID>
-    <ID>MayBeConst:Module.kt$val NAME = "webhooks"</ID>
     <ID>MayBeConst:StateStorage.kt$StateStorage.Companion$private val PREFIX = "state."</ID>
-    <ID>MayBeConst:TemporaryStorage.kt$TemporaryStorage.Companion$private val PREFIX = "storage."</ID>
-    <ID>MemberNameEqualsClassName:DeviceRoutes.kt$DeviceRoutes$private fun Route.deviceRoutes(context: Context)</ID>
     <ID>MemberNameEqualsClassName:InboxRoutes.kt$InboxRoutes$private fun Route.inboxRoutes(context: Context)</ID>
-    <ID>MemberNameEqualsClassName:LogsRoutes.kt$LogsRoutes$private fun Route.logsRoutes()</ID>
     <ID>MemberNameEqualsClassName:MessagesRoutes.kt$MessagesRoutes$private fun Route.messagesRoutes()</ID>
-    <ID>MemberNameEqualsClassName:SettingsRoutes.kt$SettingsRoutes$private fun Route.settingsRoutes()</ID>
     <ID>MemberNameEqualsClassName:WebhooksRoutes.kt$WebhooksRoutes$private fun Route.webhooksRoutes()</ID>
-    <ID>NestedBlockDepth:LocalIPProvider.kt$LocalIPProvider$override suspend fun getIP(): String?</ID>
     <ID>NestedBlockDepth:MessagesService.kt$MessagesService$suspend fun processStateIntent(intent: Intent, resultCode: Int)</ID>
     <ID>NestedBlockDepth:MmsContentReader.kt$MmsContentReader$fun read(context: Context, mmsId: Long): MmsMessage?</ID>
-    <ID>PrintStackTrace:GatewayService.kt$GatewayService$th</ID>
     <ID>PrintStackTrace:IncomingLogTruncateWorker.kt$IncomingLogTruncateWorker$e</ID>
-    <ID>PrintStackTrace:KeyRotationWorker.kt$KeyRotationWorker$e</ID>
-    <ID>PrintStackTrace:LocalIPProvider.kt$LocalIPProvider$e</ID>
     <ID>PrintStackTrace:LogTruncateWorker.kt$LogTruncateWorker$e</ID>
     <ID>PrintStackTrace:LogsService.kt$LogsService$e</ID>
     <ID>PrintStackTrace:MessagesService.kt$MessagesService$e</ID>
-    <ID>PrintStackTrace:PublicIPProvider.kt$PublicIPProvider$e</ID>
-    <ID>PrintStackTrace:PullMessagesWorker.kt$PullMessagesWorker$th</ID>
-    <ID>PrintStackTrace:RegistrationWorker.kt$RegistrationWorker$e</ID>
     <ID>PrintStackTrace:SendMessagesWorker.kt$SendMessagesWorker$e</ID>
-    <ID>PrintStackTrace:SendStateWorker.kt$SendStateWorker$th</ID>
-    <ID>PrintStackTrace:SendWebhookWorker.kt$SendWebhookWorker$e</ID>
-    <ID>PrintStackTrace:SettingsUpdateWorker.kt$SettingsUpdateWorker$th</ID>
     <ID>PrintStackTrace:TruncateWorker.kt$TruncateWorker$e</ID>
-    <ID>PrintStackTrace:WebhooksUpdateWorker.kt$WebhooksUpdateWorker$th</ID>
     <ID>ReturnCount:MessagesService.kt$MessagesService$suspend fun processStateIntent(intent: Intent, resultCode: Int)</ID>
-    <ID>ReturnCount:ScopeAuthorization.kt$suspend fun RoutingContext.requireScope( scope: AuthScopes, exact: Boolean = false ): Boolean</ID>
-    <ID>ReturnCount:SendWebhookWorker.kt$SendWebhookWorker$private suspend fun sendData(payload: String): Result</ID>
-    <ID>ReturnCount:TokensDao.kt$TokensDao$@Transaction suspend fun rotateRefreshToken(currentRefreshJti: String, newAccess: Token, newRefresh: Token): RefreshRotationResult</ID>
-    <ID>SwallowedException:CancelEntryPointsParityTest.kt$CancelEntryPointsParityTest$e: Exception</ID>
-    <ID>SwallowedException:CloudServerSettingsFragment.kt$CloudServerSettingsFragment$e: Exception</ID>
     <ID>SwallowedException:DateTimeParser.kt$DateTimeParser$e: Exception</ID>
-    <ID>SwallowedException:DeviceService.kt$DeviceService$e: IllegalArgumentException</ID>
     <ID>SwallowedException:InboxRoutes.kt$InboxRoutes$e: Exception</ID>
     <ID>SwallowedException:OrchestratorService.kt$OrchestratorService$e: Throwable</ID>
     <ID>SwallowedException:PerMessageLockTest.kt$PerMessageLockTest$e: TimeoutCancellationException</ID>
     <ID>SwallowedException:PhoneHelperTest.kt$PhoneHelperTest$e: Exception</ID>
     <ID>SwallowedException:PreferencesStorage.kt$PreferencesStorage$th: ClassCastException</ID>
     <ID>SwallowedException:PreferencesStorage.kt$PreferencesStorage$th: IllegalArgumentException</ID>
-    <ID>SwallowedException:PushService.kt$PushService.Companion$e: Throwable</ID>
-    <ID>SwallowedException:WebhookQueueDetailFragment.kt$WebhookQueueDetailFragment$e: Exception</ID>
-    <ID>ThrowsCount:InboxRefreshRequest.kt$InboxRefreshRequest$fun validate(): InboxRefreshRequest</ID>
     <ID>ThrowsCount:InboxRoutes.kt$InboxRoutes$private fun Route.inboxRoutes(context: Context)</ID>
-    <ID>ThrowsCount:JwtService.kt$JwtService$suspend fun refreshTokenPair( refreshTokenID: String, originalScopes: List&lt;String&gt; ): GeneratedTokenPair</ID>
     <ID>ThrowsCount:MessagesService.kt$MessagesService$@SuppressLint("NewApi") private fun getSmsManager(simNumber: Int?): SmsManager</ID>
-    <ID>ThrowsCount:PostMessageRequest.kt$PostMessageRequest$fun validate(): PostMessageRequest</ID>
-    <ID>TooGenericExceptionCaught:AuthRoutes.kt$AuthRoutes$e: Exception</ID>
-    <ID>TooGenericExceptionCaught:CloudServerSettingsFragment.kt$CloudServerSettingsFragment$e: Exception</ID>
     <ID>TooGenericExceptionCaught:DateTimeParser.kt$DateTimeParser$e: Exception</ID>
-    <ID>TooGenericExceptionCaught:DeviceService.kt$DeviceService$e: Exception</ID>
-    <ID>TooGenericExceptionCaught:DeviceSettingsFragment.kt$DeviceSettingsFragment$e: Exception</ID>
     <ID>TooGenericExceptionCaught:EventsReceiver.kt$EventsReceiver$e: Exception</ID>
     <ID>TooGenericExceptionCaught:EventsReceiver.kt$EventsReceiver$e: Throwable</ID>
-    <ID>TooGenericExceptionCaught:GatewayService.kt$GatewayService$th: Throwable</ID>
     <ID>TooGenericExceptionCaught:GlobalExceptionHandler.kt$GlobalExceptionHandler$e: Exception</ID>
-    <ID>TooGenericExceptionCaught:HomeFragment.kt$HomeFragment$e: Exception</ID>
     <ID>TooGenericExceptionCaught:InboxRoutes.kt$InboxRoutes$e: Exception</ID>
-    <ID>TooGenericExceptionCaught:InboxUploadService.kt$InboxUploadService$e: Exception</ID>
-    <ID>TooGenericExceptionCaught:InboxUploadWorker.kt$InboxUploadWorker$e: Exception</ID>
     <ID>TooGenericExceptionCaught:IncomingLogTruncateWorker.kt$IncomingLogTruncateWorker$e: Throwable</ID>
     <ID>TooGenericExceptionCaught:IncomingMessagesService.kt$IncomingMessagesService$e: Exception</ID>
-    <ID>TooGenericExceptionCaught:KeyRotationWorker.kt$KeyRotationWorker$e: Throwable</ID>
-    <ID>TooGenericExceptionCaught:LocalIPProvider.kt$LocalIPProvider$e: Exception</ID>
     <ID>TooGenericExceptionCaught:LogTruncateWorker.kt$LogTruncateWorker$e: Throwable</ID>
-    <ID>TooGenericExceptionCaught:LogsRoutes.kt$LogsRoutes$e: Exception</ID>
     <ID>TooGenericExceptionCaught:LogsService.kt$LogsService$e: Exception</ID>
     <ID>TooGenericExceptionCaught:MessagesRoutes.kt$MessagesRoutes$e: Exception</ID>
     <ID>TooGenericExceptionCaught:MessagesRoutes.kt$MessagesRoutes$e: Throwable</ID>
@@ -280,33 +131,13 @@
     <ID>TooGenericExceptionCaught:MmsReceiver.kt$MmsReceiver$e: Exception</ID>
     <ID>TooGenericExceptionCaught:MmsSender.kt$MmsSender$e: Exception</ID>
     <ID>TooGenericExceptionCaught:OrchestratorService.kt$OrchestratorService$e: Throwable</ID>
-    <ID>TooGenericExceptionCaught:PublicIPProvider.kt$PublicIPProvider$e: Exception</ID>
-    <ID>TooGenericExceptionCaught:PullMessagesWorker.kt$PullMessagesWorker$th: Throwable</ID>
-    <ID>TooGenericExceptionCaught:PushService.kt$PushService$e: Throwable</ID>
-    <ID>TooGenericExceptionCaught:PushService.kt$PushService.Companion$e: Throwable</ID>
     <ID>TooGenericExceptionCaught:ReceiverService.kt$ReceiverService$e: Exception</ID>
-    <ID>TooGenericExceptionCaught:RegistrationWorker.kt$RegistrationWorker$e: Exception</ID>
-    <ID>TooGenericExceptionCaught:SSEForegroundService.kt$SSEForegroundService$e: Throwable</ID>
-    <ID>TooGenericExceptionCaught:SSEManager.kt$SSEManager$e: Exception</ID>
-    <ID>TooGenericExceptionCaught:ScopeAuthorization.kt$e: Exception</ID>
     <ID>TooGenericExceptionCaught:SendMessagesWorker.kt$SendMessagesWorker$e: Exception</ID>
-    <ID>TooGenericExceptionCaught:SendStateWorker.kt$SendStateWorker$th: Throwable</ID>
-    <ID>TooGenericExceptionCaught:SendWebhookWorker.kt$SendWebhookWorker$e: Throwable</ID>
-    <ID>TooGenericExceptionCaught:SendWebhookWorker.kt$SendWebhookWorker.Companion$e: Exception</ID>
-    <ID>TooGenericExceptionCaught:SettingsRoutes.kt$SettingsRoutes$e: Exception</ID>
-    <ID>TooGenericExceptionCaught:SettingsUpdateWorker.kt$SettingsUpdateWorker$th: Throwable</ID>
     <ID>TooGenericExceptionCaught:SmsContentObserver.kt$SmsContentObserver$e: Exception</ID>
     <ID>TooGenericExceptionCaught:TruncateWorker.kt$TruncateWorker$e: Throwable</ID>
-    <ID>TooGenericExceptionCaught:WebHooksService.kt$WebHooksService$e: Exception</ID>
-    <ID>TooGenericExceptionCaught:WebhookQueueDetailFragment.kt$WebhookQueueDetailFragment$e: Exception</ID>
-    <ID>TooGenericExceptionCaught:WebhookQueueProcessorWorker.kt$WebhookQueueProcessorWorker$e: Exception</ID>
-    <ID>TooGenericExceptionCaught:WebhookQueueRepository.kt$WebhookQueueRepository$e: Exception</ID>
-    <ID>TooGenericExceptionCaught:WebhooksUpdateWorker.kt$WebhooksUpdateWorker$th: Throwable</ID>
     <ID>TooGenericExceptionThrown:BasePassphraseEncryptionProvider.kt$BasePassphraseEncryptionProvider$throw RuntimeException("Missing iteration count")</ID>
-    <ID>TooGenericExceptionThrown:CancelEntryPointsParityTest.kt$CancelEntryPointsParityTest$throw RuntimeException("unexpected failure")</ID>
     <ID>TooGenericExceptionThrown:EncryptionProviderFactory.kt$EncryptionProviderFactory$throw RuntimeException("Method is not supported")</ID>
     <ID>TooGenericExceptionThrown:EncryptionService.kt$EncryptionService$throw RuntimeException("Invalid encrypted data format")</ID>
-    <ID>TooGenericExceptionThrown:GatewayApi.kt$GatewayApi.Message$throw RuntimeException("Invalid message content")</ID>
     <ID>TooGenericExceptionThrown:HardenedPassphraseEncryptionProvider.kt$HardenedPassphraseEncryptionProvider$throw RuntimeException("Invalid hardened encrypted data format")</ID>
     <ID>TooGenericExceptionThrown:LegacyPassphraseEncryptionProvider.kt$LegacyPassphraseEncryptionProvider$throw RuntimeException("Invalid passphrase encrypted data format")</ID>
     <ID>TooGenericExceptionThrown:MessagesService.kt$MessagesService$throw RuntimeException("No SIMs found")</ID>
@@ -314,51 +145,14 @@
     <ID>TooGenericExceptionThrown:PhoneHelper.kt$PhoneHelper$throw RuntimeException("Invalid phone number type")</ID>
     <ID>TooGenericExceptionThrown:PhoneHelper.kt$PhoneHelper$throw RuntimeException("Invalid phone number")</ID>
     <ID>TooGenericExceptionThrown:PreferencesStorage.kt$PreferencesStorage$throw RuntimeException("Unknown type for key $key")</ID>
-    <ID>TooGenericExceptionThrown:RSAEncryptionProvider.kt$RSAEncryptionProvider$throw RuntimeException("Invalid E2E encrypted data format: expected at least 7 chunks")</ID>
-    <ID>TooGenericExceptionThrown:RSAEncryptionProvider.kt$RSAEncryptionProvider$throw RuntimeException("Invalid E2E key version: $keyVersionParam")</ID>
-    <ID>TooGenericExceptionThrown:RSAEncryptionProvider.kt$RSAEncryptionProvider$throw RuntimeException("No E2E key pair available")</ID>
-    <ID>TooGenericExceptionThrown:RSAEncryptionProvider.kt$RSAEncryptionProvider$throw RuntimeException("No E2E private key available for version $keyVersion")</ID>
-    <ID>TooGenericExceptionThrown:RSAEncryptionProvider.kt$RSAEncryptionProvider$throw RuntimeException("Unsupported E2E version: $version")</ID>
-    <ID>TooGenericExceptionThrown:SSEForegroundService.kt$SSEForegroundService$throw RuntimeException("Unknown event type: $event", e)</ID>
     <ID>TooManyFunctions:MessagesDao.kt$MessagesDao</ID>
     <ID>UnusedParameter:LocalServerService.kt$LocalServerService$context: Context</ID>
-    <ID>UnusedPrivateProperty:DeviceSettings.kt$DeviceSettings$private var version: Int get() = storage.get&lt;Int&gt;(VERSION) ?: 0 set(value) = storage.set(VERSION, value)</ID>
-    <ID>UnusedPrivateProperty:DeviceSettings.kt$DeviceSettings.Companion$private const val VERSION_CODE = 1</ID>
     <ID>UnusedPrivateProperty:MmsContentObserver.kt$MmsContentObserver.Companion$private const val TAG = "MmsContentObserver"</ID>
     <ID>UnusedPrivateProperty:SmsContentObserver.kt$SmsContentObserver.Companion$private const val TAG = "SmsContentObserver"</ID>
-    <ID>UseCheckOrError:CancelEntryPointsParityTest.kt$CancelEntryPointsParityTest$throw IllegalStateException("Message $id is not in Pending state")</ID>
-    <ID>UseCheckOrError:GatewayService.kt$GatewayService$throw IllegalStateException("Password is not set")</ID>
-    <ID>UseCheckOrError:GatewayService.kt$GatewayService$throw IllegalStateException("The device is not registered on the server")</ID>
-    <ID>UseCheckOrError:GatewayService.kt$GatewayService$throw IllegalStateException("Username is not set")</ID>
     <ID>UseCheckOrError:MessageStateService.kt$MessageStateService$throw IllegalStateException( "Message with id $id has a recipient in a state that cannot transition to $target" )</ID>
     <ID>UseCheckOrError:MessagesRoutes.kt$MessagesRoutes$throw IllegalStateException("Unknown message type")</ID>
     <ID>UseCheckOrError:MessagesService.kt$MessagesService$throw IllegalStateException("MMS content must be handled via sendMMS")</ID>
-    <ID>UseRequire:GatewaySettings.kt$GatewaySettings$throw IllegalArgumentException("url must start with https://")</ID>
-    <ID>UseRequire:InboxRefreshRequest.kt$InboxRefreshRequest$throw IllegalArgumentException( "messageTypes contains unsupported values: ${invalidTypes.joinToString(",")}" )</ID>
-    <ID>UseRequire:InboxRefreshRequest.kt$InboxRefreshRequest$throw IllegalArgumentException("messageTypes must not be empty")</ID>
-    <ID>UseRequire:InboxRefreshRequest.kt$InboxRefreshRequest$throw IllegalArgumentException("since must be before until")</ID>
     <ID>UseRequire:IncomingMessagesSettings.kt$IncomingMessagesSettings$throw IllegalArgumentException("Log lifetime days must be &gt;= 1")</ID>
-    <ID>UseRequire:MessagesSettings.kt$MessagesSettings$throw IllegalArgumentException("Invalid time format: $raw")</ID>
-    <ID>UseRequire:MessagesSettings.kt$MessagesSettings$throw IllegalArgumentException("Limit value must be &gt;= 0")</ID>
-    <ID>UseRequire:MessagesSettings.kt$MessagesSettings$throw IllegalArgumentException("Log lifetime days must be &gt;= 1")</ID>
-    <ID>UseRequire:MmsMessage.kt$MmsMessage.Attachment$throw IllegalArgumentException("Attachment $index: contentType is required")</ID>
-    <ID>UseRequire:MmsMessage.kt$MmsMessage.Attachment$throw IllegalArgumentException("Attachment $index: must provide data")</ID>
-    <ID>UseRequire:PostMessageRequest.kt$PostMessageRequest$throw IllegalArgumentException("Data message cannot be empty")</ID>
-    <ID>UseRequire:PostMessageRequest.kt$PostMessageRequest$throw IllegalArgumentException("Empty phone numbers list")</ID>
-    <ID>UseRequire:PostMessageRequest.kt$PostMessageRequest$throw IllegalArgumentException("MMS must have text or at least one attachment")</ID>
-    <ID>UseRequire:PostMessageRequest.kt$PostMessageRequest$throw IllegalArgumentException("Port must be between 0 and 65535")</ID>
-    <ID>UseRequire:PostMessageRequest.kt$PostMessageRequest$throw IllegalArgumentException("SIM number cannot be less than 1")</ID>
-    <ID>UseRequire:PostMessageRequest.kt$PostMessageRequest$throw IllegalArgumentException("Text message is empty")</ID>
-    <ID>UseRequire:PostMessageRequest.kt$PostMessageRequest$throw IllegalArgumentException("fields conflict: ttl and validUntil")</ID>
-    <ID>UseRequire:PostMessageRequest.kt$PostMessageRequest$throw IllegalArgumentException("message already expired")</ID>
-    <ID>UseRequire:PostMessageRequest.kt$PostMessageRequest$throw IllegalArgumentException("phone numbers must be unique")</ID>
-    <ID>UseRequire:PostMessageRequest.kt$PostMessageRequest$throw IllegalArgumentException("scheduleAt must be in the future")</ID>
-    <ID>UseRequire:WebHooksService.kt$WebHooksService$throw IllegalArgumentException( "Unsupported event" )</ID>
-    <ID>UseRequire:WebHooksService.kt$WebHooksService$throw IllegalArgumentException("url must start with https:// or http://127.0.0.1")</ID>
     <ID>UseRequire:WebhooksRoutes.kt$WebhooksRoutes$throw IllegalArgumentException( "Device ID mismatch" )</ID>
-    <ID>UseRequire:WebhooksSettings.kt$WebhooksSettings$throw IllegalArgumentException("Retry count must be &gt;= 1")</ID>
-    <ID>VariableNaming:MessagesSettings.kt$MessagesSettings$val SECONDS_BETWEEN_MESSAGES = "SECONDS_BETWEEN_MESSAGES"</ID>
-    <ID>VariableNaming:SettingsHelper.kt$SettingsHelper$val PREF_KEY_SERVER_TOKEN = "server_token"</ID>
-    <ID>WildcardImport:WebhookQueueDao.kt$import androidx.room.*</ID>
   </CurrentIssues>
 </SmellBaseline>

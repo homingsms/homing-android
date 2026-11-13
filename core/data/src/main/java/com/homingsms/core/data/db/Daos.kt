@@ -155,6 +155,9 @@ interface CloudOutboxDao {
     @Query("SELECT COUNT(*) FROM cloud_inbox_outbox")
     fun observeInboxCount(): Flow<Int>
 
+    @Query("SELECT * FROM cloud_inbox_outbox WHERE localId = :localId LIMIT 1")
+    suspend fun inboxEntry(localId: String): CloudInboxOutboxEntity?
+
     @Query("DELETE FROM cloud_state_outbox")
     suspend fun clearStates()
 
@@ -164,7 +167,7 @@ interface CloudOutboxDao {
 
 data class CountsRow(val sent: Int, val delivered: Int, val failed: Int)
 
-data class HourRow(val startAt: Long, val sent: Int, val failed: Int)
+data class HourRow(val startAt: Long, val sent: Int, val failed: Int, val delivered: Int = 0)
 
 data class HourReceivedRow(val startAt: Long, val received: Int)
 
@@ -194,7 +197,8 @@ interface StatsDao {
         """
         SELECT (COALESCE(processedAt, createdAt) / 3600000) * 3600000 AS startAt,
             COALESCE(SUM(CASE WHEN state IN ('Sent', 'Delivered') THEN 1 ELSE 0 END), 0) AS sent,
-            COALESCE(SUM(CASE WHEN state = 'Failed' THEN 1 ELSE 0 END), 0) AS failed
+            COALESCE(SUM(CASE WHEN state = 'Failed' THEN 1 ELSE 0 END), 0) AS failed,
+            COALESCE(SUM(CASE WHEN state = 'Delivered' THEN 1 ELSE 0 END), 0) AS delivered
         FROM message
         WHERE COALESCE(processedAt, createdAt) >= :from
         GROUP BY startAt

@@ -3,8 +3,10 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.detekt)
     alias(libs.plugins.ktlint)
+    alias(libs.plugins.aboutlibraries.android)
 }
 
 if (file("google-services.json").exists()) {
@@ -42,7 +44,7 @@ android {
 
     buildFeatures {
         buildConfig = true
-        viewBinding = true
+        compose = true
     }
 
     signingConfigs {
@@ -109,6 +111,7 @@ android {
             // EventBus.emit logs via android.util.Log; local unit tests must not
             // fail on the mockable android.jar "not mocked" stub.
             isReturnDefaultValues = true
+            isIncludeAndroidResources = true
         }
     }
 
@@ -127,7 +130,7 @@ kotlin {
 
 detekt {
     buildUponDefaultConfig = true
-    config.setFrom(rootProject.file("config/detekt/detekt.yml"))
+    config.setFrom(rootProject.files("config/detekt/detekt.yml", "config/detekt/compose.yml"))
     baseline = rootProject.file("config/detekt/baseline.xml")
     parallel = false
 }
@@ -146,6 +149,15 @@ dependencies {
     implementation(project(":core:data"))
     implementation(project(":core:telephony"))
     implementation(project(":core:server"))
+    implementation(project(":core:designsystem"))
+    implementation(project(":feature:onboarding"))
+    implementation(project(":feature:home"))
+    implementation(project(":feature:connect"))
+    implementation(project(":feature:messages"))
+    implementation(project(":feature:inbox"))
+    implementation(project(":feature:webhooks"))
+    implementation(project(":feature:settings"))
+    implementation(project(":feature:about"))
 
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.coroutines.core)
@@ -157,13 +169,12 @@ dependencies {
     implementation(libs.okhttp)
 
     implementation(libs.androidx.work.runtime.ktx)
-    implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.androidx.preference.ktx)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.constraintlayout)
-    implementation(libs.material)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.navigation.compose)
 
     implementation(libs.androidx.room.ktx)
 
@@ -171,15 +182,36 @@ dependencies {
     implementation(libs.firebase.messaging)
 
     implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
     implementation(libs.libphonenumber)
 
     testImplementation(libs.junit)
-    testImplementation(libs.androidx.arch.core.testing)
     testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.turbine)
+    testImplementation(libs.robolectric)
+    testImplementation(libs.androidx.test.core)
+    testImplementation(libs.androidx.compose.ui.test.junit4)
+    testImplementation(libs.androidx.compose.ui.test.manifest)
 
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.test.runner)
     androidTestImplementation(libs.androidx.test.espresso.core)
+}
+
+aboutLibraries {
+    offlineMode = true
+    collect {
+        fetchRemoteLicense = false
+        fetchRemoteFunding = false
+        filterVariants.addAll("release")
+    }
+    export {
+        excludeFields.addAll("funding", "scm", "description")
+    }
+    library {
+        duplicationMode = com.mikepenz.aboutlibraries.plugin.DuplicateMode.MERGE
+        duplicationRule = com.mikepenz.aboutlibraries.plugin.DuplicateRule.SIMPLE
+    }
 }
 
 configurations.matching { it.name == "detekt" }.configureEach {

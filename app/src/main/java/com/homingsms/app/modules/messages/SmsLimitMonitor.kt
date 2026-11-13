@@ -3,6 +3,7 @@ package com.homingsms.app.modules.messages
 import android.content.Context
 import com.homingsms.core.data.db.StatsDao
 import com.homingsms.core.model.SmsLimitState
+import com.homingsms.core.model.TimeBuckets
 import com.homingsms.core.telephony.SmsLimitDetector
 import com.homingsms.core.telephony.SmsOutgoingLimits
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,6 +19,9 @@ class SmsLimitMonitor(
     private var lastHitAt: Long? = null
 
     val limitState: StateFlow<SmsLimitState> = state.asStateFlow()
+
+    suspend fun sentTodayPerSim(): Map<Int, Int> =
+        stats.sentPerSim(TimeBuckets.utcDayStart(clock())).associate { it.simNumber - 1 to it.count }
 
     fun recordLimitHit() {
         lastHitAt = clock()

@@ -59,4 +59,10 @@
     <string name="home_cloud_off">已配对，但在此手机上已关闭。</string>
     <string name="home_cloud_connected">已连接，最近联系 %1$s</string>
     <string name="home_cloud_disconnected">正在尝试重新连接</string>
+    <string name="home_issue_no_sim">未找到 SIM 卡。请插入 SIM 卡以发送消息。</string>
+    <string name="home_issue_airplane_mode">飞行模式已开启，SIM 卡无法发送。</string>
+    <string name="home_issue_battery_saver">省电模式已开启，可能会延迟或停止发送。</string>
+    <string name="home_issue_cloud_not_paired">Homing Cloud 已开启，但这部手机尚未配对。</string>
+    <string name="home_issue_local_server_down">本地服务器已停止，无法接收请求。</string>
+    <string name="home_fix_battery_saver">打开电池设置</string>
 </resources>

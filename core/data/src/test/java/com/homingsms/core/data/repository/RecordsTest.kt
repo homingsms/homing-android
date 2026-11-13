@@ -136,6 +136,55 @@ class RecordsTest {
     }
 
     @Test
+    fun uiFiltersCombineStatesTypesSimsAndSearch() = runBlocking {
+        insert("msg_sent", 100, Seed(ProcessingState.Sent, to = "+15550007"))
+        insert("msg_failed", 200, Seed(ProcessingState.Failed, error = ErrorCodes.encode(ErrorCodes.NO_SERVICE, "No service")))
+        insert("msg_100%_off", 300, Seed(ProcessingState.Delivered, content = MessageContent.Text("Sale 100% off")))
+        insert(
+            "msg_mms",
+            400,
+            Seed(content = MessageContent.Mms("Subject", "photo", listOf(MessageContent.Mms.Attachment("image/png", "a.png", "aGVsbG8="))))
+        )
+
+        suspend fun ids(filter: MessageFilter) = records.list(filter, null, 10, source = null).items.map { it.id }
+
+        assertEquals(listOf("msg_failed", "msg_sent"), ids(MessageFilter(states = setOf(MessageState.Sent, MessageState.Failed))))
+        assertEquals(listOf("msg_mms"), ids(MessageFilter(types = setOf(MessageType.Mms))))
+        assertEquals(4, ids(MessageFilter(simSlots = setOf(1))).size)
+        assertTrue(ids(MessageFilter(simSlots = setOf(0))).isEmpty())
+        assertEquals(listOf("msg_sent"), ids(MessageFilter(search = "550007")))
+        assertEquals(listOf("msg_100%_off"), ids(MessageFilter(search = "100%")))
+        assertTrue(ids(MessageFilter(search = "a_e")).isEmpty())
+        assertEquals(listOf("msg_100%_off"), ids(MessageFilter(states = setOf(MessageState.Delivered), search = "sale")))
+    }
+
+    @Test
+    fun inboxUiFiltersMatchKindsSimsAndText() = runBlocking {
+        val inbox = InboxRecords(
+            db.apiInboxDao(),
+            object : AttachmentReader {
+                override fun list(localId: String) = emptyList<InboxAttachmentInfo>()
+
+                override fun read(localId: String, attachmentId: String): InboxAttachmentContent? = null
+            }
+        )
+        val dao = db.incomingMessagesDao()
+        dao.insert(IncomingMessage("text:1", IncomingMessageType.SMS, "+15550001", null, 1, null, "Hi there", 1000, "inb_a", "Hi there"))
+        dao.insert(IncomingMessage("text:2", IncomingMessageType.SMS, "+15550002", null, 2, null, "STOP", 2000, "inb_b", "STOP"))
+        dao.insert(
+            IncomingMessage("mms:1", IncomingMessageType.MMS_DOWNLOADED, "+15550003", null, 2, null, "Pic", 3000, "inb_c", subject = "Trip")
+        )
+
+        suspend fun ids(filter: InboxFilter) = inbox.list(filter, null, 10).items.map { it.id }
+
+        assertEquals(listOf("inb_c", "inb_b"), ids(InboxFilter(simSlots = setOf(1))))
+        assertEquals(listOf("inb_c", "inb_a"), ids(InboxFilter(types = setOf(MessageType.Mms, MessageType.Sms), search = "i")))
+        assertEquals(listOf("inb_b"), ids(InboxFilter(search = "stop")))
+        assertEquals(listOf("inb_c"), ids(InboxFilter(search = "trip")))
+        assertEquals(listOf("inb_a"), ids(InboxFilter(search = "0001")))
+    }
+
+    @Test
     fun inboxRecordsUsePublicIdsAndBuildUploads() = runBlocking {
         val attachments = object : AttachmentReader {
             override fun list(localId: String) = if (localId ==

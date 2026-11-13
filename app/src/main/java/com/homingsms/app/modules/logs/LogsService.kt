@@ -6,10 +6,7 @@ import com.homingsms.app.modules.logs.db.LogEntry
 import com.homingsms.app.modules.logs.workers.TruncateWorker
 import com.homingsms.app.serialization.toJsonElement
 
-class LogsService(
-    private val dao: LogEntriesDao,
-    private val settings: LogsSettings,
-) {
+class LogsService(private val dao: LogEntriesDao, private val settings: LogsSettings) {
     fun start(context: Context) {
         TruncateWorker.start(context)
     }
@@ -18,22 +15,15 @@ class LogsService(
         TruncateWorker.stop(context)
     }
 
-    suspend fun select(
-        from: Long? = null,
-        to: Long? = null
-    ): List<LogEntry> {
+    suspend fun select(from: Long? = null, to: Long? = null): List<LogEntry> {
         val from = from ?: 0
         val to = to ?: System.currentTimeMillis()
 
         return dao.selectByPeriod(from, to)
     }
 
-    fun insert(
-        priority: LogEntry.Priority,
-        module: String,
-        message: String,
-        context: Any? = null
-    ) {
+    fun insert(priority: LogEntry.Priority, module: String, message: String, context: Any? = null) {
+        if (priority == LogEntry.Priority.DEBUG && !settings.verbose) return
         try {
             dao.insert(
                 LogEntry(

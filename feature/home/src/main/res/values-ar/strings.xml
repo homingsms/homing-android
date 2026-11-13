@@ -59,4 +59,10 @@
     <string name="home_cloud_off">مقترن، لكنه متوقف على هذا الهاتف.</string>
     <string name="home_cloud_connected">متصل، آخر اتصال %1$s</string>
     <string name="home_cloud_disconnected">جارٍ محاولة إعادة الاتصال</string>
+    <string name="home_issue_no_sim">لم يتم العثور على شريحة SIM. أدخل شريحة لإرسال الرسائل.</string>
+    <string name="home_issue_airplane_mode">وضع الطيران مفعّل، لذا لا يمكن للشريحة الإرسال.</string>
+    <string name="home_issue_battery_saver">موفّر البطارية مفعّل وقد يؤخر الإرسال أو يوقفه.</string>
+    <string name="home_issue_cloud_not_paired">Homing Cloud مفعّل، لكن هذا الهاتف غير مقترن.</string>
+    <string name="home_issue_local_server_down">توقف الخادم المحلي ولا يستقبل الطلبات.</string>
+    <string name="home_fix_battery_saver">فتح إعدادات البطارية</string>
 </resources>

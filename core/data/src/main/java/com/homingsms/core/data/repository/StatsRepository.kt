@@ -36,7 +36,7 @@ class StatsRepository(private val dao: StatsDao, private val clock: () -> Long =
             val receivedByHour = received.associate { it.startAt to it.received }
             val buckets = (sent.map { it.startAt } + received.map { it.startAt }).distinct().associateWith { start ->
                 val row = sent.firstOrNull { it.startAt == start }
-                HourlyBucket(start, row?.sent ?: 0, row?.failed ?: 0, receivedByHour[start] ?: 0)
+                HourlyBucket(start, row?.sent ?: 0, row?.failed ?: 0, receivedByHour[start] ?: 0, row?.delivered ?: 0)
             }
             TimeBuckets.fill(now, buckets)
         }

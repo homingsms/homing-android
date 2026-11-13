@@ -56,6 +56,7 @@ class CloudSyncWorker(appContext: Context, params: WorkerParameters) :
         private const val FLUSH = "cloud-flush"
         private const val WAKE = "cloud-wake"
         private const val FCM = "cloud-fcm"
+        private const val HEARTBEAT = "cloud-heartbeat"
         private const val PERIODIC_MINUTES = 15L
         private const val BACKOFF_SECONDS = 15L
 
@@ -67,6 +68,14 @@ class CloudSyncWorker(appContext: Context, params: WorkerParameters) :
                 .setInputData(Data.Builder().putString(KEY_ACTION, ACTION_HEARTBEAT).build())
                 .build()
             WorkManager.getInstance(context).enqueueUniquePeriodicWork(PERIODIC, ExistingPeriodicWorkPolicy.KEEP, request)
+        }
+
+        fun heartbeatNow(context: Context) {
+            val request = OneTimeWorkRequestBuilder<CloudSyncWorker>()
+                .setConstraints(network)
+                .setInputData(Data.Builder().putString(KEY_ACTION, ACTION_HEARTBEAT).build())
+                .build()
+            WorkManager.getInstance(context).enqueueUniqueWork(HEARTBEAT, ExistingWorkPolicy.REPLACE, request)
         }
 
         fun flush(context: Context) {
@@ -100,7 +109,7 @@ class CloudSyncWorker(appContext: Context, params: WorkerParameters) :
 
         fun cancelAll(context: Context) {
             val manager = WorkManager.getInstance(context)
-            listOf(PERIODIC, FLUSH, WAKE).forEach(manager::cancelUniqueWork)
+            listOf(PERIODIC, FLUSH, WAKE, HEARTBEAT).forEach(manager::cancelUniqueWork)
         }
     }
 }

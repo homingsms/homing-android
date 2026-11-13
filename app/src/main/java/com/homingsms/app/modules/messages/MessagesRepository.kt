@@ -1,13 +1,10 @@
 package com.homingsms.app.modules.messages
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.distinctUntilChanged
 import com.homingsms.app.data.dao.MessagesDao
 import com.homingsms.app.data.entities.Message
 import com.homingsms.app.data.entities.MessageRecipient
 import com.homingsms.app.data.entities.MessageType
 import com.homingsms.app.data.entities.MessageWithRecipients
-import com.homingsms.app.data.entities.MessagesTotals
 import com.homingsms.app.domain.MessageContent
 import com.homingsms.app.domain.ProcessingState
 import com.homingsms.app.modules.messages.data.SendParams
@@ -17,12 +14,6 @@ import com.homingsms.core.model.ProcessingOrder
 import java.util.Date
 
 class MessagesRepository(private val dao: MessagesDao, private val machine: MessageStateService) {
-    fun selectLast(limit: Int) = dao.selectLast(limit).distinctUntilChanged()
-
-    fun selectLast(limit: Int, state: ProcessingState? = null) = dao.selectLastFiltered(limit, state?.name).distinctUntilChanged()
-
-    val messagesTotals: LiveData<MessagesTotals> = dao.getMessagesStats().distinctUntilChanged()
-
     fun get(id: String): StoredSendRequest = dao.get(id)?.toRequest()
         ?: throw IllegalArgumentException("Message with id $id not found")
 

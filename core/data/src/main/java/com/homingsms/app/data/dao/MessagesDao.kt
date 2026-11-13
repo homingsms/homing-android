@@ -1,6 +1,5 @@
 package com.homingsms.app.data.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -11,7 +10,6 @@ import com.homingsms.app.data.entities.MessageRecipient
 import com.homingsms.app.data.entities.MessageState
 import com.homingsms.app.data.entities.MessageWithRecipients
 import com.homingsms.app.data.entities.MessagesStats
-import com.homingsms.app.data.entities.MessagesTotals
 import com.homingsms.app.data.entities.RecipientState
 import com.homingsms.app.domain.EntitySource
 import com.homingsms.app.domain.ProcessingState
@@ -25,27 +23,6 @@ interface MessagesDao {
 
     @Query("SELECT COUNT(*) as count, MAX(processedAt) as lastTimestamp FROM message WHERE state = 'Failed' AND processedAt >= :timestamp")
     fun countFailedFrom(timestamp: Long): MessagesStats
-
-    @Query(
-        """
-        SELECT
-            COALESCE(SUM(CASE WHEN state NOT IN ('Processed', 'Cancelling') THEN 1 ELSE 0 END), 0) as total,
-            COALESCE(SUM(CASE WHEN state = 'Pending' THEN 1 ELSE 0 END), 0) as pending,
-            COALESCE(SUM(CASE WHEN state = 'Cancelling' THEN 1 ELSE 0 END), 0) as cancelling,
-            COALESCE(SUM(CASE WHEN state = 'Cancelled' THEN 1 ELSE 0 END), 0) as cancelled,
-            COALESCE(SUM(CASE WHEN state = 'Sent' THEN 1 ELSE 0 END), 0) as sent,
-            COALESCE(SUM(CASE WHEN state = 'Delivered' THEN 1 ELSE 0 END), 0) as delivered,
-            COALESCE(SUM(CASE WHEN state = 'Failed' THEN 1 ELSE 0 END), 0) as failed
-        FROM message
-    """
-    )
-    fun getMessagesStats(): LiveData<MessagesTotals>
-
-    @Query("SELECT * FROM message ORDER BY createdAt DESC LIMIT :limit")
-    fun selectLast(limit: Int): LiveData<List<Message>>
-
-    @Query("SELECT * FROM message WHERE ((:state IS NULL AND state NOT IN ('Processed', 'Cancelling')) OR state = :state) ORDER BY createdAt DESC LIMIT :limit")
-    fun selectLastFiltered(limit: Int, state: String? = null): LiveData<List<Message>>
 
     /**
      * FIFO: oldest pending first (priority DESC, createdAt ASC)

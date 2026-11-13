@@ -5,12 +5,19 @@ data class MessageFilter(
     val type: MessageType? = null,
     val to: String? = null,
     val createdFrom: Long? = null,
-    val createdTo: Long? = null
+    val createdTo: Long? = null,
+    val states: Set<MessageState> = emptySet(),
+    val types: Set<MessageType> = emptySet(),
+    val simSlots: Set<Int> = emptySet(),
+    val search: String? = null
 )
 
 data class InboxFilter(
     val type: MessageType? = null,
     val from: String? = null,
     val receivedFrom: Long? = null,
-    val receivedTo: Long? = null
+    val receivedTo: Long? = null,
+    val types: Set<MessageType> = emptySet(),
+    val simSlots: Set<Int> = emptySet(),
+    val search: String? = null
 )

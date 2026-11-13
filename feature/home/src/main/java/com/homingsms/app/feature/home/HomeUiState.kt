@@ -67,6 +67,11 @@ sealed interface HomeIssue {
     data object LowBattery : HomeIssue
     data object Paused : HomeIssue
     data object CloudUnreachable : HomeIssue
+    data object NoSim : HomeIssue
+    data object AirplaneMode : HomeIssue
+    data object BatterySaver : HomeIssue
+    data object CloudNotPaired : HomeIssue
+    data object LocalServerDown : HomeIssue
 }
 
 @Immutable

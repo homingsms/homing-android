@@ -36,8 +36,17 @@ class InboxRecords(private val dao: ApiInboxDao, private val attachments: Attach
     suspend fun list(filter: InboxFilter, cursor: Cursor?, limit: Int): Page<InboxRecord> {
         val conditions = mutableListOf<String>()
         val args = mutableListOf<Any>()
-        val types = filter.type?.let(::storedTypes) ?: listed
+        val requested = (listOfNotNull(filter.type) + filter.types).distinct()
+        val types = if (requested.isEmpty()) listed else requested.flatMap(::storedTypes).distinct()
         conditions += "type IN (${types.joinToString { "'${it.name}'" }})"
+        if (filter.simSlots.isNotEmpty()) {
+            conditions += filter.simSlots.sorted().joinToString(", ", "simNumber IN (", ")") { (it + 1).toString() }
+        }
+        filter.search?.trim()?.takeIf { it.isNotEmpty() }?.let { query ->
+            val pattern = "%" + MessageRecords.escapeLike(query) + "%"
+            conditions += listOf("sender", "text", "contentPreview", "subject").joinToString(" OR ", "(", ")") { "$it LIKE ? ESCAPE '\\'" }
+            repeat(SEARCH_COLUMNS) { args += pattern }
+        }
         filter.from?.let {
             conditions += "sender = ?"
             args += it
@@ -108,6 +117,7 @@ class InboxRecords(private val dao: ApiInboxDao, private val attachments: Attach
         private const val MAX_ADDRESS = 32
         private const val MAX_TEXT = 10_000
         private const val MAX_SUBJECT = 200
+        private const val SEARCH_COLUMNS = 4
         val listed = listOf(IncomingMessageType.SMS, IncomingMessageType.DATA_SMS, IncomingMessageType.MMS_DOWNLOADED)
 
         fun typeOf(type: IncomingMessageType): MessageType = when (type) {
