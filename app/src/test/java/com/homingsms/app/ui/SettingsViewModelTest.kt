@@ -14,6 +14,7 @@ import com.homingsms.app.ui.settings.SettingsViewModel
 import com.homingsms.app.ui.system.SystemAction
 import com.homingsms.core.model.AppSettings
 import com.homingsms.core.model.CloudPairingState
+import com.homingsms.core.model.LegalSettings
 import com.homingsms.core.model.LimitPeriod
 import com.homingsms.core.model.SimSelectionMode
 import com.homingsms.core.model.SimStats
@@ -193,6 +194,23 @@ class SettingsViewModelTest {
         assertTrue(viewModel.showSmsLimitHelp.value)
         viewModel.dismissSmsLimitHelp()
         assertFalse(viewModel.showSmsLimitHelp.value)
+    }
+
+    @Test
+    fun legalRowsOpenDocumentsAndShowAcceptance() = runTest {
+        assertNull(viewModel().state.value.legal.termsAcceptedAtMillis)
+
+        status.settings.value = AppSettings(legal = LegalSettings().accept(1_700_000_000_000L))
+        val viewModel = SettingsViewModel(status, control, platform, sharing, "1.2.3", legalBaseUrl = "https://legal.example.test/")
+        assertEquals(1_700_000_000_000L, viewModel.state.value.legal.termsAcceptedAtMillis)
+        viewModel.effects.test {
+            viewModel.actions.onNavigate(SettingsDestination.TermsOfService)
+            assertEquals(UiEffect.System(SystemAction.OpenUrl("https://legal.example.test/legal/terms")), awaitItem())
+            viewModel.actions.onNavigate(SettingsDestination.PrivacyPolicy)
+            assertEquals(UiEffect.System(SystemAction.OpenUrl("https://legal.example.test/legal/privacy")), awaitItem())
+            viewModel.actions.onNavigate(SettingsDestination.AcceptableUsePolicy)
+            assertEquals(UiEffect.System(SystemAction.OpenUrl("https://legal.example.test/legal/acceptable-use")), awaitItem())
+        }
     }
 
     @Test

@@ -98,4 +98,16 @@
     <string name="onboarding_test_arrived">Работает. Homing готов.</string>
     <string name="onboarding_test_failed">Не отправлено</string>
     <string name="onboarding_test_failed_body">Проверьте баланс и сигнал SIM-карты и повторите попытку.</string>
+    <string name="onboarding_legal_summary_title">Прежде чем начать</string>
+    <string name="onboarding_legal_summary_updated_title">Коротко</string>
+    <string name="onboarding_legal_point_sim">Вы отправляете сообщения со своей SIM-карты и своего номера.</string>
+    <string name="onboarding_legal_point_consent">Пишите только тем, кто согласился получать ваши сообщения, и соблюдайте правила оператора и местные законы.</string>
+    <string name="onboarding_legal_point_responsible">Вы отвечаете за то, что отправляете.</string>
+    <string name="onboarding_legal_agree">Я принимаю %1$s и %2$s и прочитал(а) %3$s</string>
+    <string name="onboarding_legal_agree_terms">Условия обслуживания</string>
+    <string name="onboarding_legal_agree_acceptable_use">Правила допустимого использования</string>
+    <string name="onboarding_legal_agree_privacy">Политику конфиденциальности</string>
+    <string name="onboarding_legal_updated_title">Обновлённые условия</string>
+    <string name="onboarding_legal_updated_body">Мы обновили условия использования Homing. Прочитайте их и примите, чтобы продолжить.</string>
+    <string name="onboarding_legal_accept">Принять</string>
 </resources>

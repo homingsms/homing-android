@@ -1,4 +1,4 @@
-Parts of the MMS message encoding code in Homing come from the Android Open Source Project.
+Parts of the MMS message encoding code in Homing come from the Android Open Source Project and have been modified by Homing.
 
 Copyright (C) 2007-2008 Esmertec AG.
 Copyright (C) 2007-2008 The Android Open Source Project

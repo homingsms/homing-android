@@ -109,6 +109,7 @@ fun HomingApp(
 private fun HomingGraph(navController: NavHostController, navigator: Navigator, startRoute: AppRoute) {
     NavHost(navController = navController, startDestination = startRoute) {
         composable<OnboardingRoute> { OnboardingDestination(navigator) }
+        composable<TermsRoute> { TermsDestination(navigator) }
         composable<HomeRoute> { HomeDestination(navigator) }
         composable<MessagesRoute> { MessagesDestination(navigator) }
         composable<MessageDetailRoute> { MessageDetailDestination(it.toRoute<MessageDetailRoute>().id, navigator) }

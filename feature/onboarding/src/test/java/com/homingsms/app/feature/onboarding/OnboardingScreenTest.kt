@@ -3,14 +3,21 @@ package com.homingsms.app.feature.onboarding
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.assertIsNotEnabled
+import androidx.compose.ui.test.assertIsOff
+import androidx.compose.ui.test.assertIsOn
 import androidx.compose.ui.test.assertIsSelected
+import androidx.compose.ui.test.isToggleable
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performFirstLinkClick
 import androidx.compose.ui.test.performScrollTo
+import androidx.compose.ui.test.performSemanticsAction
+import androidx.compose.ui.text.LinkAnnotation
 import com.homingsms.app.core.testing.HomingTestContent
 import com.homingsms.app.feature.connect.CloudPairing
 import org.junit.Assert.assertEquals
@@ -38,12 +45,16 @@ class OnboardingScreenTest {
                     }
                 )
             },
-            onModeSelected = { state = state.copy(mode = it) }
+            onModeSelected = { state = state.copy(mode = it) },
+            onTermsAcceptedChange = { state = state.copy(termsAccepted = it) }
         )
         composeRule.setContent { HomingTestContent { OnboardingScreen(state, actions) } }
 
         composeRule.onNodeWithText("Turn this phone into an SMS gateway").assertIsDisplayed()
-        composeRule.onNodeWithText("Get started").performClick()
+        composeRule.onNodeWithText("Get started").performScrollTo().assertIsNotEnabled()
+        composeRule.onNode(isToggleable()).assertIsOff().performSemanticsAction(SemanticsActions.OnClick)
+        composeRule.onNode(isToggleable()).assertIsOn()
+        composeRule.onNodeWithText("Get started").assertIsEnabled().performClick()
         composeRule.onNodeWithText("Step 1 of 4").assertIsDisplayed()
 
         composeRule.onNodeWithText("Permission 1 of 4").assertIsDisplayed()
@@ -74,6 +85,49 @@ class OnboardingScreenTest {
         composeRule.onNodeWithText("Finish").assertIsNotEnabled()
         composeRule.onNodeWithText("Back").performClick()
         assertEquals(OnboardingStep.CloudPairing, state.step)
+    }
+
+    @Test
+    fun welcomeShowsTheResponsibilitySummaryAndOpensEachDocument() {
+        val opened = mutableListOf<LegalLink>()
+        composeRule.setContent {
+            HomingTestContent { OnboardingScreen(OnboardingSamples.welcome, OnboardingActions(onOpenLegal = { opened += it })) }
+        }
+        composeRule.onNodeWithText("You send from your own SIM and phone number.").performScrollTo().assertIsDisplayed()
+        composeRule.onNodeWithText("You're responsible for what you send.").assertExists()
+        val agreement = composeRule.onNodeWithText(AGREEMENT, useUnmergedTree = true).performScrollTo()
+        agreement.performFirstLinkClick { it.item.tag() == LegalLink.Terms.name }
+        agreement.performFirstLinkClick { it.item.tag() == LegalLink.AcceptableUse.name }
+        agreement.performFirstLinkClick { it.item.tag() == LegalLink.Privacy.name }
+        assertEquals(listOf(LegalLink.Terms, LegalLink.AcceptableUse, LegalLink.Privacy), opened)
+        composeRule.onNode(isToggleable()).assertIsOff()
+        composeRule.onNodeWithText("Get started").assertIsNotEnabled()
+    }
+
+    @Test
+    fun updatedTermsAcceptStaysDisabledUntilChecked() {
+        var state by mutableStateOf(UpdatedTermsUiState())
+        var accepted = 0
+        val opened = mutableListOf<LegalLink>()
+        composeRule.setContent {
+            HomingTestContent {
+                UpdatedTermsScreen(
+                    state,
+                    UpdatedTermsActions(
+                        onAcceptedChange = { state = state.copy(accepted = it) },
+                        onOpenLegal = { opened += it },
+                        onAccept = { accepted++ }
+                    )
+                )
+            }
+        }
+        composeRule.onNodeWithText("Updated terms").assertIsDisplayed()
+        composeRule.onNodeWithText("Accept").performScrollTo().assertIsNotEnabled()
+        composeRule.onNodeWithText(AGREEMENT, useUnmergedTree = true).performFirstLinkClick { it.item.tag() == LegalLink.Privacy.name }
+        assertEquals(listOf(LegalLink.Privacy), opened)
+        composeRule.onNode(isToggleable()).performSemanticsAction(SemanticsActions.OnClick)
+        composeRule.onNodeWithText("Accept").assertIsEnabled().performClick()
+        assertEquals(1, accepted)
     }
 
     @Test
@@ -111,5 +165,11 @@ class OnboardingScreenTest {
         composeRule.onNodeWithText("It works. Homing is ready.").performScrollTo().assertIsDisplayed()
         composeRule.onNodeWithText("Finish").assertIsEnabled().performClick()
         assertEquals(1, finished)
+    }
+
+    private fun LinkAnnotation.tag(): String? = (this as? LinkAnnotation.Clickable)?.tag
+
+    private companion object {
+        const val AGREEMENT = "I agree to the Terms of Service and Acceptable Use Policy, and I've read the Privacy Policy"
     }
 }

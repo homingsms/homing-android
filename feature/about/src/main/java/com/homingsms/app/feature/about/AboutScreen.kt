@@ -88,7 +88,7 @@ private fun versionLine(state: AboutUiState): String {
 @Composable
 internal fun LicenseKind.label(): String = stringResource(
     when (this) {
-        LicenseKind.Apache2, LicenseKind.AospNotice -> R.string.about_license_apache
+        LicenseKind.Apache2, LicenseKind.AospNotice, LicenseKind.HomingNotice -> R.string.about_license_apache
         LicenseKind.Mit -> R.string.about_license_mit
         LicenseKind.OflAspekta, LicenseKind.OflJetBrainsMono -> R.string.about_license_ofl
     }

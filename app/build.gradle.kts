@@ -18,6 +18,11 @@ val cloudUrl = providers.gradleProperty("homing.cloudUrl")
     .orElse(providers.environmentVariable("HOMING_CLOUD_URL"))
     .getOrElse(defaultCloudUrl)
 
+val defaultLegalBaseUrl = "https://homingsms.com"
+val legalBaseUrl = providers.gradleProperty("homing.legalBaseUrl")
+    .orElse(providers.environmentVariable("HOMING_LEGAL_BASE_URL"))
+    .getOrElse(defaultLegalBaseUrl)
+
 val releaseKeystore = file(
     providers.environmentVariable("SIGNING_KEY_STORE_PATH").getOrElse("keystore.jks")
 )
@@ -40,6 +45,7 @@ android {
         vectorDrawables.useSupportLibrary = true
 
         buildConfigField("String", "CLOUD_URL", "\"$cloudUrl\"")
+        buildConfigField("String", "LEGAL_BASE_URL", "\"$legalBaseUrl\"")
     }
 
     buildFeatures {

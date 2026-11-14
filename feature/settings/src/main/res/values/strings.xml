@@ -104,4 +104,10 @@
     <string name="settings_sms_rate_help">What your carrier charges for one SMS part. Long messages use several parts.</string>
     <string name="settings_sms_rate_clear">Leave empty to remove the rate.</string>
     <string name="settings_sms_rate_invalid">Enter an amount up to %1$s with at most %2$s decimal places.</string>
+    <string name="settings_group_legal">Legal</string>
+    <string name="settings_legal_terms">Terms of Service</string>
+    <string name="settings_legal_privacy">Privacy Policy</string>
+    <string name="settings_legal_acceptable_use">Acceptable Use Policy</string>
+    <string name="settings_legal_accepted">Terms accepted</string>
+    <string name="settings_legal_not_accepted">Not accepted yet</string>
 </resources>

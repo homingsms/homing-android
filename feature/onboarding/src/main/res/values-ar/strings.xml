@@ -98,4 +98,16 @@
     <string name="onboarding_test_arrived">يعمل. Homing جاهز.</string>
     <string name="onboarding_test_failed">لم تُرسل</string>
     <string name="onboarding_test_failed_body">تأكد من وجود رصيد وإشارة في الشريحة، ثم أعد المحاولة.</string>
+    <string name="onboarding_legal_summary_title">قبل أن تبدأ</string>
+    <string name="onboarding_legal_summary_updated_title">باختصار</string>
+    <string name="onboarding_legal_point_sim">ترسل الرسائل من شريحة SIM ورقم هاتفك أنت.</string>
+    <string name="onboarding_legal_point_consent">راسل فقط من وافقوا على تلقي رسائلك، والتزم بقواعد مشغّل شبكتك والقانون المحلي.</string>
+    <string name="onboarding_legal_point_responsible">أنت مسؤول عمّا ترسله.</string>
+    <string name="onboarding_legal_agree">أوافق على %1$s و%2$s، وقد قرأت %3$s</string>
+    <string name="onboarding_legal_agree_terms">شروط الخدمة</string>
+    <string name="onboarding_legal_agree_acceptable_use">سياسة الاستخدام المقبول</string>
+    <string name="onboarding_legal_agree_privacy">سياسة الخصوصية</string>
+    <string name="onboarding_legal_updated_title">شروط محدّثة</string>
+    <string name="onboarding_legal_updated_body">حدّثنا شروط استخدام Homing. اقرأها ووافق عليها للمتابعة.</string>
+    <string name="onboarding_legal_accept">أوافق</string>
 </resources>

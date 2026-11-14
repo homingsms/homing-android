@@ -1,0 +1,17 @@
+Homing
+Copyright 2026 Homing
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Portions of this product are derived from third-party open source software
+released under the Apache License, Version 2.0. Homing has modified those
+portions, including renaming packages, restructuring modules and rewriting or
+changing their code.
+
+The MMS PDU encoding files in
+core/telephony/src/main/java/com/homingsms/app/modules/mms/pdu/aosp/
+are derived from the Android Open Source Project and have been modified by
+Homing:
+
+Copyright (C) 2007-2008 Esmertec AG.
+Copyright (C) 2007-2008 The Android Open Source Project

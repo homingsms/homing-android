@@ -101,4 +101,10 @@
     <string name="settings_sms_rate_help">运营商对每段短信的收费。长短信会分成多段发送。</string>
     <string name="settings_sms_rate_clear">留空即可删除费率。</string>
     <string name="settings_sms_rate_invalid">请输入不超过 %1$s 的金额，最多 %2$s 位小数。</string>
+    <string name="settings_group_legal">法律信息</string>
+    <string name="settings_legal_terms">服务条款</string>
+    <string name="settings_legal_privacy">隐私政策</string>
+    <string name="settings_legal_acceptable_use">可接受使用政策</string>
+    <string name="settings_legal_accepted">已接受条款</string>
+    <string name="settings_legal_not_accepted">尚未接受</string>
 </resources>

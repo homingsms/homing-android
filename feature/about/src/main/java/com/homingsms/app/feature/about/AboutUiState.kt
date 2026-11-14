@@ -8,7 +8,8 @@ enum class LicenseKind(@RawRes val textRes: Int) {
     Mit(R.raw.license_mit),
     OflAspekta(com.homingsms.app.core.designsystem.R.raw.license_ofl_aspekta),
     OflJetBrainsMono(com.homingsms.app.core.designsystem.R.raw.license_ofl_jetbrains_mono),
-    AospNotice(R.raw.notice_aosp)
+    AospNotice(R.raw.notice_aosp),
+    HomingNotice(R.raw.notice_homing)
 }
 
 sealed interface ComponentLicense {
@@ -34,7 +35,7 @@ data class AboutUiState(
 data class AboutActions(val onBack: (() -> Unit)? = null, val onOpenWebsite: () -> Unit = {})
 
 object AboutDefaults {
-    val homing = OpenSourceComponent("Homing", "Homing", LicenseKind.Apache2)
+    val homing = OpenSourceComponent("Homing", "Homing", LicenseKind.HomingNotice)
 
     val bundledAssets = listOf(
         OpenSourceComponent("Aspekta", "Ivo Dolenc", LicenseKind.OflAspekta),

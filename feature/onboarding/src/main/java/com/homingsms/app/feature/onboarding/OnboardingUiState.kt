@@ -6,6 +6,8 @@ import com.homingsms.app.feature.connect.PairingActions
 
 enum class OnboardingStep { Welcome, Permissions, Battery, RestrictedSettings, Mode, CloudPairing, TestMessage }
 
+enum class LegalLink { Terms, Privacy, AcceptableUse }
+
 enum class GatewayMode(val usesCloud: Boolean) { Local(false), Cloud(true), Both(true) }
 
 enum class OnboardingPermission(val required: Boolean) {
@@ -49,7 +51,8 @@ data class OnboardingUiState(
     val mode: GatewayMode? = null,
     val cloud: CloudPairing = CloudPairing.NotPaired,
     val pairingCode: String = "",
-    val test: TestMessageUi = TestMessageUi()
+    val test: TestMessageUi = TestMessageUi(),
+    val termsAccepted: Boolean = false
 ) {
     val steps: List<OnboardingStep> get() = OnboardingFlow.steps(mode, needsRestrictedSettings)
     val stepIndex: Int get() = steps.indexOf(step).coerceAtLeast(0)
@@ -58,7 +61,8 @@ data class OnboardingUiState(
         get() = permissions.filter { it.permission.required }.all { it.status == PermissionStatus.Granted }
     val canContinue: Boolean
         get() = when (step) {
-            OnboardingStep.Welcome, OnboardingStep.Battery, OnboardingStep.RestrictedSettings -> true
+            OnboardingStep.Welcome -> termsAccepted
+            OnboardingStep.Battery, OnboardingStep.RestrictedSettings -> true
             OnboardingStep.Permissions -> requiredPermissionsGranted
             OnboardingStep.Mode -> mode != null
             OnboardingStep.CloudPairing -> cloud is CloudPairing.Paired
@@ -96,5 +100,17 @@ data class OnboardingActions(
     val onModeSelected: (GatewayMode) -> Unit = {},
     val pairing: PairingActions = PairingActions(),
     val onTestNumberChange: (String) -> Unit = {},
-    val onSendTest: () -> Unit = {}
+    val onSendTest: () -> Unit = {},
+    val onTermsAcceptedChange: (Boolean) -> Unit = {},
+    val onOpenLegal: (LegalLink) -> Unit = {}
+)
+
+@Immutable
+data class UpdatedTermsUiState(val accepted: Boolean = false)
+
+@Immutable
+data class UpdatedTermsActions(
+    val onAcceptedChange: (Boolean) -> Unit = {},
+    val onOpenLegal: (LegalLink) -> Unit = {},
+    val onAccept: () -> Unit = {}
 )

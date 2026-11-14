@@ -40,7 +40,7 @@ import com.homingsms.app.core.designsystem.theme.StatusTone
 import com.homingsms.app.core.designsystem.util.formatCount
 
 @Composable
-internal fun WelcomeStep(onStart: () -> Unit) {
+internal fun WelcomeStep(state: OnboardingUiState, actions: OnboardingActions) {
     Column(
         modifier = Modifier.padding(top = HomingTheme.spacing.xxxl),
         verticalArrangement = Arrangement.spacedBy(HomingTheme.spacing.xxl)
@@ -52,11 +52,20 @@ internal fun WelcomeStep(onStart: () -> Unit) {
             WelcomePoint(HomingIcons.Inbox, R.string.onboarding_welcome_receive)
             WelcomePoint(HomingIcons.Transfer, R.string.onboarding_welcome_modes)
         }
-        HomingButton(
-            text = stringResource(R.string.onboarding_get_started),
-            onClick = onStart,
-            modifier = Modifier.fillMaxWidth()
-        )
+        LegalSummary(stringResource(R.string.onboarding_legal_summary_title))
+        Column(verticalArrangement = Arrangement.spacedBy(HomingTheme.spacing.lg)) {
+            LegalAgreementRow(
+                checked = state.termsAccepted,
+                onCheckedChange = actions.onTermsAcceptedChange,
+                onOpenLegal = actions.onOpenLegal
+            )
+            HomingButton(
+                text = stringResource(R.string.onboarding_get_started),
+                onClick = actions.onNext,
+                enabled = state.canContinue,
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
         Text(
             text = stringResource(R.string.onboarding_welcome_time),
             style = MaterialTheme.typography.bodySmall,

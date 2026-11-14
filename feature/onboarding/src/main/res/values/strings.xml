@@ -98,4 +98,16 @@
     <string name="onboarding_test_arrived">It works. Homing is ready.</string>
     <string name="onboarding_test_failed">Didn\'t send</string>
     <string name="onboarding_test_failed_body">Check the SIM has credit and signal, then try again.</string>
+    <string name="onboarding_legal_summary_title">Before you start</string>
+    <string name="onboarding_legal_summary_updated_title">In short</string>
+    <string name="onboarding_legal_point_sim">You send from your own SIM and phone number.</string>
+    <string name="onboarding_legal_point_consent">Only message people who agreed to hear from you, and follow your carrier\'s rules and local law.</string>
+    <string name="onboarding_legal_point_responsible">You\'re responsible for what you send.</string>
+    <string name="onboarding_legal_agree">I agree to the %1$s and %2$s, and I\'ve read the %3$s</string>
+    <string name="onboarding_legal_agree_terms">Terms of Service</string>
+    <string name="onboarding_legal_agree_acceptable_use">Acceptable Use Policy</string>
+    <string name="onboarding_legal_agree_privacy">Privacy Policy</string>
+    <string name="onboarding_legal_updated_title">Updated terms</string>
+    <string name="onboarding_legal_updated_body">We\'ve updated the terms for using Homing. Read them and accept to continue.</string>
+    <string name="onboarding_legal_accept">Accept</string>
 </resources>

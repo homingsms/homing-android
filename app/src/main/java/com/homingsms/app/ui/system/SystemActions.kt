@@ -39,6 +39,8 @@ sealed interface SystemAction {
     data class ViewFile(val uri: String, val mimeType: String) : SystemAction
 
     data class ShareFile(val uri: String, val mimeType: String) : SystemAction
+
+    data class OpenUrl(val url: String) : SystemAction
 }
 
 data class PermissionOutcome(val permission: String, val granted: Boolean, val canAskAgain: Boolean)
@@ -89,6 +91,8 @@ object SystemIntents {
         )
 
         is SystemAction.ShareFile -> listOf(Intent.createChooser(shareIntent(action.uri.toUri(), action.mimeType), null))
+
+        is SystemAction.OpenUrl -> listOf(Intent(Intent.ACTION_VIEW, action.url.toUri()).addCategory(Intent.CATEGORY_BROWSABLE))
     }
 
     fun oemComponents(maker: DeviceMaker): List<Pair<String, String>> = when (maker) {

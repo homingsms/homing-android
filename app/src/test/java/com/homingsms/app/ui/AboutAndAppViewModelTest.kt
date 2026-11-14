@@ -82,7 +82,11 @@ class AboutAndAppViewModelTest {
         val firstRun = FakeAppStatus()
         assertEquals(OnboardingRoute, AppViewModel(firstRun, PairLinkInbox()).startRoute)
 
-        val done = FakeAppStatus(firstRun.settings.value.let { it.copy(general = it.general.copy(onboardingCompleted = true)) })
+        val done = FakeAppStatus(
+            firstRun.settings.value.let {
+                it.copy(general = it.general.copy(onboardingCompleted = true), legal = it.legal.accept(1L))
+            }
+        )
         assertEquals(HomeRoute, AppViewModel(done, PairLinkInbox()).startRoute)
     }
 
@@ -90,7 +94,10 @@ class AboutAndAppViewModelTest {
     fun pairLinksRouteToConnectOnlyAfterOnboarding() = runTest {
         val links = PairLinkInbox()
         val done = FakeAppStatus().apply {
-            settings.value = settings.value.copy(general = settings.value.general.copy(onboardingCompleted = true))
+            settings.value = settings.value.copy(
+                general = settings.value.general.copy(onboardingCompleted = true),
+                legal = settings.value.legal.accept(1L)
+            )
         }
         val viewModel = AppViewModel(done, links)
         viewModel.routes.test {

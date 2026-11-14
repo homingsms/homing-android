@@ -16,6 +16,7 @@ import com.homingsms.app.feature.inbox.InboxScreen
 import com.homingsms.app.feature.messages.MessageDetailScreen
 import com.homingsms.app.feature.messages.MessagesScreen
 import com.homingsms.app.feature.onboarding.OnboardingScreen
+import com.homingsms.app.feature.onboarding.UpdatedTermsScreen
 import com.homingsms.app.feature.settings.SettingsScreen
 import com.homingsms.app.feature.webhooks.WebhookDetailScreen
 import com.homingsms.app.feature.webhooks.WebhookEditorScreen
@@ -31,6 +32,7 @@ import com.homingsms.app.ui.inbox.InboxViewModel
 import com.homingsms.app.ui.messages.MessageDetailViewModel
 import com.homingsms.app.ui.messages.MessagesViewModel
 import com.homingsms.app.ui.onboarding.OnboardingViewModel
+import com.homingsms.app.ui.onboarding.UpdatedTermsViewModel
 import com.homingsms.app.ui.settings.SettingsViewModel
 import com.homingsms.app.ui.webhooks.WebhookDetailViewModel
 import com.homingsms.app.ui.webhooks.WebhookEditorViewModel
@@ -56,6 +58,14 @@ fun OnboardingDestination(navigator: Navigator) {
     OnResume(viewModel::onResume)
     OnboardingScreen(state, viewModel.actions)
     PairLinkDialog(pending, viewModel::confirmPairLink, viewModel::dismissPairLink)
+}
+
+@Composable
+fun TermsDestination(navigator: Navigator) {
+    val viewModel: UpdatedTermsViewModel = koinViewModel()
+    val state by viewModel.state.collectAsStateWithLifecycle()
+    EffectHandler(viewModel.effects, navigator)
+    UpdatedTermsScreen(state, viewModel.actions)
 }
 
 @Composable

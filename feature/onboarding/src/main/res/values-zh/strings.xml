@@ -98,4 +98,16 @@
     <string name="onboarding_test_arrived">一切正常，Homing 已就绪。</string>
     <string name="onboarding_test_failed">未发送</string>
     <string name="onboarding_test_failed_body">请检查 SIM 卡是否有余额和信号，然后重试。</string>
+    <string name="onboarding_legal_summary_title">开始之前</string>
+    <string name="onboarding_legal_summary_updated_title">简要说明</string>
+    <string name="onboarding_legal_point_sim">你使用自己的 SIM 卡和号码发送短信。</string>
+    <string name="onboarding_legal_point_consent">只给同意接收你消息的人发送，并遵守运营商规定和当地法律。</string>
+    <string name="onboarding_legal_point_responsible">你要对自己发送的内容负责。</string>
+    <string name="onboarding_legal_agree">我同意%1$s和%2$s，并已阅读%3$s</string>
+    <string name="onboarding_legal_agree_terms">服务条款</string>
+    <string name="onboarding_legal_agree_acceptable_use">可接受使用政策</string>
+    <string name="onboarding_legal_agree_privacy">隐私政策</string>
+    <string name="onboarding_legal_updated_title">条款已更新</string>
+    <string name="onboarding_legal_updated_body">我们更新了 Homing 的使用条款。请阅读并接受后继续。</string>
+    <string name="onboarding_legal_accept">接受</string>
 </resources>

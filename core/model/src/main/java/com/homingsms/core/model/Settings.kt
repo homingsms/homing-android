@@ -133,6 +133,14 @@ data class SpendSettings(val currencyCode: String? = null, val simRatesMicros: M
 }
 
 @Serializable
+data class LegalSettings(val acceptedTermsVersion: String? = null, val acceptedAt: Long? = null) {
+    val acceptedCurrentTerms: Boolean
+        get() = acceptedTermsVersion == LegalTerms.CURRENT_VERSION
+
+    fun accept(now: Long): LegalSettings = LegalSettings(acceptedTermsVersion = LegalTerms.CURRENT_VERSION, acceptedAt = now)
+}
+
+@Serializable
 data class AppSettings(
     val schemaVersion: Int = CURRENT_SCHEMA,
     val general: GeneralSettings = GeneralSettings(),
@@ -142,7 +150,8 @@ data class AppSettings(
     val webhooks: WebhookSettings = WebhookSettings(),
     val inbox: InboxSettings = InboxSettings(),
     val logs: LogSettings = LogSettings(),
-    val spend: SpendSettings = SpendSettings()
+    val spend: SpendSettings = SpendSettings(),
+    val legal: LegalSettings = LegalSettings()
 ) {
     val optOutKeywords: List<String>
         get() = when {

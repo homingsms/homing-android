@@ -59,7 +59,7 @@ fun OnboardingScreen(state: OnboardingUiState, actions: OnboardingActions, modif
 @Composable
 private fun StepContent(state: OnboardingUiState, actions: OnboardingActions) {
     when (state.step) {
-        OnboardingStep.Welcome -> WelcomeStep(onStart = actions.onNext)
+        OnboardingStep.Welcome -> WelcomeStep(state, actions)
 
         OnboardingStep.Permissions -> PermissionsStep(state, actions)
 

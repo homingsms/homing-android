@@ -1,7 +1,9 @@
 package com.homingsms.app.ui.settings
 
 import androidx.lifecycle.viewModelScope
+import com.homingsms.app.BuildConfig
 import com.homingsms.app.feature.settings.AdvancedSettings
+import com.homingsms.app.feature.settings.LegalSettingsUi
 import com.homingsms.app.feature.settings.ReceivingSettings
 import com.homingsms.app.feature.settings.SecuritySettings
 import com.homingsms.app.feature.settings.SendingSettings
@@ -24,10 +26,12 @@ import com.homingsms.app.ui.navigation.AboutRoute
 import com.homingsms.app.ui.navigation.ConnectRoute
 import com.homingsms.app.ui.navigation.OnboardingRoute
 import com.homingsms.app.ui.navigation.WebhooksRoute
+import com.homingsms.app.ui.onboarding.LegalLinks
 import com.homingsms.app.ui.system.PlatformState
 import com.homingsms.app.ui.system.SystemAction
 import com.homingsms.core.model.AppSettings
 import com.homingsms.core.model.CloudPairingState
+import com.homingsms.core.model.LegalDocument
 import com.homingsms.core.model.LimitPeriod
 import com.homingsms.core.model.PairingLink
 import com.homingsms.core.model.RemoteDeviceSettings
@@ -49,7 +53,8 @@ class SettingsViewModel(
     private val control: GatewayControl,
     private val platform: PlatformState,
     private val sharing: FileSharing,
-    private val appVersion: String
+    private val appVersion: String,
+    private val legalBaseUrl: String = BuildConfig.LEGAL_BASE_URL
 ) : EffectViewModel() {
     private data class Local(val passphraseSet: Boolean, val encryptionPending: Boolean = false, val batteryIgnored: Boolean)
 
@@ -89,6 +94,7 @@ class SettingsViewModel(
                 batteryOptimizationIgnored = extra.batteryIgnored,
                 verboseLogging = settings.logs.verbose
             ),
+            legal = LegalSettingsUi(termsAcceptedAtMillis = settings.legal.acceptedAt),
             appVersion = appVersion
         )
     }.stateIn(viewModelScope, SharingStarted.Eagerly, SettingsUiState(appVersion = appVersion))
@@ -153,6 +159,12 @@ class SettingsViewModel(
             }
 
             SettingsDestination.Onboarding -> navigate(OnboardingRoute)
+
+            SettingsDestination.TermsOfService -> system(LegalLinks.open(LegalDocument.Terms, legalBaseUrl))
+
+            SettingsDestination.PrivacyPolicy -> system(LegalLinks.open(LegalDocument.Privacy, legalBaseUrl))
+
+            SettingsDestination.AcceptableUsePolicy -> system(LegalLinks.open(LegalDocument.AcceptableUse, legalBaseUrl))
 
             SettingsDestination.About -> navigate(AboutRoute)
         }

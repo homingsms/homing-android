@@ -1,5 +1,7 @@
 package com.homingsms.app.feature.settings
 
+import com.homingsms.app.core.designsystem.preview.PREVIEW_NOW_MILLIS
+
 internal object SettingsSamples {
     val typical = SettingsUiState(
         sending = SendingSettings(
@@ -22,6 +24,7 @@ internal object SettingsSamples {
         ),
         security = SecuritySettings(apiKeyCount = 2, webhookCount = 1, encryptionEnabled = true, encryptionPassphraseSet = true),
         advanced = AdvancedSettings(keepAliveEnabled = true, batteryOptimizationIgnored = false),
+        legal = LegalSettingsUi(termsAcceptedAtMillis = PREVIEW_NOW_MILLIS - 86_400_000L),
         appVersion = "1.0.0 (1)"
     )
 }

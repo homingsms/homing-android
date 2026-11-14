@@ -26,6 +26,7 @@ import com.homingsms.app.ui.messages.MessageDetailViewModel
 import com.homingsms.app.ui.messages.MessagesViewModel
 import com.homingsms.app.ui.navigation.AppViewModel
 import com.homingsms.app.ui.onboarding.OnboardingViewModel
+import com.homingsms.app.ui.onboarding.UpdatedTermsViewModel
 import com.homingsms.app.ui.settings.SettingsViewModel
 import com.homingsms.app.ui.system.AndroidPlatformState
 import com.homingsms.app.ui.system.PlatformState
@@ -51,6 +52,7 @@ val uiDataModule = module {
 val uiModule = module {
     viewModel { AppViewModel(get(), get()) }
     viewModel { OnboardingViewModel(get(), get(), get(), get(), get(), get()) }
+    viewModel { UpdatedTermsViewModel(get(), get()) }
     viewModel { HomeViewModel(get(), get(), get()) }
     viewModel { MessagesViewModel(get(), get()) }
     viewModel { params -> MessageDetailViewModel(params.get(), get()) }

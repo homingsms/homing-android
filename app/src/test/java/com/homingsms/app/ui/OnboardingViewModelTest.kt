@@ -4,15 +4,20 @@ import android.Manifest
 import app.cash.turbine.test
 import com.homingsms.app.feature.connect.CloudPairing
 import com.homingsms.app.feature.onboarding.GatewayMode
+import com.homingsms.app.feature.onboarding.LegalLink
 import com.homingsms.app.feature.onboarding.OnboardingPermission
 import com.homingsms.app.feature.onboarding.OnboardingStep
 import com.homingsms.app.feature.onboarding.PermissionStatus
 import com.homingsms.app.feature.onboarding.TestMessageStatus
 import com.homingsms.app.ui.connect.PairLinkInbox
 import com.homingsms.app.ui.navigation.HomeRoute
+import com.homingsms.app.ui.navigation.TermsRoute
 import com.homingsms.app.ui.onboarding.OnboardingViewModel
 import com.homingsms.app.ui.system.PermissionOutcome
 import com.homingsms.app.ui.system.SystemAction
+import com.homingsms.core.model.AppSettings
+import com.homingsms.core.model.LegalSettings
+import com.homingsms.core.model.LegalTerms
 import com.homingsms.core.model.MessageError
 import com.homingsms.core.model.MessageState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -59,10 +64,21 @@ class OnboardingViewModelTest {
         runCurrent()
         assertEquals(OnboardingStep.Welcome, viewModel.state.value.step)
         assertFalse(viewModel.state.value.needsRestrictedSettings)
+        assertFalse(viewModel.state.value.termsAccepted)
 
         viewModel.actions.onNext()
         runCurrent()
+        assertEquals(OnboardingStep.Welcome, viewModel.state.value.step)
+        assertEquals(LegalSettings(), status.settings.value.legal)
+
+        advanceTimeBy(5_000)
+        viewModel.actions.onTermsAcceptedChange(true)
+        runCurrent()
+        assertTrue(viewModel.state.value.canContinue)
+        viewModel.actions.onNext()
+        runCurrent()
         assertEquals(OnboardingStep.Permissions, viewModel.state.value.step)
+        assertEquals(LegalSettings(LegalTerms.CURRENT_VERSION, 5_000L), status.settings.value.legal)
         viewModel.actions.onNext()
         runCurrent()
         assertEquals(OnboardingStep.Permissions, viewModel.state.value.step)
@@ -91,6 +107,8 @@ class OnboardingViewModelTest {
         val viewModel = viewModel(sdkInt = 33)
         runCurrent()
         assertTrue(viewModel.state.value.needsRestrictedSettings)
+        viewModel.actions.onTermsAcceptedChange(true)
+        runCurrent()
         viewModel.actions.onNext()
         runCurrent()
         assertEquals(OnboardingStep.RestrictedSettings, viewModel.state.value.step)
@@ -188,6 +206,7 @@ class OnboardingViewModelTest {
     fun finishMarksOnboardingDoneAndGoesHome() = runTest {
         val viewModel = viewModel()
         viewModel.actions.onModeSelected(GatewayMode.Both)
+        viewModel.actions.onTermsAcceptedChange(true)
         runCurrent()
         viewModel.effects.test {
             viewModel.actions.onFinish()
@@ -198,6 +217,43 @@ class OnboardingViewModelTest {
         assertTrue(settings.general.autostart)
         assertTrue(settings.localServer.enabled && settings.cloud.enabled)
         assertTrue("start" in control.calls)
+        assertTrue(settings.legal.acceptedCurrentTerms)
+    }
+
+    @Test
+    fun finishingWithoutAcceptingTheTermsOpensTheTermsGate() = runTest {
+        val viewModel = viewModel()
+        links.offer("homing://pair?server=https://cloud.example.test&code=ABCD12")
+        runCurrent()
+        assertEquals(OnboardingStep.CloudPairing, viewModel.state.value.step)
+        viewModel.effects.test {
+            viewModel.actions.onFinish()
+            assertEquals(UiEffect.ResetTo(TermsRoute), awaitItem())
+        }
+        assertTrue(status.settings.value.general.onboardingCompleted)
+        assertEquals(LegalSettings(), status.settings.value.legal)
+    }
+
+    @Test
+    fun rerunningSetupKeepsCurrentAcceptanceCheckedAndOpensDocuments() = runTest {
+        status.settings.value = AppSettings(legal = LegalSettings().accept(42L))
+        val viewModel = OnboardingViewModel(
+            status, control, platform, messages, inbox, links, 34,
+            clock = { currentTime },
+            legalBaseUrl = "https://legal.example.test"
+        )
+        runCurrent()
+        assertTrue(viewModel.state.value.termsAccepted)
+        assertTrue(viewModel.state.value.canContinue)
+        viewModel.effects.test {
+            viewModel.actions.onOpenLegal(LegalLink.Privacy)
+            assertEquals(UiEffect.System(SystemAction.OpenUrl("https://legal.example.test/legal/privacy")), awaitItem())
+            viewModel.actions.onOpenLegal(LegalLink.AcceptableUse)
+            assertEquals(UiEffect.System(SystemAction.OpenUrl("https://legal.example.test/legal/acceptable-use")), awaitItem())
+        }
+        viewModel.actions.onNext()
+        runCurrent()
+        assertEquals(42L, status.settings.value.legal.acceptedAt)
     }
 
     private fun status(viewModel: OnboardingViewModel, permission: OnboardingPermission) =

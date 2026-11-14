@@ -6,6 +6,8 @@ import com.homingsms.app.feature.connect.CloudPairing
 internal object OnboardingSamples {
     val welcome = OnboardingUiState()
 
+    val updatedTerms = UpdatedTermsUiState()
+
     val permissions = OnboardingUiState(
         step = OnboardingStep.Permissions,
         permissions = listOf(

@@ -12,6 +12,12 @@ private fun OnboardingWelcomePreview() {
 
 @HomingPreviews
 @Composable
+private fun UpdatedTermsPreview() {
+    HomingPreviewSurface { UpdatedTermsScreen(OnboardingSamples.updatedTerms, UpdatedTermsActions()) }
+}
+
+@HomingPreviews
+@Composable
 private fun OnboardingPermissionsPreview() {
     HomingPreviewSurface { OnboardingScreen(OnboardingSamples.permissions, OnboardingActions()) }
 }

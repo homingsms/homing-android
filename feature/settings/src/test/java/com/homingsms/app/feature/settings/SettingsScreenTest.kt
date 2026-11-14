@@ -91,4 +91,26 @@ class SettingsScreenTest {
         composeRule.onNodeWithText("About Homing").performClick()
         assertEquals(listOf(SettingsDestination.ApiKeys, SettingsDestination.About), destinations)
     }
+
+    @Test
+    fun legalRowsOpenEachDocumentAndShowAcceptance() {
+        show()
+        listOf("Terms of Service", "Privacy Policy", "Acceptable Use Policy").forEach { title ->
+            composeRule.onNode(hasScrollAction()).performScrollToNode(hasText(title))
+            composeRule.onNodeWithText(title).performClick()
+        }
+        composeRule.onNode(hasScrollAction()).performScrollToNode(hasText("Terms accepted"))
+        composeRule.onNodeWithText("Terms accepted").assertExists()
+        assertEquals(
+            listOf(SettingsDestination.TermsOfService, SettingsDestination.PrivacyPolicy, SettingsDestination.AcceptableUsePolicy),
+            destinations
+        )
+    }
+
+    @Test
+    fun legalRowShowsWhenTermsWereNotAccepted() {
+        show(SettingsSamples.typical.copy(legal = LegalSettingsUi()))
+        composeRule.onNode(hasScrollAction()).performScrollToNode(hasText("Not accepted yet"))
+        composeRule.onNodeWithText("Not accepted yet").assertExists()
+    }
 }

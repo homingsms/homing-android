@@ -2,6 +2,7 @@ package com.homingsms.app.ui.onboarding
 
 import android.os.Build
 import androidx.lifecycle.viewModelScope
+import com.homingsms.app.BuildConfig
 import com.homingsms.app.feature.onboarding.BatteryUi
 import com.homingsms.app.feature.onboarding.GatewayMode
 import com.homingsms.app.feature.onboarding.OnboardingActions
@@ -24,6 +25,7 @@ import com.homingsms.app.ui.data.GatewayControl
 import com.homingsms.app.ui.data.InboxStore
 import com.homingsms.app.ui.data.MessageStore
 import com.homingsms.app.ui.navigation.HomeRoute
+import com.homingsms.app.ui.navigation.TermsRoute
 import com.homingsms.app.ui.system.AppPermissions
 import com.homingsms.app.ui.system.PermissionOutcome
 import com.homingsms.app.ui.system.PlatformState
@@ -55,7 +57,8 @@ class OnboardingViewModel(
     private val inbox: InboxStore,
     links: PairLinkInbox,
     private val sdkInt: Int = Build.VERSION.SDK_INT,
-    private val clock: () -> Long = System::currentTimeMillis
+    private val clock: () -> Long = System::currentTimeMillis,
+    private val legalBaseUrl: String = BuildConfig.LEGAL_BASE_URL
 ) : EffectViewModel() {
     private data class Progress(
         val step: OnboardingStep = OnboardingStep.Welcome,
@@ -64,6 +67,7 @@ class OnboardingViewModel(
         val blocked: Set<OnboardingPermission> = emptySet(),
         val batteryIgnored: Boolean = false,
         val test: TestMessageUi = TestMessageUi(),
+        val termsAccepted: Boolean = false,
         val revision: Int = 0
     )
 
@@ -75,7 +79,8 @@ class OnboardingViewModel(
         Progress(
             mode = initialMode(),
             batteryIgnored = platform.isIgnoringBatteryOptimizations(),
-            test = TestMessageUi(phoneNumber = platform.ownPhoneNumber().orEmpty())
+            test = TestMessageUi(phoneNumber = platform.ownPhoneNumber().orEmpty()),
+            termsAccepted = status.settings.value.legal.acceptedCurrentTerms
         )
     )
     private val pairing = PairingCoordinator(viewModelScope, control, onResult = {})
@@ -97,7 +102,8 @@ class OnboardingViewModel(
             mode = current.mode,
             cloud = UiMappers.pairing(cloud, settings.cloud.deviceName),
             pairingCode = code,
-            test = current.test
+            test = current.test,
+            termsAccepted = current.termsAccepted
         )
     }.stateIn(viewModelScope, SharingStarted.Eagerly, OnboardingUiState(needsRestrictedSettings = needsRestrictedSettings))
 
@@ -117,7 +123,9 @@ class OnboardingViewModel(
         onModeSelected = { mode -> progress.update { it.copy(mode = mode) } },
         pairing = pairing.actions,
         onTestNumberChange = { number -> progress.update { it.copy(test = it.test.copy(phoneNumber = number)) } },
-        onSendTest = ::sendTest
+        onSendTest = ::sendTest,
+        onTermsAcceptedChange = { accepted -> progress.update { it.copy(termsAccepted = accepted) } },
+        onOpenLegal = { link -> system(LegalLinks.open(link, legalBaseUrl)) }
     )
 
     init {
@@ -170,6 +178,7 @@ class OnboardingViewModel(
         val current = state.value
         if (!current.canContinue) return
         val nextStep = OnboardingFlow.next(current) ?: return finish()
+        if (current.step == OnboardingStep.Welcome) viewModelScope.launch { storeTermsAcceptance() }
         if (current.step == OnboardingStep.Mode) current.mode?.let(::applyMode)
         progress.update { it.copy(step = nextStep) }
     }
@@ -201,8 +210,15 @@ class OnboardingViewModel(
                 control.updateSettings { it.copy(general = it.general.copy(onboardingCompleted = true)) }
             }
             if (!status.serviceRunning.value) control.start()
-            resetTo(HomeRoute)
+            val accepted = progress.value.termsAccepted && storeTermsAcceptance()
+            resetTo(if (accepted || status.settings.value.legal.acceptedCurrentTerms) HomeRoute else TermsRoute)
         }
+    }
+
+    private suspend fun storeTermsAcceptance(): Boolean {
+        if (status.settings.value.legal.acceptedCurrentTerms) return true
+        val now = clock()
+        return attempt { control.updateSettings { it.copy(legal = it.legal.accept(now)) } }.isSuccess
     }
 
     private fun sendTest() {

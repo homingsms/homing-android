@@ -17,6 +17,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import com.homingsms.app.core.designsystem.component.CenteredContent
 import com.homingsms.app.core.designsystem.component.GroupLabel
 import com.homingsms.app.core.designsystem.component.HomingDivider
+import com.homingsms.app.core.designsystem.component.HomingListRow
 import com.homingsms.app.core.designsystem.component.HomingNavigationRow
 import com.homingsms.app.core.designsystem.component.HomingPanel
 import com.homingsms.app.core.designsystem.component.HomingScaffold
@@ -26,6 +27,7 @@ import com.homingsms.app.core.designsystem.theme.CAP_WARNING_PERCENT
 import com.homingsms.app.core.designsystem.theme.HomingTheme
 import com.homingsms.app.core.designsystem.util.formatClockTime
 import com.homingsms.app.core.designsystem.util.formatCount
+import com.homingsms.app.core.designsystem.util.formatFullDateTime
 import com.homingsms.app.core.designsystem.util.formatPercent
 import com.homingsms.app.core.designsystem.util.simLabel
 
@@ -52,6 +54,7 @@ fun SettingsScreen(state: SettingsUiState, actions: SettingsActions, modifier: M
                 serverSection(state.server, actions, open)
                 securitySection(state.security, actions, open)
                 advancedSection(state.advanced, actions)
+                legalSection(state.legal, actions)
                 section("about", R.string.settings_group_about) {
                     HomingNavigationRow(
                         title = stringResource(R.string.settings_about),
@@ -271,6 +274,31 @@ private fun LazyListScope.advancedSection(advanced: AdvancedSettings, actions: S
         HomingNavigationRow(
             title = stringResource(R.string.settings_run_setup),
             onClick = { actions.onNavigate(SettingsDestination.Onboarding) }
+        )
+    }
+}
+
+private fun LazyListScope.legalSection(legal: LegalSettingsUi, actions: SettingsActions) {
+    section("legal", R.string.settings_group_legal) {
+        HomingNavigationRow(
+            title = stringResource(R.string.settings_legal_terms),
+            onClick = { actions.onNavigate(SettingsDestination.TermsOfService) }
+        )
+        RowDivider()
+        HomingNavigationRow(
+            title = stringResource(R.string.settings_legal_privacy),
+            onClick = { actions.onNavigate(SettingsDestination.PrivacyPolicy) }
+        )
+        RowDivider()
+        HomingNavigationRow(
+            title = stringResource(R.string.settings_legal_acceptable_use),
+            onClick = { actions.onNavigate(SettingsDestination.AcceptableUsePolicy) }
+        )
+        RowDivider()
+        HomingListRow(
+            headline = stringResource(R.string.settings_legal_accepted),
+            supporting = legal.termsAcceptedAtMillis?.let { formatFullDateTime(it) }
+                ?: stringResource(R.string.settings_legal_not_accepted)
         )
     }
 }

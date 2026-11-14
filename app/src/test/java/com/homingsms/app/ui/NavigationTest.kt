@@ -3,13 +3,19 @@ package com.homingsms.app.ui
 import android.app.Application
 import android.content.Intent
 import android.net.Uri
+import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.assertIsEnabled
+import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.hasAnyAncestor
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.isDialog
+import androidx.compose.ui.test.isToggleable
 import androidx.compose.ui.test.junit4.v2.createEmptyComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performScrollTo
+import androidx.compose.ui.test.performSemanticsAction
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider
 import com.homingsms.app.MainActivity
@@ -24,7 +30,9 @@ import com.homingsms.app.ui.data.MessageStore
 import com.homingsms.app.ui.data.WebhookStore
 import com.homingsms.app.ui.system.PlatformState
 import com.homingsms.core.model.DeviceHealth
+import com.homingsms.core.model.LegalSettings
 import org.junit.After
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
@@ -70,8 +78,17 @@ class NavigationTest {
         stopKoin()
     }
 
-    private fun launch(onboardingCompleted: Boolean, link: String? = null): ActivityScenario<MainActivity> {
-        status.settings.value = status.settings.value.let { it.copy(general = it.general.copy(onboardingCompleted = onboardingCompleted)) }
+    private fun launch(
+        onboardingCompleted: Boolean,
+        link: String? = null,
+        termsAccepted: Boolean = onboardingCompleted
+    ): ActivityScenario<MainActivity> {
+        status.settings.value = status.settings.value.let {
+            it.copy(
+                general = it.general.copy(onboardingCompleted = onboardingCompleted),
+                legal = if (termsAccepted) it.legal.accept(1L) else LegalSettings("2025-01-01", 1L)
+            )
+        }
         status.health.value = DeviceHealth.Unknown.copy(collectedAt = 1L)
         val context = ApplicationProvider.getApplicationContext<Application>()
         val intent = if (link == null) {
@@ -98,6 +115,22 @@ class NavigationTest {
             compose.waitForIdle()
             compose.onNodeWithText("Nothing received yet").assertIsDisplayed()
             compose.onNodeWithText("Turn this phone into an SMS gateway").assertDoesNotExist()
+        }
+    }
+
+    @Test
+    fun outdatedTermsBlockTheShellUntilAccepted() {
+        launch(onboardingCompleted = true, termsAccepted = false).use {
+            compose.onNodeWithText("Updated terms").assertIsDisplayed()
+            compose.onNodeWithText("Inbox").assertDoesNotExist()
+            compose.onNodeWithText("Accept").performScrollTo().assertIsNotEnabled()
+            compose.onNode(isToggleable()).performSemanticsAction(SemanticsActions.OnClick)
+            compose.onNodeWithText("Accept").assertIsEnabled().performClick()
+            compose.waitForIdle()
+            compose.onNodeWithText("Today").assertIsDisplayed()
+            compose.onNodeWithText("Updated terms").assertDoesNotExist()
+            assertTrue(status.settings.value.legal.acceptedCurrentTerms)
+            assertFalse("stop" in control.calls)
         }
     }
 

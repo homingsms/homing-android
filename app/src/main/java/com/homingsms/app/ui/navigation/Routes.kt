@@ -9,6 +9,9 @@ sealed interface AppRoute
 data object OnboardingRoute : AppRoute
 
 @Serializable
+data object TermsRoute : AppRoute
+
+@Serializable
 data object HomeRoute : AppRoute
 
 @Serializable

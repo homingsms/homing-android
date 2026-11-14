@@ -38,6 +38,12 @@ class OnboardingFlowTest {
     }
 
     @Test
+    fun welcomeNeedsTheTermsAccepted() {
+        assertFalse(OnboardingUiState().canContinue)
+        assertTrue(OnboardingUiState(termsAccepted = true).canContinue)
+    }
+
+    @Test
     fun permissionsStepNeedsRequiredPermissionsOnly() {
         val state = OnboardingUiState(
             step = OnboardingStep.Permissions,

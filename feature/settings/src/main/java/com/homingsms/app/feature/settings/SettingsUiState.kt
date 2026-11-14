@@ -69,6 +69,9 @@ data class SimRateUi(val slot: Int, val carrier: String?, val rateMicros: Long?)
 data class SpendSettingsUi(val currencyCode: String = "USD", val rates: List<SimRateUi> = listOf(SimRateUi(0, null, null)))
 
 @Immutable
+data class LegalSettingsUi(val termsAcceptedAtMillis: Long? = null)
+
+@Immutable
 data class SettingsUiState(
     val sending: SendingSettings = SendingSettings(),
     val spend: SpendSettingsUi = SpendSettingsUi(),
@@ -76,6 +79,7 @@ data class SettingsUiState(
     val server: ServerSettings = ServerSettings(),
     val security: SecuritySettings = SecuritySettings(),
     val advanced: AdvancedSettings = AdvancedSettings(),
+    val legal: LegalSettingsUi = LegalSettingsUi(),
     val appVersion: String = ""
 )
 
@@ -114,6 +118,9 @@ enum class SettingsDestination {
     OutgoingSmsLimit,
     ExportLogs,
     Onboarding,
+    TermsOfService,
+    PrivacyPolicy,
+    AcceptableUsePolicy,
     About
 }
 

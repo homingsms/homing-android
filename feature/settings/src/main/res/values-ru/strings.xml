@@ -110,4 +110,10 @@
     <string name="settings_sms_rate_help">Сколько оператор берёт за одну часть SMS. Длинные сообщения состоят из нескольких частей.</string>
     <string name="settings_sms_rate_clear">Оставьте пустым, чтобы удалить тариф.</string>
     <string name="settings_sms_rate_invalid">Введите сумму до %1$s, не больше %2$s знаков после запятой.</string>
+    <string name="settings_group_legal">Правовая информация</string>
+    <string name="settings_legal_terms">Условия обслуживания</string>
+    <string name="settings_legal_privacy">Политика конфиденциальности</string>
+    <string name="settings_legal_acceptable_use">Правила допустимого использования</string>
+    <string name="settings_legal_accepted">Условия приняты</string>
+    <string name="settings_legal_not_accepted">Ещё не приняты</string>
 </resources>

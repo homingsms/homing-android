@@ -23,6 +23,11 @@ class OnboardingScreenshotTest(private val variant: ScreenshotVariant) {
     fun welcome() = capture("welcome", OnboardingSamples.welcome)
 
     @Test
+    fun updatedTerms() = composeRule.captureScreen("onboarding_updated_terms", variant) {
+        UpdatedTermsScreen(OnboardingSamples.updatedTerms, UpdatedTermsActions())
+    }
+
+    @Test
     fun permissions() = capture("permissions", OnboardingSamples.permissions)
 
     @Test

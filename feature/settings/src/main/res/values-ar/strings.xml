@@ -116,4 +116,10 @@
     <string name="settings_sms_rate_help">ما تحتسبه شركة الاتصالات مقابل جزء واحد من الرسالة. الرسائل الطويلة تُرسل في عدة أجزاء.</string>
     <string name="settings_sms_rate_clear">اتركه فارغًا لإزالة السعر.</string>
     <string name="settings_sms_rate_invalid">أدخل مبلغًا حتى %1$s بحد أقصى %2$s منازل عشرية.</string>
+    <string name="settings_group_legal">الشؤون القانونية</string>
+    <string name="settings_legal_terms">شروط الخدمة</string>
+    <string name="settings_legal_privacy">سياسة الخصوصية</string>
+    <string name="settings_legal_acceptable_use">سياسة الاستخدام المقبول</string>
+    <string name="settings_legal_accepted">تمت الموافقة على الشروط</string>
+    <string name="settings_legal_not_accepted">لم تتم الموافقة بعد</string>
 </resources>

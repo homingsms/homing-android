@@ -1,6 +1,7 @@
 package com.homingsms.core.data.settings
 
 import com.homingsms.core.model.AppSettings
+import com.homingsms.core.model.LegalSettings
 import com.homingsms.core.model.LimitPeriod
 import com.homingsms.core.model.ProcessingOrder
 import com.homingsms.core.model.SimSelectionMode
@@ -109,6 +110,15 @@ class LegacySettingsMapperTest {
 
         val saved = AppSettings(spend = SpendSettings("KES", mapOf(0 to 800_000L)))
         assertEquals(saved.spend, LegacySettingsMapper.map(legacy, saved).settings.spend)
+    }
+
+    @Test
+    fun legacyMigrationLeavesLegalAcceptanceAlone() {
+        val fresh = LegacySettingsMapper.map(legacy, AppSettings()).settings
+        assertEquals(LegalSettings(), fresh.legal)
+
+        val saved = AppSettings(legal = LegalSettings().accept(1_700_000_000_000L))
+        assertEquals(saved.legal, LegacySettingsMapper.map(legacy, saved).settings.legal)
     }
 
     @Test

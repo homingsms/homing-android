@@ -6,6 +6,8 @@ import androidx.datastore.dataStoreFile
 import androidx.test.core.app.ApplicationProvider
 import com.homingsms.core.data.FakeSecrets
 import com.homingsms.core.data.secrets.SecretStore
+import com.homingsms.core.model.LegalSettings
+import com.homingsms.core.model.LegalTerms
 import com.homingsms.core.model.LimitPeriod
 import com.homingsms.core.model.SpendSettings
 import kotlinx.coroutines.CoroutineScope
@@ -77,6 +79,30 @@ class SettingsRepositoryTest {
         assertEquals(8181, settings.localServer.port)
         assertEquals(SpendSettings(), settings.spend)
         assertFalse(settings.spend.hasRate)
+    }
+
+    @Test
+    fun settingsSavedBeforeLegalExistedLoadWithoutAcceptance() = runBlocking {
+        context.dataStoreFile(SettingsRepository.FILE_NAME).apply { parentFile?.mkdirs() }.writeText(
+            """{"schemaVersion":1,"general":{"autostart":true,"onboardingCompleted":true},"spend":{"currencyCode":"NGN"}}"""
+        )
+        val repository = SettingsRepository.create(context, FakeSecrets(), scope)
+
+        val settings = repository.current
+        assertTrue(settings.general.onboardingCompleted)
+        assertEquals("NGN", settings.spend.currencyCode)
+        assertEquals(LegalSettings(), settings.legal)
+        assertFalse(settings.legal.acceptedCurrentTerms)
+    }
+
+    @Test
+    fun legalAcceptanceRoundTrips() = runBlocking {
+        val repository = SettingsRepository.create(context, FakeSecrets(), scope)
+        repository.update { it.copy(legal = LegalSettings().accept(1_700_000_000_000L)) }
+
+        val decoded = AppSettingsSerializer.readFrom(context.dataStoreFile(SettingsRepository.FILE_NAME).inputStream())
+        assertEquals(LegalSettings(LegalTerms.CURRENT_VERSION, 1_700_000_000_000L), decoded.legal)
+        assertTrue(decoded.legal.acceptedCurrentTerms)
     }
 
     @Test

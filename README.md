@@ -147,4 +147,4 @@ Commit the regenerated `HomingIcons.kt`. The icon paths come from licensed Hugei
 
 ## License
 
-Apache License 2.0. See `LICENSE`.
+Apache License 2.0. See `LICENSE` and `NOTICE`. Parts of the app are derived from Apache 2.0 software and from the Android Open Source Project and have been modified; `NOTICE` records this, and the app shows the same notice under About, Open source licenses. Keep `NOTICE` and the copyright headers in the MMS PDU files when changing them.
