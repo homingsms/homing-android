@@ -87,7 +87,11 @@ class CloudController(
     suspend fun queueInbox(localId: String) {
         if (!engine.isPaired) return
         engine.queueInbox(localId)
-        CloudSyncWorker.flush(context)
+        flushNow()
+    }
+
+    private fun flushNow() {
+        scope.launch { CloudFlush.now(engine::flush) { CloudSyncWorker.flush(context) } }
     }
 
     suspend fun report(event: MessageStateChangedEvent) {
@@ -111,7 +115,7 @@ class CloudController(
                 errorMessage = error?.message
             )
         )
-        CloudSyncWorker.flush(context)
+        flushNow()
     }
 
     private inner class Collector : EventsReceiver() {
